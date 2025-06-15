@@ -8,12 +8,17 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('migration_table_name_table', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table): void {
             $table->id();
 
-            // add fields
+            $table->string('group');
+            $table->string('name');
+            $table->boolean('locked')->default(false);
+            $table->json('payload');
 
             $table->timestamps();
+
+            $table->unique(['group', 'name']);
         });
     }
 };
