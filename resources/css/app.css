@@ -4,7 +4,6 @@
 
 @import "tailwindcss/preflight";
 @import "tailwindcss";
-@plugin "daisyui";
 @source "../views";
 
 
