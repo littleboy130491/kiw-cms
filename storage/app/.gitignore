@@ -1,4 +1,5 @@
 *
 !private/
-!public/media/*
+!public/media/
+!public/media/**
 !.gitignore
