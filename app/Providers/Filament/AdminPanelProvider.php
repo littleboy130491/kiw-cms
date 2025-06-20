@@ -67,7 +67,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandName(config('cms.site_name'))
             // ->brandLogo(config('cms.site_logo'))
             ->favicon(config('cms.site_favicon'))
-            // ->theme(asset('css/filament/admin/theme.css'))
+            ->theme(asset('css/filament/admin/theme.css'))
             ->plugins([
                 SumimasenPlugin::make(),
                 CuratorPlugin::make(),
