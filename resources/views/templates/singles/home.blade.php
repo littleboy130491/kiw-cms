@@ -279,16 +279,17 @@
                     <x-loop.layanan-home number="01." label="Lahan Industri Siap Bangun"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                         url="/lahan-industri"
-                        image="media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg" />
+                        image="storage/media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg" />
 
                     <x-loop.layanan-home number="02." label="Bangunan Pabrik Siap Pakai (BPSP)"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                         url="/archive-bangunan-pabrik-siap-pakai"
-                        image="media/exterior-view-modern-industrial-building.jpg" />
+                        image="storage/media/exterior-view-modern-industrial-building.jpg" />
 
                     <x-loop.layanan-home number="03." label="Kerja sama Komersial Kawasan Industri"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                        url="/single-area-komersil-atm" image="media/exterior-view-modern-industrial-building.jpg" />
+                        url="/single-area-komersil-atm"
+                        image="storage/media/exterior-view-modern-industrial-building.jpg" />
                 </div>
 
 
@@ -373,7 +374,7 @@
 
                 <!-- Tab Contents -->
                 <x-tab.tab-contents-sektor id="tab1" label="Modern Textile and Garment Industry"
-                    image="media/garmen.png"
+                    image="storage/media/garmen.png"
                     desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
@@ -384,7 +385,8 @@
                     </p>
                     " />
 
-                <x-tab.tab-contents-sektor id="tab2" label="Wood & Furniture" image="media/furniture.png"
+                <x-tab.tab-contents-sektor id="tab2" label="Wood & Furniture"
+                    image="storage/media/furniture.png"
                     desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
@@ -395,7 +397,8 @@
                     </p>
                     " />
 
-                <x-tab.tab-contents-sektor id="tab3" label="Chemical & New Material" image="media/chemical.png"
+                <x-tab.tab-contents-sektor id="tab3" label="Chemical & New Material"
+                    image="storage/media/chemical.png"
                     desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
@@ -407,7 +410,7 @@
                     " />
 
                 <x-tab.tab-contents-sektor id="tab4" label="Consumer Goods & Food Procesing"
-                    image="media/consumer.png"
+                    image="storage/media/consumer.png"
                     desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
@@ -418,7 +421,7 @@
                     </p>
                     " />
 
-                <x-tab.tab-contents-sektor id="tab5" label="Others" image="media/others.png"
+                <x-tab.tab-contents-sektor id="tab5" label="Others" image="storage/media/others.png"
                     desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
@@ -463,7 +466,7 @@
                 <div class="sm:!w-[55%] !w-[100%] relative fasilitas-home">
                     <div class="swiper swiper-1">
                         <div class="swiper-wrapper">
-                            <x-loop.fasilitas-home label="Masjid" image="media/masjid.jpg">
+                            <x-loop.fasilitas-home label="Masjid" image="storage/media/masjid.jpg">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis
                                 vehicula. Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur
                                 vestibulum sem eget massa semper, a sagittis tortor accumsan. Duis luctus ante vel augue
@@ -477,7 +480,8 @@
                                 lectus.
                             </x-loop.fasilitas-home>
 
-                            <x-loop.fasilitas-home label="Pengelola Air Bersih" image="media/pengelolaan-air.jpg">
+                            <x-loop.fasilitas-home label="Pengelola Air Bersih"
+                                image="storage/media/pengelolaan-air.jpg">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis
                                 vehicula. Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur
                                 vestibulum sem eget massa semper, a sagittis tortor accumsan. Duis luctus ante vel augue
@@ -491,7 +495,7 @@
                                 lectus.
                             </x-loop.fasilitas-home>
 
-                            <x-loop.fasilitas-home label="Pemadam Kebakaran" image="media/pemadam.jpg">
+                            <x-loop.fasilitas-home label="Pemadam Kebakaran" image="storage/media/pemadam.jpg">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis
                                 vehicula. Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur
                                 vestibulum sem eget massa semper, a sagittis tortor accumsan. Duis luctus ante vel augue
@@ -505,7 +509,7 @@
                                 lectus.
                             </x-loop.fasilitas-home>
 
-                            <x-loop.fasilitas-home label="Jalan Lingkungan" image="media/jalan.jpg">
+                            <x-loop.fasilitas-home label="Jalan Lingkungan" image="storage/media/jalan.jpg">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis
                                 vehicula. Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur
                                 vestibulum sem eget massa semper, a sagittis tortor accumsan. Duis luctus ante vel augue
@@ -618,20 +622,20 @@
             <div class="relative w-full lg:max-w-[100vw] overflow-hidden">
                 <div class="swiper-logo ">
                     <div class="swiper-wrapper lg:!flex lg:gap-5">
-                        <x-loop.tenant-logo image="media/logoipsum-1.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-2.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-3.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-4.png" />
+                        <x-loop.tenant-logo image="storage/media/logoipsum-1.png" />
+                        <x-loop.tenant-logo image="storage/media/logoipsum-2.png" />
+                        <x-loop.tenant-logo image="storage/media/logoipsum-3.png" />
+                        <x-loop.tenant-logo image="storage/media/logoipsum-4.png" />
 
-                        <x-loop.tenant-logo image="media/logoipsum-7.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-8.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-1.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-2.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-3.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-4.png" />
+                        <x-loop.tenant-logo image="storage/media/logoipsum-7.png" />
+                        <x-loop.tenant-logo image="storage/media/logoipsum-8.png" />
+                        <x-loop.tenant-logo image="storage/media/logoipsum-1.png" />
+                        <x-loop.tenant-logo image="storage/media/logoipsum-2.png" />
+                        <x-loop.tenant-logo image="storage/media/logoipsum-3.png" />
+                        <x-loop.tenant-logo image="storage/media/logoipsum-4.png" />
 
-                        <x-loop.tenant-logo image="media/logoipsum-7.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-8.png" />
+                        <x-loop.tenant-logo image="storage/media/logoipsum-7.png" />
+                        <x-loop.tenant-logo image="storage/media/logoipsum-8.png" />
 
                     </div>
 
@@ -671,25 +675,25 @@
                     label="
                     Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
                     "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025"
+                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
                 <x-loop.artikel-berita
                     label="
                     Dirut KIW Berbagi Pengalaman Penerapan GCG di Program “Library Cafe” BPKP Jateng
                     "
-                    tag="Informasi" date="06/01/2025" image="media/library-caffe.jpg" url="#" />
+                    tag="Informasi" date="06/01/2025" image="storage/media/library-caffe.jpg" url="#" />
                 <x-loop.artikel-berita
                     label="
                     Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
                     "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025"
+                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
                 <x-loop.artikel-berita
                     label="
                     Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
                     "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025"
+                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
 
 
             </div>
@@ -726,20 +730,22 @@
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-7">
 
                     <x-loop.laporan-tahunan label="Laporan Tahunan PT KIW (persero) Tahun 2014"
-                        doc="media/lipsum.pdf" />
+                        doc="storage/media/lipsum.pdf" />
 
-                    <x-loop.laporan-tahunan label="Laporan Auditor Independen Tahun 2013" doc="media/lipsum.pdf" />
+                    <x-loop.laporan-tahunan label="Laporan Auditor Independen Tahun 2013"
+                        doc="storage/media/lipsum.pdf" />
 
                     <x-loop.laporan-tahunan label="Laporan Tahunan PT KIW (persero) Tahun 2015"
-                        doc="media/lipsum.pdf" />
+                        doc="storage/media/lipsum.pdf" />
 
                     <x-loop.laporan-tahunan label="Laporan Tahunan PT KIW (persero) Tahun 2016"
-                        doc="media/lipsum.pdf" />
+                        doc="storage/media/lipsum.pdf" />
 
-                    <x-loop.laporan-tahunan label="Laporan Auditor Independen Tahun 2014" doc="media/lipsum.pdf" />
+                    <x-loop.laporan-tahunan label="Laporan Auditor Independen Tahun 2014"
+                        doc="storage/media/lipsum.pdf" />
 
                     <x-loop.laporan-tahunan label="Laporan Tahunan PT KIW (persero) Tahun 2017"
-                        doc="media/lipsum.pdf" />
+                        doc="storage/media/lipsum.pdf" />
 
                 </div>
             </div>

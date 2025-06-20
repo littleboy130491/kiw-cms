@@ -17,7 +17,7 @@
     <main>
 
         <x-header-kiw />
-        <x-partials.hero-page image="media/tender-hero.jpg" h1="Tender" />
+        <x-partials.hero-page image="storage/media/tender-hero.jpg" h1="Tender" />
 
         <!--Start Tender-->
         <section id="tender-archive"

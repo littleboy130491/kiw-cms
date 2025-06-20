@@ -25,7 +25,7 @@
 
         <x-header-kiw />
 
-        <x-partials.hero-page image="media/bangunan-pabrik-hero.jpg" h1="Area Komersil" />
+        <x-partials.hero-page image="storage/media/bangunan-pabrik-hero.jpg" h1="Area Komersil" />
 
 
         <!--Start Gallery-->
@@ -66,9 +66,9 @@
 
                 <!--Content-->
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4">
-                    <x-loop.gallery-grid image="media/atm1.jpg" />
-                    <x-loop.gallery-grid image="media/atm2.jpg" />
-                    <x-loop.gallery-grid image="media/atm3.jpg" />
+                    <x-loop.gallery-grid image="storage/media/atm1.jpg" />
+                    <x-loop.gallery-grid image="storage/media/atm2.jpg" />
+                    <x-loop.gallery-grid image="storage/media/atm3.jpg" />
                 </div>
 
             </div>
@@ -152,11 +152,11 @@
 
                 <!--Content-->
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4">
-                    <x-loop.gallery-grid image="media/meeting1.jpg" />
-                    <x-loop.gallery-grid image="media/meeting2.jpg" />
-                    <x-loop.gallery-grid image="media/meeting3.jpg" />
-                    <x-loop.gallery-grid image="media/meeting2.jpg" />
-                    <x-loop.gallery-grid image="media/meeting1.jpg" />
+                    <x-loop.gallery-grid image="storage/media/meeting1.jpg" />
+                    <x-loop.gallery-grid image="storage/media/meeting2.jpg" />
+                    <x-loop.gallery-grid image="storage/media/meeting3.jpg" />
+                    <x-loop.gallery-grid image="storage/media/meeting2.jpg" />
+                    <x-loop.gallery-grid image="storage/media/meeting1.jpg" />
 
                 </div>
 

@@ -27,7 +27,7 @@
     <main>
 
         <x-header-kiw />
-        <x-partials.hero-page image="media/langkah-nyata.jpg" />
+        <x-partials.hero-page image="storage/media/langkah-nyata.jpg" />
 
         <!--Start Post Content-->
 
@@ -111,11 +111,11 @@
                     </p>
                     <!--Gallery-->
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4 mt-6">
-                        <x-loop.gallery-grid image="media/meeting1.jpg" />
-                        <x-loop.gallery-grid image="media/meeting2.jpg" />
-                        <x-loop.gallery-grid image="media/meeting3.jpg" />
-                        <x-loop.gallery-grid image="media/meeting2.jpg" />
-                        <x-loop.gallery-grid image="media/meeting1.jpg" />
+                        <x-loop.gallery-grid image="storage/media/meeting1.jpg" />
+                        <x-loop.gallery-grid image="storage/media/meeting2.jpg" />
+                        <x-loop.gallery-grid image="storage/media/meeting3.jpg" />
+                        <x-loop.gallery-grid image="storage/media/meeting2.jpg" />
+                        <x-loop.gallery-grid image="storage/media/meeting1.jpg" />
 
                     </div>
 

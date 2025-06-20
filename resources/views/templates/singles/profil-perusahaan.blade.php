@@ -46,7 +46,7 @@
     <main>
 
         <x-header-kiw />
-        <x-partials.hero-page image="media/hero-profil-perusahaan.jpg" h1="Tentang Perusahaan" />
+        <x-partials.hero-page image="storage/media/hero-profil-perusahaan.jpg" h1="Tentang Perusahaan" />
 
         <!--Start About-->
         <section id="about" class="bg-contain bg-no-repeat bg-bottom sm:bg-cover"

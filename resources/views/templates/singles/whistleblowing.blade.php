@@ -26,7 +26,7 @@
 
 
         <x-header-kiw />
-        <x-partials.hero-page image="media/whistleblowing-hero.jpg" h1="Whistleblowing" />
+        <x-partials.hero-page image="storage/media/whistleblowing-hero.jpg" h1="Whistleblowing" />
 
         <!--Start Post Content-->
 

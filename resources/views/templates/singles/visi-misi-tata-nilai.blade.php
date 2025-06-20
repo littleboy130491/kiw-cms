@@ -18,7 +18,7 @@
 
         <x-header-kiw />
 
-        <x-partials.hero-page image="media/visi-misi-hero.jpg" h1="Visi Misi & Tata Nilai" />
+        <x-partials.hero-page image="storage/media/visi-misi-hero.jpg" h1="Visi Misi & Tata Nilai" />
 
         <!--Start About Visi Misi-->
         <section id="about-visi-misi" class="bg-cover bg-no-repeat bg-left sm:bg-cover"

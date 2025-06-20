@@ -17,7 +17,7 @@
     <main>
 
         <x-header-kiw />
-        <x-partials.hero-page image="media/pengadaan-hero.jpg" h1="Pengadaan Barang & Jasa" />
+        <x-partials.hero-page image="storage/media/pengadaan-hero.jpg" h1="Pengadaan Barang & Jasa" />
 
 
 
@@ -106,22 +106,22 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
 
                 <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="media/lipsum.pdf" />
+                    doc="storage/media/lipsum.pdf" />
 
                 <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="media/lipsum.pdf" />
+                    doc="storage/media/lipsum.pdf" />
 
                 <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="media/lipsum.pdf" />
+                    doc="storage/media/lipsum.pdf" />
 
                 <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="media/lipsum.pdf" />
+                    doc="storage/media/lipsum.pdf" />
 
                 <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="media/lipsum.pdf" />
+                    doc="storage/media/lipsum.pdf" />
 
                 <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="media/lipsum.pdf" />
+                    doc="storage/media/lipsum.pdf" />
 
             </div>
             </div>

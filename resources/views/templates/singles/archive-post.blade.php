@@ -20,7 +20,7 @@
     <main>
 
         <x-header-kiw />
-        <x-partials.hero-page image="media/berita-hero.jpg" h1="Berita Perusahaan" />
+        <x-partials.hero-page image="storage/media/berita-hero.jpg" h1="Berita Perusahaan" />
 
         <!--Start Post Archive-->
         <section id="post-archive"
@@ -84,73 +84,73 @@
                     label="
             Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
             "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025"
+                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
                 <x-loop.artikel-berita
                     label="
             Dirut KIW Berbagi Pengalaman Penerapan GCG di Program “Library Cafe” BPKP Jateng
             "
-                    tag="Informasi" date="06/01/2025" image="media/library-caffe.jpg" url="#" />
+                    tag="Informasi" date="06/01/2025" image="storage/media/library-caffe.jpg" url="#" />
                 <x-loop.artikel-berita
                     label="
             Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
             "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025"
+                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
                 <x-loop.artikel-berita
                     label="
             Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
             "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025"
+                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
                 <x-loop.artikel-berita
                     label="
             Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
             "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025"
+                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
                 <x-loop.artikel-berita
                     label="
             Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
             "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025"
+                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
                 <x-loop.artikel-berita
                     label="
             Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
             "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025"
+                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
                 <x-loop.artikel-berita
                     label="
             Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
             "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025"
+                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
                 <x-loop.artikel-berita
                     label="
             Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
             "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025"
+                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
                 <x-loop.artikel-berita
                     label="
             Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
             "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025"
+                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
                 <x-loop.artikel-berita
                     label="
             Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
             "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025"
+                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
                 <x-loop.artikel-berita
                     label="
             Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
             "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025"
+                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
 
 
             </div>

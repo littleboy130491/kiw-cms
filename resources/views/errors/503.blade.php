@@ -12,8 +12,8 @@
 <x-layouts.app title="503">
     <x-partials.header />
     <main>
-        <x-header-kiw/>
-        <x-partials.hero-page image="media/bangunan-pabrik-hero.jpg" h1="Layanan Tidak Tersedia" />
+        <x-header-kiw />
+        <x-partials.hero-page image="storage/media/bangunan-pabrik-hero.jpg" h1="Layanan Tidak Tersedia" />
 
         <section id="503-page" class="my-18 lg:my-30 mx-4 sm:mx-6 lg:mx-0 text-center flex flex-col items-center gap-5">
             <h6 data-aos="fade-down" class="bullet-1">Error 503</h6>
@@ -24,7 +24,7 @@
             </div>
             <a class="w-fit btn1 back mt-5" data-aos="fade-down" href="/">
                 Kembali ke Home
-                <span><x-icon.arrow-back-white/></span>
+                <span><x-icon.arrow-back-white /></span>
             </a>
         </section>
     </main>

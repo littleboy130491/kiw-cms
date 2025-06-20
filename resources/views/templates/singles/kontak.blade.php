@@ -19,7 +19,7 @@
 
         <x-header-kiw />
 
-        <x-partials.hero-page image="media/kontak-hero.jpg" h1="Kontak" />
+        <x-partials.hero-page image="storage/media/kontak-hero.jpg" h1="Kontak" />
 
         <!--Start Informasi Kontak-->
         <section id="informasi-kontak"
