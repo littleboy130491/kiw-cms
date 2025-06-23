@@ -17,8 +17,7 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 manualChunks: {
-                    'vendor': ['axios'],
-                    'ui-components': ['tippy.js', 'swiper']
+                    'vendor': ['axios']
                 }
             }
         }
