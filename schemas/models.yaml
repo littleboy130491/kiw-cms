@@ -1,0 +1,700 @@
+models:
+  Commercial:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      content:
+        type: json
+        nullable: true
+        translatable: true
+      excerpt:
+        type: json
+        nullable: true
+        translatable: true
+      custom_fields:
+        type: json
+        nullable: true
+        translatable: false # Not translatable for custom fields array cast
+      gallery:
+        type: json
+        nullable: true
+      cta:
+        type: string
+        nullable: true
+      whatsapp:
+        type: string
+        nullable: true
+      specification:
+        type: json
+        nullable: true
+      featured_image:
+        type: string
+        nullable: true
+      template:
+        type: string
+        nullable: true
+      menu_order:
+        type: int
+        nullable: false
+        default: 0
+      status:
+        type: enum
+        nullable: false
+        enum: [draft, published, scheduled]
+        default: draft
+        enum_class: App\Enums\ContentStatus
+      published_at:
+        type: datetime
+        nullable: true
+
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite
+
+  Building:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      content:
+        type: json
+        nullable: true
+        translatable: true
+      excerpt:
+        type: json
+        nullable: true
+        translatable: true
+      custom_fields:
+        type: json
+        nullable: true
+        translatable: false # Not translatable for custom fields array cast
+      gallery:
+        type: json
+        nullable: true
+      cta:
+        type: string
+        nullable: true
+      whatsapp:
+        type: string
+        nullable: true
+      specification:
+        type: json
+        nullable: true
+      featured_image:
+        type: string
+        nullable: true
+      template:
+        type: string
+        nullable: true
+      menu_order:
+        type: int
+        nullable: false
+        default: 0
+      status:
+        type: enum
+        nullable: false
+        enum: [draft, published, scheduled]
+        default: draft
+        enum_class: App\Enums\ContentStatus
+      published_at:
+        type: datetime
+        nullable: true
+
+    relationships:
+      buildingCategories:
+        type: belongsToMany
+        model: BuldingCategory
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite
+
+  BuildingCategory:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      menu_order: # Renamed from 'order' to avoid SQL keyword conflict
+        type: int
+        nullable: false
+        default: 0
+      template:
+        type: string
+        nullable: true
+
+    relationships:
+      buildings:
+        type: belongsToMany
+        model: Building 
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite
+
+  Management:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      content:
+        type: json
+        nullable: true
+        translatable: true
+      excerpt:
+        type: json
+        nullable: true
+        translatable: true
+      custom_fields:
+        type: json
+        nullable: true
+        translatable: false # Not translatable for custom fields array cast
+      position:
+        type: json
+        nullable: true
+      featured_image:
+        type: string
+        nullable: true
+      template:
+        type: string
+        nullable: true
+      menu_order:
+        type: int
+        nullable: false
+        default: 0
+      status:
+        type: enum
+        nullable: false
+        enum: [draft, published, scheduled]
+        default: draft
+        enum_class: App\Enums\ContentStatus
+      published_at:
+        type: datetime
+        nullable: true
+
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite
+  
+  Achievement:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      content:
+        type: json
+        nullable: true
+        translatable: true
+      excerpt:
+        type: json
+        nullable: true
+        translatable: true
+      custom_fields:
+        type: json
+        nullable: true
+        translatable: false # Not translatable for custom fields array cast
+      featured_image:
+        type: string
+        nullable: true
+      template:
+        type: string
+        nullable: true
+      menu_order:
+        type: int
+        nullable: false
+        default: 0
+      status:
+        type: enum
+        nullable: false
+        enum: [draft, published, scheduled]
+        default: draft
+        enum_class: App\Enums\ContentStatus
+      published_at:
+        type: datetime
+        nullable: true
+    relationships:
+      achievementType:
+        type: belongsToMany
+        model: AchievementType 
+      achievementYear:
+        type: belongsToMany
+        model: AchievementYear
+
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite
+
+  AchievementType:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      menu_order: # Renamed from 'order' to avoid SQL keyword conflict
+        type: int
+        nullable: false
+        default: 0
+      template:
+        type: string
+        nullable: true
+
+    relationships:
+      achievements:
+        type: belongsToMany
+        model: Achievement 
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite
+    
+  AchievementYear:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      menu_order: # Renamed from 'order' to avoid SQL keyword conflict
+        type: int
+        nullable: false
+        default: 0
+      template:
+        type: string
+        nullable: true
+
+    relationships:
+      achievements:
+        type: belongsToMany
+        model: Achievement 
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite
+
+  Career:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      content:
+        type: json
+        nullable: true
+        translatable: true
+      excerpt:
+        type: json
+        nullable: true
+        translatable: true
+      custom_fields:
+        type: json
+        nullable: true
+        translatable: false # Not translatable for custom fields array cast
+      cta:
+        type: string
+        nullable: true
+      featured_image:
+        type: string
+        nullable: true
+      template:
+        type: string
+        nullable: true
+      menu_order:
+        type: int
+        nullable: false
+        default: 0
+      status:
+        type: enum
+        nullable: false
+        enum: [draft, published, scheduled]
+        default: draft
+        enum_class: App\Enums\ContentStatus
+      published_at:
+        type: datetime
+        nullable: true
+
+    relationships:
+      careerCategories:
+        type: belongsToMany
+        model: CareerCategory
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite
+
+  CareerCategory:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      menu_order: # Renamed from 'order' to avoid SQL keyword conflict
+        type: int
+        nullable: false
+        default: 0
+      template:
+        type: string
+        nullable: true
+
+    relationships:
+      careers:
+        type: belongsToMany
+        model: Career 
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite
+
+  Guide:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      content:
+        type: json
+        nullable: true
+        translatable: true
+      excerpt:
+        type: json
+        nullable: true
+        translatable: true
+      custom_fields:
+        type: json
+        nullable: true
+        translatable: false # Not translatable for custom fields array cast
+      cta:
+        type: string
+        nullable: true
+      featured_image:
+        type: string
+        nullable: true
+      template:
+        type: string
+        nullable: true
+      menu_order:
+        type: int
+        nullable: false
+        default: 0
+      status:
+        type: enum
+        nullable: false
+        enum: [draft, published, scheduled]
+        default: draft
+        enum_class: App\Enums\ContentStatus
+      published_at:
+        type: datetime
+        nullable: true
+
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite
+
+  Tender:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      content:
+        type: json
+        nullable: true
+        translatable: true
+      excerpt:
+        type: json
+        nullable: true
+        translatable: true
+      custom_fields:
+        type: json
+        nullable: true
+        translatable: false
+      process:
+        type: json
+        nullable: true
+        translatable: true
+      specification:
+        type: json
+        nullable: true
+        translatable: true
+      featured_image:
+        type: string
+        nullable: true
+      template:
+        type: string
+        nullable: true
+      menu_order:
+        type: int
+        nullable: false
+        default: 0
+      status:
+        type: enum
+        nullable: false
+        enum: [draft, published, scheduled]
+        default: draft
+        enum_class: App\Enums\ContentStatus
+      due_date:
+        type: datetime
+        nullable: true
+      published_at:
+        type: datetime
+        nullable: true
+    relationships:
+      tenderYear:
+        type: belongsToMany
+        model: TenderYear 
+      tenderStatus:
+        type: belongsToMany
+        model: TenderStatus
+      tenderLocation:
+        type: belongsToMany
+        model: TenderLocation
+
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite
+
+  TenderYear:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      menu_order:
+        type: int
+        nullable: false
+        default: 0
+      template:
+        type: string
+        nullable: true
+
+    relationships:
+      tenders:
+        type: belongsToMany
+        model: Tender 
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite
+    
+  TenderStatus:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      menu_order:
+        type: int
+        nullable: false
+        default: 0
+      template:
+        type: string
+        nullable: true
+
+    relationships:
+      tenders:
+        type: belongsToMany
+        model: Tender 
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite
+
+  TenderLocation:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      menu_order: 
+        type: int
+        nullable: false
+        default: 0
+      template:
+        type: string
+        nullable: true
+
+    relationships:
+      tenders:
+        type: belongsToMany
+        model: Tender 
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite
+
+  Report:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      content:
+        type: json
+        nullable: true
+        translatable: true
+      excerpt:
+        type: json
+        nullable: true
+        translatable: true
+      custom_fields:
+        type: json
+        nullable: true
+        translatable: false
+      file:
+        type: string
+        nullable: true
+      featured_image:
+        type: string
+        nullable: true
+      template:
+        type: string
+        nullable: true
+      menu_order:
+        type: int
+        nullable: false
+        default: 0
+      status:
+        type: enum
+        nullable: false
+        enum: [draft, published, scheduled]
+        default: draft
+        enum_class: App\Enums\ContentStatus
+      published_at:
+        type: datetime
+        nullable: true
+
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite
+
+  Facility:
+    fields:
+      title:
+        type: json
+        nullable: false
+        translatable: true
+      slug:
+        type: json
+        nullable: false
+        unique: false
+        translatable: true
+      content:
+        type: json
+        nullable: true
+        translatable: true
+      excerpt:
+        type: json
+        nullable: true
+        translatable: true
+      custom_fields:
+        type: json
+        nullable: true
+        translatable: false
+      featured_image:
+        type: string
+        nullable: true
+      template:
+        type: string
+        nullable: true
+      menu_order:
+        type: int
+        nullable: false
+        default: 0
+      status:
+        type: enum
+        nullable: false
+        enum: [draft, published, scheduled]
+        default: draft
+        enum_class: App\Enums\ContentStatus
+      published_at:
+        type: datetime
+        nullable: true
+
+    traits:
+      - Spatie\Translatable\HasTranslations
+      - Illuminate\Database\Eloquent\SoftDeletes
+      - Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite

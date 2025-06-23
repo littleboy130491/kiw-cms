@@ -4272,12 +4272,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/littleboy130491/sumimasen.git",
-                "reference": "40013374155615c84b67caa1304cefb2f6b03759"
+                "reference": "d1079354d5640af5dfa0b465b280cff23cb8ee0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/littleboy130491/sumimasen/zipball/40013374155615c84b67caa1304cefb2f6b03759",
-                "reference": "40013374155615c84b67caa1304cefb2f6b03759",
+                "url": "https://api.github.com/repos/littleboy130491/sumimasen/zipball/d1079354d5640af5dfa0b465b280cff23cb8ee0d",
+                "reference": "d1079354d5640af5dfa0b465b280cff23cb8ee0d",
                 "shasum": ""
             },
             "require": {
@@ -4373,7 +4373,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-23T04:53:15+00:00"
+            "time": "2025-06-23T09:58:19+00:00"
         },
         {
             "name": "littleboy130491/seo-suite",
