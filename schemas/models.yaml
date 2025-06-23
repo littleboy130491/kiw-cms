@@ -117,7 +117,7 @@ models:
     relationships:
       buildingCategories:
         type: belongsToMany
-        model: BuldingCategory
+        model: BuildingCategory
     traits:
       - Spatie\Translatable\HasTranslations
       - Illuminate\Database\Eloquent\SoftDeletes
