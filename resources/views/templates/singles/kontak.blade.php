@@ -8,9 +8,6 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
-    @vite('resources/js/accessibility.js')
-    @vite('resources/js/aos-animate.js')
-    @vite('resources/js/phone-separator.js')
 @endPushOnce
 
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">

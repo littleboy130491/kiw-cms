@@ -11,9 +11,6 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
-    @vite('resources/js/aos-animate.js')
-    @vite('resources/js/accessibility.js')
-    @vite('resources/js/accordion.js')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 @endPushOnce

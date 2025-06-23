@@ -29,12 +29,6 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
-    @vite('resources/js/accessibility.js')
-    @vite('resources/js/aos-animate.js')
-    @vite('resources/js/swiper.js')
-    @vite('resources/js/swiper-auto-height.js')
-    @vite('resources/js/counter.js')
-    @vite('resources/js/tippy.js')
 
     <!--Light Box Image Body Bottom -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

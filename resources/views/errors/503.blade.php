@@ -5,8 +5,6 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
-    @vite('resources/js/accessibility.js')
-    @vite('resources/js/aos-animate.js')
 @endPushOnce
 
 <x-layouts.app title="503">

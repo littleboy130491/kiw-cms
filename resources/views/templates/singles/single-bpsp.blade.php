@@ -11,9 +11,6 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
-    @vite('resources/js/accessibility.js')
-    @vite('resources/js/aos-animate.js')
-    @vite('resources/js/single-get-message-whatsapp.js')
 
     <!--Light Box Image Body Bottom -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
