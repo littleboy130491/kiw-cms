@@ -59,46 +59,30 @@
     />
     
     {{-- Services Section --}}
-    {{-- TODO: Create services section component --}}
-    <section id="layanan-home">
-        {{-- Existing services content will be componentized --}}
-    </section>
+    <x-home.services-section />
     
     {{-- Advantages Section --}}
-    {{-- TODO: Create advantages section component --}}
-    <section id="keunggulan-home">
-        {{-- Existing advantages content will be componentized --}}
-    </section>
+    <x-home.advantages-section />
     
     {{-- Industry Tabs Section --}}
-    {{-- TODO: Create industry tabs component --}}
-    <section id="industry-tabs">
-        {{-- Existing industry tabs content will be componentized --}}
-    </section>
+    <x-home.industry-tabs />
     
     {{-- Facilities Section --}}
-    {{-- TODO: Create facilities section component --}}
-    <section id="fasilitas-home">
-        {{-- Existing facilities content will be componentized --}}
-    </section>
+    <x-home.facilities-section />
     
     {{-- Video Section --}}
-    {{-- TODO: Create video section component --}}
-    <section id="video-section">
-        {{-- Existing video content will be componentized --}}
-    </section>
+    <x-home.video-section 
+        videoId="dQw4w9WgXcQ"
+        :thumbnailImage="asset('storage/media/back-video.jpg')"
+        title="Kawasan Industri Wijayakusuma"
+        description="Tonton video profil lengkap tentang fasilitas dan layanan yang kami tawarkan"
+    />
     
     {{-- Tenant Section --}}
-    {{-- TODO: Create tenant section component --}}
-    <section id="tenant-section">
-        {{-- Existing tenant content will be componentized --}}
-    </section>
+    <x-home.tenant-section />
     
     {{-- News Section --}}
-    {{-- TODO: Create news section component --}}
-    <section id="berita-home">
-        {{-- Existing news content will be componentized --}}
-    </section>
+    <x-home.news-section :posts="$posts ?? collect()" />
     
     {{-- Instagram Feed --}}
     <x-ui.behold-ig-feed />
