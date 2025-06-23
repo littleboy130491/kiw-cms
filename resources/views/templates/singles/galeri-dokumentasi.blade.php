@@ -8,9 +8,6 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
-    @vite('resources/js/aos-animate.js')
-    @vite('resources/js/accessibility.js')
-    @vite('resources/js/youtube-src-conversion.js')
 @endPushOnce
 
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">

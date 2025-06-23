@@ -108,3 +108,62 @@ The project uses these key frontend libraries:
 - Axios for HTTP requests
 
 This optimization maintains all existing functionality while significantly improving performance and maintainability.
+
+## Blade Template Import Fixes (Latest Update)
+
+### Issue Identified
+After the initial optimization, a comprehensive analysis revealed that several Blade templates were still using individual `@vite()` calls for JavaScript files, creating duplicate loading conflicts with the centralized `app.js` system.
+
+### Problems Found
+1. **Inconsistent Vite Usage**: Vendor layout file used separate CSS/JS calls instead of optimized array syntax
+2. **Duplicate JavaScript Loading**: Multiple templates loading individual JS files that were already included in centralized `app.js`
+3. **Performance Impact**: Same functionality loaded twice, negating optimization benefits
+
+### Files Fixed
+
+#### 1. Layout Optimization
+**File**: `resources/views/vendor/sumimasen-cms/components/layouts/app.blade.php`
+- **Before**: 
+  ```blade
+  @vite('resources/css/app.css')
+  ...
+  @vite('resources/js/app.js')
+  ```
+- **After**: 
+  ```blade
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  ```
+
+#### 2. Individual JavaScript Import Removal
+**Files Updated**:
+- `resources/views/templates/singles/home.blade.php`
+  - **Removed**: 15 individual `@vite()` calls for JS files
+  - **Kept**: External CDN libraries (jQuery, Lightbox2)
+- `resources/views/templates/singles/galeri-dokumentasi.blade.php`
+  - **Removed**: 3 individual `@vite()` calls
+- `resources/views/templates/singles/archive-post.blade.php`
+  - **Removed**: 2 individual `@vite()` calls
+- `resources/views/components/partials/footer.blade.php`
+  - **Removed**: 1 individual `@vite()` call
+
+#### 3. External Dependencies Preserved
+The following external CDN libraries were properly preserved as they are not part of the bundled system:
+- jQuery and Lightbox2 for gallery functionality
+- AOS (Animate On Scroll) library
+- Alpine.js for reactive interactions
+- Swiper.js for carousels
+- Font Awesome icons
+
+### Results Achieved
+1. **Eliminated Duplicate Loading**: JavaScript functionality now loads only once through centralized `app.js`
+2. **Consistent Asset Loading**: All layouts now use optimized Vite array syntax
+3. **Improved Performance**: Removed unnecessary HTTP requests for individual JS files
+4. **Maintained Functionality**: All existing features preserved while using optimized bundling
+
+### Current Status
+✅ **Fully Optimized**: All Blade templates now properly use the centralized Vite bundling system
+✅ **No Conflicts**: Individual JS imports removed where they duplicated bundled functionality
+✅ **External Libraries**: CDN dependencies properly maintained as separate loads
+✅ **Performance Ready**: System now fully implements the optimized asset loading strategy
+
+The Laravel CMS now has a completely optimized frontend asset loading system with no duplicate JavaScript imports and consistent use of the centralized bundling approach.

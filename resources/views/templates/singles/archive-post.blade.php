@@ -11,8 +11,6 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
-    @vite('resources/js/aos-animate.js')
-    @vite('resources/js/accessibility.js')
 @endPushOnce
 
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">

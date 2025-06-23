@@ -21,21 +21,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
 @endPushOnce
 @pushOnce('before_body_close')
-    @vite('resources/js/accessibility.js')
-    @vite('resources/js/swiper.js')
-    @vite('resources/js/swiper-logo-image.js')
-    @vite('resources/js/swiper-hero.js')
-    @vite('resources/js/aos-animate.js')
-    @vite('resources/js/popup-init-modal-events.js')
-    @vite('resources/js/popup-modal-controller.js')
-    @vite('resources/js/fasilitas-swiper-number.js')
-    @vite('resources/js/swiper-auto-height.js')
-    @vite('resources/js/counter.js')
-    @vite('resources/js/video-modal.js')
-    @vite('resources/js/video-inline.js')
-    @vite('resources/js/youtube-src-conversion.js')
-    @vite('resources/js/splash-screen.js')
-    @vite('resources/js/popup-home.js')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 @endPushOnce
