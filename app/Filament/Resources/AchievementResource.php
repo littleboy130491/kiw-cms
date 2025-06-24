@@ -12,12 +12,15 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseContentResource;
 
-class AchievementResource extends Resource
+class AchievementResource extends BaseContentResource
 {
     protected static ?string $model = Achievement::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-star';
+    protected static ?string $navigationGroup = 'Achievements';
+    protected static ?int $navigationSort = 0;
 
     public static function form(Form $form): Form
     {

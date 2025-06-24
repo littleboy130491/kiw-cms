@@ -12,12 +12,15 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseContentResource;
 
-class GuideResource extends Resource
+class GuideResource extends BaseContentResource
 {
     protected static ?string $model = Guide::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationGroup = 'Documents';
+    protected static ?int $navigationSort = 20;
 
     public static function form(Form $form): Form
     {

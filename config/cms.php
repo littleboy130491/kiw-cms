@@ -78,6 +78,46 @@ return [
             'display_content_from' => 'posts', // the relationship name in the model
 
         ],
+
+        'achievements' => [
+            'model' => App\Models\Achievement::class,
+            'name' => 'Achievements',
+            'type' => 'content',
+            'has_archive' => false,
+            'has_single' => false,
+        ],
+
+        'buildings' => [
+            'model' => App\Models\Building::class,
+            'name' => 'Buildings',
+            'type' => 'content',
+            'has_archive' => true,
+            'has_single' => true,
+        ],
+
+        'commercials' => [
+            'model' => App\Models\Commercial::class,
+            'name' => 'Commercials',
+            'type' => 'content',
+            'has_archive' => false,
+            'has_single' => true,
+        ],
+
+        'facilities' => [
+            'model' => App\Models\Facility::class,
+            'name' => 'Facilities',
+            'type' => 'content',
+            'has_archive' => true,
+        ],
+
+        'tenders' => [
+            'model' => App\Models\Tender::class,
+            'name' => 'Tenders',
+            'type' => 'content',
+            'has_archive' => true,
+            'has_single' => true,
+        ],
+
     ],
 
     // fallback content type works when the page slug is not found, it will try to find the content from this type

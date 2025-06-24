@@ -7,7 +7,6 @@ use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -28,7 +27,6 @@ use Datlechin\FilamentMenuBuilder\FilamentMenuBuilderPlugin;
 use Spatie\ResponseCache\Middlewares\DoNotCacheResponse;
 use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
 use Filament\Forms\Components\TextInput;
-use Illuminate\Support\Facades\Gate;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -102,11 +100,23 @@ class AdminPanelProvider extends PanelProvider
                     ->label('Contents')
                     ->icon('heroicon-o-document-text'),
                 NavigationGroup::make()
+                    ->label('Services')
+                    ->icon('heroicon-o-building-office'),
+                NavigationGroup::make()
+                    ->label('Tenders')
+                    ->icon('heroicon-o-presentation-chart-line'),
+                NavigationGroup::make()
+                    ->label('Achievements')
+                    ->icon('heroicon-o-star'),
+                NavigationGroup::make()
+                    ->label('People')
+                    ->icon('heroicon-o-user'),
+                NavigationGroup::make()
+                    ->label('Documents')
+                    ->icon('heroicon-o-document-chart-bar'),
+                NavigationGroup::make()
                     ->label('Users')
                     ->icon('heroicon-o-users'),
-                NavigationGroup::make()
-                    ->label('Profile')
-                    ->icon('heroicon-o-cog-6-tooth'),
                 NavigationGroup::make()
                     ->label('Settings')
                     ->icon('heroicon-o-cog-6-tooth'),

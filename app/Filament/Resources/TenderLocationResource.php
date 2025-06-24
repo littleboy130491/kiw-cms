@@ -17,7 +17,10 @@ class TenderLocationResource extends Resource
 {
     protected static ?string $model = TenderLocation::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-map-pin';
+
+    protected static ?string $navigationGroup = 'Tenders';
+    protected static ?int $navigationSort = 50;
 
     public static function form(Form $form): Form
     {

@@ -12,12 +12,15 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseTaxonomyResource;
 
-class TenderYearResource extends Resource
+class TenderYearResource extends BaseTaxonomyResource
 {
     protected static ?string $model = TenderYear::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+    protected static ?string $navigationGroup = 'Tenders';
+    protected static ?int $navigationSort = 40;
 
     public static function form(Form $form): Form
     {
