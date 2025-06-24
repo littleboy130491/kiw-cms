@@ -31,4 +31,6 @@ import './components/bg-switcher.js';
 // Initialize AOS animations
 import './components/aos-animate.js';
 
-console.log('CMS App initialized successfully');
+import {Livewire} from '../../vendor/livewire/livewire/dist/livewire.esm'
+
+Livewire.start()
