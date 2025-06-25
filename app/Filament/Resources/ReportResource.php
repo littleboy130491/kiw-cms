@@ -22,31 +22,10 @@ class ReportResource extends BaseContentResource
     protected static ?string $navigationGroup = 'Documents';
     protected static ?int $navigationSort = 10;
 
-    public static function form(Form $form): Form
+    protected static function additionalTranslatableFormFields(?string $locale): array
     {
-        return $form
-            ->schema([
-                //
-            ]);
-    }
 
-    public static function table(Table $table): Table
-    {
-        return $table
-            ->columns([
-                //
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+        return [];
     }
 
     public static function getRelations(): array

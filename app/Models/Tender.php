@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ContentStatus;
 use App\Models\TenderLocation;
 use App\Models\TenderStatus;
 use App\Models\TenderYear;
@@ -38,7 +39,7 @@ class Tender extends Model
         'specification',
         'status',
         'template',
-        'title'
+        'title',
     ];
 
 
@@ -50,9 +51,9 @@ class Tender extends Model
     protected $casts = [
         'custom_fields' => 'array',
         'menu_order' => 'integer',
-        'status' => \App\Enums\ContentStatus::class,
+        'status' => ContentStatus::class,
         'due_date' => 'datetime',
-        'published_at' => 'datetime'
+        'published_at' => 'datetime',
     ];
 
 
@@ -67,7 +68,7 @@ class Tender extends Model
         'process',
         'slug',
         'specification',
-        'title'
+        'title',
     ];
 
 
@@ -89,8 +90,6 @@ class Tender extends Model
      */
     public function tenderYear(): BelongsToMany
     {
-        // Use the base class name for the ::class constant
-        // Add foreign key argument if specified in YAML
         return $this->belongsToMany(TenderYear::class);
     }
 
@@ -99,8 +98,6 @@ class Tender extends Model
      */
     public function tenderStatus(): BelongsToMany
     {
-        // Use the base class name for the ::class constant
-        // Add foreign key argument if specified in YAML
         return $this->belongsToMany(TenderStatus::class);
     }
 
@@ -109,8 +106,6 @@ class Tender extends Model
      */
     public function tenderLocation(): BelongsToMany
     {
-        // Use the base class name for the ::class constant
-        // Add foreign key argument if specified in YAML
         return $this->belongsToMany(TenderLocation::class);
     }
 

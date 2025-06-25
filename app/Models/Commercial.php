@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ContentStatus;
 use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -35,7 +36,7 @@ class Commercial extends Model
         'status',
         'template',
         'title',
-        'whatsapp'
+        'whatsapp',
     ];
 
 
@@ -49,8 +50,8 @@ class Commercial extends Model
         'gallery' => 'array',
         'specification' => 'array',
         'menu_order' => 'integer',
-        'status' => \App\Enums\ContentStatus::class,
-        'published_at' => 'datetime'
+        'status' => ContentStatus::class,
+        'published_at' => 'datetime',
     ];
 
 
@@ -63,7 +64,7 @@ class Commercial extends Model
         'content',
         'excerpt',
         'slug',
-        'title'
+        'title',
     ];
 
 

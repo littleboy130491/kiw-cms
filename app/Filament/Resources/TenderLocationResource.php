@@ -12,8 +12,9 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseTaxonomyResource;
 
-class TenderLocationResource extends Resource
+class TenderLocationResource extends BaseTaxonomyResource
 {
     protected static ?string $model = TenderLocation::class;
 
@@ -22,31 +23,10 @@ class TenderLocationResource extends Resource
     protected static ?string $navigationGroup = 'Tenders';
     protected static ?int $navigationSort = 50;
 
-    public static function form(Form $form): Form
+    protected static function additionalTranslatableFormFields(?string $locale): array
     {
-        return $form
-            ->schema([
-                //
-            ]);
-    }
 
-    public static function table(Table $table): Table
-    {
-        return $table
-            ->columns([
-                //
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+        return [];
     }
 
     public static function getRelations(): array

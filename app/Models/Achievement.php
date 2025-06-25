@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ContentStatus;
 use App\Models\AchievementType;
 use App\Models\AchievementYear;
 use Awcodes\Curator\Models\Media;
@@ -34,7 +35,7 @@ class Achievement extends Model
         'slug',
         'status',
         'template',
-        'title'
+        'title',
     ];
 
 
@@ -46,8 +47,8 @@ class Achievement extends Model
     protected $casts = [
         'custom_fields' => 'array',
         'menu_order' => 'integer',
-        'status' => \App\Enums\ContentStatus::class,
-        'published_at' => 'datetime'
+        'status' => ContentStatus::class,
+        'published_at' => 'datetime',
     ];
 
 
@@ -60,7 +61,7 @@ class Achievement extends Model
         'content',
         'excerpt',
         'slug',
-        'title'
+        'title',
     ];
 
 
@@ -82,8 +83,6 @@ class Achievement extends Model
      */
     public function achievementType(): BelongsToMany
     {
-        // Use the base class name for the ::class constant
-        // Add foreign key argument if specified in YAML
         return $this->belongsToMany(AchievementType::class);
     }
 
@@ -92,8 +91,6 @@ class Achievement extends Model
      */
     public function achievementYear(): BelongsToMany
     {
-        // Use the base class name for the ::class constant
-        // Add foreign key argument if specified in YAML
         return $this->belongsToMany(AchievementYear::class);
     }
 

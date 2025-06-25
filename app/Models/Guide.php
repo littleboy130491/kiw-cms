@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ContentStatus;
 use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -32,7 +33,7 @@ class Guide extends Model
         'slug',
         'status',
         'template',
-        'title'
+        'title',
     ];
 
 
@@ -44,8 +45,8 @@ class Guide extends Model
     protected $casts = [
         'custom_fields' => 'array',
         'menu_order' => 'integer',
-        'status' => \App\Enums\ContentStatus::class,
-        'published_at' => 'datetime'
+        'status' => ContentStatus::class,
+        'published_at' => 'datetime',
     ];
 
 
@@ -58,7 +59,7 @@ class Guide extends Model
         'content',
         'excerpt',
         'slug',
-        'title'
+        'title',
     ];
 
 

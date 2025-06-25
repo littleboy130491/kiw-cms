@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ContentStatus;
 use App\Models\CareerCategory;
 use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -34,7 +35,7 @@ class Career extends Model
         'slug',
         'status',
         'template',
-        'title'
+        'title',
     ];
 
 
@@ -46,8 +47,8 @@ class Career extends Model
     protected $casts = [
         'custom_fields' => 'array',
         'menu_order' => 'integer',
-        'status' => \App\Enums\ContentStatus::class,
-        'published_at' => 'datetime'
+        'status' => ContentStatus::class,
+        'published_at' => 'datetime',
     ];
 
 
@@ -60,7 +61,7 @@ class Career extends Model
         'content',
         'excerpt',
         'slug',
-        'title'
+        'title',
     ];
 
 
@@ -82,8 +83,6 @@ class Career extends Model
      */
     public function careerCategories(): BelongsToMany
     {
-        // Use the base class name for the ::class constant
-        // Add foreign key argument if specified in YAML
         return $this->belongsToMany(CareerCategory::class);
     }
 

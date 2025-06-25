@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ContentStatus;
 use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -32,7 +33,7 @@ class Management extends Model
         'slug',
         'status',
         'template',
-        'title'
+        'title',
     ];
 
 
@@ -45,8 +46,8 @@ class Management extends Model
         'custom_fields' => 'array',
         'position' => 'array',
         'menu_order' => 'integer',
-        'status' => \App\Enums\ContentStatus::class,
-        'published_at' => 'datetime'
+        'status' => ContentStatus::class,
+        'published_at' => 'datetime',
     ];
 
 
@@ -59,7 +60,7 @@ class Management extends Model
         'content',
         'excerpt',
         'slug',
-        'title'
+        'title',
     ];
 
 

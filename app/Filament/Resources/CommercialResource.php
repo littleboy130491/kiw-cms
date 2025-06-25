@@ -23,31 +23,11 @@ class CommercialResource extends BaseContentResource
     protected static ?string $navigationGroup = 'Services';
     protected static ?int $navigationSort = 30;
 
-    public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                //
-            ]);
-    }
 
-    public static function table(Table $table): Table
+    protected static function additionalTranslatableFormFields(?string $locale): array
     {
-        return $table
-            ->columns([
-                //
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+
+        return [];
     }
 
     public static function getRelations(): array

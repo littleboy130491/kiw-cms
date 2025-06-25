@@ -25,7 +25,7 @@ class TenderYear extends Model
         'menu_order',
         'slug',
         'template',
-        'title'
+        'title',
     ];
 
 
@@ -35,7 +35,7 @@ class TenderYear extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'menu_order' => 'integer'
+        'menu_order' => 'integer',
     ];
 
 
@@ -46,7 +46,7 @@ class TenderYear extends Model
      */
     public $translatable = [
         'slug',
-        'title'
+        'title',
     ];
 
 
@@ -60,8 +60,6 @@ class TenderYear extends Model
      */
     public function tenders(): BelongsToMany
     {
-        // Use the base class name for the ::class constant
-        // Add foreign key argument if specified in YAML
         return $this->belongsToMany(Tender::class);
     }
 

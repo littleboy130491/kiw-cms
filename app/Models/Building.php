@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\BuldingCategory;
+use App\Enums\ContentStatus;
+use App\Models\BuildingCategory;
 use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -37,7 +38,7 @@ class Building extends Model
         'status',
         'template',
         'title',
-        'whatsapp'
+        'whatsapp',
     ];
 
 
@@ -51,8 +52,8 @@ class Building extends Model
         'gallery' => 'array',
         'specification' => 'array',
         'menu_order' => 'integer',
-        'status' => \App\Enums\ContentStatus::class,
-        'published_at' => 'datetime'
+        'status' => ContentStatus::class,
+        'published_at' => 'datetime',
     ];
 
 
@@ -65,7 +66,7 @@ class Building extends Model
         'content',
         'excerpt',
         'slug',
-        'title'
+        'title',
     ];
 
 
@@ -87,9 +88,7 @@ class Building extends Model
      */
     public function buildingCategories(): BelongsToMany
     {
-        // Use the base class name for the ::class constant
-        // Add foreign key argument if specified in YAML
-        return $this->belongsToMany(BuldingCategory::class);
+        return $this->belongsToMany(BuildingCategory::class);
     }
 
 }
