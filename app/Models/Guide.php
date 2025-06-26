@@ -2,19 +2,20 @@
 
 namespace App\Models;
 
-use App\Enums\ContentStatus;
 use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite;
+use Littleboy130491\Sumimasen\Enums\ContentStatus;
 use Spatie\Translatable\HasTranslations;
 
 class Guide extends Model
 {
     use HasFactory, HasTranslations, SoftDeletes, InteractsWithSeoSuite;
 
+    public const STATUS_OPTIONS = ['draft' => 'Draft', 'published' => 'Published', 'scheduled' => 'Scheduled'];
 
 
     /**

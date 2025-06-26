@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\ContentStatus;
 use App\Models\AchievementType;
 use App\Models\AchievementYear;
 use Awcodes\Curator\Models\Media;
@@ -12,12 +11,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite;
+use Littleboy130491\Sumimasen\Enums\ContentStatus;
 use Spatie\Translatable\HasTranslations;
 
 class Achievement extends Model
 {
     use HasFactory, HasTranslations, SoftDeletes, InteractsWithSeoSuite;
 
+    public const STATUS_OPTIONS = ['draft' => 'Draft', 'published' => 'Published', 'scheduled' => 'Scheduled'];
 
 
     /**

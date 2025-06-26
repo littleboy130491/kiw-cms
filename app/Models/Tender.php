@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\ContentStatus;
 use App\Models\TenderLocation;
 use App\Models\TenderStatus;
 use App\Models\TenderYear;
@@ -13,12 +12,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite;
+use Littleboy130491\Sumimasen\Enums\ContentStatus;
 use Spatie\Translatable\HasTranslations;
 
 class Tender extends Model
 {
     use HasFactory, HasTranslations, SoftDeletes, InteractsWithSeoSuite;
 
+    public const STATUS_OPTIONS = ['draft' => 'Draft', 'published' => 'Published', 'scheduled' => 'Scheduled'];
 
 
     /**
