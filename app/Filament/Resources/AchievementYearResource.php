@@ -22,32 +22,6 @@ class AchievementYearResource extends BaseTaxonomyResource
     protected static ?string $navigationGroup = 'Achievements';
     protected static ?int $navigationSort = 30;
 
-    public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                //
-            ]);
-    }
-
-    public static function table(Table $table): Table
-    {
-        return $table
-            ->columns([
-                //
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
-    }
 
     public static function getRelations(): array
     {

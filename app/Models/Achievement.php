@@ -84,7 +84,7 @@ class Achievement extends Model
      */
     public function achievementType(): BelongsToMany
     {
-        return $this->belongsToMany(AchievementType::class);
+        return $this->belongsToMany(AchievementType::class, 'achievement_achievement_type', 'achievement_id', 'achievement_type_id');
     }
 
     /**
@@ -92,7 +92,7 @@ class Achievement extends Model
      */
     public function achievementYear(): BelongsToMany
     {
-        return $this->belongsToMany(AchievementYear::class);
+        return $this->belongsToMany(AchievementYear::class, 'achievement_achievement_year', 'achievement_id', 'achievement_year_id');
     }
 
 }

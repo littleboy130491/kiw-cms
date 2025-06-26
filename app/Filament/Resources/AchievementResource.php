@@ -28,6 +28,29 @@ class AchievementResource extends BaseContentResource
         return [];
     }
 
+    protected static function hiddenFields(): array
+    {
+        return [
+            'excerpt',
+            'template',
+            'custom_fields',
+            'featured_image',
+        ];
+    }
+
+    protected static function formRelationshipsFields(): array
+    {
+        return [
+            ...static::formTaxonomyRelationshipField('achievementType', 'achievement_types'),
+            ...static::formTaxonomyRelationshipField('achievementYear', 'achievement_years'),
+        ];
+    }
+
+    protected static function getRelationshipsToReplicate(): array
+    {
+        return ['achievementType', 'achievementYear']; // Default relationships
+    }
+
     public static function getRelations(): array
     {
         return [
