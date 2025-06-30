@@ -37,7 +37,6 @@ return [
     'language_available' => [
         'id' => 'Indonesian',
         'en' => 'English',
-
         'zh-cn' => 'Chinese',
         'ko' => 'Korean',
     ],
@@ -51,7 +50,7 @@ return [
             'has_single' => true,
         ],
         'posts' => [
-            'model' => Littleboy130491\Sumimasen\Models\Post::class,
+            'model' => App\Models\Post::class,
             'name' => 'Posts',
             'type' => 'content',
             'has_archive' => true,

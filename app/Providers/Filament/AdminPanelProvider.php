@@ -67,7 +67,8 @@ class AdminPanelProvider extends PanelProvider
             ->favicon(config('cms.site_favicon'))
             ->theme(asset('css/filament/admin/theme.css'))
             ->plugins([
-                SumimasenPlugin::make(),
+                SumimasenPlugin::make()
+                    ->exceptResources(['post']),
                 CuratorPlugin::make(),
                 BreezyCore::make()
                     ->myProfile(
