@@ -16,12 +16,9 @@ class PostResource extends BasePostResource
     {
 
         return [
-
             CuratorPicker::make('gallery')
                 ->multiple()
                 ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml']),
-
-
         ];
     }
 
