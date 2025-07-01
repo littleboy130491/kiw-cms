@@ -5,7 +5,9 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PostResource\Pages;
 use App\Models\Post;
 use Littleboy130491\Sumimasen\Filament\Resources\PostResource as BasePostResource;
-use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Repeater;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
+
 class PostResource extends BasePostResource
 {
     protected static ?string $model = Post::class;
@@ -14,12 +16,12 @@ class PostResource extends BasePostResource
     {
 
         return [
-            Textarea::make('gallery')
-                ->label(__('Gallery'))
-                ->columnSpanFull()
-                ->required()
-                ->maxLength(500)
-                ->helperText(__('A short summary of the post, used in listings and previews.')),
+
+            CuratorPicker::make('gallery')
+                ->multiple()
+                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml']),
+
+
         ];
     }
 
