@@ -3,17 +3,11 @@
 namespace App\Filament\Resources\TenderYearResource\Pages;
 
 use App\Filament\Resources\TenderYearResource;
-use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseEditRecord;
 
-class EditTenderYear extends EditRecord
+class EditTenderYear extends BaseEditRecord
 {
     protected static string $resource = TenderYearResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }
+
 }

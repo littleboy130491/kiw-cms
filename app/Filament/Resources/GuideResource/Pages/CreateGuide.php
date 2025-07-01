@@ -3,10 +3,9 @@
 namespace App\Filament\Resources\GuideResource\Pages;
 
 use App\Filament\Resources\GuideResource;
-use Filament\Actions;
-use Filament\Resources\Pages\CreateRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseCreateRecord;
 
-class CreateGuide extends CreateRecord
+class CreateGuide extends BaseCreateRecord
 {
     protected static string $resource = GuideResource::class;
 }

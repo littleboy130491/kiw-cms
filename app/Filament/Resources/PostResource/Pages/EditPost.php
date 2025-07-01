@@ -3,17 +3,11 @@
 namespace App\Filament\Resources\PostResource\Pages;
 
 use App\Filament\Resources\PostResource;
-use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseEditRecord;
 
-class EditPost extends EditRecord
+class EditPost extends BaseEditRecord
 {
     protected static string $resource = PostResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }
+
 }

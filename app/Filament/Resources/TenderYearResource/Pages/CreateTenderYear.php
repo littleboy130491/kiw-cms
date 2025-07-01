@@ -3,10 +3,9 @@
 namespace App\Filament\Resources\TenderYearResource\Pages;
 
 use App\Filament\Resources\TenderYearResource;
-use Filament\Actions;
-use Filament\Resources\Pages\CreateRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseCreateRecord;
 
-class CreateTenderYear extends CreateRecord
+class CreateTenderYear extends BaseCreateRecord
 {
     protected static string $resource = TenderYearResource::class;
 }

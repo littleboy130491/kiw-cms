@@ -3,10 +3,9 @@
 namespace App\Filament\Resources\TenderLocationResource\Pages;
 
 use App\Filament\Resources\TenderLocationResource;
-use Filament\Actions;
-use Filament\Resources\Pages\CreateRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseCreateRecord;
 
-class CreateTenderLocation extends CreateRecord
+class CreateTenderLocation extends BaseCreateRecord
 {
     protected static string $resource = TenderLocationResource::class;
 }

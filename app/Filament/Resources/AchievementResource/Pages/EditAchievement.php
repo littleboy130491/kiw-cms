@@ -3,17 +3,10 @@
 namespace App\Filament\Resources\AchievementResource\Pages;
 
 use App\Filament\Resources\AchievementResource;
-use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseEditRecord;
 
-class EditAchievement extends EditRecord
+class EditAchievement extends BaseEditRecord
 {
     protected static string $resource = AchievementResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }
 }

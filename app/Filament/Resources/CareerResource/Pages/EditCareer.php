@@ -3,17 +3,11 @@
 namespace App\Filament\Resources\CareerResource\Pages;
 
 use App\Filament\Resources\CareerResource;
-use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseEditRecord;
 
-class EditCareer extends EditRecord
+class EditCareer extends BaseEditRecord
 {
     protected static string $resource = CareerResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }
+
 }

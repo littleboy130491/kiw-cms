@@ -3,17 +3,10 @@
 namespace App\Filament\Resources\AchievementYearResource\Pages;
 
 use App\Filament\Resources\AchievementYearResource;
-use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseEditRecord;
 
-class EditAchievementYear extends EditRecord
+class EditAchievementYear extends BaseEditRecord
 {
     protected static string $resource = AchievementYearResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }
 }

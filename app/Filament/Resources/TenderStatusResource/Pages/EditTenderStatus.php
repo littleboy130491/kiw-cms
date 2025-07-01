@@ -3,17 +3,11 @@
 namespace App\Filament\Resources\TenderStatusResource\Pages;
 
 use App\Filament\Resources\TenderStatusResource;
-use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseEditRecord;
 
-class EditTenderStatus extends EditRecord
+class EditTenderStatus extends BaseEditRecord
 {
     protected static string $resource = TenderStatusResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }
+
 }

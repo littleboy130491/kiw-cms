@@ -3,17 +3,10 @@
 namespace App\Filament\Resources\BuildingResource\Pages;
 
 use App\Filament\Resources\BuildingResource;
-use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseEditRecord;
 
-class EditBuilding extends EditRecord
+class EditBuilding extends BaseEditRecord
 {
     protected static string $resource = BuildingResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }
 }

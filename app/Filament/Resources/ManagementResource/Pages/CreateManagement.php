@@ -3,10 +3,9 @@
 namespace App\Filament\Resources\ManagementResource\Pages;
 
 use App\Filament\Resources\ManagementResource;
-use Filament\Actions;
-use Filament\Resources\Pages\CreateRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseCreateRecord;
 
-class CreateManagement extends CreateRecord
+class CreateManagement extends BaseCreateRecord
 {
     protected static string $resource = ManagementResource::class;
 }

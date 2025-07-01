@@ -3,17 +3,11 @@
 namespace App\Filament\Resources\CommercialResource\Pages;
 
 use App\Filament\Resources\CommercialResource;
-use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseEditRecord;
 
-class EditCommercial extends EditRecord
+class EditCommercial extends BaseEditRecord
 {
     protected static string $resource = CommercialResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }
+
 }

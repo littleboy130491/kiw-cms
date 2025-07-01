@@ -3,17 +3,10 @@
 namespace App\Filament\Resources\GuideResource\Pages;
 
 use App\Filament\Resources\GuideResource;
-use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseEditRecord;
 
-class EditGuide extends EditRecord
+class EditGuide extends BaseEditRecord
 {
     protected static string $resource = GuideResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }
 }

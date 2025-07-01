@@ -3,10 +3,9 @@
 namespace App\Filament\Resources\AchievementResource\Pages;
 
 use App\Filament\Resources\AchievementResource;
-use Filament\Actions;
-use Filament\Resources\Pages\CreateRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseCreateRecord;
 
-class CreateAchievement extends CreateRecord
+class CreateAchievement extends BaseCreateRecord
 {
     protected static string $resource = AchievementResource::class;
 }

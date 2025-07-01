@@ -3,10 +3,9 @@
 namespace App\Filament\Resources\CareerResource\Pages;
 
 use App\Filament\Resources\CareerResource;
-use Filament\Actions;
-use Filament\Resources\Pages\CreateRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseCreateRecord;
 
-class CreateCareer extends CreateRecord
+class CreateCareer extends BaseCreateRecord
 {
     protected static string $resource = CareerResource::class;
 }

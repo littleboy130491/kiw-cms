@@ -3,10 +3,9 @@
 namespace App\Filament\Resources\ReportResource\Pages;
 
 use App\Filament\Resources\ReportResource;
-use Filament\Actions;
-use Filament\Resources\Pages\CreateRecord;
+use Littleboy130491\Sumimasen\Filament\Abstracts\BaseCreateRecord;
 
-class CreateReport extends CreateRecord
+class CreateReport extends BaseCreateRecord
 {
     protected static string $resource = ReportResource::class;
 }
