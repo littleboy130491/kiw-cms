@@ -5,7 +5,6 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PostResource\Pages;
 use App\Models\Post;
 use Littleboy130491\Sumimasen\Filament\Resources\PostResource as BasePostResource;
-use Filament\Forms\Components\Repeater;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 
 class PostResource extends BasePostResource

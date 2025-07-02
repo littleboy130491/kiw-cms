@@ -25,7 +25,7 @@ class Guide extends Model
      */
     protected $fillable = [
         'content',
-        'cta',
+        'file',
         'custom_fields',
         'excerpt',
         'featured_image',
@@ -61,6 +61,7 @@ class Guide extends Model
         'excerpt',
         'slug',
         'title',
+        'file'
     ];
 
 

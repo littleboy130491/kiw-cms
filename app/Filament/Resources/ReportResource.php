@@ -3,15 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ReportResource\Pages;
-use App\Filament\Resources\ReportResource\RelationManagers;
 use App\Models\Report;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Littleboy130491\Sumimasen\Filament\Abstracts\BaseContentResource;
 
 class ReportResource extends BaseContentResource
@@ -22,10 +15,24 @@ class ReportResource extends BaseContentResource
     protected static ?string $navigationGroup = 'Documents';
     protected static ?int $navigationSort = 10;
 
+    protected static function hiddenFields(): array
+    {
+        return [
+            'excerpt',
+            'template',
+            'custom_fields',
+            'content',
+            'featured_image',
+        ];
+    }
     protected static function additionalTranslatableFormFields(?string $locale): array
     {
 
-        return [];
+        return [
+            CuratorPicker::make('file')
+                ->acceptedFileTypes(['application/pdf'])
+                ->columnSpanFull(),
+        ];
     }
 
     public static function getRelations(): array

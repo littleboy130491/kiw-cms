@@ -3,15 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CareerResource\Pages;
-use App\Filament\Resources\CareerResource\RelationManagers;
 use App\Models\Career;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\TextInput;
 use Littleboy130491\Sumimasen\Filament\Abstracts\BaseContentResource;
 
 class CareerResource extends BaseContentResource
@@ -22,11 +15,35 @@ class CareerResource extends BaseContentResource
     protected static ?string $navigationGroup = 'People';
     protected static ?int $navigationSort = 20;
 
+    protected static function hiddenFields(): array
+    {
+        return [
+            'excerpt',
+            'template',
+            'custom_fields',
+        ];
+    }
 
-    protected static function additionalTranslatableFormFields(?string $locale): array
+    protected static function additionalNonTranslatableFormFields(): array
     {
 
-        return [];
+        return [
+            TextInput::make('cta')
+                ->label('Call to Action')
+                ->nullable(),
+        ];
+    }
+
+    protected static function formRelationshipsFields(): array
+    {
+        return [
+            ...static::formTaxonomyRelationshipField('careerCategories', tableName: 'career_categories'),
+        ];
+    }
+
+    protected static function getRelationshipsToReplicate(): array
+    {
+        return ['careerCategories'];
     }
 
     public static function getRelations(): array

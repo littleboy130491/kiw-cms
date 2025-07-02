@@ -61,6 +61,7 @@ class Report extends Model
         'excerpt',
         'slug',
         'title',
+        'file',
     ];
 
 

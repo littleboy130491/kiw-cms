@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -18,7 +17,7 @@ return new class extends Migration
             $table->json('content')->nullable();
             $table->json('excerpt')->nullable();
             $table->json('custom_fields')->nullable();
-            $table->string('cta', 255)->nullable();
+            $table->json('file', 255)->nullable();
             $table->string('featured_image', 255)->nullable();
             $table->string('template', 255)->nullable();
             $table->integer('menu_order')->default(0);

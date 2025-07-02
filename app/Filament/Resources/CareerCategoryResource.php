@@ -3,15 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CareerCategoryResource\Pages;
-use App\Filament\Resources\CareerCategoryResource\RelationManagers;
 use App\Models\CareerCategory;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Littleboy130491\Sumimasen\Filament\Abstracts\BaseTaxonomyResource;
 
 class CareerCategoryResource extends BaseTaxonomyResource
@@ -22,10 +14,11 @@ class CareerCategoryResource extends BaseTaxonomyResource
     protected static ?string $navigationGroup = 'People';
     protected static ?int $navigationSort = 30;
 
-    protected static function additionalTranslatableFormFields(?string $locale): array
+    protected static function hiddenFields(): array
     {
-
-        return [];
+        return [
+            'template',
+        ];
     }
 
     public static function getRelations(): array

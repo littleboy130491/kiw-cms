@@ -3,15 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ManagementResource\Pages;
-use App\Filament\Resources\ManagementResource\RelationManagers;
+use Filament\Forms\Components\TextInput;
 use App\Models\Management;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+
 use Littleboy130491\Sumimasen\Filament\Abstracts\BaseContentResource;
 
 class ManagementResource extends BaseContentResource
@@ -22,10 +16,21 @@ class ManagementResource extends BaseContentResource
     protected static ?string $navigationGroup = 'People';
     protected static ?int $navigationSort = 0;
 
+    protected static function hiddenFields(): array
+    {
+        return [
+            'excerpt',
+            'template',
+            'custom_fields',
+        ];
+    }
+
     protected static function additionalTranslatableFormFields(?string $locale): array
     {
 
-        return [];
+        return [
+            TextInput::make('position')->nullable(),
+        ];
     }
 
     public static function getRelations(): array

@@ -3,15 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\FacilityResource\Pages;
-use App\Filament\Resources\FacilityResource\RelationManagers;
 use App\Models\Facility;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Littleboy130491\Sumimasen\Filament\Abstracts\BaseContentResource;
 
 class FacilityResource extends BaseContentResource
@@ -23,10 +15,13 @@ class FacilityResource extends BaseContentResource
     protected static ?string $navigationGroup = 'Services';
     protected static ?int $navigationSort = 40;
 
-    protected static function additionalTranslatableFormFields(?string $locale): array
+    protected static function hiddenFields(): array
     {
-
-        return [];
+        return [
+            'excerpt',
+            'template',
+            'custom_fields',
+        ];
     }
 
     public static function getRelations(): array

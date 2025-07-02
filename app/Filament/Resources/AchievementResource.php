@@ -27,7 +27,7 @@ class AchievementResource extends BaseContentResource
             'excerpt',
             'template',
             'custom_fields',
-            'featured_image',
+            'content',
         ];
     }
 
@@ -41,7 +41,7 @@ class AchievementResource extends BaseContentResource
 
     protected static function getRelationshipsToReplicate(): array
     {
-        return ['achievementType', 'achievementYear']; // Default relationships
+        return ['achievementType', 'achievementYear'];
     }
 
     public static function getRelations(): array

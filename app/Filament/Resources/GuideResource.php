@@ -3,15 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\GuideResource\Pages;
-use App\Filament\Resources\GuideResource\RelationManagers;
+
 use App\Models\Guide;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Littleboy130491\Sumimasen\Filament\Abstracts\BaseContentResource;
 
 class GuideResource extends BaseContentResource
@@ -22,11 +16,24 @@ class GuideResource extends BaseContentResource
     protected static ?string $navigationGroup = 'Documents';
     protected static ?int $navigationSort = 20;
 
-
+    protected static function hiddenFields(): array
+    {
+        return [
+            'excerpt',
+            'template',
+            'custom_fields',
+            'content',
+            'featured_image',
+        ];
+    }
     protected static function additionalTranslatableFormFields(?string $locale): array
     {
 
-        return [];
+        return [
+            CuratorPicker::make('file')
+                ->acceptedFileTypes(['application/pdf'])
+                ->columnSpanFull(),
+        ];
     }
 
     public static function getRelations(): array

@@ -6,6 +6,7 @@ use App\Filament\Resources\CommercialResource\Pages;
 use App\Models\Commercial;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Littleboy130491\Sumimasen\Filament\Abstracts\BaseContentResource;
 
 class CommercialResource extends BaseContentResource
@@ -65,10 +66,13 @@ class CommercialResource extends BaseContentResource
             TextInput::make('whatsapp')
                 ->nullable()
                 ->label('WhatsApp'),
-
             TextInput::make('cta')
                 ->nullable()
                 ->label('Call to Action'),
+            CuratorPicker::make('gallery')
+                ->multiple()
+                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'])
+                ->columnSpanFull(),
         ];
     }
 
