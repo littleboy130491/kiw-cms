@@ -34,8 +34,8 @@ class AchievementResource extends BaseContentResource
     protected static function formRelationshipsFields(): array
     {
         return [
-            ...static::formTaxonomyRelationshipField('achievementType', 'achievement_types'),
-            ...static::formTaxonomyRelationshipField('achievementYear', 'achievement_years'),
+            ...static::formTaxonomyRelationshipField('achievementType'),
+            ...static::formTaxonomyRelationshipField('achievementYear'),
         ];
     }
 
