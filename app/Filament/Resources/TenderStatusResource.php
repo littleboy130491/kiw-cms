@@ -3,15 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TenderStatusResource\Pages;
-use App\Filament\Resources\TenderStatusResource\RelationManagers;
 use App\Models\TenderStatus;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Littleboy130491\Sumimasen\Filament\Abstracts\BaseTaxonomyResource;
 
 class TenderStatusResource extends BaseTaxonomyResource
@@ -23,10 +15,11 @@ class TenderStatusResource extends BaseTaxonomyResource
     protected static ?string $navigationGroup = 'Tenders';
     protected static ?int $navigationSort = 20;
 
-    protected static function additionalTranslatableFormFields(?string $locale): array
+    protected static function hiddenFields(): array
     {
-
-        return [];
+        return [
+            'template',
+        ];
     }
 
     public static function getRelations(): array

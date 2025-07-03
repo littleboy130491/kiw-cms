@@ -3,15 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TenderResource\Pages;
-use App\Filament\Resources\TenderResource\RelationManagers;
 use App\Models\Tender;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\TextInput;
 use Littleboy130491\Sumimasen\Filament\Abstracts\BaseContentResource;
 
 class TenderResource extends BaseContentResource
@@ -24,8 +18,54 @@ class TenderResource extends BaseContentResource
 
     protected static function additionalTranslatableFormFields(?string $locale): array
     {
+        $fields = [];
 
-        return [];
+        $specificationList = [
+            'tanggal' => 'Tanggal Pembuatan Paket',
+            'tahun_anggaran' => 'Tahun Anggaran',
+            'unit_kerja' => 'Unit Kerja',
+            'bidang' => 'Bidang / Sub Bidang',
+            'uraian' => 'Uraian Pemilihan Penyedia',
+            'lokasi' => 'Lokasi Pekerjaan',
+            'jenis' => 'Jenis Pekerjaan',
+            'metode_pemilihan' => 'Metode Pemilihan Penyedia',
+            'kualifikasi' => 'Kualifikasi',
+            'metode_evaluasi' => 'Metode Evaluasi',
+            'alamat' => 'Alamat',
+            'email' => 'Email',
+            'telepon' => 'Telepon',
+        ];
+
+
+        foreach ($specificationList as $key => $label) {
+            $fields[] = TextInput::make('specification.' . $key)
+                ->label($label)
+                ->nullable()
+                ->columnSpan(1);
+        }
+
+        $fields[] =
+            Repeater::make('process')
+                ->columns(2)
+                ->schema([
+                    TextInput::make('name')->nullable()
+                        ->columnSpan(1),
+                    TextInput::make('date')->nullable()
+                        ->columnSpan(1),
+
+                ])
+                ->columnSpanFull();
+
+        return $fields;
+    }
+
+    protected static function hiddenFields(): array
+    {
+        return [
+            'excerpt',
+            'template',
+            'custom_fields',
+        ];
     }
 
     public static function getRelations(): array
