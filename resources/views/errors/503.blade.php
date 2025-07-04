@@ -1,14 +1,3 @@
-@pushOnce('before_head_close')
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <title>503</title>
-@endPushOnce
-
-@pushOnce('before_body_close')
-    @vite('resources/js/accessibility.js')
-    @vite('resources/js/aos-animate.js')
-@endPushOnce
-
 <x-layouts.app title="503">
     <x-partials.header />
     <main>
@@ -23,7 +12,7 @@
             </div>
             <a class="w-fit btn1 back mt-5" data-aos="fade-down" href="/">
                 Kembali ke Home
-                <span><x-icon.arrow-back-white/></span>
+                <span><x-icon.arrow-back-white /></span>
             </a>
         </section>
     </main>
