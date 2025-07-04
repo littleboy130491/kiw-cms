@@ -11,6 +11,8 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
+    @vite('resources/js/accessibility.js')
+    @vite('resources/js/aos-animate.js')
 
     <!--Light Box Image Body Bottom -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -21,10 +23,7 @@
     <x-partials.header />
     <main>
 
-
-
-        <x-header-kiw />
-        <x-partials.hero-page image="storage/media/whistleblowing-hero.jpg" h1="Whistleblowing" />
+        <x-partials.hero-page image="media/whistleblowing-hero.jpg" h1="Whistleblowing" />
 
         <!--Start Post Content-->
 
@@ -60,9 +59,9 @@
                     </p>
                     <!--Image-->
                     <div class="relative">
-                        <a class="gallery-item" href="{{ asset('storage/media/gratifikasi.jpg') }}"
+                        <a class="gallery-item" href="{{ Storage::url('media/gratifikasi.jpg') }}"
                             data-lightbox="gallery">
-                            <img class="rounded-md" src="{{ asset('storage/media/gratifikasi.jpg') }}">
+                            <img class="rounded-md" src="{{ Storage::url('media/gratifikasi.jpg') }}">
                         </a>
                     </div>
                     <p>

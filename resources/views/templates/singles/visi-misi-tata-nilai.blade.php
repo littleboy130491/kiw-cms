@@ -8,19 +8,19 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
+    @vite('resources/js/accessibility.js')
+    @vite('resources/js/aos-animate.js')
 @endPushOnce
 
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
 
-        <x-header-kiw />
-
-        <x-partials.hero-page image="storage/media/visi-misi-hero.jpg" h1="Visi Misi & Tata Nilai" />
+        <x-partials.hero-page image="media/visi-misi-hero.jpg" h1="Visi Misi & Tata Nilai" />
 
         <!--Start About Visi Misi-->
         <section id="about-visi-misi" class="bg-cover bg-no-repeat bg-left sm:bg-cover"
-            style="background-image:url({{ asset('storage/media/visi-misi-image.jpg') }})">
+            style="background-image:url({{ Storage::url('media/visi-misi-image.jpg') }})">
             <div class="flex flex-col grow  gradient-white-visi-misi">
                 <div
                     class="gradient-white-visi-misi-bottom pb-42 sm:pb-70 lg:pb-130 pt-18 px-4 sm:px-6 lg:px-0 lg:pt-30">

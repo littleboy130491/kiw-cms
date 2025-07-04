@@ -11,6 +11,9 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
+    @vite('resources/js/accessibility.js')
+    @vite('resources/js/aos-animate.js')
+    @vite('resources/js/single-get-message-whatsapp.js')
 
     <!--Light Box Image Body Bottom -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -21,9 +24,7 @@
     <x-partials.header />
     <main>
 
-        <x-header-kiw />
-
-        <x-partials.hero-page image="storage/media/bangunan-pabrik-hero.jpg" h1="Bangunan Pabrik Siap Pakai" />
+        <x-partials.hero-page image="media/bangunan-pabrik-hero.jpg" h1="Bangunan Pabrik Siap Pakai" />
 
         <!--Start Gallery-->
 
@@ -48,7 +49,7 @@
                     <a class="w-fit btn1 mt-5 wa-message"data-aos="fade-down" href="" target="_blank">hubungi
                         sekarang
                         <span>
-                            <img src="{{ asset('storage/media/whatsapp-white.png') }}">
+                            <img src="{{ Storage::url('media/whatsapp-white.png') }}">
                         </span>
                     </a>
                 </div>
@@ -57,12 +58,12 @@
 
             <!--Content-->
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4">
-                <x-loop.gallery-grid image="storage/media/bpsp-1.jpg" />
-                <x-loop.gallery-grid image="storage/media/bpsp-2.jpg" />
-                <x-loop.gallery-grid image="storage/media/bpsp-3.jpg" />
-                <x-loop.gallery-grid image="storage/media/bpsp-4.jpg" />
-                <x-loop.gallery-grid image="storage/media/bpsp-1.jpg" />
-                <x-loop.gallery-grid image="storage/media/bpsp-2.jpg" />
+                <x-loop.gallery-grid image="media/bpsp-1.jpg" />
+                <x-loop.gallery-grid image="media/bpsp-2.jpg" />
+                <x-loop.gallery-grid image="media/bpsp-3.jpg" />
+                <x-loop.gallery-grid image="media/bpsp-4.jpg" />
+                <x-loop.gallery-grid image="media/bpsp-1.jpg" />
+                <x-loop.gallery-grid image="media/bpsp-2.jpg" />
             </div>
 
 

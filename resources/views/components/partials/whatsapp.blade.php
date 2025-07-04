@@ -2,11 +2,11 @@
     $waNumber = config('cms.site_social_media.whatsapp');
 @endphp
 
-<div id="wa-widget" x-data="waWidget('{{ $waNumber }}')" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+<div id="wa-widget" x-data="waWidget('{{ $waNumber }}')" class="fixed bottom-6 right-6 z-999 flex flex-col items-end">
     <!-- Chat Box -->
     <div x-show="open" x-transition @click.away="open = false"
-        class="w-90 shadow-lg rounded-xl overflow-hidden mb-3 bg-cover bg-center"
-        style="background-image:url('{{ asset('storage/media/wa-background.jpg') }}')">
+        class="w-75 sm:w-90 shadow-lg rounded-xl overflow-hidden mb-3 bg-cover bg-center"
+        style="background-image:url('{{ Storage::url('media/wa-background.jpg') }}')">
         <div class="bg-[#128C7E] text-white px-4 py-3 flex justify-between items-center">
             <div class="flex flex-row items-center gap-2">
                 <svg class="w-5 fill-white" xmlns="http://www.w3.org/2000/svg"
@@ -20,8 +20,8 @@
             <button @click="open = false" class="text-white text-[2em]">&times;</button>
         </div>
         <div class="p-4 bg-white space-y-2 m-6 rounded-md bubble-wa relative">
-            <img class="absolute top-0 -left-3 w-12" src="{{ asset('storage/media/wa-bubble-caret.png') }}">
-            <p class="text-[--color-heading]">
+
+            <p class="text-[--color-heading] z-50 relative">
                 Halo! 👋
                 Selamat datang di website resmi <b>PT Kawasan Industri Wijayakusuma (KIW)</b>.
                 <br><br>
@@ -30,24 +30,25 @@
                 Silakan bisa chat langsung untuk mengetahui lebih lanjut mengenai lahan industri, Bangunan Pabrik Siap
                 Pakai (BPSP), atau fasilitas layanan terpadu kami.
             </p>
-            <div class="flex flex-row justify-end gap-2">
+            <img class="absolute top-0 -left-3 w-12 z-10" src="{{ Storage::url('media/wa-bubble-caret.png') }}">
+            <div class="flex flex-row justify-end gap-2 mt-3">
                 <p class="text-[.8em]">{{ date('H:i') }}</p>
             </div>
         </div>
         <!-- input -->
-        <div class="bg-[#ece5dd] px-6 pb-3">
+        <div class="px-6 pb-3">
             <form action="#" @submit.prevent="kirimWA" class="flex flex-row gap-2">
                 <input id="waInput" type="search" placeholder="Ketik pesan"
-                    class="w-full px-4 py-2 border rounded-full border-[var(--color-border)] focus:outline-none focus:ring-2 focus:var(--color-blue)" />
-                <button type="submit" class="w-13 h-10 bg-cover bg-center bg-no-repeat rounded-full"
-                    style="background-image:url('{{ asset('storage/media/wa-btn.png') }}')"></button>
+                    class="w-full bg-white px-4 py-2 border rounded-full border-[var(--color-border)] focus:outline-none focus:ring-2 focus:var(--color-blue)" />
+                <button type="submit" class="w-13 h-10 bg-cover bg-center bg-no-repeat rounded-full cursor-pointer"
+                    style="background-image:url('{{ Storage::url('media/wa-btn.png') }}')"></button>
             </form>
         </div>
     </div>
 
     <!-- Chat Button -->
     <button @click="open = !open"
-        class=" w-14 h-14 rounded-full bg-green-500 text-white text-2xl flex items-center justify-center shadow-lg hover:bg-green-600 transition duration-200">
+        class=" w-14 h-14 rounded-full bg-green-500 text-white text-2xl flex items-center justify-center shadow-lg hover:bg-green-600 transition duration-200 cursor-pointer">
         <svg class="w-8 fill-white" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
             <path

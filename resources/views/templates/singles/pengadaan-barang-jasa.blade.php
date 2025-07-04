@@ -8,20 +8,21 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
+    @vite('resources/js/accessibility.js')
+    @vite('resources/js/aos-animate.js')
 @endPushOnce
 
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
 
-        <x-header-kiw />
-        <x-partials.hero-page image="storage/media/pengadaan-hero.jpg" h1="Pengadaan Barang & Jasa" />
+        <x-partials.hero-page image="media/pengadaan-hero.jpg" h1="Pengadaan Barang & Jasa" />
 
 
 
         <!--Start About Pengadaan-->
         <section id="about-pengadaan" class="relative bg-contain bg-no-repeat bg-bottom z-10"
-            style="background-image:url({{ asset('storage/media/pengadaan-content.jpg') }})">
+            style="background-image:url({{ Storage::url('media/pengadaan-content.jpg') }})">
             <div class="flex flex-col grow gradient-pengadaan-top">
                 <div
                     class="gradient-white-visi-misi-bottom pb-70 sm:pb-80 lg:pb-200 pt-18 px-4 sm:px-6 lg:px-0 lg:pt-30">
@@ -71,7 +72,7 @@
         <section data-aos="fade-up" id="peringatan"
             class="relative sm:px-6 lg:px-0 sm:-mt-20 lg:-mt-25 lg:w-[1200px] lg:mx-auto z-20">
             <div class="bg-cover px-4 sm:px-6 pt-18 sm:pt-0 lg:px-10 flex flex-col sm:rounded-lg justify-between sm:flex-row gap-8"
-                style="background-image:url('{{ asset('storage/media/gradient-pengadaan.jpg') }}')">
+                style="background-image:url('{{ Storage::url('media/gradient-pengadaan.jpg') }}')">
                 <div class="flex flex-col gap-5 sm:w-2/3 lg:w-1/2 sm:py-9 lg:self-center">
                     <h3 class="text-white">HATI-HATI TERHADAP PENIPUAN!</h3>
                     <p class="text-white">
@@ -84,7 +85,7 @@
                     </p>
                 </div>
                 <img class="object-contain sm:w-1/3 lg:w-1/2 sm:self-end sm:-ml-5 lg:-ml-0 lg:-mt-20"
-                    src="{{ asset('storage/media/bad-guy.png') }}">
+                    src="{{ Storage::url('media/bad-guy.png') }}">
             </div>
         </section>
         <!--End Section Peringatan-->
@@ -104,22 +105,22 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
 
                 <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="storage/media/lipsum.pdf" />
+                    doc="media/lipsum.pdf" />
 
                 <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="storage/media/lipsum.pdf" />
+                    doc="media/lipsum.pdf" />
 
                 <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="storage/media/lipsum.pdf" />
+                    doc="media/lipsum.pdf" />
 
                 <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="storage/media/lipsum.pdf" />
+                    doc="media/lipsum.pdf" />
 
                 <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="storage/media/lipsum.pdf" />
+                    doc="media/lipsum.pdf" />
 
                 <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="storage/media/lipsum.pdf" />
+                    doc="media/lipsum.pdf" />
 
             </div>
             </div>

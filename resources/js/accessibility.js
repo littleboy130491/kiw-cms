@@ -9,7 +9,7 @@ window.interdeal = {
     "btnStyle": {
         "vPosition": [
             "102%",
-            "20%"
+            "102%"
         ],
         "scale": [
             "0.5",

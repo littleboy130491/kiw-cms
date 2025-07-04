@@ -10,7 +10,7 @@
 
             <!--Logo-->
             <div class=" flex items-center ">
-                <a href="#"><img class="w-20 filter brightness-0 invert" src="{{ asset('media/logo.png') }}"
+                <a href="#"><img class="w-20 filter brightness-0 invert" src="{{ Storage::url('media/logo.png') }}"
                         alt="logo"></a>
             </div>
 
@@ -53,7 +53,7 @@
 
                         <!--Logo-->
                         <div class=" flex items-center ">
-                            <a href="#"><img class="w-25" src="{{ asset('media/logo.png') }}"
+                            <a href="#"><img class="w-25" src="{{ Storage::url('media/logo.png') }}"
                                     alt="logo"></a>
                         </div>
 

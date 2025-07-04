@@ -11,18 +11,22 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
+    @vite('resources/js/accessibility.js')
+    @vite('resources/js/aos-animate.js')
 
     <!--Light Box Image Body Bottom -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    @vite('resources/js/like-post.js')
+    @vite('resources/js/comment-reply-form.js')
+    @vite('resources/js/reply-from-comment.js')
 @endPushOnce
 
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
 
-        <x-header-kiw />
-        <x-partials.hero-page image="storage/media/langkah-nyata.jpg" />
+        <x-partials.hero-page image="media/langkah-nyata.jpg" />
 
         <!--Start Post Content-->
 
@@ -49,15 +53,15 @@
                         <div class="flex flex-row gap-4 w-fit">
                             <!--like-->
                             <div class="flex flex-row gap-1 items-center cursor-pointer" onclick="toggleLike()">
-                                <img id="img-like" class="w-[15px] like" src="{{ asset('storage/media/like.png') }}">
+                                <img id="img-like" class="w-[15px] like" src="{{ Storage::url('media/like.png') }}">
                                 <img id="img-liked" class="w-[15px] liked hidden"
-                                    src="{{ asset('storage/media/liked.png') }}">
+                                    src="{{ Storage::url('media/liked.png') }}">
                                 <span id="like-text" class="text-[var(--color-purple)]">1870 Likes</span>
                             </div>
 
                             <!--view-->
                             <div class="flex flex-row gap-1 items-center">
-                                <img class="w-[15px]" src="{{ asset('storage/media/view.png') }}">
+                                <img class="w-[15px]" src="{{ Storage::url('media/view.png') }}">
                                 <span id="like-text" class="text-[var(--color-purple)]">2124 Views</span>
                             </div>
                         </div>
@@ -106,11 +110,11 @@
                     </p>
                     <!--Gallery-->
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4 mt-6">
-                        <x-loop.gallery-grid image="storage/media/meeting1.jpg" />
-                        <x-loop.gallery-grid image="storage/media/meeting2.jpg" />
-                        <x-loop.gallery-grid image="storage/media/meeting3.jpg" />
-                        <x-loop.gallery-grid image="storage/media/meeting2.jpg" />
-                        <x-loop.gallery-grid image="storage/media/meeting1.jpg" />
+                        <x-loop.gallery-grid image="media/meeting1.jpg" />
+                        <x-loop.gallery-grid image="media/meeting2.jpg" />
+                        <x-loop.gallery-grid image="media/meeting3.jpg" />
+                        <x-loop.gallery-grid image="media/meeting2.jpg" />
+                        <x-loop.gallery-grid image="media/meeting1.jpg" />
 
                     </div>
 

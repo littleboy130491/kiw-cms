@@ -8,14 +8,15 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
+    @vite('resources/js/aos-animate.js')
+    @vite('resources/js/accessibility.js')
 @endPushOnce
 
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
 
-        <x-header-kiw />
-        <x-partials.hero-page image="storage/media/tender-hero.jpg" h1="Tender" />
+        <x-partials.hero-page image="media/tender-hero.jpg" h1="Tender" />
 
         <!--Start Tender-->
         <section id="tender-archive"
@@ -33,7 +34,7 @@
                     <!--Search-->
                     <div class="relative max-w-md w-full">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <img src="{{ asset('storage/media/search.png') }}">
+                            <img src="{{ Storage::url('media/search.png') }}">
                         </div>
                         <input type="search" placeholder="Cari disini..."
                             class="w-full pl-10 pr-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:var(--color-blue)" />
@@ -57,7 +58,7 @@
                             x-model="selected" @focus="open = true" />
 
                         <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                            <img src="{{ asset('storage/media/chevron-down-solid.png') }}" alt="">
+                            <img src="{{ Storage::url('media/chevron-down-solid.png') }}" alt="">
                         </div>
 
                         <!-- Dropdown -->

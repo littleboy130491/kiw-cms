@@ -11,6 +11,8 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
+    @vite('resources/js/accessibility.js')
+    @vite('resources/js/aos-animate.js')
 
     <!--Light Box Image Body Bottom -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -21,9 +23,7 @@
     <x-partials.header />
     <main>
 
-        <x-header-kiw />
-
-        <x-partials.hero-page image="storage/media/bangunan-pabrik-hero.jpg" h1="Area Komersil" />
+        <x-partials.hero-page image="media/bangunan-pabrik-hero.jpg" h1="Area Komersil" />
 
         <!--Start Gallery-->
 
@@ -51,7 +51,7 @@
                             href="https://api.whatsapp.com/send?phone=6281211118022&text=Halo%20PT%20Kawasan%20Industri%20Wijayakusuma,%20saya%20ingin%20informasi%20mengenai%20BPSP,"
                             target="_blank">hubungi sekarang
                             <span>
-                                <img src="{{ asset('storage/media/whatsapp-white.png') }}">
+                                <img src="{{ Storage::url('media/whatsapp-white.png') }}">
                             </span>
                         </a>
 
@@ -67,11 +67,11 @@
 
             <!--Content-->
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4">
-                <x-loop.gallery-grid image="storage/media/meeting1.jpg" />
-                <x-loop.gallery-grid image="storage/media/meeting2.jpg" />
-                <x-loop.gallery-grid image="storage/media/meeting3.jpg" />
-                <x-loop.gallery-grid image="storage/media/meeting2.jpg" />
-                <x-loop.gallery-grid image="storage/media/meeting1.jpg" />
+                <x-loop.gallery-grid image="media/meeting1.jpg" />
+                <x-loop.gallery-grid image="media/meeting2.jpg" />
+                <x-loop.gallery-grid image="media/meeting3.jpg" />
+                <x-loop.gallery-grid image="media/meeting2.jpg" />
+                <x-loop.gallery-grid image="media/meeting1.jpg" />
 
             </div>
 

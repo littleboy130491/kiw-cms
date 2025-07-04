@@ -11,6 +11,8 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
+    @vite('resources/js/accessibility.js')
+    @vite('resources/js/aos-animate.js')
 
     <!--Light Box Image Body Bottom -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -21,9 +23,7 @@
     <x-partials.header />
     <main>
 
-        <x-header-kiw />
-
-        <x-partials.hero-page image="storage/media/bangunan-pabrik-hero.jpg" h1="Area Komersil" />
+        <x-partials.hero-page image="media/bangunan-pabrik-hero.jpg" h1="Area Komersil" />
 
         <!--Start Gallery-->
 
@@ -35,7 +35,7 @@
                     Hadir!</h2>
                 <h5 class="text-center -mb-5">Sport Center</h5>
                 <div class="comming-soon-image relative rounded-md overflow-hidden">
-                    <img src="{{ asset('storage/media/sport-center.jpg') }}">
+                    <img src="{{ Storage::url('media/sport-center.jpg') }}">
                 </div>
             </div>
 

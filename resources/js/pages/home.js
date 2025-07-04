@@ -1,33 +1,14 @@
-// Home page specific functionality
-export function initHomePage() {
-    // Only run on home page
-    if (!document.body.classList.contains('home-page') && !document.getElementById('popup-home')) {
-        return;
-    }
-
-    initHomePopup();
-}
-
-function initHomePopup() {
-    const popup = document.getElementById("popup-home");
-    
-    if (!popup) return;
-
-    // Show popup when page loads
-    popup.classList.remove("hidden");
-
-    // Global function to close popup
-    window.closePopup = () => {
-        popup.classList.add("hidden");
-    };
-
-    // Add event listener to overlay (not its content)
-    popup.addEventListener("click", (event) => {
-        if (event.target === popup) {
-            window.closePopup();
-        }
-    });
-}
-
-// Auto-initialize when DOM is ready
-document.addEventListener("DOMContentLoaded", initHomePage);
+import '../accessibility.js';
+import '../swiper.js';
+import '../aos-animate.js';
+import '../popup-init-modal-events.js';
+import '../popup-modal-controller.js';
+import '../fasilitas-swiper-number.js';
+import '../swiper-auto-height.js';
+import '../counter.js';
+import '../video-modal.js';
+import '../video-inline.js';
+import '../youtube-src-conversion.js';
+import '../splash-screen.js';
+import '../popup-home.js';
+import '../alpine.js';

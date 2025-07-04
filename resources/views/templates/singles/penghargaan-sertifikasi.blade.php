@@ -8,14 +8,16 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
+    @vite('resources/js/accessibility.js')
+    @vite('resources/js/aos-animate.js')
 @endPushOnce
 
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
 
     <main>
-        <x-header-kiw />
-        <x-partials.hero-page image="storage/media/penghargaan-hero.jpg" h1="Penghargaan & Sertifikasi" />
+
+        <x-partials.hero-page image="media/penghargaan-hero.jpg" h1="Penghargaan & Sertifikasi" />
 
         <!--Penghargaan & Sertifikat-->
         <section id="penghargaan-sertifikat"
@@ -46,7 +48,7 @@
                     <!--Search-->
                     <div class="relative max-w-md w-full">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <img src="{{ asset('storage/media/search.png') }}">
+                            <img src="{{ Storage::url('media/search.png') }}">
                         </div>
                         <input type="search" placeholder="Cari disini..."
                             class="w-full pl-10 pr-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:var(--color-blue)" />
@@ -70,7 +72,7 @@
                             x-model="selected" @focus="open = true" />
 
                         <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                            <img src="{{ asset('storage/media/chevron-down-solid.png') }}" alt="">
+                            <img src="{{ Storage::url('media/chevron-down-solid.png') }}" alt="">
                         </div>
 
                         <!-- Dropdown -->
@@ -91,27 +93,27 @@
             <!--Content-->
             <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-12 z-99">
 
-                <x-loop.penghargaan image="storage/media/bumn-branding.png" class="penghargaan"
+                <x-loop.penghargaan image="media/bumn-branding.png" class="penghargaan"
                     label="
         BUMN Branding & Marketing Award 2023
         " />
 
-                <x-loop.penghargaan image="storage/media/2021-Excellence-Financial.png" class="penghargaan"
+                <x-loop.penghargaan image="media/2021-Excellence-Financial.png" class="penghargaan"
                     label="
         2021 Excellence Financial Performance SOE in 10 Consecutive Years (2013-2022) Infobank
         " />
 
-                <x-loop.penghargaan image="storage/media/certificate -9001.png" class="sertifikasi"
+                <x-loop.penghargaan image="media/certificate -9001.png" class="sertifikasi"
                     label="
         2021 for The Financial Performance with Predicate Excellent During 2011-2020 Infobank
         " />
 
-                <x-loop.penghargaan image="storage/media/2021-Excellence-Financial.png" class="penghargaan"
+                <x-loop.penghargaan image="media/2021-Excellence-Financial.png" class="penghargaan"
                     label="
         2021 Excellence Financial Performance SOE in 10 Consecutive Years (2013-2022) Infobank
         " />
 
-                <x-loop.penghargaan image="storage/media/certificate -9001.png" class="sertifikasi"
+                <x-loop.penghargaan image="media/certificate -9001.png" class="sertifikasi"
                     label="
         2021 for The Financial Performance with Predicate Excellent During 2011-2020 Infobank
         " />

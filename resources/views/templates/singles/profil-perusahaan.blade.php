@@ -7,11 +7,13 @@
     <!-- Alpine JS -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 
 
     <!-- Font Awesome -->
@@ -24,11 +26,15 @@
 
     <!--Light Box Image Head -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
-
-    @vite(['resources/js/app.js'])
 @endPushOnce
 
 @pushOnce('before_body_close')
+    @vite('resources/js/accessibility.js')
+    @vite('resources/js/aos-animate.js')
+    @vite('resources/js/swiper.js')
+    @vite('resources/js/swiper-auto-height.js')
+    @vite('resources/js/counter.js')
+    @vite('resources/js/tippy.js')
 
     <!--Light Box Image Body Bottom -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -39,12 +45,11 @@
     <x-partials.header />
     <main>
 
-        <x-header-kiw />
-        <x-partials.hero-page image="storage/media/hero-profil-perusahaan.jpg" h1="Tentang Perusahaan" />
+        <x-partials.hero-page image="media/hero-profil-perusahaan.jpg" h1="Tentang Perusahaan" />
 
         <!--Start About-->
         <section id="about" class="bg-contain bg-no-repeat bg-bottom sm:bg-cover"
-            style="background-image:url({{ asset('storage/media/about-image.jpg') }})">
+            style="background-image:url({{ Storage::url('media/about-image.jpg') }})">
             <div
                 class="flex flex-col grow pt-18 pb-42 sm:pb-70 lg:pb-130 px-4 sm:px-6 lg:px-0 lg:pt-30  gradient-white-about">
                 <div class="lg:w-[1200px] lg:mx-auto flex flex-col gap-5 sm:flex-row sm:justify-between">
@@ -64,9 +69,9 @@
                         </p>
                         <!--ISO-->
                         <div class="flex flex-row items-center gap-5 mt-4">
-                            <img src="{{ asset('storage/media/iso-1.png') }}" alt="iso">
-                            <img src="{{ asset('storage/media/iso-2.png') }}" alt="iso">
-                            <img src="{{ asset('storage/media/iso-3.png') }}" alt="iso">
+                            <img src="{{ Storage::url('media/iso-1.png') }}" alt="iso">
+                            <img src="{{ Storage::url('media/iso-2.png') }}" alt="iso">
+                            <img src="{{ Storage::url('media/iso-3.png') }}" alt="iso">
                             <p class="!text-[var(--color-heading)] !text-[1.3em] w-[60px]">ISO Certificate</p>
                         </div>
                     </div>
@@ -79,7 +84,7 @@
         <!--Start Perjalanan-->
         <section id="perjalanan"
             class="relative flex flex-col gap-18 px-4 sm:px-6 py-18 sm:pt-30 lg:pt-40 lg:pb-0 bg-cover bg-no-repeat"
-            style="background-image:url('{{ asset('storage/media/bg-perjalanan.jpg') }}')">
+            style="background-image:url('{{ Storage::url('media/bg-perjalanan.jpg') }}')">
 
             <!--Counter-->
             <div
@@ -149,7 +154,7 @@
                         <!-- Custom icon.arrow Right -->
                         <div
                             class="absolute !top-10 lg:!top-15 swiper-button-next bg-white rounded-[100%] !h-[30px] !w-[30px] p-1">
-                            <img class="w-2/3" src="{{ asset('storage/media/arrow-right-solid.png') }}" alt="arrow">
+                            <img class="w-2/3" src="{{ Storage::url('media/arrow-right-solid.png') }}" alt="arrow">
                         </div>
 
                     </div>
@@ -158,7 +163,7 @@
 
                 <!--Image-->
                 <img class="rounded-2xl lg:rounded-b-none sm:w-[45%] lg:w-[35%] sm:h-[450px] lg:h-[460px] sm:object-cover"
-                    src="{{ asset('storage/media/perjalanan-image.jpg') }}" alt="perjalanan">
+                    src="{{ Storage::url('media/perjalanan-image.jpg') }}" alt="perjalanan">
             </div>
 
 
@@ -178,8 +183,8 @@
                 <!-- Tab Contents -->
                 <x-tab.tab-contents-saham id="tab1">
                     <div class="relative">
-                        <a href="{{ asset('storage/media/pemegang-saham.png') }}" data-lightbox="gallery">
-                            <img class="w-full" src="{{ asset('storage/media/pemegang-saham.png') }}">
+                        <a href="{{ Storage::url('media/pemegang-saham.png') }}" data-lightbox="gallery">
+                            <img class="w-full" src="{{ Storage::url('media/pemegang-saham.png') }}">
                         </a>
                     </div>
                 </x-tab.tab-contents-saham>
@@ -188,7 +193,7 @@
                 <x-tab.tab-contents-saham id="tab2">
                     <div class="flex flex-col lg:flex-row lg:justify-between gap-12">
                         <div class="flex flex-col justify-between gap-10 lg:gap-20 lg:w-1/2">
-                            <img class="w-1/4 sm:w-1/5 lg:w-1/3" src="{{ asset('storage/media/gbc-logo.png') }}"
+                            <img class="w-1/4 sm:w-1/5 lg:w-1/3" src="{{ Storage::url('media/gbc-logo.png') }}"
                                 alt="PWS">
                             <div class="flex flex-col gap-5">
                                 <h6 class="bullet-1">anak perusahaan</h6>
@@ -214,9 +219,9 @@
                             </div>
                         </div>
                         <div class="relative lg:w-1/2">
-                            <a href="{{ asset('storage/media/anak-perusahaan-1.png') }}" data-lightbox="gallery">
+                            <a href="{{ Storage::url('media/anak-perusahaan-1.png') }}" data-lightbox="gallery">
                                 <img class="w-full object-contain"
-                                    src="{{ asset('storage/media/anak-perusahaan-1.png') }}">
+                                    src="{{ Storage::url('media/anak-perusahaan-1.png') }}">
                             </a>
                         </div>
                     </div>
@@ -226,7 +231,7 @@
                 <x-tab.tab-contents-saham id="tab3">
                     <div class="flex flex-col lg:flex-row lg:justify-between gap-12">
                         <div class="flex flex-col justify-between gap-10 lg:gap-20 lg:w-1/2">
-                            <img class="w-1/4 sm:w-1/5 lg:w-1/3" src="{{ asset('storage/media/pws-logo.png') }}"
+                            <img class="w-1/4 sm:w-1/5 lg:w-1/3" src="{{ Storage::url('media/pws-logo.png') }}"
                                 alt="PWS">
                             <div class="flex flex-col gap-5">
                                 <h6 class="bullet-1">anak perusahaan</h6>
@@ -253,9 +258,9 @@
                             </div>
                         </div>
                         <div class="relative lg:w-1/2">
-                            <a href="{{ asset('storage/media/anak-perusahaan-2.png') }}" data-lightbox="gallery">
+                            <a href="{{ Storage::url('media/anak-perusahaan-2.png') }}" data-lightbox="gallery">
                                 <img class="w-full object-contain"
-                                    src="{{ asset('storage/media/anak-perusahaan-2.png') }}">
+                                    src="{{ Storage::url('media/anak-perusahaan-2.png') }}">
                             </a>
                         </div>
                     </div>
@@ -277,24 +282,27 @@
 
 
             <div class="map-container relative overflow-x-auto whitespace-nowrap max-w-full">
-                <img src="{{ asset('storage/media/map-koneksi.png') }}">
+                <div class="relative inline-block min-w-full">
+                    <img src="{{ Storage::url('media/map-koneksi.png') }}">
 
-                <!-- Hotspot Items -->
-                <x-loop.hotspot-item-koneksi-global top="20" left="30" country="Jepang" company="8" />
+                    <!-- Hotspot Items -->
+                    <x-loop.hotspot-item-koneksi-global top="20" left="30" country="Jepang"
+                        company="8" />
 
-                <x-loop.hotspot-item-koneksi-global top="80" left="70" country="Indonesia"
-                    company="5" />
+                    <x-loop.hotspot-item-koneksi-global top="80" left="70" country="Indonesia"
+                        company="5" />
 
-                <x-loop.hotspot-item-koneksi-global top="10" left="72" country="Thailand"
-                    company="2" />
+                    <x-loop.hotspot-item-koneksi-global top="10" left="72" country="Thailand"
+                        company="2" />
 
-                <x-loop.hotspot-item-koneksi-global top="11" left="75" country="Singapore"
-                    company="4" />
+                    <x-loop.hotspot-item-koneksi-global top="11" left="75" country="Singapore"
+                        company="4" />
 
-                <x-loop.hotspot-item-koneksi-global top="11" left="78" country="Brazil" company="10" />
+                    <x-loop.hotspot-item-koneksi-global top="11" left="78" country="Brazil"
+                        company="10" />
 
+                </div>
             </div>
-
         </section>
         <!--End Koneksi Global-->
 

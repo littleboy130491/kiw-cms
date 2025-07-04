@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <ul x-show="openSubMenu === '{{ $menu }}'" class="ml-4 mt-2 space-y-2 text-sm text-[var(--color-heading)]" x-cloak>
+    <ul x-show="openSubMenu === '{{ $menu }}'" class="ml-4 mt-2 flex flex-col gap-2 text-sm text-[var(--color-heading)]" x-cloak>
         {{ $slot }}
     </ul>
 </li>

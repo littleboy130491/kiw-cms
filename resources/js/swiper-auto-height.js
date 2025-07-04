@@ -1,29 +1,44 @@
 function equalizeSwiperSlideHeights() {
-    const slides = document.querySelectorAll('.same-height');
-    let maxHeight = 0;
+  const slides = document.querySelectorAll('.same-height');
+  if (slides.length === 0) {
+    return;
+  }
 
-    // Reset tinggi agar bisa dihitung ulang saat resize
-    slides.forEach(slide => {
-        slide.style.height = 'auto';
-    });
+  // Reset heights to 'auto' to allow the browser to calculate the natural height.
+  slides.forEach(slide => {
+    slide.style.height = 'auto';
+  });
 
-    // Dapatkan tinggi tertinggi
-    slides.forEach(slide => {
-        const height = slide.offsetHeight;
-        if (height > maxHeight) {
-            maxHeight = height;
-        }
-    });
+  // Use requestAnimationFrame to ensure we read the height after the browser has
+  // painted the changes, preventing layout thrashing.
+  requestAnimationFrame(() => {
+    // Find the maximum height in a single pass
+    const maxHeight = Array.from(slides).reduce((max, slide) => {
+      return Math.max(max, slide.offsetHeight);
+    }, 0);
 
-    // Terapkan tinggi maksimum ke semua slide
-    slides.forEach(slide => {
-        slide.style.height = maxHeight + 'px';
-    });
+    // Apply the max height to all slides
+    if (maxHeight > 0) {
+      slides.forEach(slide => {
+        slide.style.height = `${maxHeight}px`;
+      });
+    }
+  });
 }
 
-// Jalankan setelah halaman dimuat
+// A simple debounce function to limit how often the resize handler is called.
+function debounce(func, wait = 100) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func.apply(this, args);
+    }, wait);
+  };
+}
+
+const debouncedEqualize = debounce(equalizeSwiperSlideHeights, 150);
+
+// Run on initial load and when the window is resized.
 window.addEventListener('load', equalizeSwiperSlideHeights);
-
-// Jalankan ulang jika ukuran jendela diubah
-window.addEventListener('resize', equalizeSwiperSlideHeights);
-
+window.addEventListener('resize', debouncedEqualize);

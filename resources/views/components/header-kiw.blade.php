@@ -7,7 +7,7 @@
             <!--Logo-->
             <div class=" flex items-center ">
                 <a href="/"><img class="!w-12 sm:!w-14 lg:!w-20 mr-20 filter brightness-0 invert"
-                        src="{{ asset('storage/media/logo.png') }}" alt="logo"></a>
+                        src="{{ Storage::url('media/logo.png') }}" alt="logo"></a>
             </div>
 
             <div class="flex flex-col justify-between w-full grow">
@@ -34,21 +34,21 @@
                     <div class="flex flex-row gap-5 items-center text-white ">
                         <a href="#"
                             class="hover:text-[var(--color-lightblue)] border-r border-[var(--color-bordertransparent)] pr-5 flex flex-row gap-2 items-center">
-                            <img class="w-5 h-4" src="{{ asset('storage/media/english.jpg') }}" alt="english">
+                            <img class="w-5 h-4" src="{{ Storage::url('media/english.jpg') }}" alt="english">
                             English
                         </a>
                         <a href="#"
                             class="hover:text-[var(--color-lightblue)] border-r border-[var(--color-bordertransparent)] pr-5 flex flex-row gap-2 items-center">
-                            <img class="w-5 h-4" src="{{ asset('storage/media/mandarin.jpg') }}" alt="mandarin">
+                            <img class="w-5 h-4" src="{{ Storage::url('media/mandarin.jpg') }}" alt="mandarin">
                             Mandarin
                         </a>
                         <a href="#"
                             class="hover:text-[var(--color-lightblue)] border-r border-[var(--color-bordertransparent)] pr-5 flex flex-row gap-2 items-center">
-                            <img class="w-5 h-4" src="{{ asset('storage/media/korea.jpg') }}" alt="korea">
+                            <img class="w-5 h-4" src="{{ Storage::url('media/korea.jpg') }}" alt="korea">
                             Korea
                         </a>
                         <a href="#" class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
-                            <img class="w-5 h-4" src="{{ asset('storage/media/indonesia.jpg') }}" alt="indonesia">
+                            <img class="w-5 h-4" src="{{ Storage::url('media/indonesia.jpg') }}" alt="indonesia">
                             Indonesia
                         </a>
                     </div>
@@ -200,7 +200,7 @@
 
             <div x-show="open"
                 class="fixed top-0 right-0 w-[90%] h-[100vh] bg-cover shadow-lg z-50 transform transition-transform duration-300 ease-in-out lg:hidden"
-                style="background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 10%, rgba(255, 255, 255, 0.45) 100%), url({{ asset('storage/media/about-image.jpg') }});"
+                style="background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 10%, rgba(255, 255, 255, 0.45) 100%), url({{ Storage::url('media/about-image.jpg') }});"
                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="translate-x-full"
                 x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
                 x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full">
@@ -214,7 +214,7 @@
 
                         <!--Logo-->
                         <div class=" flex items-center ">
-                            <a href="/"><img class="w-15" src="{{ asset('storage/media/logo.png') }}"
+                            <a href="/"><img class="w-15" src="{{ Storage::url('media/logo.png') }}"
                                     alt="logo"></a>
                         </div>
 
@@ -294,22 +294,22 @@
                         <div class="mt-10 flex flex-row gap-5 items-center text-[var(--color-heading)] ">
                             <a href="#"
                                 class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
-                                <img class="w-5 h-4" src="{{ asset('storage/media/english.jpg') }}" alt="english">
+                                <img class="w-5 h-4" src="{{ Storage::url('media/english.jpg') }}" alt="english">
                                 GB
                             </a>
                             <a href="#"
                                 class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
-                                <img class="w-5 h-4" src="{{ asset('storage/media/mandarin.jpg') }}" alt="mandarin">
+                                <img class="w-5 h-4" src="{{ Storage::url('media/mandarin.jpg') }}" alt="mandarin">
                                 CN
                             </a>
                             <a href="#"
                                 class="hover:text-[var(--color-lightblue)] border-r flex flex-row gap-2 items-center">
-                                <img class="w-5 h-4" src="{{ asset('storage/media/korea.jpg') }}" alt="korea">
+                                <img class="w-5 h-4" src="{{ Storage::url('media/korea.jpg') }}" alt="korea">
                                 KR
                             </a>
                             <a href="#"
                                 class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
-                                <img class="w-5 h-4" src="{{ asset('storage/media/indonesia.jpg') }}"
+                                <img class="w-5 h-4" src="{{ Storage::url('media/indonesia.jpg') }}"
                                     alt="indonesia">
                                 ID
                             </a>

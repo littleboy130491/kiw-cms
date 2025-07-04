@@ -1,28 +1,10 @@
 @pushOnce('before_head_close')
-    <!--AOS-->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-
-    <!-- Alpine JS -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!--Light Box Image Head -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
 @endPushOnce
 @pushOnce('before_body_close')
+    @vite('resources/js/pages/home.js')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 @endPushOnce
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
@@ -31,14 +13,14 @@
         <!--Opening Animation   -->
         <div id="splash-screen">
             <div class="logo-sequence min-w-[100vw] min-h-[100vh] flex flex-col justify-center items-center bg-cover bg-center bg-no-repeat"
-                style="background-image: url('{{ asset('storage/media/background-splash.jpg') }}');">
+                style="background-image: url('{{ Storage::url('media/background-splash.jpg') }}');">
                 <div class="absolute inset-0 bg-white opacity-90 !z-[99999999999999999999999991]"></div>
 
                 <img id="logo-image" class="relative !z-[99999999999999999999999992] min-h-18 max-h-18  object-contain"
-                    src="{{ asset('storage/media/kiw-old.png') }}" alt="Logo">
+                    src="{{ Storage::url('media/kiw-old.png') }}" alt="Logo">
                 <div id="year-text"
                     class="custom-shadow !z-[99999999999999999999999993] lg:text-[25em] sm:text-[20em] text-[10em] lg:py-0 py-4 font-bold text-transparent bg-cover bg-center bg-no-repeat bg-clip-text bg-fixed pointer-events-none lg:-mt-15 sm:-mt-25 -mt-16"
-                    style="background-image: url('{{ asset('storage/media/background-splash.jpg') }}');">
+                    style="background-image: url('{{ Storage::url('media/background-splash.jpg') }}');">
                     1988
                 </div>
 
@@ -46,21 +28,21 @@
         </div>
 
         <div id="logo-sequence" class="hidden">
-            <img class="logo-item" data-year="1998" src="{{ asset('storage/media/kiw.png') }}" alt="Logo tahun 1998">
-            <img class="logo-item" data-year="2018" src="{{ asset('storage/media/pws-logo.png') }}"
+            <img class="logo-item" data-year="1998" src="{{ Storage::url('media/kiw.png') }}" alt="Logo tahun 1998">
+            <img class="logo-item" data-year="2018" src="{{ Storage::url('media/pws-logo.png') }}"
                 alt="Logo tahun 2018">
-            <img class="logo-item" data-year="2020" src="{{ asset('storage/media/gbc-logo.png') }}"
+            <img class="logo-item" data-year="2020" src="{{ Storage::url('media/gbc-logo.png') }}"
                 alt="Logo tahun 2020">
-            <img class="logo-item" data-year="2022" src="{{ asset('storage/media/Danareksa.png') }}"
+            <img class="logo-item" data-year="2022" src="{{ Storage::url('media/Danareksa.png') }}"
                 alt="Logo tahun 2022">
-            <img class="logo-item" data-year="2022" src="{{ asset('storage/media/Danareksa.png') }}"
+            <img class="logo-item" data-year="2022" src="{{ Storage::url('media/Danareksa.png') }}"
                 alt="Logo tahun 2022">
-            <img class="logo-item" data-year="2024" src="{{ asset('storage/media/Danareksa.png') }}"
+            <img class="logo-item" data-year="2024" src="{{ Storage::url('media/Danareksa.png') }}"
                 alt="Logo tahun 2024">
 
         </div>
 
-        <x-header-kiw />
+
 
         <x-partials.popup-home />
 
@@ -72,7 +54,7 @@
                     <!--Item Video-->
                     <div class="swiper-slide relative overflow-hidden">
                         <div class="absolute inset-0 z-0">
-                            <img id="video-fallback" src="{{ asset('storage/media/background-home.jpg') }}"
+                            <img id="video-fallback" src="{{ Storage::url('media/background-home.jpg') }}"
                                 alt="Banner Image" class="w-full h-full object-cover absolute inset-0 z-0" />
                             <iframe id="video-frame"
                                 class="absolute inset-0 w-full h-full object-cover scale-[3] sm:scale-[1.5] lg:scale-[1.5]"
@@ -100,7 +82,7 @@
                                         <!--Button-->
                                         <a class="w-fit btn2 mt-5" data-aos="fade-down" href="/#layanan-home">
                                             <span class="gradient-text">Lihat Layanan</span>
-                                            <img src="{{ asset('storage/media/arrow-right-solid.png') }}"
+                                            <img src="{{ Storage::url('media/arrow-right-solid.png') }}"
                                                 alt="icon">
                                             </span>
                                         </a>
@@ -125,7 +107,7 @@
 
                     <!--Item Photo-->
                     <div class="swiper-slide relative bg-cover bg-no-repeat overflow-hidden"
-                        style="background-image:url('{{ asset('storage/media/hero-home-2.jpg') }}')">
+                        style="background-image:url('{{ Storage::url('media/hero-home-2.jpg') }}')">
 
                         <!-- overlay -->
                         <div class="bg-[var(--color-overlayblack)] z-10 bg-opacity-60 relative">
@@ -146,7 +128,7 @@
                                         <!--Button-->
                                         <a class="w-fit btn2 mt-5" data-aos="fade-down" href="/#layanan-home">
                                             <span class="gradient-text">Lihat Layanan</span>
-                                            <img src="{{ asset('storage/media/arrow-right-solid.png') }}"
+                                            <img src="{{ Storage::url('media/arrow-right-solid.png') }}"
                                                 alt="icon">
                                             </span>
                                         </a>
@@ -192,9 +174,9 @@
                         </p>
                         <!--ISO-->
                         <div class="flex flex-row items-center gap-5 mt-4">
-                            <img src="{{ asset('storage/media/iso-1.png') }}" alt="iso">
-                            <img src="{{ asset('storage/media/iso-2.png') }}" alt="iso">
-                            <img src="{{ asset('storage/media/iso-3.png') }}" alt="iso">
+                            <img src="{{ Storage::url('media/iso-1.png') }}" alt="iso">
+                            <img src="{{ Storage::url('media/iso-2.png') }}" alt="iso">
+                            <img src="{{ Storage::url('media/iso-3.png') }}" alt="iso">
                             <p class="!text-[var(--color-heading)] !text-[1.3em] w-[60px]">ISO Certificate</p>
                         </div>
                         <!--button-->
@@ -214,7 +196,7 @@
                     <!--image top right-->
                     <div class="lg;!w-[45%]">
                         <img class="rounded-2xl lg:!h-[550px] sm:!h-[450px] lg:!w-[unset] sm:!w-[100vw] object-cover"
-                            src="{{ asset('storage/media/construction-site-with-cranes-construction-worker.jpg') }}"
+                            src="{{ Storage::url('media/construction-site-with-cranes-construction-worker.jpg') }}"
                             alt="about">
                     </div>
                 </div>
@@ -225,7 +207,7 @@
                     <!--content left-->
                     <div class="sm:w-[48%] w-[100%]">
                         <img class="rounded-2xl h-[340px] object-cover"
-                            src="{{ asset('storage/media/pointing-sketch.jpg') }}">
+                            src="{{ Storage::url('media/pointing-sketch.jpg') }}">
                     </div>
 
                     <!--content right-->
@@ -247,7 +229,7 @@
 
         <!-- Start Layanan Home -->
         <section id="layanan-home" class="lg:py-30 py-18 bg-cover "
-            style="background-image: url('{{ asset('storage/media/bg-grad.jpg') }}');">
+            style="background-image: url('{{ Storage::url('media/bg-grad.jpg') }}');">
             <div
                 class="flex flex-col overflow-hidden relative lg:gap-20 sm:gap-10 gap-10 lg:px-0 lg:max-w-[1200px] lg:mx-auto sm:px-6 px-4">
 
@@ -264,17 +246,16 @@
                     <x-loop.layanan-home number="01." label="Lahan Industri Siap Bangun"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                         url="/lahan-industri"
-                        image="storage/media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg" />
+                        image="media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg" />
 
                     <x-loop.layanan-home number="02." label="Bangunan Pabrik Siap Pakai (BPSP)"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                         url="/archive-bangunan-pabrik-siap-pakai"
-                        image="storage/media/exterior-view-modern-industrial-building.jpg" />
+                        image="media/exterior-view-modern-industrial-building.jpg" />
 
                     <x-loop.layanan-home number="03." label="Kerja sama Komersial Kawasan Industri"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                        url="/single-area-komersil-atm"
-                        image="storage/media/exterior-view-modern-industrial-building.jpg" />
+                        url="/single-area-komersil-atm" image="media/exterior-view-modern-industrial-building.jpg" />
                 </div>
 
 
@@ -284,7 +265,7 @@
 
         <!--Start Keunggulan-->
         <section id="keunggulan-home" class="bg-no-repeat bg-cover"
-            style="background-image: url('{{ asset('storage/media/back-keunggulan.jpg') }}')">
+            style="background-image: url('{{ Storage::url('media/back-keunggulan.jpg') }}')">
             <!--Overlay-->
             <div class="gradient-overlay-keunggulan lg:pt-30 pt-18 flex flex-col gap-10">
 
@@ -359,7 +340,7 @@
 
                 <!-- Tab Contents -->
                 <x-tab.tab-contents-sektor id="tab1" label="Modern Textile and Garment Industry"
-                    image="storage/media/garmen.png"
+                    image="media/garmen.png"
                     desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
@@ -370,8 +351,7 @@
                     </p>
                     " />
 
-                <x-tab.tab-contents-sektor id="tab2" label="Wood & Furniture"
-                    image="storage/media/furniture.png"
+                <x-tab.tab-contents-sektor id="tab2" label="Wood & Furniture" image="media/furniture.png"
                     desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
@@ -382,8 +362,7 @@
                     </p>
                     " />
 
-                <x-tab.tab-contents-sektor id="tab3" label="Chemical & New Material"
-                    image="storage/media/chemical.png"
+                <x-tab.tab-contents-sektor id="tab3" label="Chemical & New Material" image="media/chemical.png"
                     desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
@@ -395,7 +374,7 @@
                     " />
 
                 <x-tab.tab-contents-sektor id="tab4" label="Consumer Goods & Food Procesing"
-                    image="storage/media/consumer.png"
+                    image="media/consumer.png"
                     desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
@@ -406,7 +385,7 @@
                     </p>
                     " />
 
-                <x-tab.tab-contents-sektor id="tab5" label="Others" image="storage/media/others.png"
+                <x-tab.tab-contents-sektor id="tab5" label="Others" image="media/others.png"
                     desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
@@ -451,7 +430,7 @@
                 <div class="sm:!w-[55%] !w-[100%] relative fasilitas-home">
                     <div class="swiper swiper-1">
                         <div class="swiper-wrapper">
-                            <x-loop.fasilitas-home label="Masjid" image="storage/media/masjid.jpg">
+                            <x-loop.fasilitas-home label="Masjid" image="media/masjid.jpg">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis
                                 vehicula. Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur
                                 vestibulum sem eget massa semper, a sagittis tortor accumsan. Duis luctus ante vel augue
@@ -465,8 +444,7 @@
                                 lectus.
                             </x-loop.fasilitas-home>
 
-                            <x-loop.fasilitas-home label="Pengelola Air Bersih"
-                                image="storage/media/pengelolaan-air.jpg">
+                            <x-loop.fasilitas-home label="Pengelola Air Bersih" image="media/pengelolaan-air.jpg">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis
                                 vehicula. Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur
                                 vestibulum sem eget massa semper, a sagittis tortor accumsan. Duis luctus ante vel augue
@@ -480,7 +458,7 @@
                                 lectus.
                             </x-loop.fasilitas-home>
 
-                            <x-loop.fasilitas-home label="Pemadam Kebakaran" image="storage/media/pemadam.jpg">
+                            <x-loop.fasilitas-home label="Pemadam Kebakaran" image="media/pemadam.jpg">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis
                                 vehicula. Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur
                                 vestibulum sem eget massa semper, a sagittis tortor accumsan. Duis luctus ante vel augue
@@ -494,7 +472,7 @@
                                 lectus.
                             </x-loop.fasilitas-home>
 
-                            <x-loop.fasilitas-home label="Jalan Lingkungan" image="storage/media/jalan.jpg">
+                            <x-loop.fasilitas-home label="Jalan Lingkungan" image="media/jalan.jpg">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis
                                 vehicula. Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur
                                 vestibulum sem eget massa semper, a sagittis tortor accumsan. Duis luctus ante vel augue
@@ -537,7 +515,7 @@
 
             <!-- Custom Thumbnail -->
             <div class="absolute inset-0 bg-cover bg-center cursor-pointer rounded-2xl lg:mx-0 sm:mx-6 mx-4"
-                style="background-image: url('{{ asset('storage/media/back-video.jpg') }} ') ;"
+                style="background-image: url('{{ Storage::url('media/back-video.jpg') }} ') ;"
                 onclick="loadVideo(this)">
                 <!-- Custom Play Button -->
                 <div class="flex items-center justify-center w-full h-full bg-black/10 rounded-2xl">
@@ -607,20 +585,20 @@
             <div class="relative w-full lg:max-w-[100vw] overflow-hidden">
                 <div class="swiper-logo ">
                     <div class="swiper-wrapper lg:!flex lg:gap-5">
-                        <x-loop.tenant-logo image="storage/media/logoipsum-1.png" />
-                        <x-loop.tenant-logo image="storage/media/logoipsum-2.png" />
-                        <x-loop.tenant-logo image="storage/media/logoipsum-3.png" />
-                        <x-loop.tenant-logo image="storage/media/logoipsum-4.png" />
+                        <x-loop.tenant-logo image="media/logoipsum-1.png" />
+                        <x-loop.tenant-logo image="media/logoipsum-2.png" />
+                        <x-loop.tenant-logo image="media/logoipsum-3.png" />
+                        <x-loop.tenant-logo image="media/logoipsum-4.png" />
 
-                        <x-loop.tenant-logo image="storage/media/logoipsum-7.png" />
-                        <x-loop.tenant-logo image="storage/media/logoipsum-8.png" />
-                        <x-loop.tenant-logo image="storage/media/logoipsum-1.png" />
-                        <x-loop.tenant-logo image="storage/media/logoipsum-2.png" />
-                        <x-loop.tenant-logo image="storage/media/logoipsum-3.png" />
-                        <x-loop.tenant-logo image="storage/media/logoipsum-4.png" />
+                        <x-loop.tenant-logo image="media/logoipsum-7.png" />
+                        <x-loop.tenant-logo image="media/logoipsum-8.png" />
+                        <x-loop.tenant-logo image="media/logoipsum-1.png" />
+                        <x-loop.tenant-logo image="media/logoipsum-2.png" />
+                        <x-loop.tenant-logo image="media/logoipsum-3.png" />
+                        <x-loop.tenant-logo image="media/logoipsum-4.png" />
 
-                        <x-loop.tenant-logo image="storage/media/logoipsum-7.png" />
-                        <x-loop.tenant-logo image="storage/media/logoipsum-8.png" />
+                        <x-loop.tenant-logo image="media/logoipsum-7.png" />
+                        <x-loop.tenant-logo image="media/logoipsum-8.png" />
 
                     </div>
 
@@ -660,25 +638,25 @@
                     label="
                     Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
                     "
-                    tag="Informasi" date="06/01/2025"
-                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
+                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
+                    url="#" />
                 <x-loop.artikel-berita
                     label="
                     Dirut KIW Berbagi Pengalaman Penerapan GCG di Program “Library Cafe” BPKP Jateng
                     "
-                    tag="Informasi" date="06/01/2025" image="storage/media/library-caffe.jpg" url="#" />
+                    tag="Informasi" date="06/01/2025" image="media/library-caffe.jpg" url="#" />
                 <x-loop.artikel-berita
                     label="
                     Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
                     "
-                    tag="Informasi" date="06/01/2025"
-                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
+                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
+                    url="#" />
                 <x-loop.artikel-berita
                     label="
                     Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
                     "
-                    tag="Informasi" date="06/01/2025"
-                    image="storage/media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg" url="#" />
+                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
+                    url="#" />
 
 
             </div>
@@ -715,22 +693,20 @@
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-7">
 
                     <x-loop.laporan-tahunan label="Laporan Tahunan PT KIW (persero) Tahun 2014"
-                        doc="storage/media/lipsum.pdf" />
+                        doc="media/lipsum.pdf" />
 
-                    <x-loop.laporan-tahunan label="Laporan Auditor Independen Tahun 2013"
-                        doc="storage/media/lipsum.pdf" />
+                    <x-loop.laporan-tahunan label="Laporan Auditor Independen Tahun 2013" doc="media/lipsum.pdf" />
 
                     <x-loop.laporan-tahunan label="Laporan Tahunan PT KIW (persero) Tahun 2015"
-                        doc="storage/media/lipsum.pdf" />
+                        doc="media/lipsum.pdf" />
 
                     <x-loop.laporan-tahunan label="Laporan Tahunan PT KIW (persero) Tahun 2016"
-                        doc="storage/media/lipsum.pdf" />
+                        doc="media/lipsum.pdf" />
 
-                    <x-loop.laporan-tahunan label="Laporan Auditor Independen Tahun 2014"
-                        doc="storage/media/lipsum.pdf" />
+                    <x-loop.laporan-tahunan label="Laporan Auditor Independen Tahun 2014" doc="media/lipsum.pdf" />
 
                     <x-loop.laporan-tahunan label="Laporan Tahunan PT KIW (persero) Tahun 2017"
-                        doc="storage/media/lipsum.pdf" />
+                        doc="media/lipsum.pdf" />
 
                 </div>
             </div>

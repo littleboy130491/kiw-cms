@@ -1,10 +1,12 @@
 @pushOnce('before_body_close')
+    @vite('resources/js/phone-separator.js')
 @endPushOnce
+
 
 
 <!--Footer-->
 <footer id="footer" class="lg:pt-30 pt-18 bg-cover bg-[var(--color-transit)]"
-    style="background-image:url('{{ asset('storage/media/Footer.jpg') }}')">
+    style="background-image:url('{{ Storage::url('media/Footer.jpg') }}')">
     <div
         class="flex flex-col overflow-hidden relative lg:gap-20 sm:gap-10 gap-10 lg:max-w-[1200px] mx-auto lg:px-0 sm:px-6 px-4">
 
@@ -121,28 +123,29 @@
 
                 <!--Partner-->
                 <div class="flex flex-row sm:gap-5 gap-8 sm:w-1/6">
-                    <img src="{{ asset('storage/media/kiwinners.png') }}" alt="kiwinners">
-                    <img src="{{ asset('storage/media/akhlak.png') }}" alt="akhlak">
-                    <img src="{{ asset('storage/media/bumn-untuk-indonesia.png') }}" alt="bumn">
+                    <img class="sm:w-full w-24" src="{{ Storage::url('media/kiwinners.png') }}" alt="kiwinners">
+                    <img class="sm:w-full w-24" src="{{ Storage::url('media/akhlak.png') }}" alt="akhlak">
+                    <img class="sm:w-full w-24" src="{{ Storage::url('media/bumn-untuk-indonesia.png') }}"
+                        alt="bumn">
                 </div>
 
                 <!--Social Media-->
-                <div class="flex flex-row sm:gap-5 gap-3 sm:w-1/6 w-[200px]">
+                <div class="flex flex-row sm:gap-5 gap-6 sm:w-1/6 w-[200px]">
                     <a href="{{ config('cms.site_social_media.facebook') }}" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ asset('storage/media/facebook-white.png') }}" alt="facebook">
+                        <img src="{{ Storage::url('media/facebook-white.png') }}" alt="facebook">
                     </a>
                     <a href="{{ config('cms.site_social_media.twitter') }}" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ asset('storage/media/twitter-white.png') }}" alt="twitter">
+                        <img src="{{ Storage::url('media/twitter-white.png') }}" alt="twitter">
                     </a>
                     <a href="{{ config('cms.site_social_media.instagram') }}" target="_blank"
                         rel="noopener noreferrer">
-                        <img src="{{ asset('storage/media/instagram-white.png') }}" alt="instagram">
+                        <img src="{{ Storage::url('media/instagram-white.png') }}" alt="instagram">
                     </a>
                     <a href="{{ config('cms.site_social_media.linkedin') }}" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ asset('storage/media/linkedin-white.png') }}" alt="linkedin">
+                        <img src="{{ Storage::url('media/linkedin-white.png') }}" alt="linkedin">
                     </a>
                     <a href="{{ config('cms.site_social_media.youtube') }}" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ asset('storage/media/youtube-white.png') }}" alt="youtube">
+                        <img src="{{ Storage::url('media/youtube-white.png') }}" alt="youtube">
                     </a>
 
                 </div>
@@ -154,7 +157,7 @@
 
         <!--Copyrights-->
         <div
-            class="text-white text-center py-5 border-t-1 border-[var(--color-bordertransparent)] sm:!text-[.9em] !text-[.75em]">
+            class="text-white text-center py-5 border-t-1 border-[var(--color-bordertransparent)] sm:!text-[.9em] !text-[.65em]">
             {{ date('Y') }} © Kawasan Industri Wijayakusuma | Seluruh Hak Cipta Dilindungi
         </div>
 

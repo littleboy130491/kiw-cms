@@ -8,15 +8,16 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
+    @vite('resources/js/accessibility.js')
+    @vite('resources/js/aos-animate.js')
+    @vite('resources/js/phone-separator.js')
 @endPushOnce
 
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
 
-        <x-header-kiw />
-
-        <x-partials.hero-page image="storage/media/kontak-hero.jpg" h1="Kontak" />
+        <x-partials.hero-page image="media/kontak-hero.jpg" h1="Kontak" />
 
         <!--Start Informasi Kontak-->
         <section id="informasi-kontak"
@@ -30,19 +31,19 @@
                 </p>
                 <div class="flex flex-row gap-8 w-[70%] lg:w-full lg:mt-10 sm:mt-5">
                     <a href="{{ config('cms.site_social_media.facebook') }}" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ asset('storage/media/facebook-blue.png') }}" alt="facebook">
+                        <img src="{{ Storage::url('media/facebook-blue.png') }}" alt="facebook">
                     </a>
                     <a href="{{ config('cms.site_social_media.twitter') }}" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ asset('storage/media/twitter-blue.png') }}" alt="twitter">
+                        <img src="{{ Storage::url('media/twitter-blue.png') }}" alt="twitter">
                     </a>
                     <a href="{{ config('cms.site_social_media.instagram') }}" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ asset('storage/media/instagram-blue.png') }}" alt="instagram">
+                        <img src="{{ Storage::url('media/instagram-blue.png') }}" alt="instagram">
                     </a>
                     <a href="{{ config('cms.site_social_media.linkedin') }}" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ asset('storage/media/linkedin-blue.png') }}" alt="linkedin">
+                        <img src="{{ Storage::url('media/linkedin-blue.png') }}" alt="linkedin">
                     </a>
                     <a href="{{ config('cms.site_social_media.youtube') }}" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ asset('storage/media/youtube-blue.png') }}" alt="youtube">
+                        <img src="{{ Storage::url('media/youtube-blue.png') }}" alt="youtube">
                     </a>
                 </div>
             </div>
