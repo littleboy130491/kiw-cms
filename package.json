@@ -21,6 +21,7 @@
     "dependencies": {
         "alpinejs": "^3.14.9",
         "aos": "^2.3.4",
+        "jquery": "^3.7.1",
         "lightbox2": "^2.11.5",
         "swiper": "^11.2.10"
     }

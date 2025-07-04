@@ -1,6 +1,21 @@
+@props(['location' => 'header'])
+
 @php
     use Datlechin\FilamentMenuBuilder\Models\Menu;
-    $menu = Menu::location('header');
+
+    // Get current language from URL segment (first segment after domain)
+    $currentLang = request()->segment(1);
+
+    // Validate if it's a valid language from your config
+$availableLanguages = array_keys(config('cms.language_available', []));
+if (!in_array($currentLang, $availableLanguages)) {
+    $currentLang = config('cms.default_language', 'en'); // fallback to default
+}
+
+$localizedLocation = $location . '_' . $currentLang;
+
+    // Try to get the localized menu first, fallback to base location
+    $menu = Menu::location($localizedLocation) ?? Menu::location($location);
 @endphp
 
 <!--Start Header Menu-->

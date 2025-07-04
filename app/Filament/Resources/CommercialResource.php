@@ -56,6 +56,7 @@ class CommercialResource extends BaseContentResource
                 ])
                 ->default($defaultItems)
                 ->columns(2)
+                ->columnSpanFull(),
         ];
     }
 
