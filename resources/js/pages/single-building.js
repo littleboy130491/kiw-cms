@@ -1,0 +1,1 @@
+import '../single-get-message-whatsapp.js';

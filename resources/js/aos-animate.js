@@ -1,10 +1,9 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-AOS.init({
-    duration: 1000 // semua animasi default jadi 1000ms (1 detik)
+document.addEventListener('DOMContentLoaded', function() {
+  AOS.init({
+    duration: 1000,
+    once: true,
   });
-AOS.init({
-  duration: 1000, // atur durasi default di sini
-  once: true,     // opsional: animasi hanya dijalankan sekali
 });

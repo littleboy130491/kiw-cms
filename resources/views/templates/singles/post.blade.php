@@ -1,18 +1,6 @@
-@pushOnce('before_head_close')
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!--Light Box Image Head -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
-@endPushOnce
-
 @pushOnce('before_body_close')
     @vite('resources/js/pages/single-post.js')
-
-    <!--Light Box Image Body Bottom -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 @endPushOnce
-
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
@@ -190,8 +178,8 @@
                             <div class="gradient-blue text-white w-fit px-2 py-1 text-[.85em]">
                                 <a href="javascript:void(0);" class="reply-button">Balas</a>
                             </div>
-                            <time datetime="2025-05-26T11:16:56+07:00"
-                                class="text-[var(--color-text)] text-[.9em]">May 26, 2025 at 11:16 am</time>
+                            <time datetime="2025-05-26T11:16:56+07:00" class="text-[var(--color-text)] text-[.9em]">May
+                                26, 2025 at 11:16 am</time>
                         </div>
                     </article>
 

@@ -1,8 +1,5 @@
-import '../accessibility.js';
 import '../swiper.js';
-import '../aos-animate.js';
-import '../popup-init-modal-events.js';
-import '../popup-modal-controller.js';
+import '../popup-modal-main.js';
 import '../fasilitas-swiper-number.js';
 import '../swiper-auto-height.js';
 import '../counter.js';
@@ -11,4 +8,3 @@ import '../video-inline.js';
 import '../youtube-src-conversion.js';
 import '../splash-screen.js';
 import '../popup-home.js';
-import '../alpine.js';

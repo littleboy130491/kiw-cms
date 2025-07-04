@@ -1,9 +1,3 @@
-@pushOnce('before_body_close')
-    @vite('resources/js/app.js')
-@endPushOnce
-
-
-
 <!--Footer-->
 <footer id="footer" class="lg:pt-30 pt-18 bg-cover bg-[var(--color-transit)]"
     style="background-image:url('{{ Storage::url('media/Footer.jpg') }}')">

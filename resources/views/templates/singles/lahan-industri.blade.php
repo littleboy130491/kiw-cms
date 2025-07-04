@@ -8,10 +8,7 @@
 @endPushOnce
 
 @pushOnce('before_body_close')
-    @vite('resources/js/accessibility.js')
-    @vite('resources/js/aos-animate.js')
-    @vite('resources/js/popup-init-modal-events.js')
-    @vite('resources/js/popup-modal-controller.js')
+    @vite('resources/js/popup-modal-main.js')
 @endPushOnce
 
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
