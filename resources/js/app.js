@@ -1,1 +1,1 @@
-import 'phone-separator.js';
+import './phone-separator.js';
