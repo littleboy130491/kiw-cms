@@ -1,5 +1,5 @@
 @pushOnce('before_body_close')
-    @vite('resources/js/phone-separator.js')
+    @vite('resources/js/app.js')
 @endPushOnce
 
 
