@@ -1,12 +1,3 @@
-@pushOnce('before_body_close')
-    @vite('resources/js/accessibility.js')
-    @vite('resources/js/aos-animate.js')
-    @vite('resources/js/swiper.js')
-    @vite('resources/js/swiper-auto-height.js')
-    @vite('resources/js/counter.js')
-    @vite('resources/js/tippy.js')
-@endPushOnce
-
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
