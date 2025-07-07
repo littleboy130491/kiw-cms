@@ -2,7 +2,7 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page image="media/whistleblowing-hero.jpg" h1="Whistleblowing" />
+        <x-partials.hero-page :image="Storage::url('media/whistleblowing-hero.jpg')" h1="Whistleblowing" />
 
         <!--Start Post Content-->
 

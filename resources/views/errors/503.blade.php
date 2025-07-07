@@ -1,7 +1,7 @@
 <x-layouts.app title="503">
     <x-partials.header />
     <main>
-        <x-partials.hero-page image="media/bangunan-pabrik-hero.jpg" h1="Layanan Tidak Tersedia" />
+        <x-partials.hero-page :image="Storage::url('media/bangunan-pabrik-hero.jpg')" h1="Layanan Tidak Tersedia" />
 
         <section id="503-page" class="my-18 lg:my-30 mx-4 sm:mx-6 lg:mx-0 text-center flex flex-col items-center gap-5">
             <h6 data-aos="fade-down" class="bullet-1">Error 503</h6>

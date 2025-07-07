@@ -17,7 +17,7 @@
     {{-- Featured Image --}}
     <div class="relative">
         <x-ui.responsive-image
-            :src="asset($image)"
+            :src="Storage::url($image)"
             :alt="$title"
             aspect-ratio="16/9"
             class="w-full group-hover:scale-110 transition-transform duration-500"

@@ -2,7 +2,7 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page image="media/tender-hero.jpg" h1="Tender" />
+        <x-partials.hero-page :image="Storage::url('media/tender-hero.jpg')" h1="Tender" />
 
         <!--Start Single Tender-->
         <section id="single-tender"

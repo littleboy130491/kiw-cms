@@ -9,7 +9,9 @@
             'description' =>
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             'url' => '/lahan-industri',
-            'image' => 'storage/media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg',
+            'image' => Storage::url('media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg'),
+
+            // 'image' => Storage::url('media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg',
         ],
         [
             'number' => '02.',
@@ -17,7 +19,7 @@
             'description' =>
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             'url' => '/archive-bangunan-pabrik-siap-pakai',
-            'image' => 'storage/media/exterior-view-modern-industrial-building.jpg',
+            'image' => Storage::url('media/exterior-view-modern-industrial-building.jpg',
         ],
         [
             'number' => '03.',
@@ -25,7 +27,7 @@
             'description' =>
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             'url' => '/single-area-komersil-atm',
-            'image' => 'storage/media/exterior-view-modern-industrial-building.jpg',
+            'image' => Storage::url('media/exterior-view-modern-industrial-building.jpg',
         ],
     ],
 ])

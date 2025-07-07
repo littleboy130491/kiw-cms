@@ -20,7 +20,7 @@
     <x-partials.header />
     <main>
        
-<x-partials.hero-page image="media/bangunan-pabrik-hero.jpg" h1="Bangunan Pabrik Siap Pakai"/>
+<x-partials.hero-page :image="Storage::url('media/bangunan-pabrik-hero.jpg')" h1="Bangunan Pabrik Siap Pakai"/>
 
 
 <!--Start Bangunan Pabrik-->
@@ -47,49 +47,49 @@
         <x-loop.bpsp
             tag="tersedia"
             label="BPSB 1"
-            image="media/bpsp.jpg"
+            :image="Storage::url('media/bpsp.jpg')"
             url="#"
         />
 
         <x-loop.bpsp
             tag="segera hadir"
             label="BPSP 2"
-            image="media/bpsp.jpg"
+            :image="Storage::url('media/bpsp.jpg')"
             url="#"
         />
 
         <x-loop.bpsp
             tag="tersewa sampai 2025"
             label="BPSP 3"
-            image="media/bpsp.jpg"
+            :image="Storage::url('media/bpsp.jpg')"
             url="#"
         />
 
         <x-loop.bpsp
             tag="segera hadir"
             label="BPSP 4"
-            image="media/bpsp.jpg"
+            :image="Storage::url('media/bpsp.jpg')"
             url="#"
         />
 
         <x-loop.bpsp
             tag="segera hadir"
             label="BPSP 5"
-            image="media/bpsp.jpg"
+            :image="Storage::url('media/bpsp.jpg')"
             url="#"
         />
 
         <x-loop.bpsp
             tag="segera hadir"
             label="BPSP 6"
-            image="media/bpsp.jpg"
+            :image="Storage::url('media/bpsp.jpg')"
             url="#"
         />
 
         <x-loop.bpsp
             tag="segera hadir"
             label="BPSP 7"
-            image="media/bpsp.jpg"
+            :image="Storage::url('media/bpsp.jpg')"
             url="#"
         />
 

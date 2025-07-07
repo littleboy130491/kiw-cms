@@ -54,7 +54,7 @@
                         <x-home.partials.news-card
                             title="Berita Terbaru {{ $i + 1 }}"
                             excerpt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                            image="storage/media/news-placeholder-{{ $i + 1 }}.jpg"
+                            :image="Storage::url('media/news-placeholder-{{ $i + 1 }}.jpg')"
                             date="2024-01-{{ 15 + $i }}"
                             url="/berita/artikel-{{ $i + 1 }}"
                             category="Industri"

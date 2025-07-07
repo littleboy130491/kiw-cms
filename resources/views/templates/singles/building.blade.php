@@ -6,7 +6,7 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page image="media/bangunan-pabrik-hero.jpg" h1="Bangunan Pabrik Siap Pakai" />
+        <x-partials.hero-page :image="Storage::url('media/bangunan-pabrik-hero.jpg')" h1="Bangunan Pabrik Siap Pakai" />
 
         <!--Start Gallery-->
 
@@ -40,12 +40,12 @@
 
             <!--Content-->
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4">
-                <x-loop.gallery-grid image="media/bpsp-1.jpg" />
-                <x-loop.gallery-grid image="media/bpsp-2.jpg" />
-                <x-loop.gallery-grid image="media/bpsp-3.jpg" />
-                <x-loop.gallery-grid image="media/bpsp-4.jpg" />
-                <x-loop.gallery-grid image="media/bpsp-1.jpg" />
-                <x-loop.gallery-grid image="media/bpsp-2.jpg" />
+                <x-loop.gallery-grid :image="Storage::url('media/bpsp-1.jpg')" />
+                <x-loop.gallery-grid :image="Storage::url('media/bpsp-2.jpg')" />
+                <x-loop.gallery-grid :image="Storage::url('media/bpsp-3.jpg')" />
+                <x-loop.gallery-grid :image="Storage::url('media/bpsp-4.jpg')" />
+                <x-loop.gallery-grid :image="Storage::url('media/bpsp-1.jpg')" />
+                <x-loop.gallery-grid :image="Storage::url('media/bpsp-2.jpg')" />
             </div>
 
 

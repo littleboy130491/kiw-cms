@@ -2,7 +2,7 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page image="media/pedoman-hero.jpg" h1="Pedoman & Tata Kelola" />
+        <x-partials.hero-page :image="Storage::url('media/pedoman-hero.jpg')" h1="Pedoman & Tata Kelola" />
 
         <!--Pedoman Tata Kelola-->
         <section id="pedoman-tata-kelola" class="flex flex-col ">

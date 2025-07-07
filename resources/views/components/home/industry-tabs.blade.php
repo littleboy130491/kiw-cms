@@ -5,35 +5,35 @@
             'id' => 'tab1',
             'title' => 'Modern Textile & Garment',
             'label' => 'Modern Textile and Garment Industry',
-            'image' => 'storage/media/garmen.png',
+            'image' => Storage::url('media/garmen.png',
             'description' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.<ul class="list-disc pl-6 mt-5"><li>Lorem ipsum dolor sit amet</li><li>Lorem ipsum dolor sit amet</li><li>Lorem ipsum dolor sit amet</li></ul></p>'
         ],
         [
             'id' => 'tab2',
             'title' => 'Wood & Furniture',
             'label' => 'Wood & Furniture',
-            'image' => 'storage/media/furniture.png',
+            'image' => Storage::url('media/furniture.png',
             'description' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.<ul class="list-disc pl-6 mt-5"><li>Lorem ipsum dolor sit amet</li><li>Lorem ipsum dolor sit amet</li><li>Lorem ipsum dolor sit amet</li></ul></p>'
         ],
         [
             'id' => 'tab3',
             'title' => 'Chemical & New Material',
             'label' => 'Chemical & New Material',
-            'image' => 'storage/media/chemical.png',
+            'image' => Storage::url('media/chemical.png',
             'description' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.<ul class="list-disc pl-6 mt-5"><li>Lorem ipsum dolor sit amet</li><li>Lorem ipsum dolor sit amet</li><li>Lorem ipsum dolor sit amet</li></ul></p>'
         ],
         [
             'id' => 'tab4',
             'title' => 'Consumer Goods & Food Processing',
             'label' => 'Consumer Goods & Food Processing',
-            'image' => 'storage/media/food.png',
+            'image' => Storage::url('media/food.png',
             'description' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.<ul class="list-disc pl-6 mt-5"><li>Lorem ipsum dolor sit amet</li><li>Lorem ipsum dolor sit amet</li><li>Lorem ipsum dolor sit amet</li></ul></p>'
         ],
         [
             'id' => 'tab5',
             'title' => 'Others',
             'label' => 'Others',
-            'image' => 'storage/media/others.png',
+            'image' => Storage::url('media/others.png',
             'description' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.<ul class="list-disc pl-6 mt-5"><li>Lorem ipsum dolor sit amet</li><li>Lorem ipsum dolor sit amet</li><li>Lorem ipsum dolor sit amet</li></ul></p>'
         ]
     ]

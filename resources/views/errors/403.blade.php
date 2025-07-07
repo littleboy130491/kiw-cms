@@ -1,7 +1,7 @@
 <x-layouts.app title="403">
     <x-partials.header />
     <main>
-        <x-partials.hero-page image="media/bangunan-pabrik-hero.jpg" h1="Akses Ditolak" />
+        <x-partials.hero-page :image="Storage::url('media/bangunan-pabrik-hero.jpg')" h1="Akses Ditolak" />
 
         <section id="403-page" class="my-18 lg:my-30 mx-4 sm:mx-6 lg:mx-0 text-center flex flex-col items-center gap-5">
             <h6 data-aos="fade-down" class="bullet-1">Error 403</h6>

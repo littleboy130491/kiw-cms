@@ -2,7 +2,7 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page image="media/bangunan-pabrik-hero.jpg" h1="Area Komersil" />
+        <x-partials.hero-page :image="Storage::url('media/bangunan-pabrik-hero.jpg')" h1="Area Komersil" />
 
         <!--Start Gallery-->
 
@@ -46,11 +46,11 @@
 
             <!--Content-->
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4">
-                <x-loop.gallery-grid image="media/meeting1.jpg" />
-                <x-loop.gallery-grid image="media/meeting2.jpg" />
-                <x-loop.gallery-grid image="media/meeting3.jpg" />
-                <x-loop.gallery-grid image="media/meeting2.jpg" />
-                <x-loop.gallery-grid image="media/meeting1.jpg" />
+                <x-loop.gallery-grid :image="Storage::url('media/meeting1.jpg')" />
+                <x-loop.gallery-grid :image="Storage::url('media/meeting2.jpg')" />
+                <x-loop.gallery-grid :image="Storage::url('media/meeting3.jpg')" />
+                <x-loop.gallery-grid :image="Storage::url('media/meeting2.jpg')" />
+                <x-loop.gallery-grid :image="Storage::url('media/meeting1.jpg')" />
 
             </div>
 

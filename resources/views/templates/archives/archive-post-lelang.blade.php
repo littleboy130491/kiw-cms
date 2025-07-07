@@ -22,7 +22,7 @@
 <x-partials.header />
 <main>
        
-<x-partials.hero-page image="media/lelang-hero.jpg" h1="Lelang"/>
+<x-partials.hero-page :image="Storage::url('media/lelang-hero.jpg')" h1="Lelang"/>
 
 <!--Start Post Archive-->
 <section id="post-archive" class="flex flex-col gap-9 lg:gap-18 my-18 lg:my-30 px-4 sm:px-6 lg:px-0 lg:w-[1200px] lg:mx-auto">
@@ -53,7 +53,7 @@
             "
             tag="Informasi"
             date="06/01/2025"
-            image="media/pengadaan-1-scaled-1.jpg"
+            :image="Storage::url('media/pengadaan-1-scaled-1.jpg')"
             url="#"
         />
 
@@ -63,17 +63,7 @@
             "
             tag="Informasi"
             date="06/01/2025"
-            image="media/lelangKIW24ig.jpg"
-            url="#"
-        />
-
-         <x-loop.artikel-berita
-            label="
-            Pendaftaran Rekanan Penyedia Barang dan Jasa di PT KIW
-            "
-            tag="Informasi"
-            date="06/01/2025"
-            image="media/pengadaan-1-scaled-1.jpg"
+            :image="Storage::url('media/lelangKIW24ig.jpg')"
             url="#"
         />
 
@@ -83,7 +73,17 @@
             "
             tag="Informasi"
             date="06/01/2025"
-            image="media/pengadaan-1-scaled-1.jpg"
+            :image="Storage::url('media/pengadaan-1-scaled-1.jpg')"
+            url="#"
+        />
+
+         <x-loop.artikel-berita
+            label="
+            Pendaftaran Rekanan Penyedia Barang dan Jasa di PT KIW
+            "
+            tag="Informasi"
+            date="06/01/2025"
+            :image="Storage::url('media/pengadaan-1-scaled-1.jpg')"
             url="#"
         />
 
@@ -93,7 +93,7 @@
             "
             tag="Informasi"
             date="06/01/2025"
-            image="media/lelangKIW24ig.jpg"
+            :image="Storage::url('media/lelangKIW24ig.jpg')"
             url="#"
         />
         <x-loop.artikel-berita
@@ -102,7 +102,7 @@
             "
             tag="Informasi"
             date="06/01/2025"
-            image="media/lelangKIW24ig.jpg"
+            :image="Storage::url('media/lelangKIW24ig.jpg')"
             url="#"
         />
         <x-loop.artikel-berita
@@ -111,7 +111,7 @@
             "
             tag="Informasi"
             date="06/01/2025"
-            image="media/lelangKIW24ig.jpg"
+            :image="Storage::url('media/lelangKIW24ig.jpg')"
             url="#"
         />
         <x-loop.artikel-berita
@@ -120,7 +120,7 @@
             "
             tag="Informasi"
             date="06/01/2025"
-            image="media/lelangKIW24ig.jpg"
+            :image="Storage::url('media/lelangKIW24ig.jpg')"
             url="#"
         />
         <x-loop.artikel-berita
@@ -129,7 +129,7 @@
             "
             tag="Informasi"
             date="06/01/2025"
-            image="media/lelangKIW24ig.jpg"
+            :image="Storage::url('media/lelangKIW24ig.jpg')"
             url="#"
         />
         <x-loop.artikel-berita
@@ -138,7 +138,7 @@
             "
             tag="Informasi"
             date="06/01/2025"
-            image="media/lelangKIW24ig.jpg"
+            :image="Storage::url('media/lelangKIW24ig.jpg')"
             url="#"
         />
         <x-loop.artikel-berita
@@ -147,7 +147,7 @@
             "
             tag="Informasi"
             date="06/01/2025"
-            image="media/lelangKIW24ig.jpg"
+            :image="Storage::url('media/lelangKIW24ig.jpg')"
             url="#"
         />
         <x-loop.artikel-berita
@@ -156,7 +156,7 @@
             "
             tag="Informasi"
             date="06/01/2025"
-            image="media/lelangKIW24ig.jpg"
+            :image="Storage::url('media/lelangKIW24ig.jpg')"
             url="#"
         />
         

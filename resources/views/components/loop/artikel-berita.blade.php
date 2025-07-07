@@ -12,7 +12,7 @@
 
     <!-- Front -->
     <div class="grow gap-2 bg-cover flex flex-col bg-center"
-         style="background-image: url('{{ asset($image) }}');">
+         style="background-image: url('{{ Storage::url($image) }}');">
         <div class="gradient-black-half grow px-6 py-6 h-full flex flex-col justify-end">
             <div class="h-fit flex flex-col gap-2">
                 <div class="flex flex-row gap-5">

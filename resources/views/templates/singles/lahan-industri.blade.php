@@ -1,12 +1,3 @@
-@pushOnce('before_head_close')
-    <!--AOS-->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-@endPushOnce
-
 @pushOnce('before_body_close')
     @vite('resources/js/popup-modal-main.js')
 @endPushOnce
@@ -15,7 +6,7 @@
     <x-partials.header />
 
     <main>
-        <x-partials.hero-page image="media/lahan-industri-hero.jpg" h1="Lahan Industri" />
+        <x-partials.hero-page :image="Storage::url('media/lahan-industri-hero.jpg')" h1="Lahan Industri" />
 
         <!--Start Lahan Industri-->
 
@@ -26,7 +17,7 @@
 
                 <!-- Hotspot Items -->
                 <x-loop.hotspot-item-lahan-industri top="20" left="50" label="Kaveling D" luas="4.50 Ha"
-                    image="media/kaveling-d.jpg">
+                    :image="Storage::url('media/kaveling-d.jpg')">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -35,7 +26,7 @@
                 </x-loop.hotspot-item-lahan-industri>
 
                 <x-loop.hotspot-item-lahan-industri top="40" left="20" label="Kaveling A" luas="3.50 Ha"
-                    image="media/kaveling-d.jpg">
+                    :image="Storage::url('media/kaveling-d.jpg')">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -45,7 +36,7 @@
 
 
                 <x-loop.hotspot-item-lahan-industri top="55" left="22" label="Kaveling C" luas="1.50 Ha"
-                    image="media/kaveling-d.jpg">
+                    :image="Storage::url('media/kaveling-d.jpg')">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -54,7 +45,7 @@
                 </x-loop.hotspot-item-lahan-industri>
 
                 <x-loop.hotspot-item-lahan-industri top="55" left="90" label="Kaveling C" luas="1.50 Ha"
-                    image="media/kaveling-d.jpg">
+                    :image="Storage::url('media/kaveling-d.jpg')">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse

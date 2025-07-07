@@ -5,22 +5,22 @@
     'facilities' => [
         [
             'title' => 'Masjid',
-            'image' => 'storage/media/masjid.jpg',
+            'image' => Storage::url('media/masjid.jpg'),
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.'
         ],
         [
             'title' => 'Pengelola Air Bersih',
-            'image' => 'storage/media/pengelolaan-air.jpg',
+            'image' => Storage::url('media/pengelolaan-air.jpg'),
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.'
         ],
         [
             'title' => 'Pemadam Kebakaran',
-            'image' => 'storage/media/pemadam.jpg',
+            'image' => Storage::url('media/pemadam.jpg'),
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.'
         ],
         [
             'title' => 'Jalan Lingkungan',
-            'image' => 'storage/media/jalan.jpg',
+            'image' => Storage::url('media/jalan.jpg'),
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.'
         ]
     ]

@@ -3,7 +3,7 @@
 
     <main>
 
-        <x-partials.hero-page image="media/penghargaan-hero.jpg" h1="Penghargaan & Sertifikasi" />
+        <x-partials.hero-page :image="Storage::url('media/penghargaan-hero.jpg')" h1="Penghargaan & Sertifikasi" />
 
         <!--Penghargaan & Sertifikat-->
         <section id="penghargaan-sertifikat"
@@ -79,27 +79,27 @@
             <!--Content-->
             <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-12 z-99">
 
-                <x-loop.penghargaan image="media/bumn-branding.png" class="penghargaan"
+                <x-loop.penghargaan :image="Storage::url('media/bumn-branding.png')" class="penghargaan"
                     label="
         BUMN Branding & Marketing Award 2023
         " />
 
-                <x-loop.penghargaan image="media/2021-Excellence-Financial.png" class="penghargaan"
+                <x-loop.penghargaan :image="Storage::url('media/2021-Excellence-Financial.png')" class="penghargaan"
                     label="
         2021 Excellence Financial Performance SOE in 10 Consecutive Years (2013-2022) Infobank
         " />
 
-                <x-loop.penghargaan image="media/certificate -9001.png" class="sertifikasi"
+                <x-loop.penghargaan :image="Storage::url('media/certificate -9001.png')" class="sertifikasi"
                     label="
         2021 for The Financial Performance with Predicate Excellent During 2011-2020 Infobank
         " />
 
-                <x-loop.penghargaan image="media/2021-Excellence-Financial.png" class="penghargaan"
+                <x-loop.penghargaan :image="Storage::url('media/2021-Excellence-Financial.png')" class="penghargaan"
                     label="
         2021 Excellence Financial Performance SOE in 10 Consecutive Years (2013-2022) Infobank
         " />
 
-                <x-loop.penghargaan image="media/certificate -9001.png" class="sertifikasi"
+                <x-loop.penghargaan :image="Storage::url('media/certificate -9001.png')" class="sertifikasi"
                     label="
         2021 for The Financial Performance with Predicate Excellent During 2011-2020 Infobank
         " />

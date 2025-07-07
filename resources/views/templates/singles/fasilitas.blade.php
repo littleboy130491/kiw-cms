@@ -6,7 +6,7 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page image="media/fasilitas-hero.jpg" h1="Fasilitas Penunjang" />
+        <x-partials.hero-page :image="Storage::url('media/fasilitas-hero.jpg')" h1="Fasilitas Penunjang" />
 
 
         <!--Start Fasilitas Content-->
@@ -14,7 +14,7 @@
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 my-18 lg:my-30 px-4 sm:px-6 lg:px-0 lg:w-[1200px] lg:mx-auto">
 
             <!--item-->
-            <x-loop.fasilitas-loop label="Masjid" image="media/masjid.jpg">
+            <x-loop.fasilitas-loop label="Masjid" :image="Storage::url('media/masjid.jpg')">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.
                 Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur vestibulum sem eget massa
                 semper, a sagittis tortor accumsan. Duis luctus ante vel augue efficitur lacinia. Sed ut tortor in velit
@@ -26,7 +26,7 @@
                 faucibus. Maecenas eget turpis eget odio malesuada dignissim non a lectus.
             </x-loop.fasilitas-loop>
 
-            <x-loop.fasilitas-loop label="Pengelola Air Bersih" image="media/pengelolaan-air.jpg">
+            <x-loop.fasilitas-loop label="Pengelola Air Bersih" :image="Storage::url('media/pengelolaan-air.jpg')">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.
                 Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur vestibulum sem eget massa
                 semper, a sagittis tortor accumsan. Duis luctus ante vel augue efficitur lacinia. Sed ut tortor in velit
@@ -38,7 +38,7 @@
                 faucibus. Maecenas eget turpis eget odio malesuada dignissim non a lectus.
             </x-loop.fasilitas-loop>
 
-            <x-loop.fasilitas-loop label="Pemadam Kebakaran" image="media/pemadam.jpg">
+            <x-loop.fasilitas-loop label="Pemadam Kebakaran" :image="Storage::url('media/pemadam.jpg')">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.
                 Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur vestibulum sem eget massa
                 semper, a sagittis tortor accumsan. Duis luctus ante vel augue efficitur lacinia. Sed ut tortor in velit
@@ -50,7 +50,7 @@
                 faucibus. Maecenas eget turpis eget odio malesuada dignissim non a lectus.
             </x-loop.fasilitas-loop>
 
-            <x-loop.fasilitas-loop label="Jalan Lingkungan" image="media/jalan.jpg">
+            <x-loop.fasilitas-loop label="Jalan Lingkungan" :image="Storage::url('media/jalan.jpg')">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.
                 Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur vestibulum sem eget massa
                 semper, a sagittis tortor accumsan. Duis luctus ante vel augue efficitur lacinia. Sed ut tortor in velit

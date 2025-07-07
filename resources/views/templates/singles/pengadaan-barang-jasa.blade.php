@@ -2,7 +2,7 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page image="media/pengadaan-hero.jpg" h1="Pengadaan Barang & Jasa" />
+        <x-partials.hero-page :image="Storage::url('media/pengadaan-hero.jpg')" h1="Pengadaan Barang & Jasa" />
 
 
 

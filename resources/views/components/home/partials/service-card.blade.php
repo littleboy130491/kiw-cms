@@ -18,7 +18,7 @@
     {{-- Service Image --}}
     <div class="relative overflow-hidden rounded-t-lg">
         <x-ui.responsive-image
-            :src="asset($image)"
+            :src="$image"
             :alt="$title"
             aspect-ratio="16/9"
             class="group-hover:scale-110 transition-transform duration-500"

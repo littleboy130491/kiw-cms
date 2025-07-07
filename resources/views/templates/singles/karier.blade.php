@@ -6,7 +6,7 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page image="media/karier-hero.jpg" h1="Lowongan Kerja" />
+        <x-partials.hero-page :image="Storage::url('media/karier-hero.jpg')" h1="Lowongan Kerja" />
 
 
 
@@ -26,7 +26,7 @@
             <li>Pengalaman minimal 2 tahun di bidang serupa</li>
             <li>Mampu mengoperasikan software AutoCAD dan MS Project</li>
         </ul>"
-                url="https://www.jobsdb.com/" image="media/karier-1.jpg" />
+                url="https://www.jobsdb.com/" :image="Storage::url('media/karier-1.jpg')" />
 
             <x-loop.accordion-karier label="Analis Investasi & Pengembangan Bisnis" category="Freelance"
                 desc="
@@ -41,7 +41,7 @@
             <li>Pengalaman minimal 2 tahun di bidang serupa</li>
             <li>Mampu mengoperasikan software AutoCAD dan MS Project</li>
         </ul>"
-                url="https://www.jobsdb.com/" image="media/karier-1.jpg" />
+                url="https://www.jobsdb.com/" :image="Storage::url('media/karier-1.jpg')" />
 
             <x-loop.accordion-karier label="Analis Investasi & Pengembangan Bisnis" category="Freelance"
                 desc="
@@ -56,7 +56,7 @@
             <li>Pengalaman minimal 2 tahun di bidang serupa</li>
             <li>Mampu mengoperasikan software AutoCAD dan MS Project</li>
         </ul>"
-                url="https://www.jobsdb.com/" image="media/karier-1.jpg" />
+                url="https://www.jobsdb.com/" :image="Storage::url('media/karier-1.jpg')" />
 
             <x-loop.accordion-karier label="Staff Legal & Perizinan" category="Freelance"
                 desc="
@@ -71,7 +71,7 @@
             <li>Pengalaman minimal 2 tahun di bidang serupa</li>
             <li>Mampu mengoperasikan software AutoCAD dan MS Project</li>
         </ul>"
-                url="https://www.jobsdb.com/" image="media/karier-1.jpg" />
+                url="https://www.jobsdb.com/" :image="Storage::url('media/karier-1.jpg')" />
 
             <x-loop.accordion-karier label="Staff Keuangan & Akuntansi" category="Fulltime"
                 desc="
@@ -86,7 +86,7 @@
             <li>Pengalaman minimal 2 tahun di bidang serupa</li>
             <li>Mampu mengoperasikan software AutoCAD dan MS Project</li>
         </ul>"
-                url="https://www.jobsdb.com/" image="media/karier-1.jpg" />
+                url="https://www.jobsdb.com/" :image="Storage::url('media/karier-1.jpg')" />
 
 
         </section>

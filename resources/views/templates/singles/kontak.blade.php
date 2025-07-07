@@ -2,7 +2,7 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page image="media/kontak-hero.jpg" h1="Kontak" />
+        <x-partials.hero-page :image="Storage::url('media/kontak-hero.jpg')" h1="Kontak" />
 
         <!--Start Informasi Kontak-->
         <section id="informasi-kontak"

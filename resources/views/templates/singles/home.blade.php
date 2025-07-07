@@ -580,20 +580,20 @@
             <div class="relative w-full lg:max-w-[100vw] overflow-hidden">
                 <div class="swiper-logo ">
                     <div class="swiper-wrapper lg:!flex lg:gap-5">
-                        <x-loop.tenant-logo image="media/logoipsum-1.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-2.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-3.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-4.png" />
+                        <x-loop.tenant-logo :image="Storage::url('media/logoipsum-1.png')" />
+                        <x-loop.tenant-logo :image="Storage::url('media/logoipsum-2.png')" />
+                        <x-loop.tenant-logo :image="Storage::url('media/logoipsum-3.png')" />
+                        <x-loop.tenant-logo :image="Storage::url('media/logoipsum-4.png')" />
 
-                        <x-loop.tenant-logo image="media/logoipsum-7.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-8.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-1.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-2.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-3.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-4.png" />
+                        <x-loop.tenant-logo :image="Storage::url('media/logoipsum-7.png')" />
+                        <x-loop.tenant-logo :image="Storage::url('media/logoipsum-8.png')" />
+                        <x-loop.tenant-logo :image="Storage::url('media/logoipsum-1.png')" />
+                        <x-loop.tenant-logo :image="Storage::url('media/logoipsum-2.png')" />
+                        <x-loop.tenant-logo :image="Storage::url('media/logoipsum-3.png')" />
+                        <x-loop.tenant-logo :image="Storage::url('media/logoipsum-4.png')" />
 
-                        <x-loop.tenant-logo image="media/logoipsum-7.png" />
-                        <x-loop.tenant-logo image="media/logoipsum-8.png" />
+                        <x-loop.tenant-logo :image="Storage::url('media/logoipsum-7.png')" />
+                        <x-loop.tenant-logo :image="Storage::url('media/logoipsum-8.png')" />
 
                     </div>
 
@@ -633,24 +633,24 @@
                     label="
                     Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
                     "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
+                    tag="Informasi" date="06/01/2025" :image="Storage::url('media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg')"
                     url="#" />
                 <x-loop.artikel-berita
                     label="
                     Dirut KIW Berbagi Pengalaman Penerapan GCG di Program “Library Cafe” BPKP Jateng
                     "
-                    tag="Informasi" date="06/01/2025" image="media/library-caffe.jpg" url="#" />
+                    tag="Informasi" date="06/01/2025" :image="Storage::url('media/library-caffe.jpg')" url="#" />
                 <x-loop.artikel-berita
                     label="
                     Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
                     "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
+                    tag="Informasi" date="06/01/2025" :image="Storage::url('media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg')"
                     url="#" />
                 <x-loop.artikel-berita
                     label="
                     Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
                     "
-                    tag="Informasi" date="06/01/2025" image="media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg"
+                    tag="Informasi" date="06/01/2025" :image="Storage::url('media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg')"
                     url="#" />
 
 

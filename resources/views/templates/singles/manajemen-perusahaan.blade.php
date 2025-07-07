@@ -6,7 +6,7 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page image="media/manajemen-hero.jpg" h1="Manajemen Perusahaan" />
+        <x-partials.hero-page :image="Storage::url('media/manajemen-hero.jpg')" h1="Manajemen Perusahaan" />
 
         <!--Start Manajemen-->
         <section id="manajemen"
@@ -14,7 +14,7 @@
 
             <!--item-->
             <x-loop.popup-item-manajemen name="Andrie Tardiwan Utama, S.E., M.D.S." position="Independent Commissioner"
-                image="media/andrie-tardiwan.jpg">
+                :image="Storage::url('media/andrie-tardiwan.jpg')">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.
                 Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur vestibulum sem eget massa
                 semper, a sagittis tortor accumsan. Duis luctus ante vel augue efficitur lacinia. Sed ut tortor in velit
@@ -28,7 +28,7 @@
 
             <!--item-->
             <x-loop.popup-item-manajemen name="Dr. A.P. Ir. Sujarwanto Dwiatmoko, M.Si" position="President Commissioner"
-                image="media/sujarwanto.jpg">
+                :image="Storage::url('media/sujarwanto.jpg')">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.
                 Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur vestibulum sem eget massa
                 semper, a sagittis tortor accumsan. Duis luctus ante vel augue efficitur lacinia. Sed ut tortor in velit
@@ -42,7 +42,7 @@
 
             <!--item-->
             <x-loop.popup-item-manajemen name="Ir. Anton Santosa, M.T." position="Commissioner"
-                image="media/andrie-tardiwan.jpg">
+                :image="Storage::url('media/andrie-tardiwan.jpg')">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.
                 Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur vestibulum sem eget massa
                 semper, a sagittis tortor accumsan. Duis luctus ante vel augue efficitur lacinia. Sed ut tortor in velit
@@ -56,7 +56,7 @@
 
             <!--item-->
             <x-loop.popup-item-manajemen name="Andrie Tardiwan Utama, S.E., M.D.S." position="Independent Commissioner"
-                image="media/andrie-tardiwan.jpg">
+                :image="Storage::url('media/andrie-tardiwan.jpg')">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.
                 Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur vestibulum sem eget massa
                 semper, a sagittis tortor accumsan. Duis luctus ante vel augue efficitur lacinia. Sed ut tortor in velit
@@ -70,7 +70,7 @@
 
             <!--item-->
             <x-loop.popup-item-manajemen name="Andrie Tardiwan Utama, S.E., M.D.S." position="Independent Commissioner"
-                image="media/andrie-tardiwan.jpg">
+                :image="Storage::url('media/andrie-tardiwan.jpg')">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.
                 Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur vestibulum sem eget massa
                 semper, a sagittis tortor accumsan. Duis luctus ante vel augue efficitur lacinia. Sed ut tortor in velit
