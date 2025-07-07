@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @stack('after_head_open')
+    @livewireStyles
     @vite('resources/css/app.css')
     <!--Google Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +26,7 @@
 <body class="{{ $bodyClasses ?? '' }}">
     @stack('after_body_open')
     {{ $slot }}
+    @livewireScripts
     @vite('resources/js/app.js')
     @stack('before_body_close')
 </body>
