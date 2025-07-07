@@ -16,7 +16,8 @@ class ContactForm extends SubmissionForm
     {
         $rules = parent::rules();
         $rules['company'] = 'nullable|string|max:255';
-        $rules['message'] = 'required|string|min:10|max:2000'; // Override parent rule for message/comment
+        $rules['phone'] = 'required|string|max:50'; // Make phone required
+        $rules['message'] = 'required|string|min:10|max:2000';
         return $rules;
     }
 
@@ -27,7 +28,33 @@ class ContactForm extends SubmissionForm
             return;
         }
 
-        $this->validate();
+        // Handle CSRF token refresh for Turnstile before validation
+        if ($this->isBotProtectionEnabled() && $this->getBotProtectionType() === 'turnstile') {
+            try {
+                // Force regenerate the session token
+                session()->regenerateToken();
+
+                // Also refresh the CSRF token in the request
+                request()->session()->regenerateToken();
+
+                // Wait a moment for token regeneration
+                usleep(100000); // 100ms
+            } catch (\Exception $e) {
+                $this->addError('form', 'Session error. Please refresh the page and try again.');
+                return;
+            }
+        }
+
+        try {
+            $this->validate();
+        } catch (\Illuminate\Session\TokenMismatchException $e) {
+            // Handle CSRF token mismatch specifically
+            $this->addError('form', 'Session expired. Please refresh the page and try again.');
+            return;
+        } catch (\Exception $e) {
+            // Handle other validation errors
+            return;
+        }
 
         // Additional bot protection validation for reCAPTCHA
         if ($this->isBotProtectionEnabled() && $this->getBotProtectionType() === 'captcha') {
@@ -78,7 +105,7 @@ class ContactForm extends SubmissionForm
                 }
             }
 
-            // Reset form after successful submission (optional)
+            // Reset form after successful submission
             $this->reset(['name', 'email', 'message', 'subject', 'phone', 'captcha', 'turnstile', 'company']);
 
         } catch (\Exception $e) {
@@ -89,9 +116,6 @@ class ContactForm extends SubmissionForm
 
     public function render()
     {
-        return view('livewire.contact-form', [
-            'isBotProtectionEnabled' => $this->isBotProtectionEnabled(),
-            'botProtectionType' => $this->getBotProtectionType(),
-        ]);
+        return view('livewire.contact-form');
     }
 }

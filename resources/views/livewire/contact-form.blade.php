@@ -68,16 +68,17 @@
                 @enderror
             </div>
 
-            @if ($isBotProtectionEnabled)
+            {{-- Fixed bot protection section - using method calls instead of variables --}}
+            @if ($this->isBotProtectionEnabled())
                 <div class="w-full flex justify-center mt-4">
-                    @if ($botProtectionType === 'captcha')
+                    @if ($this->getBotProtectionType() === 'captcha')
                         <div wire:ignore>
                             {!! NoCaptcha::display() !!}
                         </div>
                         @error('captcha')
                             <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
                         @enderror
-                    @elseif ($botProtectionType === 'turnstile')
+                    @elseif ($this->getBotProtectionType() === 'turnstile')
                         <x-turnstile wire:model="turnstile" />
                         @error('turnstile')
                             <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
@@ -108,29 +109,41 @@
         </form>
     </div>
 
-    @if ($isBotProtectionEnabled && $botProtectionType === 'captcha')
+    {{-- Fixed JavaScript sections - using method calls --}}
+    @if ($this->isBotProtectionEnabled() && $this->getBotProtectionType() === 'captcha')
         <script>
-            document.addEventListener('livewire:load', function() {
-                window.livewire.on('reset-captcha', () => {
-                    grecaptcha.reset();
+            document.addEventListener('livewire:init', function() {
+                Livewire.on('reset-captcha', () => {
+                    if (typeof grecaptcha !== 'undefined') {
+                        grecaptcha.reset();
+                    }
                 });
             });
         </script>
     @endif
 
-    @if ($isBotProtectionEnabled && $botProtectionType === 'turnstile')
+    @if ($this->isBotProtectionEnabled() && $this->getBotProtectionType() === 'turnstile')
         <script>
-            document.addEventListener('livewire:load', function() {
-                window.livewire.on('reset-turnstile', () => {
-                    turnstile.reset();
+            document.addEventListener('livewire:init', function() {
+                // Set up Turnstile callback
+                window.turnstileCallback = function(token) {
+                    console.log('Turnstile completed, token received');
+                    @this.set('turnstile', token);
+                };
+
+                // Reset Turnstile when needed
+                Livewire.on('reset-turnstile', () => {
+                    if (typeof turnstile !== 'undefined') {
+                        turnstile.reset();
+                    }
                 });
             });
         </script>
     @endif
 
     <script>
-        document.addEventListener('livewire:load', function() {
-            window.livewire.on('hide-success-after-delay', () => {
+        document.addEventListener('livewire:init', function() {
+            Livewire.on('hide-success-after-delay', () => {
                 setTimeout(() => {
                     @this.call('hideSuccess');
                 }, 5000);
