@@ -1,3 +1,6 @@
+@pushOnce('before_body_close')
+    @vite('resources/js/pages/profil-perusahaan.js')
+@endPushOnce
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
@@ -111,7 +114,7 @@
                         <!-- Custom icon.arrow Right -->
                         <div
                             class="absolute !top-10 lg:!top-15 swiper-button-next bg-white rounded-[100%] !h-[30px] !w-[30px] p-1">
-                            <img class="w-2/3" :src="Storage::url('media/arrow-right-solid.png')" alt="arrow">
+                            <img class="w-2/3" src="{{Storage::url('media/arrow-right-solid.png')}}" alt="arrow">
                         </div>
 
                     </div>
@@ -141,7 +144,7 @@
                 <x-tab.tab-contents-saham id="tab1">
                     <div class="relative">
                         <a href="{{ Storage::url('media/pemegang-saham.png') }}" data-lightbox="gallery">
-                            <img class="w-full" :src="Storage::url('media/pemegang-saham.png')">
+                            <img class="w-full" src="{{Storage::url('media/pemegang-saham.png')}}">
                         </a>
                     </div>
                 </x-tab.tab-contents-saham>
@@ -150,7 +153,7 @@
                 <x-tab.tab-contents-saham id="tab2">
                     <div class="flex flex-col lg:flex-row lg:justify-between gap-12">
                         <div class="flex flex-col justify-between gap-10 lg:gap-20 lg:w-1/2">
-                            <img class="w-1/4 sm:w-1/5 lg:w-1/3" :src="Storage::url('media/gbc-logo.png')"
+                            <img class="w-1/4 sm:w-1/5 lg:w-1/3" src="{{Storage::url('media/gbc-logo.png')}}"
                                 alt="PWS">
                             <div class="flex flex-col gap-5">
                                 <h6 class="bullet-1">anak perusahaan</h6>
@@ -178,7 +181,7 @@
                         <div class="relative lg:w-1/2">
                             <a href="{{ Storage::url('media/anak-perusahaan-1.png') }}" data-lightbox="gallery">
                                 <img class="w-full object-contain"
-                                    :src="Storage::url('media/anak-perusahaan-1.png')">
+                                    src="{{Storage::url('media/anak-perusahaan-1.png')}}">
                             </a>
                         </div>
                     </div>
@@ -188,7 +191,7 @@
                 <x-tab.tab-contents-saham id="tab3">
                     <div class="flex flex-col lg:flex-row lg:justify-between gap-12">
                         <div class="flex flex-col justify-between gap-10 lg:gap-20 lg:w-1/2">
-                            <img class="w-1/4 sm:w-1/5 lg:w-1/3" :src="Storage::url('media/pws-logo.png')"
+                            <img class="w-1/4 sm:w-1/5 lg:w-1/3" src="{{Storage::url('media/pws-logo.png')}}"
                                 alt="PWS">
                             <div class="flex flex-col gap-5">
                                 <h6 class="bullet-1">anak perusahaan</h6>
@@ -217,7 +220,7 @@
                         <div class="relative lg:w-1/2">
                             <a href="{{ Storage::url('media/anak-perusahaan-2.png') }}" data-lightbox="gallery">
                                 <img class="w-full object-contain"
-                                    :src="Storage::url('media/anak-perusahaan-2.png')">
+                                    src="{{Storage::url('media/anak-perusahaan-2.png')}}">
                             </a>
                         </div>
                     </div>
@@ -240,7 +243,7 @@
 
             <div class="map-container relative overflow-x-auto whitespace-nowrap max-w-full">
                 <div class="relative inline-block min-w-full">
-                    <img :src="Storage::url('media/map-koneksi.png')">
+                    <img src="{{Storage::url('media/map-koneksi.png')}}">
 
                     <!-- Hotspot Items -->
                     <x-loop.hotspot-item-koneksi-global top="20" left="30" country="Jepang"
