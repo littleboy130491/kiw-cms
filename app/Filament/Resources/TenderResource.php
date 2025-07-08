@@ -65,6 +65,16 @@ class TenderResource extends BaseContentResource
             'excerpt',
             'template',
             'custom_fields',
+            'featured_image'
+        ];
+    }
+
+    protected static function formRelationshipsFields(): array
+    {
+        return [
+            ...static::formTaxonomyRelationshipField('tenderYear'),
+            ...static::formTaxonomyRelationshipField('tenderStatus'),
+            ...static::formTaxonomyRelationshipField('tenderLocation'),
         ];
     }
 

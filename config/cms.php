@@ -116,6 +116,7 @@ return [
             'type' => 'content',
             'has_archive' => true,
             'has_single' => true,
+            'eager_load' => ['tenderYear', 'tenderStatus', 'tenderLocation'],
         ],
 
     ],

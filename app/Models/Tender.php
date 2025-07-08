@@ -51,7 +51,6 @@ class Tender extends Model
      */
     protected $casts = [
         'custom_fields' => 'array',
-        'specification' => 'array',
         'menu_order' => 'integer',
         'status' => ContentStatus::class,
         'due_date' => 'datetime',

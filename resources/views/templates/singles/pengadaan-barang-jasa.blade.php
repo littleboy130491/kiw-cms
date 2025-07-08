@@ -4,8 +4,6 @@
 
         <x-partials.hero-page :image="Storage::url('media/pengadaan-hero.jpg')" h1="Pengadaan Barang & Jasa" />
 
-
-
         <!--Start About Pengadaan-->
         <section id="about-pengadaan" class="relative bg-contain bg-no-repeat bg-bottom z-10"
             style="background-image:url({{ Storage::url('media/pengadaan-content.jpg') }})">
@@ -85,31 +83,9 @@
                 <h6 data-aos="fade-down" class="bullet-1 sm:text-center text-left sm:self-center">panduan pengadaan</h6>
                 <h2 data-aos="fade-up" class="sm:text-center text-left">Panduan Lengkap Proses Pengadaan</h2>
             </div>
+            <x-loop.panduan-pengadaan-grid />
 
 
-            <!--Content-->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-
-                <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="media/lipsum.pdf" />
-
-                <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="media/lipsum.pdf" />
-
-                <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="media/lipsum.pdf" />
-
-                <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="media/lipsum.pdf" />
-
-                <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="media/lipsum.pdf" />
-
-                <x-loop.panduan-pengadaan label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-                    doc="media/lipsum.pdf" />
-
-            </div>
-            </div>
         </section>
         <!-- End Panduan Pengadaan -->
 
