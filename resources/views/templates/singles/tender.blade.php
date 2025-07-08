@@ -1,4 +1,4 @@
-<x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app :title="$content->title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
 
@@ -16,48 +16,27 @@
                     <div data-aos="fade-down" class="flex flex-row gap-4">
                         <div class="flex flex-row items-center gap-2">
                             <x-icon.tag-icon-color />
-                            <p class="!text-[var(--color-purple)]">Informasi</p>
+                            <p class="!text-[var(--color-purple)]">{{ $content->tenderStatus->first()?->title }}</p>
                         </div>
                         <div class="flex flex-row items-center gap-2">
                             <x-icon.location-icon-color />
-                            <p class="!text-[var(--color-purple)]">Lokasi Pengadaan</p>
+                            <p class="!text-[var(--color-purple)]">{{ $content->tenderLocation->first()?->title }}</p>
                         </div>
                     </div>
                     <h2 data-aos="fade-up">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua
+                        {{ $content->title }}
                     </h2>
                 </div>
 
                 <!--Content-->
                 <div class="flex flex-col gap-5">
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae
-                        pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean
-                        sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa
-                        nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti
-                        sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+                        {!! $content->content !!}
                     </p>
                     <div class="flex flex-col gap-3">
-                        <x-loop.item-single-tender label="Tanggal Pembuatan Paket" value="Lorem ipsum dolor sit amet" />
-                        <x-loop.item-single-tender label="Tahun Anggaran" value="Lorem ipsum dolor sit amet" />
-                        <x-loop.item-single-tender label="Unit Kerja" value="Lorem ipsum dolor sit amet" />
-                        <x-loop.item-single-tender label="Bidang / Sub Bidang" value="Lorem ipsum dolor sit amet" />
-                        <x-loop.item-single-tender label="Uraian Pemilihan Penyedia"
-                            value="Lorem ipsum dolor sit amet" />
-                        <x-loop.item-single-tender label="Uraian Pemilihan Penyedia"
-                            value="Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos." />
-                        <x-loop.item-single-tender label="Lokasi Pekerjaan" value="Lorem ipsum dolor sit amet" />
-                        <x-loop.item-single-tender label="Jenis Pekerjaan" value="Lorem ipsum dolor sit amet" />
-                        <x-loop.item-single-tender label="Metode Pemilihan Penyedia"
-                            value="Lorem ipsum dolor sit amet" />
-                        <x-loop.item-single-tender label="Kualifikasi" value="Lorem ipsum dolor sit amet" />
-                        <x-loop.item-single-tender label="Metode Evaluasi" value="Lorem ipsum dolor sit amet" />
-                        <x-loop.item-single-tender label="Alamat" value="Lorem ipsum dolor sit amet" />
-                        <x-loop.item-single-tender label="Email" value="Lorem ipsum dolor sit amet" />
-                        <x-loop.item-single-tender label="Telepon" value="Lorem ipsum dolor sit amet" />
-                        <x-loop.item-single-tender label="Tahapan Proses" value="Lorem ipsum dolor sit amet" />
-
+                        @foreach ($content->specification as $spec)
+                            <x-loop.item-single-tender :spec="$spec" />
+                        @endforeach
                     </div>
                 </div>
                 <!--button-->
@@ -73,7 +52,12 @@
 
                 <!--Title-->
                 <div class="flex flex-col gap-5">
-                    <x-loop.tag-tahapan-proses tag="terbaru" />
+                    <div
+                        class="gradient-blue top-0 left-0 w-fit px-3 py-2 rounded-md {{ $content->tenderStatus->first()?->slug === 'terbaru' ? 'blinking' : '' }}">
+                        <p class="text-white uppercase text-[.8em]">
+                            {{ $content->tenderStatus->first()?->title ?? 'terbaru' }}</p>
+                    </div>
+
                     <div>
                         <h3 data-aos="fade-up">Tahapan Proses</h3>
                     </div>
@@ -81,21 +65,19 @@
 
                 <!--Milestone-->
                 <div class="milestone flex flex-col relative">
-
-                    <x-loop.milestone label="Pengumuman Tender" date="30 April 2025" />
-                    <x-loop.milestone label="Pendaftaran Paket" date="30 April 2025" />
-                    <x-loop.milestone label="Download dokumen pelelangan (termasuk dokumen kualifikasi)"
-                        date="09 Mei 2025" />
-                    <x-loop.milestone label="Aanwijzing Online" date="15 Mei 2025" />
-                    <x-loop.milestone label="Upload dokumen penawaran"
-                        date="19 Mei 2025 08:00 GMT+7s.d23 Mei 2025 15:00 GMT+7" />
-
+                    @foreach ($content->process as $process)
+                        <x-loop.milestone :process="$process" />
+                    @endforeach
                 </div>
 
             </div>
 
             <!--button-->
-            <a class="w-fit btn1 back -mt-7 lg:hidden"data-aos="fade-down" href="#">Kembali
+            <a class="w-fit btn1 back -mt-7 lg:hidden"data-aos="fade-down"
+                href="{{ route('cms.archive.content', [
+                    'lang' => app()->getLocale(),
+                    'content_type_archive_key' => 'tenders',
+                ]) }}">Kembali
                 <span>
                     <x-icon.arrow-back-white />
                 </span>

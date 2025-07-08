@@ -1,7 +1,7 @@
 @pushOnce('before_body_close')
     @vite('resources/js/pages/single-building.js')
 @endPushOnce
-<x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app :title="$content->title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
 

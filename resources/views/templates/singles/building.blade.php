@@ -5,7 +5,7 @@
 @php
     $media = \Awcodes\Curator\Models\Media::find($content->featured_image);
 @endphp
-<x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app :title="$content->title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
 

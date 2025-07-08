@@ -68,11 +68,9 @@ class Tender extends Model
         'excerpt',
         'process',
         'slug',
-        'specification',
         'title',
+        'specification',
     ];
-
-
 
     //--------------------------------------------------------------------------
     // Relationships

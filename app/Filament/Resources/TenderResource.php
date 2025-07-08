@@ -18,33 +18,38 @@ class TenderResource extends BaseContentResource
 
     protected static function additionalTranslatableFormFields(?string $locale): array
     {
-        $fields = [];
 
-        $specificationList = [
-            'tanggal' => 'Tanggal Pembuatan Paket',
-            'tahun_anggaran' => 'Tahun Anggaran',
-            'unit_kerja' => 'Unit Kerja',
-            'bidang' => 'Bidang / Sub Bidang',
-            'uraian' => 'Uraian Pemilihan Penyedia',
-            'lokasi' => 'Lokasi Pekerjaan',
-            'jenis' => 'Jenis Pekerjaan',
-            'metode_pemilihan' => 'Metode Pemilihan Penyedia',
-            'kualifikasi' => 'Kualifikasi',
-            'metode_evaluasi' => 'Metode Evaluasi',
-            'alamat' => 'Alamat',
-            'email' => 'Email',
-            'telepon' => 'Telepon',
+        $defaultSpecification = [
+            'Tanggal Pembuatan Paket',
+            'Tahun Anggaran',
+            'Unit Kerja',
+            'Bidang / Sub Bidang',
+            'Uraian Pemilihan Penyedia',
+            'Lokasi Pekerjaan',
+            'Jenis Pekerjaan',
+            'Metode Pemilihan Penyedia',
+            'Kualifikasi',
+            'Metode Evaluasi',
+            'Alamat',
+            'Email',
+            'Telepon',
         ];
 
 
-        foreach ($specificationList as $key => $label) {
-            $fields[] = TextInput::make('specification.' . $key)
-                ->label($label)
-                ->nullable()
-                ->columnSpan(1);
-        }
-
-        $fields[] =
+          $defaultItems = collect($defaultSpecification)->map(fn($item) => [
+            'name' => $item,
+        ])->toArray();
+    
+    return [
+        Repeater::make('specification')
+            ->schema([
+                TextInput::make('name')->nullable(),
+                TextInput::make('value')->nullable(),
+            ])
+            ->default($defaultItems)
+            ->columns(2)
+            ->columnSpanFull(),
+     
             Repeater::make('process')
                 ->columns(2)
                 ->schema([
@@ -54,9 +59,9 @@ class TenderResource extends BaseContentResource
                         ->columnSpan(1),
 
                 ])
-                ->columnSpanFull();
-
-        return $fields;
+                ->columnSpanFull()
+                ];
+        
     }
 
     protected static function hiddenFields(): array
