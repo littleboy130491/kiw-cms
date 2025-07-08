@@ -1,3 +1,9 @@
+@php
+    use App\Models\Report;
+    use Littleboy130491\Sumimasen\Enums\ContentStatus;
+    
+    $posts = Report::where('status', ContentStatus::Published)->get();
+@endphp
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
@@ -21,16 +27,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <x-loop.table-data title="Laporan Tahunan PT KIW (persero) Tahun 2014" size="9.45MB"
-                            format="pdf" date="2025-03-26" link="#" />
-                        <x-loop.table-data title="Laporan Tahunan PT KIW (persero) Tahun 2015" size="9.45MB"
-                            format="pdf" date="2025-03-26" link="#" />
-                        <x-loop.table-data title="Laporan Tahunan PT KIW (persero) Tahun 2016" size="9.45MB"
-                            format="pdf" date="2025-03-26" link="#" />
-                        <x-loop.table-data title="Laporan Tahunan PT KIW (persero) Tahun 2017" size="9.45MB"
-                            format="pdf" date="2025-03-26" link="#" />
-                        <x-loop.table-data title="Laporan Tahunan PT KIW (persero) Tahun 2018" size="9.45MB"
-                            format="pdf" date="2025-03-26" link="#" />
+                        @foreach ($posts as $post)
+                            <x-loop.table-data :post="$post" />
+                        @endforeach
                     </tbody>
                 </table>
 
