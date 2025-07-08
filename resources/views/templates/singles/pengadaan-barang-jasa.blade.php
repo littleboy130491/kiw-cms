@@ -31,7 +31,7 @@
                                 aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum
                                 egestas.
                             </p>
-                            <a class="w-fit btn1 mt-5"data-aos="fade-down" href="https://www.pengadaan.com/home"
+                            <a class="w-fit btn1 mt-5" data-aos="fade-down" href="https://www.pengadaan.com/home"
                                 target="_blank" rel="noopener noreferrer">kunjungi pengadaan
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -101,7 +101,9 @@
                         <h2 data-aos="fade-up" class="sm:text-center text-left">Pengadaan yang Sedang Berlangsung</h2>
                     </div>
                     <!--button Desktop Tablet-->
-                    <a class="w-fit btn1 mt-5 !hidden"data-aos="fade-down" href="#">lihat semua
+                    <a class="w-fit btn1 mt-5" data-aos="fade-down"
+                        href="{{ route('cms.archive.content', [app()->getLocale(), 'tenders']) }}">lihat
+                        semua
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -116,33 +118,8 @@
 
 
                 <!--Content-->
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-7 lg:gap-5">
-                    <x-loop.tender label="Tender Sistem ERP 1" date="06/01/2025"
-                        desc="
-                Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-                "
-                        url="#" tag="terbaru" />
+                <x-loop.tender-grid qty="4" />
 
-                    <x-loop.tender label="Tender Sistem ERP 2" date="06/01/2025"
-                        desc="
-                Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-                "
-                        url="#" tag="terbaru" />
-
-                    <x-loop.tender label="Tender Sistem ERP 3" date="06/01/2025"
-                        desc="
-                Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-                "
-                        url="#" tag="terbaru" />
-
-                    <x-loop.tender label="Tender Sistem ERP 4" date="06/01/2025"
-                        desc="
-                Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-                "
-                        url="#" tag="terbaru" />
-
-
-                </div>
             </div>
         </section>
         <!--End Pengadaan-->
