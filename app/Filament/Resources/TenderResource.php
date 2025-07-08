@@ -78,6 +78,11 @@ class TenderResource extends BaseContentResource
         ];
     }
 
+    protected static function getRelationshipsToReplicate(): array
+    {
+        return ['tenderYear', 'tenderStatus', 'tenderLocation'];
+    }
+
     public static function getRelations(): array
     {
         return [
