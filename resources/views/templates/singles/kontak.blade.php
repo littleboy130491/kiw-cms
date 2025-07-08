@@ -126,7 +126,7 @@
 
     </main>
     <x-partials.whatsapp />
-    <footer>
+    <footer id="footer-kontak">
         <!--Copyrights-->
         <div
             class="text-white gradient-blue-background text-center py-5 border-t-1 border-[var(--color-bordertransparent)] sm:!text-[.9em] !text-[.75em]">
