@@ -57,7 +57,7 @@ return [
             'has_single' => true,
             'archive_SEO_title' => 'Archive: Posts',
             'archive_SEO_description' => 'Archive of all posts',
-
+            'eager_load' => ['categories', 'tags']
         ],
         'categories' => [
             'model' => Littleboy130491\Sumimasen\Models\Category::class,
@@ -92,6 +92,7 @@ return [
             'type' => 'content',
             'has_archive' => true,
             'has_single' => true,
+            'eager_load' => ['buildingCategories'],
         ],
 
         'commercials' => [

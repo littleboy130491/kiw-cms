@@ -52,8 +52,9 @@ class BuildingResource extends BaseContentResource
                     TextInput::make('value')->nullable(),
 
                 ])
-                ->default($defaultItems)
                 ->columns(2)
+                ->default($defaultItems)
+                ->columnSpanFull(),
         ];
     }
 
