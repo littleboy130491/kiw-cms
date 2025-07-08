@@ -26,7 +26,8 @@
                     </p>
                     @if ($content->whatsapp)
                         <!--button-->
-                        <a class="w-fit btn1 mt-5 wa-message"data-aos="fade-down" href="" target="_blank">hubungi
+                        <a class="w-fit btn1 mt-5 wa-message"data-aos="fade-down" href="{{ $content->whatsapp }}"
+                            target="_blank">hubungi
                             sekarang
                             <span>
                                 <img src="{{ Storage::url('media/whatsapp-white.png') }}">
@@ -42,7 +43,7 @@
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4">
                 @foreach ($content->gallery as $media)
                     @php
-                        $image_url = \Awcodes\Curator\Models\Media::find($content->featured_image)->url;
+                        $image_url = \Awcodes\Curator\Models\Media::find($media)->url;
                     @endphp
                     <a href="{{ $image_url }}" data-lightbox="gallery">
                         <x-curator-glider :media="$media" class="rounded-md" />
@@ -53,7 +54,7 @@
 
         </section>
         <!--Start Spesifikasi-->
-        @if ($content->specification[app()->getLocale()])
+        @if ($content->specification)
             <section id="spesifikasi" class="lg:py-30 py-18 bg-cover bg-[var(--color-transit)]">
                 <div class="flex flex-col lg:flex-row lg:gap-8 gap-5 lg:px-0 lg:max-w-[1200px] lg:mx-auto sm:px-6 px-4">
 
@@ -62,7 +63,7 @@
 
                     <!--Content-->
                     <div class="lg:w-2/3 flex flex-col">
-                        @foreach ($content->specification[app()->getLocale()] as $spec)
+                        @foreach ($content->specification as $spec)
                             <x-loop.spesifikasi :label="$spec['name']" :value="$spec['value']" />
                         @endforeach
                     </div>

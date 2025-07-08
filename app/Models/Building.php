@@ -68,6 +68,7 @@ class Building extends Model
         'excerpt',
         'slug',
         'title',
+        'specification',
     ];
 
 

@@ -1,7 +1,11 @@
 @pushOnce('before_body_close')
     @vite('resources/js/popup-modal-main.js')
 @endPushOnce
-
+@php
+    use App\Models\Facility;
+    use Littleboy130491\Sumimasen\Enums\ContentStatus;
+    $posts = Facility::where('status', ContentStatus::Published)->get();
+@endphp
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
@@ -14,57 +18,9 @@
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 my-18 lg:my-30 px-4 sm:px-6 lg:px-0 lg:w-[1200px] lg:mx-auto">
 
             <!--item-->
-            <x-loop.fasilitas-loop label="Masjid" :image="Storage::url('media/masjid.jpg')">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.
-                Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur vestibulum sem eget massa
-                semper, a sagittis tortor accumsan. Duis luctus ante vel augue efficitur lacinia. Sed ut tortor in velit
-                porta tristique ac nec purus. Etiam eu leo a arcu iaculis pretium. Vivamus dignissim urna non neque
-                congue laoreet. Duis posuere placerat dui, id auctor nisl hendrerit ut. Phasellus vitae odio purus. In
-                id nisi vitae risus hendrerit gravida vitae in lectus. Donec ut ex a magna lobortis lobortis. Aenean
-                aliquam nisi libero, id faucibus turpis sagittis at. Curabitur vestibulum ligula commodo enim tempor
-                luctus. Fusce lacinia a neque dapibus congue. Interdum et malesuada fames ac ante ipsum primis in
-                faucibus. Maecenas eget turpis eget odio malesuada dignissim non a lectus.
-            </x-loop.fasilitas-loop>
-
-            <x-loop.fasilitas-loop label="Pengelola Air Bersih" :image="Storage::url('media/pengelolaan-air.jpg')">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.
-                Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur vestibulum sem eget massa
-                semper, a sagittis tortor accumsan. Duis luctus ante vel augue efficitur lacinia. Sed ut tortor in velit
-                porta tristique ac nec purus. Etiam eu leo a arcu iaculis pretium. Vivamus dignissim urna non neque
-                congue laoreet. Duis posuere placerat dui, id auctor nisl hendrerit ut. Phasellus vitae odio purus. In
-                id nisi vitae risus hendrerit gravida vitae in lectus. Donec ut ex a magna lobortis lobortis. Aenean
-                aliquam nisi libero, id faucibus turpis sagittis at. Curabitur vestibulum ligula commodo enim tempor
-                luctus. Fusce lacinia a neque dapibus congue. Interdum et malesuada fames ac ante ipsum primis in
-                faucibus. Maecenas eget turpis eget odio malesuada dignissim non a lectus.
-            </x-loop.fasilitas-loop>
-
-            <x-loop.fasilitas-loop label="Pemadam Kebakaran" :image="Storage::url('media/pemadam.jpg')">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.
-                Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur vestibulum sem eget massa
-                semper, a sagittis tortor accumsan. Duis luctus ante vel augue efficitur lacinia. Sed ut tortor in velit
-                porta tristique ac nec purus. Etiam eu leo a arcu iaculis pretium. Vivamus dignissim urna non neque
-                congue laoreet. Duis posuere placerat dui, id auctor nisl hendrerit ut. Phasellus vitae odio purus. In
-                id nisi vitae risus hendrerit gravida vitae in lectus. Donec ut ex a magna lobortis lobortis. Aenean
-                aliquam nisi libero, id faucibus turpis sagittis at. Curabitur vestibulum ligula commodo enim tempor
-                luctus. Fusce lacinia a neque dapibus congue. Interdum et malesuada fames ac ante ipsum primis in
-                faucibus. Maecenas eget turpis eget odio malesuada dignissim non a lectus.
-            </x-loop.fasilitas-loop>
-
-            <x-loop.fasilitas-loop label="Jalan Lingkungan" :image="Storage::url('media/jalan.jpg')">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.
-                Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur vestibulum sem eget massa
-                semper, a sagittis tortor accumsan. Duis luctus ante vel augue efficitur lacinia. Sed ut tortor in velit
-                porta tristique ac nec purus. Etiam eu leo a arcu iaculis pretium. Vivamus dignissim urna non neque
-                congue laoreet. Duis posuere placerat dui, id auctor nisl hendrerit ut. Phasellus vitae odio purus. In
-                id nisi vitae risus hendrerit gravida vitae in lectus. Donec ut ex a magna lobortis lobortis. Aenean
-                aliquam nisi libero, id faucibus turpis sagittis at. Curabitur vestibulum ligula commodo enim tempor
-                luctus. Fusce lacinia a neque dapibus congue. Interdum et malesuada fames ac ante ipsum primis in
-                faucibus. Maecenas eget turpis eget odio malesuada dignissim non a lectus.
-            </x-loop.fasilitas-loop>
-
-
-
-
+            @foreach ($posts as $post)
+                <x-loop.fasilitas-loop :post="$post" />
+            @endforeach
 
         </section>
 

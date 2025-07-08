@@ -66,6 +66,7 @@ class Commercial extends Model
         'excerpt',
         'slug',
         'title',
+        'specification',
     ];
 
 
