@@ -112,7 +112,15 @@
 
         <!-- Start Form Kontak -->
         <section id="kontak-form" class="bg-[--color-transit]">
+            <div class="py-18 lg:py-30 px-4 sm:px-6 lg:px-0 flex flex-col gap-7 lg:gap-9 lg:w-[1200px] lg:mx-auto">
+             <!--title-->
+        <div class="flex flex-col gap-5">
+            <h2 data-aos="fade-up" class="text-center">Mari Bergabung dengan KIW?</h2>
+            <p class="text-center">Gabung sekarang dan temukan berbagai kemudahan serta peluang bisnis strategis bersama KIW.</p>
+        </div>
+
             <livewire:contact-form />
+            </div>
         </section>
         <!--End Form Kontak-->
 

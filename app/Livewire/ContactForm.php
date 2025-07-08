@@ -28,38 +28,21 @@ class ContactForm extends SubmissionForm
             return;
         }
 
-        // Handle CSRF token refresh for Turnstile before validation
-        if ($this->isBotProtectionEnabled() && $this->getBotProtectionType() === 'turnstile') {
-            try {
-                // Force regenerate the session token
-                session()->regenerateToken();
-
-                // Also refresh the CSRF token in the request
-                request()->session()->regenerateToken();
-
-                // Wait a moment for token regeneration
-                usleep(100000); // 100ms
-            } catch (\Exception $e) {
-                $this->addError('form', 'Session error. Please refresh the page and try again.');
-                return;
-            }
-        }
-
         try {
             $this->validate();
-        } catch (\Illuminate\Session\TokenMismatchException $e) {
-            // Handle CSRF token mismatch specifically
-            $this->addError('form', 'Session expired. Please refresh the page and try again.');
-            return;
-        } catch (\Exception $e) {
-            // Handle other validation errors
-            return;
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // Handle validation errors
+            $this->dispatch('form-error');
+            throw $e; // Re-throw to show validation errors
         }
 
-        // Additional bot protection validation for reCAPTCHA
+        // Additional bot protection validation for reCAPTCHA only
+        // (Turnstile is handled by the validation rule)
         if ($this->isBotProtectionEnabled() && $this->getBotProtectionType() === 'captcha') {
             if (!NoCaptcha::verifyResponse($this->captcha, request()->ip())) {
                 $this->addError('captcha', __('sumimasen-cms::submission-form.captcha_error'));
+                $this->dispatch('form-error');
+                $this->dispatch('reset-captcha');
                 return;
             }
         }
@@ -94,8 +77,14 @@ class ContactForm extends SubmissionForm
 
             // Hide success message after 5 seconds
             $this->dispatch('hide-success-after-delay');
+            
+            // Dispatch event to permanently disable the button
+            $this->dispatch('form-submitted-successfully');
 
-            // Reset bot protection widget if enabled
+            // Reset form after successful submission
+            $this->reset(['name', 'email', 'message', 'subject', 'phone', 'captcha', 'turnstile', 'company']);
+            
+            // Reset bot protection widget after form reset
             if ($this->isBotProtectionEnabled()) {
                 $botProtectionType = $this->getBotProtectionType();
                 if ($botProtectionType === 'captcha') {
@@ -105,12 +94,15 @@ class ContactForm extends SubmissionForm
                 }
             }
 
-            // Reset form after successful submission
-            $this->reset(['name', 'email', 'message', 'subject', 'phone', 'captcha', 'turnstile', 'company']);
-
         } catch (\Exception $e) {
             // Set error message on component
             $this->addError('form', __('sumimasen-cms::submission-form.submission_error'));
+            $this->dispatch('form-error');
+            
+            // Log the error for debugging
+            \Log::error('Form submission failed: ' . $e->getMessage(), [
+                'trace' => $e->getTraceAsString()
+            ]);
         }
     }
 
