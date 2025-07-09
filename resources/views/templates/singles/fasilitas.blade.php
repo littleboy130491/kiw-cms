@@ -4,6 +4,7 @@
 @php
     use App\Models\Facility;
     use Littleboy130491\Sumimasen\Enums\ContentStatus;
+
     $posts = Facility::with('featuredImage')->where('status', ContentStatus::Published)->get();
 @endphp
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">

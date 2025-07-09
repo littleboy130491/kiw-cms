@@ -240,13 +240,13 @@
 
                     <x-loop.layanan-home number="01." label="Lahan Industri Siap Bangun"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                        url="/lahan-industri"
-                        :image="Storage::url('media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg')" />
+                        url="/lahan-industri" :image="Storage::url(
+                            'media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg',
+                        )" />
 
                     <x-loop.layanan-home number="02." label="Bangunan Pabrik Siap Pakai (BPSP)"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                        url="/archive-bangunan-pabrik-siap-pakai"
-                        :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
+                        url="/archive-bangunan-pabrik-siap-pakai" :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
 
                     <x-loop.layanan-home number="03." label="Kerja sama Komersial Kawasan Industri"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -368,8 +368,7 @@
                     </p>
                     " />
 
-                <x-tab.tab-contents-sektor id="tab4" label="Consumer Goods & Food Procesing"
-                    :image="Storage::url('media/consumer.png')"
+                <x-tab.tab-contents-sektor id="tab4" label="Consumer Goods & Food Procesing" :image="Storage::url('media/consumer.png')"
                     desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
@@ -422,80 +421,7 @@
                 </div>
 
                 <!--carousel-->
-                <div class="sm:!w-[55%] !w-[100%] relative fasilitas-home">
-                    <div class="swiper swiper-1">
-                        <div class="swiper-wrapper">
-                            <x-loop.fasilitas-home label="Masjid" :image="Storage::url('media/masjid.jpg')">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis
-                                vehicula. Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur
-                                vestibulum sem eget massa semper, a sagittis tortor accumsan. Duis luctus ante vel augue
-                                efficitur lacinia. Sed ut tortor in velit porta tristique ac nec purus. Etiam eu leo a
-                                arcu iaculis pretium. Vivamus dignissim urna non neque congue laoreet. Duis posuere
-                                placerat dui, id auctor nisl hendrerit ut. Phasellus vitae odio purus. In id nisi vitae
-                                risus hendrerit gravida vitae in lectus. Donec ut ex a magna lobortis lobortis. Aenean
-                                aliquam nisi libero, id faucibus turpis sagittis at. Curabitur vestibulum ligula commodo
-                                enim tempor luctus. Fusce lacinia a neque dapibus congue. Interdum et malesuada fames ac
-                                ante ipsum primis in faucibus. Maecenas eget turpis eget odio malesuada dignissim non a
-                                lectus.
-                            </x-loop.fasilitas-home>
-
-                            <x-loop.fasilitas-home label="Pengelola Air Bersih" :image="Storage::url('media/pengelolaan-air.jpg')">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis
-                                vehicula. Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur
-                                vestibulum sem eget massa semper, a sagittis tortor accumsan. Duis luctus ante vel augue
-                                efficitur lacinia. Sed ut tortor in velit porta tristique ac nec purus. Etiam eu leo a
-                                arcu iaculis pretium. Vivamus dignissim urna non neque congue laoreet. Duis posuere
-                                placerat dui, id auctor nisl hendrerit ut. Phasellus vitae odio purus. In id nisi vitae
-                                risus hendrerit gravida vitae in lectus. Donec ut ex a magna lobortis lobortis. Aenean
-                                aliquam nisi libero, id faucibus turpis sagittis at. Curabitur vestibulum ligula commodo
-                                enim tempor luctus. Fusce lacinia a neque dapibus congue. Interdum et malesuada fames ac
-                                ante ipsum primis in faucibus. Maecenas eget turpis eget odio malesuada dignissim non a
-                                lectus.
-                            </x-loop.fasilitas-home>
-
-                            <x-loop.fasilitas-home label="Pemadam Kebakaran" :image="Storage::url('media/pemadam.jpg')">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis
-                                vehicula. Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur
-                                vestibulum sem eget massa semper, a sagittis tortor accumsan. Duis luctus ante vel augue
-                                efficitur lacinia. Sed ut tortor in velit porta tristique ac nec purus. Etiam eu leo a
-                                arcu iaculis pretium. Vivamus dignissim urna non neque congue laoreet. Duis posuere
-                                placerat dui, id auctor nisl hendrerit ut. Phasellus vitae odio purus. In id nisi vitae
-                                risus hendrerit gravida vitae in lectus. Donec ut ex a magna lobortis lobortis. Aenean
-                                aliquam nisi libero, id faucibus turpis sagittis at. Curabitur vestibulum ligula commodo
-                                enim tempor luctus. Fusce lacinia a neque dapibus congue. Interdum et malesuada fames ac
-                                ante ipsum primis in faucibus. Maecenas eget turpis eget odio malesuada dignissim non a
-                                lectus.
-                            </x-loop.fasilitas-home>
-
-                            <x-loop.fasilitas-home label="Jalan Lingkungan" :image="Storage::url('media/jalan.jpg')">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis
-                                vehicula. Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur
-                                vestibulum sem eget massa semper, a sagittis tortor accumsan. Duis luctus ante vel augue
-                                efficitur lacinia. Sed ut tortor in velit porta tristique ac nec purus. Etiam eu leo a
-                                arcu iaculis pretium. Vivamus dignissim urna non neque congue laoreet. Duis posuere
-                                placerat dui, id auctor nisl hendrerit ut. Phasellus vitae odio purus. In id nisi vitae
-                                risus hendrerit gravida vitae in lectus. Donec ut ex a magna lobortis lobortis. Aenean
-                                aliquam nisi libero, id faucibus turpis sagittis at. Curabitur vestibulum ligula commodo
-                                enim tempor luctus. Fusce lacinia a neque dapibus congue. Interdum et malesuada fames ac
-                                ante ipsum primis in faucibus. Maecenas eget turpis eget odio malesuada dignissim non a
-                                lectus.
-                            </x-loop.fasilitas-home>
-
-                        </div>
-
-
-                    </div>
-                    <!-- Custom icon.arrow Left -->
-                    <div class="swiper-button-prev gradient-blue rounded-[100%] !h-[30px] !w-[30px] p-1 ">
-                        <x-icon.arrow-left-white />
-                    </div>
-
-                    <!-- Custom icon.arrow Right -->
-                    <div class="swiper-button-next gradient-blue  rounded-[100%] !h-[30px] !w-[30px] p-1">
-                        <x-icon.arrow-right-white />
-                    </div>
-
-                </div>
+                <x-loop.fasilitas-home-carousel />
 
             </div>
             <x-popup-content.fasilitas-popup />
@@ -633,8 +559,7 @@
                     label="
                     Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
                     "
-                    tag="Informasi" date="06/01/2025" :image="Storage::url('media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg')"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025" :image="Storage::url('media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg')" url="#" />
                 <x-loop.artikel-berita
                     label="
                     Dirut KIW Berbagi Pengalaman Penerapan GCG di Program “Library Cafe” BPKP Jateng
@@ -644,14 +569,12 @@
                     label="
                     Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
                     "
-                    tag="Informasi" date="06/01/2025" :image="Storage::url('media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg')"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025" :image="Storage::url('media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg')" url="#" />
                 <x-loop.artikel-berita
                     label="
                     Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
                     "
-                    tag="Informasi" date="06/01/2025" :image="Storage::url('media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg')"
-                    url="#" />
+                    tag="Informasi" date="06/01/2025" :image="Storage::url('media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg')" url="#" />
 
 
             </div>
@@ -690,7 +613,8 @@
                     <x-loop.laporan-tahunan label="Laporan Tahunan PT KIW (persero) Tahun 2014"
                         doc="Storage::url('media/lipsum.pdf')" />
 
-                    <x-loop.laporan-tahunan label="Laporan Auditor Independen Tahun 2013" doc="Storage::url('media/lipsum.pdf')" />
+                    <x-loop.laporan-tahunan label="Laporan Auditor Independen Tahun 2013"
+                        doc="Storage::url('media/lipsum.pdf')" />
 
                     <x-loop.laporan-tahunan label="Laporan Tahunan PT KIW (persero) Tahun 2015"
                         doc="Storage::url('media/lipsum.pdf')" />
