@@ -1,8 +1,7 @@
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
-
-        <x-partials.hero-page :image="Storage::url('media/bangunan-pabrik-hero.jpg')" h1="Bangunan Pabrik Siap Pakai" />
+        <x-partials.hero-page :image="$content->featuredImage->url" h1="{{ $content->title ?? 'Bangunan Pabrik Siap Pakai' }}" />
 
 
         <!--Start Bangunan Pabrik-->
@@ -17,8 +16,7 @@
                 </h2>
                 <div class="flex flex-col gap-5">
                     <p class="sub-p" data-aos="fade-down">
-                        KIW menyediakan Bangunan Pabrik Siap Pakai (BPSP) dengan total seluas 48.388m2 untuk berbagai
-                        penggunaan, seperti pabrik dan gudang.
+                        {!! $content->content !!}
                     </p>
                     <p>
                         KIW juga siap mendirikan BPSP baru untuk memenuhi kebutuhan para investor dalam menjalankan
