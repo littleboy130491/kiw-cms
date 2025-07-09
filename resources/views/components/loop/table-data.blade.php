@@ -1,7 +1,5 @@
 @php
-    use Awcodes\Curator\Models\Media;
-
-    $file = Media::find($post->file);
+    $file = $post->fileMedia;
 @endphp
 
 <tr class="even:bg-[var(--color-darktransit)]">

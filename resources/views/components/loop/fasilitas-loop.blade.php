@@ -1,5 +1,5 @@
 @php
-    $image_url = \Awcodes\Curator\Models\Media::find($post->featured_image)->url;
+    $image_url = optional($post->featuredImage)->url ?? '';
 @endphp
 <div class="relative">
     <div class="group fasilitas-item flex flex-col justify-end p-6 item-for-popup cursor-pointer rounded-md min-h-70 bg-cover bg-no-repeat"
@@ -11,6 +11,7 @@
         <div class="description hidden">
             {!! $post->content !!}
         </div>
-        <img class="photo hidden" src="{{ $image_url }}">
+
+        <x-curator-glider :media="$post->featuredImage" class="photo hidden" />
     </div>
 </div>

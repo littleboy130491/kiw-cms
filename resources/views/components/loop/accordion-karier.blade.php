@@ -1,9 +1,9 @@
 @php
-    $image_url = \Awcodes\Curator\Models\Media::find($post->featured_image)->url;
+    $image_url = $post->featuredImage->url;
 @endphp
 <div class="accordion-item border-b border-[var(--color-border)]">
-    <button class="accordion-header flex flex-row w-full justify-between items-center  pb-7 lg:pb-10 focus:outline-none">
-
+    <button
+        class="accordion-header flex flex-row w-full justify-between items-center pb-7 lg:pb-10 focus:outline-none cursor-pointer">
         <div class="flex flex-col lg:flex-row gap-2 lg:gap-5">
             <p class="border border-[var(--color-blue)] rounded-full px-3 py-1 lg:px-4 w-fit text-[var(--color-blue)] uppercase"
                 data-aos="fade-down">
@@ -22,7 +22,7 @@
             @if (!empty($post->featured_image))
                 <div class="flex flex-col gap-6 mb-4 sm:mb-6">
                     <a href="{{ $image_url }}" data-lightbox="gallery">
-                        <x-curator-glider :media="$post->featured_image" class="w-full object-contain rounded-md" />
+                        <x-curator-glider :media="$post->featuredImage" class="w-full object-contain rounded-md" />
                     </a>
                 </div>
             @endif

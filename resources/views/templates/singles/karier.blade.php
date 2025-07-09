@@ -4,7 +4,9 @@
 @php
     use App\Models\Career;
     use Littleboy130491\Sumimasen\Enums\ContentStatus;
-    $posts = Career::with('careerCategories')->where('status', ContentStatus::Published)->get();
+    $posts = Career::with(['careerCategories', 'featuredImage'])
+        ->where('status', ContentStatus::Published)
+        ->get();
 @endphp
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />

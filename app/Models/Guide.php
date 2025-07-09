@@ -78,4 +78,9 @@ class Guide extends Model
         return $this->belongsTo(Media::class, 'featured_image', 'id');
     }
 
+    public function fileMedia(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'file', 'id');
+    }
+
 }

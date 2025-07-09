@@ -2,14 +2,11 @@
     @vite('resources/js/pages/single-building.js')
 @endPushOnce
 
-@php
-    $media = \Awcodes\Curator\Models\Media::find($content->featured_image);
-@endphp
 <x-layouts.app :title="$content->title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page :image="$media->url ?? Storage::url('media/bangunan-pabrik-hero.jpg')" h1="Bangunan Pabrik Siap Pakai" />
+        <x-partials.hero-page :image="$content->featuredImage->url ?? Storage::url('media/bangunan-pabrik-hero.jpg')" h1="Bangunan Pabrik Siap Pakai" />
 
         <section id="bangunan-pabrik"
             class="flex flex-col my-18 lg:my-30 px-4 sm:px-6 lg:px-0 gap-18 lg:gap-20 lg:w-[1200px] lg:mx-auto">
@@ -39,18 +36,21 @@
             </div>
 
             <!--Content-->
-            <!--Start Gallery-->
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4">
-                @foreach ($content->gallery as $media)
-                    @php
-                        $image_url = \Awcodes\Curator\Models\Media::find($media)->url;
-                    @endphp
-                    <a href="{{ $image_url }}" data-lightbox="gallery">
-                        <x-curator-glider :media="$media" class="rounded-md" />
-                    </a>
-                @endforeach
-            </div>
-            <!--End Gallery -->
+            @php
+                $gallery = \Awcodes\Curator\Models\Media::whereIn('id', $content->gallery)->get()->keyBy('id');
+                $orderedGallery = collect($content->gallery)->map(fn($id) => $gallery[$id])->filter();
+            @endphp
+            @if ($orderedGallery->isNotEmpty())
+                <!--Start Gallery-->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4">
+                    @foreach ($orderedGallery as $media)
+                        <a href="{{ $media->url }}" data-lightbox="gallery">
+                            <x-curator-glider :media="$media" class="rounded-md" />
+                        </a>
+                    @endforeach
+                </div>
+                <!--End Gallery -->
+            @endif
 
         </section>
         <!--Start Spesifikasi-->

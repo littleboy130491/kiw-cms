@@ -1,5 +1,5 @@
 @php
-    $file_url = \Awcodes\Curator\Models\Media::find($post->file)->url;
+    $file_url = $post->fileMedia->url;
 @endphp
 <div class="flex flex-col justify-between gap-5 bg-[var(--color-transit)] p-6 pb-0 mini-radius">
     <div class="flex flex-col gap-2">

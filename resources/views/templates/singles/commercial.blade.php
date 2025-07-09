@@ -35,18 +35,21 @@
             </div>
 
             <!--Content-->
-            <!--Start Gallery-->
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4">
-                @foreach ($content->gallery as $media)
-                    @php
-                        $image_url = \Awcodes\Curator\Models\Media::find($media)->url;
-                    @endphp
-                    <a href="{{ $image_url }}" data-lightbox="gallery">
-                        <x-curator-glider :media="$media" class="rounded-md" />
-                    </a>
-                @endforeach
-            </div>
-            <!--End Gallery -->
+            @php
+                $gallery = \Awcodes\Curator\Models\Media::whereIn('id', $content->gallery)->get()->keyBy('id');
+                $orderedGallery = collect($content->gallery)->map(fn($id) => $gallery[$id])->filter();
+            @endphp
+            @if ($orderedGallery->isNotEmpty())
+                <!--Start Gallery-->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4">
+                    @foreach ($orderedGallery as $media)
+                        <a href="{{ $media->url }}" data-lightbox="gallery">
+                            <x-curator-glider :media="$media" class="rounded-md" />
+                        </a>
+                    @endforeach
+                </div>
+                <!--End Gallery -->
+            @endif
 
         </section>
         <!--Start Spesifikasi-->
