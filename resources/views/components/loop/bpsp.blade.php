@@ -1,4 +1,4 @@
-<a href="{{ route('cms.single.content', ['lang' => app()->getLocale(), 'content_type_key' => 'buildings', 'content_slug' => $post->slug]) }}"
+<a href="{{ route('cms.single.content', ['lang' => app()->getLocale(), 'content_type_key' => 'bpsp', 'content_slug' => $post->slug]) }}"
     class="group relative flex flex-col h-auto justify-between bg-[var(--color-transit)] overflow-hidden rounded-md px-6 pt-13 pb-0 block">
     @if ($post->buildingCategories->first())
         <div

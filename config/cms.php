@@ -90,7 +90,9 @@ return [
             'model' => App\Models\Building::class,
             'name' => 'Buildings',
             'type' => 'content',
+            'slug' => 'bpsp',
             'has_archive' => true,
+            'archive_page_slug' => 'bpsp',
             'has_single' => true,
             'eager_load' => ['buildingCategories'],
         ],
@@ -99,6 +101,7 @@ return [
             'model' => App\Models\Commercial::class,
             'name' => 'Commercials',
             'type' => 'content',
+            'slug' => 'area-komersil',
             'has_archive' => false,
             'has_single' => true,
         ],
@@ -107,7 +110,7 @@ return [
             'model' => App\Models\Facility::class,
             'name' => 'Facilities',
             'type' => 'content',
-            'has_archive' => true,
+            'has_archive' => false,
         ],
 
         'tenders' => [
