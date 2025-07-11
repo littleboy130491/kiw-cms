@@ -4,7 +4,7 @@
 @php
     use App\Models\Career;
     use Littleboy130491\Sumimasen\Enums\ContentStatus;
-    $posts = Career::with(['careerCategories', 'featuredImage'])
+    $items = Career::with(['careerCategories', 'featuredImage'])
         ->where('status', ContentStatus::Published)
         ->get();
 @endphp
@@ -17,9 +17,9 @@
         <!--Start Karier Content-->
 
         <section id="karier" class="my-18 lg:my-30 px-4 sm:px-6 lg:px-0 lg:max-w-[1200px] lg:mx-auto">
-            @if ($posts->isNotEmpty())
-                @foreach ($posts as $post)
-                    <x-loop.accordion-karier :post="$post" />
+            @if ($items->isNotEmpty())
+                @foreach ($items as $item)
+                    <x-loop.accordion-karier :item="$item" />
                 @endforeach
             @else
                 <x-partials.post-not-found />

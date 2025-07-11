@@ -7,20 +7,20 @@
         @endif
 
         {{-- Loop through posts --}}
-        @forelse ($posts as $post)
+        @forelse ($items as $item)
             <article>
-                <h2>{{ $post->title ?? 'Untitled' }}</h2>
+                <h2>{{ $item->title ?? 'Untitled' }}</h2>
                 {{-- Display excerpt or content --}}
-                <p>{{ $post->excerpt ?? Str::limit($post->content, 150) }}</p>
-                <a href="{{ url($lang . '/' . ($post->post_type ?? 'post') . '/' . $post->slug) }}">Read More</a>
+                <p>{{ $item->excerpt ?? Str::limit($item->content, 150) }}</p>
+                <a href="{{ url($lang . '/' . ($item->post_type ?? 'post') . '/' . $item->slug) }}">Read More</a>
             </article>
         @empty
             <p>No content found for this archive.</p>
         @endforelse
 
         {{-- Pagination links --}}
-        @if (method_exists($posts, 'links'))
-            {{ $posts->links() }}
+        @if (method_exists($items, 'links'))
+            {{ $items->links() }}
         @endif
 
     </main>

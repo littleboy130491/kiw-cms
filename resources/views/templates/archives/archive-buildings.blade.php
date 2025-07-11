@@ -1,7 +1,7 @@
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
-        <x-partials.hero-page :image="$content->featuredImage->url" h1="{{ $content->title ?? 'Bangunan Pabrik Siap Pakai' }}" />
+        <x-partials.hero-page :image="$item->featuredImage->url" h1="{{ $item->title ?? 'Bangunan Pabrik Siap Pakai' }}" />
 
 
         <!--Start Bangunan Pabrik-->
@@ -16,7 +16,7 @@
                 </h2>
                 <div class="flex flex-col gap-5">
                     <p class="sub-p" data-aos="fade-down">
-                        {!! $content->content !!}
+                        {!! $item->content !!}
                     </p>
                     <p>
                         KIW juga siap mendirikan BPSP baru untuk memenuhi kebutuhan para investor dalam menjalankan
@@ -27,8 +27,8 @@
 
             <!--Content-->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                @foreach ($posts as $post)
-                    <x-loop.bpsp :post="$post" />
+                @foreach ($items as $item)
+                    <x-loop.bpsp :item="$item" />
                 @endforeach
 
             </div>

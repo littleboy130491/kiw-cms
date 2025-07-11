@@ -1,8 +1,8 @@
-<x-layouts.app :title="$content->title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app :title="$item->title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
         test
-        <h1>{{ $content->title ?? 'Default Page' }}</h1>
+        <h1>{{ $item->title ?? 'Default Page' }}</h1>
         <x-instagram-feed :type="request('type', 'all')" />
 
         {{-- Content goes here --}}

@@ -1,10 +1,10 @@
 @php
-    $file_url = $post->fileMedia->url;
+    $file_url = $item->fileMedia->url;
 @endphp
 <div class="flex flex-col justify-between gap-5 bg-[var(--color-transit)] p-6 pb-0 mini-radius">
     <div class="flex flex-col gap-2">
         <x-icon.document-icon />
-        <h5>{{ $post->title ?? 'Laporan Tahunan' }}</h5>
+        <h5>{{ $item->title ?? 'Laporan Tahunan' }}</h5>
     </div>
     @if ($file_url)
         <div class="mt-10">

@@ -1,7 +1,7 @@
 @pushOnce('before_body_close')
     @vite('resources/js/pages/single-building.js')
 @endPushOnce
-<x-layouts.app :title="$content->title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app :title="$item->title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
 
@@ -13,16 +13,16 @@
             <!--Title-->
             <div class="flex flex-col lg:flex-row lg:items-start gap-7 lg:gap-9">
                 <h2 class="get-message" data-aos="fade-up" class="lg:w-1/3">
-                    {{ $content->title }}
+                    {{ $item->title }}
                 </h2>
 
                 <div class="lg:w-2/3 flex flex-col gap-5">
                     <p>
-                        {!! $content->content !!}
+                        {!! $item->content !!}
                     </p>
-                    @if ($content->whatsapp)
+                    @if ($item->whatsapp)
                         <!--button-->
-                        <a class="w-fit btn1 mt-5 wa-message"data-aos="fade-down" href="{{ $content->whatsapp }}"
+                        <a class="w-fit btn1 mt-5 wa-message"data-aos="fade-down" href="{{ $item->whatsapp }}"
                             target="_blank">hubungi
                             sekarang
                             <span>
@@ -36,8 +36,8 @@
 
             <!--Content-->
             @php
-                $gallery = \Awcodes\Curator\Models\Media::whereIn('id', $content->gallery)->get()->keyBy('id');
-                $orderedGallery = collect($content->gallery)->map(fn($id) => $gallery[$id])->filter();
+                $gallery = \Awcodes\Curator\Models\Media::whereIn('id', $item->gallery)->get()->keyBy('id');
+                $orderedGallery = collect($item->gallery)->map(fn($id) => $gallery[$id])->filter();
             @endphp
             @if ($orderedGallery->isNotEmpty())
                 <!--Start Gallery-->
@@ -53,7 +53,7 @@
 
         </section>
         <!--Start Spesifikasi-->
-        @if ($content->specification)
+        @if ($item->specification)
             <section id="spesifikasi" class="lg:py-30 py-18 bg-cover bg-[var(--color-transit)]">
                 <div class="flex flex-col lg:flex-row lg:gap-8 gap-5 lg:px-0 lg:max-w-[1200px] lg:mx-auto sm:px-6 px-4">
 
@@ -62,7 +62,7 @@
 
                     <!--Content-->
                     <div class="lg:w-2/3 flex flex-col">
-                        @foreach ($content->specification as $spec)
+                        @foreach ($item->specification as $spec)
                             <x-loop.spesifikasi :label="$spec['name']" :value="$spec['value']" />
                         @endforeach
                     </div>

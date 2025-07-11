@@ -64,8 +64,8 @@
 
             <!--Content-->
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-7 lg:gap-5">
-                @foreach ($posts as $post)
-                    <x-loop.tender :post="$post" />
+                @foreach ($items as $item)
+                    <x-loop.tender :item="$item" />
                 @endforeach
             </div>
 

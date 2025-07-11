@@ -2,7 +2,7 @@
     use App\Models\Report;
     use Littleboy130491\Sumimasen\Enums\ContentStatus;
 
-    $posts = Report::with('fileMedia')->where('status', ContentStatus::Published)->get();
+    $items = Report::with('fileMedia')->where('status', ContentStatus::Published)->get();
 @endphp
 <x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
@@ -13,7 +13,7 @@
         <!--Start Laporan Tahunan-->
 
         <section id="laporan-tahunan" class="my-18 lg:my-30 sm:px-6 lg:px-0 lg:w-[1200px] lg:mx-auto">
-            @if ($posts->isNotEmpty())
+            @if ($items->isNotEmpty())
                 <div data-aos="zoom-in-up" class="overflow-x-auto w-full flex flex-row pl-4 sm:px-0">
                     <table
                         class="grow min-w-[900px] sm:min-w-[100%] text-left text-[var(--color-heading)] bg-[var(--color-transit)] rounded-md">
@@ -27,8 +27,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($posts as $post)
-                                <x-loop.table-data :post="$post" />
+                            @foreach ($items as $item)
+                                <x-loop.table-data :item="$item" />
                             @endforeach
                         </tbody>
                     </table>

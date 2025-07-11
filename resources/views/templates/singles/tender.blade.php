@@ -1,4 +1,4 @@
-<x-layouts.app :title="$content->title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app :title="$item->title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
 
@@ -16,25 +16,25 @@
                     <div data-aos="fade-down" class="flex flex-row gap-4">
                         <div class="flex flex-row items-center gap-2">
                             <x-icon.tag-icon-color />
-                            <p class="!text-[var(--color-purple)]">{{ $content->tenderStatus->first()?->title }}</p>
+                            <p class="!text-[var(--color-purple)]">{{ $item->tenderStatus->first()?->title }}</p>
                         </div>
                         <div class="flex flex-row items-center gap-2">
                             <x-icon.location-icon-color />
-                            <p class="!text-[var(--color-purple)]">{{ $content->tenderLocation->first()?->title }}</p>
+                            <p class="!text-[var(--color-purple)]">{{ $item->tenderLocation->first()?->title }}</p>
                         </div>
                     </div>
                     <h2 data-aos="fade-up">
-                        {{ $content->title }}
+                        {{ $item->title }}
                     </h2>
                 </div>
 
                 <!--Content-->
                 <div class="flex flex-col gap-5">
                     <p>
-                        {!! $content->content !!}
+                        {!! $item->content !!}
                     </p>
                     <div class="flex flex-col gap-3">
-                        @foreach ($content->specification as $spec)
+                        @foreach ($item->specification as $spec)
                             <x-loop.item-single-tender :spec="$spec" />
                         @endforeach
                     </div>
@@ -53,9 +53,9 @@
                 <!--Title-->
                 <div class="flex flex-col gap-5">
                     <div
-                        class="gradient-blue top-0 left-0 w-fit px-3 py-2 rounded-md {{ $content->tenderStatus->first()?->slug === 'terbaru' ? 'blinking' : '' }}">
+                        class="gradient-blue top-0 left-0 w-fit px-3 py-2 rounded-md {{ $item->tenderStatus->first()?->slug === 'terbaru' ? 'blinking' : '' }}">
                         <p class="text-white uppercase text-[.8em]">
-                            {{ $content->tenderStatus->first()?->title ?? 'terbaru' }}</p>
+                            {{ $item->tenderStatus->first()?->title ?? 'terbaru' }}</p>
                     </div>
 
                     <div>
@@ -65,7 +65,7 @@
 
                 <!--Milestone-->
                 <div class="milestone flex flex-col relative">
-                    @foreach ($content->process as $process)
+                    @foreach ($item->process as $process)
                         <x-loop.milestone :process="$process" />
                     @endforeach
                 </div>

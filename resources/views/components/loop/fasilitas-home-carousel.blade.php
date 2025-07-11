@@ -2,15 +2,15 @@
     use App\Models\Facility;
     use Littleboy130491\Sumimasen\Enums\ContentStatus;
 
-    $posts = Facility::with('featuredImage')->where('status', ContentStatus::Published)->get();
+    $items = Facility::with('featuredImage')->where('status', ContentStatus::Published)->get();
 @endphp
 
-@if ($posts->isNotEmpty())
+@if ($items->isNotEmpty())
     <div class="sm:!w-[55%] !w-[100%] relative fasilitas-home">
         <div class="swiper swiper-1">
             <div class="swiper-wrapper">
-                @foreach ($posts as $post)
-                    <x-loop.fasilitas-home-loop :post="$post" :iteration="$loop->iteration" />
+                @foreach ($items as $item)
+                    <x-loop.fasilitas-home-loop :item="$item" :iteration="$loop->iteration" />
                 @endforeach
             </div>
 
