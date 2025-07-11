@@ -25,13 +25,20 @@
                 </div>
             </div>
 
-            <!--Content-->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                @foreach ($items as $item)
-                    <x-loop.bpsp :item="$item" />
-                @endforeach
 
-            </div>
+            <!--Content-->
+            @if ($items->isNotEmpty())
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    @foreach ($items as $item)
+                        <x-loop.bpsp :item="$item" />
+                    @endforeach
+                </div>
+            @else
+                <x-partials.post-not-found />
+            @endif
+
+            {{ $items->links() }}
+
 
         </section>
 

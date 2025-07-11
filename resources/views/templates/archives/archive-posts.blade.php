@@ -72,9 +72,6 @@
 
             {{ $items->links() }}
 
-
-
-
         </section>
         <!--End Post Archive-->
 

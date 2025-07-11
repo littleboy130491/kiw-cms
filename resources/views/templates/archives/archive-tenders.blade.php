@@ -63,24 +63,17 @@
             </div>
 
             <!--Content-->
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-7 lg:gap-5">
-                @foreach ($items as $item)
-                    <x-loop.tender :item="$item" />
-                @endforeach
-            </div>
+            @if ($items->isNotEmpty())
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-7 lg:gap-5">
+                    @foreach ($items as $item)
+                        <x-loop.tender :item="$item" />
+                    @endforeach
+                </div>
+            @else
+                <x-partials.post-not-found />
+            @endif
 
-            <!-- Pagination -->
-            <ul class="flex flex-row flex-wrap justify-center gap-2">
-
-                <x-loop.pagination page="current" number="1" />
-
-                <x-loop.pagination number="2" page="page" url='#' />
-
-                <x-loop.pagination number="3" page="page" url='#' />
-
-                <x-loop.pagination number="4" page="page" url='#' />
-
-            </ul>
+            {{ $items->links() }}
 
         </section>
         <!--End Tender-->
