@@ -15,13 +15,7 @@
                 </h2>
 
                 <div class="lg:w-2/3 flex flex-col gap-5">
-                    <p>
-                        Halaman ini memuat pedoman resmi terkait proses lelang di PT Kawasan Industri Wijayakusuma
-                        (Persero), mulai dari tahapan pendaftaran, persyaratan administrasi, hingga tata cara pengajuan
-                        penawaran. Informasi disajikan secara transparan untuk memastikan seluruh peserta memahami
-                        prosedur yang berlaku dan dapat mengikuti proses pengadaan secara adil, tertib, dan sesuai
-                        ketentuan.
-                    </p>
+                    {!! $record->content ?? '' !!}
                     <!--button-->
                     <a class="w-fit btn1 mt-5"data-aos="fade-down" href="#">Unduh Pedoman
                         <x-icon.download-icon-current />

@@ -1,7 +1,7 @@
 <x-layouts.app :title="$record->title ?? $title" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
-        <x-partials.hero-page :image="$record->featuredImage->url ?? Storage::url('media/berita-hero.jpg')" h1="{{ $record->title ?? ($title ?? 'Berita Perusahaan') }}" />
+        <x-partials.hero-page :image="$record->featuredImage->url ?? Storage::url('media/berita-hero.jpg')" h1="{{ $record->title ?? 'Berita Perusahaan' }}" />
 
         <!--Start Post Archive-->
         <section id="post-archive"
@@ -70,19 +70,8 @@
                 <x-partials.post-not-found />
             @endif
 
+            {{ $items->links() }}
 
-            <!-- Pagination -->
-            <ul class="flex flex-row flex-wrap justify-center gap-2">
-
-                <x-loop.pagination page="current" number="1" />
-
-                <x-loop.pagination number="2" page="page" url='#' />
-
-                <x-loop.pagination number="3" page="page" url='#' />
-
-                <x-loop.pagination number="4" page="page" url='#' />
-
-            </ul>
 
 
 

@@ -25,36 +25,7 @@
                             class="w-full pl-10 pr-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:var(--color-blue)" />
                     </div>
 
-                    <!--Search and Dropdown-->
-                    <div class="relative max-w-md w-full" x-data="{
-                        open: false,
-                        selected: '',
-                        options: [
-                            'Acara',
-                            'Tips',
-                            'Informasi'
-                        ]
-                    }" @click.away="open = false">
-
-                        <input type="text" placeholder="Pilih Kategori"
-                            class="w-full pl-3 pr-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:var(--color-blue)"
-                            x-model="selected" @focus="open = true" />
-
-                        <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                            <img src="{{ Storage::url('media/chevron-down-solid.png') }}" alt="">
-                        </div>
-
-                        <!-- Dropdown -->
-                        <ul x-show="open"
-                            class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white border border-gray-300 shadow-lg"
-                            style="display: none;">
-                            <template x-for="option in options" :key="option">
-                                <li @click="selected = option; open = false"
-                                    class="cursor-pointer px-4 py-2 hover:bg-[var(--color-blue)] hover:text-white"
-                                    x-text="option"></li>
-                            </template>
-                        </ul>
-                    </div>
+                    <x-partials.category-dropdown :slug="$record->slug" />
                 </div>
 
             </div>
