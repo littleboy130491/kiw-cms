@@ -1117,7 +1117,7 @@ body.off-canvas-open {
 }
 
 /* Coming Soon Image */
-.comming-soon-image::after {
+.coming-soon-image::after {
   content: "";
   background: #ffffff;
   background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 0) 100%);

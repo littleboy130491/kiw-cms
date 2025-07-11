@@ -1,11 +1,21 @@
 @pushOnce('before_body_close')
     @vite('resources/js/pages/single-post.js')
 @endPushOnce
-<x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
+
+@php
+    $item_date = $item->published_at?->format('d-m-Y') ?? ($item->created_at?->format('d-m-Y') ?? '');
+    $item_label = $item->categories->first()?->slug ?? '';
+    $archive_post_url = $item_url = route('cms.archive.content', [
+        'lang' => app()->getLocale(),
+        'content_type_archive_key' => 'posts',
+    ]);
+@endphp
+
+<x-layouts.app :title="$item->title ?? 'Default Page'" :body-classes="$bodyClasses">
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page :image="Storage::url('media/langkah-nyata.jpg')" />
+        <x-partials.hero-page :image="$item->featuredImage?->url" />
 
         <!--Start Post Content-->
 
@@ -22,11 +32,11 @@
                         <div class="flex flex-row gap-4 w-fit px-3 py-2 rounded-full bg-[var(--color-transit)]">
                             <div class="flex flex-row items-center gap-2">
                                 <x-icon.tag-icon-color />
-                                <p class="!text-[var(--color-purple)]">Informasi</p>
+                                <p class="!text-[var(--color-purple)]">{{ $item_label }}</p>
                             </div>
                             <div class="flex flex-row items-center gap-2">
                                 <x-icon.calendar-icon-color />
-                                <p class="!text-[var(--color-purple)]">16/01/2025</p>
+                                <p class="!text-[var(--color-purple)]">{{ $item_date }}</p>
                             </div>
                         </div>
                         <div class="flex flex-row gap-4 w-fit">
@@ -47,59 +57,20 @@
                     </div>
                     <!--Title-->
                     <h2 data-aos="fade-up">
-                        Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah
-                        Lingkungan
+                        {{ $item->title }}
                     </h2>
                 </div>
 
                 <!--Content-->
                 <div class="flex flex-col gap-5">
-                    <p>
-                        PT Kawasan Industri Wijayakusuma (KIW), salah satu anggota Holding BUMN Danareksa, terus
-                        menunjukkan komitmennya untuk mewujudkan Kawasan industri yang modern dan ramah lingkungan
-                        dengan menciptakan lingkungan industri yang nyaman, tertata, dan berdaya saing melalui program
-                        beautifikasi kawasan. Inisiatif ini bertujuan untuk meningkatkan daya tarik investasi,
-                        kesejahteraan pekerja, serta mendukung keberlanjutan lingkungan dalam ekosistem industri yang
-                        modern.
-                        <br><br>
-                        Direktur Utama KIW, Ahmad Fauzie Nur, menyatakan, “Kami berkomitmen untuk menjadikan Kawasan
-                        Industri Wijayakusuma lebih hijau, rapi, dan nyaman bagi investor, pekerja, serta masyarakat
-                        sekitar. Beautifikasi ini merupakan langkah strategis dalam menciptakan Kawasan industri yang
-                        tidak hanya produktif, tetapi juga nyaman dan berkelanjutan”.Program beautifikasi KIW mencakup
-                        berbagai aspek, mulai dari pengembangan ruang terbukahijau, peningkatan infrastruktur jalan,
-                        pemanfaatan energi baru terbarukan (EBT), hingga revitalisasi fasad bangunan.
-                        <br><br>
-                        Selain itu, sebagai dukungan terhadap UMKM khususnya para pedagang kaki lima (PKL), KIW telah
-                        menyiapkan area foodcourt khusus di beberapa titik kawasan untuk memberikan kenyamanan bagi para
-                        pekerja serta pelaku usaha. Lebih dari sekadar memperindah kawasan, program ini juga bertujuan
-                        meningkatkan produktivitas pekerja dengan menciptakan lingkungan kerja yang lebih nyaman dan
-                        kondusif. Infrastruktur yang lebih baik serta suasana yang lebih asri diyakini akan berdampak
-                        positif terhadap kesejahteraan pekerja dan daya saing industri di dalam kawasan.
-                        <br><br>
-                        Selain aspek estetika dan kenyamanan, KIW juga berfokus pada keberlanjutan lingkungan dengan
-                        mengoptimalkan sistem pengelolaan sampah dan drainase untuk mencegah banjir serta menjaga
-                        kebersihan kawasan. Saat ini, KIW telah memiliki sistem pengolahan sampah terpadu yang
-                        memungkinkan limbah diolah menjadi produk bernilai ekonomis, mengurangi pencemaran lingkungan,
-                        serta menjadi langkah nyata dalam penerapan konsep circular economy.
-                        <br><br>
-                        “Dengan berbagai inisiatif ini, kami optimistis bahwa KIW dapat terus berkembang menjadi kawasan
-                        industri yang modern, hijau, inklusif, dan berdaya saing global. Kami ingin menjadikan KIW
-                        sebagai destinasi utama bagi investor dan turut berkontribusi terhadap pertumbuhan ekonomi
-                        nasional, khususnya di Jawa Tengah,” pungkas Fauzie.
-                    </p>
+                    {!! $item->content !!}
                     <!--Gallery-->
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4 mt-6">
-                        <x-loop.gallery-grid :image="Storage::url('media/meeting1.jpg')" />
-                        <x-loop.gallery-grid :image="Storage::url('media/meeting2.jpg')" />
-                        <x-loop.gallery-grid :image="Storage::url('media/meeting3.jpg')" />
-                        <x-loop.gallery-grid :image="Storage::url('media/meeting2.jpg')" />
-                        <x-loop.gallery-grid :image="Storage::url('media/meeting1.jpg')" />
 
-                    </div>
+                    <x-loop.gallery-grid :gallery="$item->gallery" />
 
                 </div>
                 <!--button-->
-                <a class="w-fit btn1 back mt-5"data-aos="fade-down" href="#">Kembali
+                <a class="w-fit btn1 back mt-5"data-aos="fade-down" href="{{ $archive_post_url }}">Kembali
                     <span>
                         <x-icon.arrow-back-white />
                     </span>
