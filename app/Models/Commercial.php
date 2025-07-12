@@ -78,9 +78,10 @@ class Commercial extends Model implements MenuPanelable
 
     public function getMenuPanelUrlUsing(): callable
     {
-        $content_model_slug = config('cms.content_models.commercials.slug', 'commercials');
+        $model_key = config('cms.content_models.commercials.slug', 'commercials');
         $locale = app()->getLocale();
-        return fn(self $model) => '/' . $locale . '/' . $content_model_slug . '/' . $model->slug;
+
+        return fn(self $model) => route('cms.single.content', [$locale, $model_key, $model->slug]);
     }
 
     //--------------------------------------------------------------------------

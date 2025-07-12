@@ -18,6 +18,6 @@ class Page extends BasePage implements MenuPanelable
     public function getMenuPanelUrlUsing(): callable
     {
         $locale = app()->getLocale();
-        return fn(self $model) => '/' . $locale . '/' . $model->slug;
+        return fn(self $model) => route('cms.static.page', [$locale, $model->slug]);
     }
 }

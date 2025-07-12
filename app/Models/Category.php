@@ -17,8 +17,9 @@ class Category extends BaseCategory implements MenuPanelable
 
     public function getMenuPanelUrlUsing(): callable
     {
-        $content_model_slug = config('cms.content_models.categories.slug', 'categories');
+        $model_key = config('cms.content_models.categories.slug', 'categories');
         $locale = app()->getLocale();
-        return fn(self $model) => '/' . $locale . '/' . $content_model_slug . '/' . $model->slug;
+
+        return fn(self $model) => route('cms.taxonomy.archive', [$locale, $model_key, $model->slug]);
     }
 }
