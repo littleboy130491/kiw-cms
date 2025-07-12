@@ -27,6 +27,7 @@ use Datlechin\FilamentMenuBuilder\FilamentMenuBuilderPlugin;
 use Spatie\ResponseCache\Middlewares\DoNotCacheResponse;
 use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
 use Filament\Forms\Components\TextInput;
+use Datlechin\FilamentMenuBuilder\MenuPanel\ModelMenuPanel;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -86,6 +87,20 @@ class AdminPanelProvider extends PanelProvider
                     ->addLocations($this->getMenuLocations())
                     ->addMenuItemFields([
                         TextInput::make('classes'),
+                    ])
+                    ->addMenuPanels([
+                        ModelMenuPanel::make()
+                            ->model(\App\Models\Page::class)
+                            ->collapsed(true)
+                            ->collapsible(true),
+                        ModelMenuPanel::make()
+                            ->model(\App\Models\Category::class)
+                            ->collapsed(true)
+                            ->collapsible(true),
+                        ModelMenuPanel::make()
+                            ->model(\App\Models\Commercial::class)
+                            ->collapsed(true)
+                            ->collapsible(true),
                     ]),
                 FilamentSpatieLaravelBackupPlugin::make()
                     ->authorize(fn(): bool => auth()->user()->hasRole(['admin', 'super_admin'])),

@@ -7,15 +7,16 @@
     $currentLang = request()->segment(1);
 
     // Validate if it's a valid language from your config
-$availableLanguages = array_keys(config('cms.language_available', []));
-if (!in_array($currentLang, $availableLanguages)) {
-    $currentLang = config('cms.default_language', 'en'); // fallback to default
-}
+    $availableLanguages = array_keys(config('cms.language_available', []));
+    if (!in_array($currentLang, $availableLanguages)) {
+        $currentLang = config('cms.default_language', 'en'); // fallback to default
+    }
 
-$localizedLocation = $location . '_' . $currentLang;
+    $localizedLocation = $location . '_' . $currentLang;
+    $fallbackLocation = $location . '_' . config('cms.default_language', 'en');
 
     // Try to get the localized menu first, fallback to base location
-    $menu = Menu::location($localizedLocation) ?? Menu::location($location);
+    $menu = Menu::location($localizedLocation) ?? (Menu::location($fallbackLocation) ?? Menu::location($location));
 @endphp
 
 <!--Start Header Menu-->
@@ -83,8 +84,7 @@ $localizedLocation = $location . '_' . $currentLang;
                                 <li class="relative group">
                                     @if ($item->children && count($item->children))
                                         <!-- Main Menu with Submenu -->
-                                        <x-menu.parent-menu-have-sub menu="{!! $item->title !!}"
-                                            url="{{ $item->url }}" />
+                                        <x-menu.parent-menu-have-sub menu="{!! $item->title !!}" url="{{ $item->url }}" />
 
                                         <!-- Submenu -->
                                         <ul
@@ -93,8 +93,7 @@ $localizedLocation = $location . '_' . $currentLang;
                                                 @if ($child->children && count($child->children))
                                                     <!-- Submenu with Sub-submenu -->
                                                     <li class="relative group/submenu">
-                                                        <x-menu.sub-parent-menu menu="{!! $child->title !!}"
-                                                            url="{{ $child->url }}" />
+                                                        <x-menu.sub-parent-menu menu="{!! $child->title !!}" url="{{ $child->url }}" />
 
                                                         <!-- Sub-submenu -->
                                                         <ul
@@ -107,8 +106,7 @@ $localizedLocation = $location . '_' . $currentLang;
                                                     </li>
                                                 @else
                                                     <!-- Submenu tanpa Sub-submenu -->
-                                                    <x-menu.sub-menu menu="{!! $child->title !!}"
-                                                        url="{{ $child->url }}" />
+                                                    <x-menu.sub-menu menu="{!! $child->title !!}" url="{{ $child->url }}" />
                                                 @endif
                                             @endforeach
                                         </ul>
@@ -157,8 +155,7 @@ $localizedLocation = $location . '_' . $currentLang;
 
                         <!--Logo-->
                         <div class=" flex items-center ">
-                            <a href="/"><img class="w-15" src="{{ Storage::url('media/logo.png') }}"
-                                    alt="logo"></a>
+                            <a href="/"><img class="w-15" src="{{ Storage::url('media/logo.png') }}" alt="logo"></a>
                         </div>
 
                         @if ($menu && $menu->menuItems)
@@ -174,21 +171,18 @@ $localizedLocation = $location . '_' . $currentLang;
                                                     <x-menu-mobile.sub-parent-menu menu="{!! $child->title !!}"
                                                         url="{{ $child->url ?? 'javascript:void(0)' }}">
                                                         @foreach ($child->children as $subchild)
-                                                            <x-menu-mobile.menu menu="{!! $subchild->title !!}"
-                                                                url="{{ $subchild->url }}" />
+                                                            <x-menu-mobile.menu menu="{!! $subchild->title !!}" url="{{ $subchild->url }}" />
                                                         @endforeach
                                                     </x-menu-mobile.sub-parent-menu>
                                                 @else
                                                     <!-- Submenu item -->
-                                                    <x-menu-mobile.menu menu="{!! $child->title !!}"
-                                                        url="{{ $child->url }}" />
+                                                    <x-menu-mobile.menu menu="{!! $child->title !!}" url="{{ $child->url }}" />
                                                 @endif
                                             @endforeach
                                         </x-menu-mobile.parent-menu-have-sub>
                                     @else
                                         <!-- Simple parent menu -->
-                                        <x-menu-mobile.parent-menu menu="{!! $item->title !!}"
-                                            url="{{ $item->url }}" />
+                                        <x-menu-mobile.parent-menu menu="{!! $item->title !!}" url="{{ $item->url }}" />
                                     @endif
                                 @endforeach
                             </ul>
@@ -214,25 +208,20 @@ $localizedLocation = $location . '_' . $currentLang;
 
                         <!--Translate-->
                         <div class="mt-10 flex flex-row gap-5 items-center text-[var(--color-heading)] ">
-                            <a href="#"
-                                class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
+                            <a href="#" class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
                                 <img class="w-5 h-4" src="{{ Storage::url('media/english.jpg') }}" alt="english">
                                 GB
                             </a>
-                            <a href="#"
-                                class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
+                            <a href="#" class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
                                 <img class="w-5 h-4" src="{{ Storage::url('media/mandarin.jpg') }}" alt="mandarin">
                                 CN
                             </a>
-                            <a href="#"
-                                class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
+                            <a href="#" class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
                                 <img class="w-5 h-4" src="{{ Storage::url('media/korea.jpg') }}" alt="korea">
                                 KR
                             </a>
-                            <a href="#"
-                                class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
-                                <img class="w-5 h-4" src="{{ Storage::url('media/indonesia.jpg') }}"
-                                    alt="indonesia">
+                            <a href="#" class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
+                                <img class="w-5 h-4" src="{{ Storage::url('media/indonesia.jpg') }}" alt="indonesia">
                                 ID
                             </a>
                         </div>

@@ -10,10 +10,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite;
 use Littleboy130491\Sumimasen\Enums\ContentStatus;
 use Spatie\Translatable\HasTranslations;
+use Datlechin\FilamentMenuBuilder\Concerns\HasMenuPanel;
+use Datlechin\FilamentMenuBuilder\Contracts\MenuPanelable;
 
-class Commercial extends Model
+class Commercial extends Model implements MenuPanelable
 {
-    use HasFactory, HasTranslations, SoftDeletes, InteractsWithSeoSuite;
+    use HasFactory, HasTranslations, SoftDeletes, InteractsWithSeoSuite, HasMenuPanel;
 
     public const STATUS_OPTIONS = ['draft' => 'Draft', 'published' => 'Published', 'scheduled' => 'Scheduled'];
 
@@ -69,7 +71,17 @@ class Commercial extends Model
         'specification',
     ];
 
+    public function getMenuPanelTitleColumn(): string
+    {
+        return 'title';
+    }
 
+    public function getMenuPanelUrlUsing(): callable
+    {
+        $content_model_slug = config('cms.content_models.commercials.slug', 'commercials');
+        $locale = app()->getLocale();
+        return fn(self $model) => '/' . $locale . '/' . $content_model_slug . '/' . $model->slug;
+    }
 
     //--------------------------------------------------------------------------
     // Relationships
