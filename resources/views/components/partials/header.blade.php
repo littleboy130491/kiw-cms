@@ -15,8 +15,22 @@
     $localizedLocation = $location . '_' . $currentLang;
     $fallbackLocation = $location . '_' . config('cms.default_language', 'en');
 
-    // Try to get the localized menu first, fallback to base location
-    $menu = Menu::location($localizedLocation) ?? (Menu::location($fallbackLocation) ?? Menu::location($location));
+    $menu = Menu::query()
+        ->where('is_visible', true)
+        ->whereHas('locations', function ($query) use ($localizedLocation, $fallbackLocation, $location) {
+            $query->whereIn('location', [$localizedLocation, $fallbackLocation, $location]);
+        })
+        ->with([
+            'menuItems.linkable',
+            'menuItems.children.linkable',
+            'menuItems.children.children.linkable' // Add more levels if needed
+        ])
+        ->orderByRaw("CASE 
+                                                    WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 1
+                                                    WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 2
+                                                    ELSE 3
+                                                END", [$localizedLocation, $fallbackLocation])
+        ->first();
 @endphp
 
 <!--Start Header Menu-->
@@ -52,72 +66,13 @@
                     </a>
 
                     <!--Translate-->
-                    <div class="flex flex-row gap-5 items-center text-white ">
-                        <a href="#"
-                            class="hover:text-[var(--color-lightblue)] border-r border-[var(--color-bordertransparent)] pr-5 flex flex-row gap-2 items-center">
-                            <img class="w-5 h-4" src="{{ Storage::url('media/english.jpg') }}" alt="english">
-                            English
-                        </a>
-                        <a href="#"
-                            class="hover:text-[var(--color-lightblue)] border-r border-[var(--color-bordertransparent)] pr-5 flex flex-row gap-2 items-center">
-                            <img class="w-5 h-4" src="{{ Storage::url('media/mandarin.jpg') }}" alt="mandarin">
-                            Mandarin
-                        </a>
-                        <a href="#"
-                            class="hover:text-[var(--color-lightblue)] border-r border-[var(--color-bordertransparent)] pr-5 flex flex-row gap-2 items-center">
-                            <img class="w-5 h-4" src="{{ Storage::url('media/korea.jpg') }}" alt="korea">
-                            Korea
-                        </a>
-                        <a href="#" class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
-                            <img class="w-5 h-4" src="{{ Storage::url('media/indonesia.jpg') }}" alt="indonesia">
-                            Indonesia
-                        </a>
-                    </div>
+                    <x-partials.lang-switcher />
 
                 </div>
 
                 <!--Main Menu-->
                 @if ($menu && $menu->menuItems)
-                    <nav class="hidden lg:flex lg:flex-row lg:justify-end">
-                        <ul class="flex flex-row justify-between gap-2 items-end grow">
-                            @foreach ($menu->menuItems as $item)
-                                <li class="relative group">
-                                    @if ($item->children && count($item->children))
-                                        <!-- Main Menu with Submenu -->
-                                        <x-menu.parent-menu-have-sub menu="{!! $item->title !!}" url="{{ $item->url }}" />
-
-                                        <!-- Submenu -->
-                                        <ul
-                                            class="absolute left-0 top-full mt-1 w-60 bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                                            @foreach ($item->children as $child)
-                                                @if ($child->children && count($child->children))
-                                                    <!-- Submenu with Sub-submenu -->
-                                                    <li class="relative group/submenu">
-                                                        <x-menu.sub-parent-menu menu="{!! $child->title !!}" url="{{ $child->url }}" />
-
-                                                        <!-- Sub-submenu -->
-                                                        <ul
-                                                            class="absolute left-full top-0 mt-0 w-40 bg-white shadow-lg opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all">
-                                                            @foreach ($child->children as $subchild)
-                                                                <x-menu.sub-sub-menu menu="{!! $subchild->title !!}"
-                                                                    url="{{ $subchild->url }}" />
-                                                            @endforeach
-                                                        </ul>
-                                                    </li>
-                                                @else
-                                                    <!-- Submenu tanpa Sub-submenu -->
-                                                    <x-menu.sub-menu menu="{!! $child->title !!}" url="{{ $child->url }}" />
-                                                @endif
-                                            @endforeach
-                                        </ul>
-                                    @else
-                                        <!-- Main Menu tanpa Submenu -->
-                                        <x-menu.parent-menu menu="{!! $item->title !!}" url="{{ $item->url }}" />
-                                    @endif
-                                </li>
-                            @endforeach
-                        </ul>
-                    </nav>
+                    <x-partials.navigation-menu-header :menu="$menu" />
                 @endif
 
 
@@ -159,33 +114,7 @@
                         </div>
 
                         @if ($menu && $menu->menuItems)
-                            <ul class="mt-10 flex flex-col gap-4">
-                                @foreach ($menu->menuItems as $item)
-                                    @if ($item->children && count($item->children))
-                                        <!-- Parent menu with submenu -->
-                                        <x-menu-mobile.parent-menu-have-sub menu="{!! $item->title !!}"
-                                            url="{{ $item->url ?? 'javascript:void(0)' }}">
-                                            @foreach ($item->children as $child)
-                                                @if ($child->children && count($child->children))
-                                                    <!-- Submenu that has sub-submenu -->
-                                                    <x-menu-mobile.sub-parent-menu menu="{!! $child->title !!}"
-                                                        url="{{ $child->url ?? 'javascript:void(0)' }}">
-                                                        @foreach ($child->children as $subchild)
-                                                            <x-menu-mobile.menu menu="{!! $subchild->title !!}" url="{{ $subchild->url }}" />
-                                                        @endforeach
-                                                    </x-menu-mobile.sub-parent-menu>
-                                                @else
-                                                    <!-- Submenu item -->
-                                                    <x-menu-mobile.menu menu="{!! $child->title !!}" url="{{ $child->url }}" />
-                                                @endif
-                                            @endforeach
-                                        </x-menu-mobile.parent-menu-have-sub>
-                                    @else
-                                        <!-- Simple parent menu -->
-                                        <x-menu-mobile.parent-menu menu="{!! $item->title !!}" url="{{ $item->url }}" />
-                                    @endif
-                                @endforeach
-                            </ul>
+                            <x-partials.navigation-menu-header-mobile :menu="$menu" />
                         @endif
 
 
@@ -206,25 +135,8 @@
                             </a>
                         </div>
 
-                        <!--Translate-->
-                        <div class="mt-10 flex flex-row gap-5 items-center text-[var(--color-heading)] ">
-                            <a href="#" class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
-                                <img class="w-5 h-4" src="{{ Storage::url('media/english.jpg') }}" alt="english">
-                                GB
-                            </a>
-                            <a href="#" class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
-                                <img class="w-5 h-4" src="{{ Storage::url('media/mandarin.jpg') }}" alt="mandarin">
-                                CN
-                            </a>
-                            <a href="#" class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
-                                <img class="w-5 h-4" src="{{ Storage::url('media/korea.jpg') }}" alt="korea">
-                                KR
-                            </a>
-                            <a href="#" class="hover:text-[var(--color-lightblue)] flex flex-row gap-2 items-center">
-                                <img class="w-5 h-4" src="{{ Storage::url('media/indonesia.jpg') }}" alt="indonesia">
-                                ID
-                            </a>
-                        </div>
+                        <!--Lang switcher mobile-->
+                        <x-partials.lang-switcher-mobile />
 
                     </div>
                 </div>
