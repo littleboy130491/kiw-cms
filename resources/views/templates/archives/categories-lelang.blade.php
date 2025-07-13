@@ -1,7 +1,8 @@
-<x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app>
     <x-partials.header />
     <main>
-        <x-partials.hero-page :image="$record->featuredImage->url ?? Storage::url('media/lelang-hero.jpg')" h1="{{ $record->title ?? ($title ?? 'Lelang') }}" />
+        <x-partials.hero-page :image="$record->featuredImage->url ?? Storage::url('media/lelang-hero.jpg')"
+            h1="{{ $record->title ?? ($title ?? 'Lelang') }}" />
 
 
         <!--Start Post Archive-->
@@ -17,7 +18,7 @@
                 <div class="lg:w-2/3 flex flex-col gap-5">
                     {!! $record->content ?? '' !!}
                     <!--button-->
-                    <a class="w-fit btn1 mt-5"data-aos="fade-down" href="#">Unduh Pedoman
+                    <a class="w-fit btn1 mt-5" data-aos="fade-down" href="#">Unduh Pedoman
                         <x-icon.download-icon-current />
                     </a>
                 </div>

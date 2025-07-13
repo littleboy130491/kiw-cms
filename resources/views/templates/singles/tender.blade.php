@@ -1,4 +1,4 @@
-<x-layouts.app :title="$item->title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app>
     <x-partials.header />
     <main>
 
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <!--button-->
-                <a class="w-fit btn1 back mt-5 lg:!flex !hidden"data-aos="fade-down" href="#">Kembali
+                <a class="w-fit btn1 back mt-5 lg:!flex !hidden" data-aos="fade-down" href="#">Kembali
                     <span>
                         <x-icon.arrow-back-white />
                     </span>
@@ -55,7 +55,8 @@
                     <div
                         class="gradient-blue top-0 left-0 w-fit px-3 py-2 rounded-md {{ $item->tenderStatus->first()?->slug === 'terbaru' ? 'blinking' : '' }}">
                         <p class="text-white uppercase text-[.8em]">
-                            {{ $item->tenderStatus->first()?->title ?? 'terbaru' }}</p>
+                            {{ $item->tenderStatus->first()?->title ?? 'terbaru' }}
+                        </p>
                     </div>
 
                     <div>
@@ -73,11 +74,10 @@
             </div>
 
             <!--button-->
-            <a class="w-fit btn1 back -mt-7 lg:hidden"data-aos="fade-down"
-                href="{{ route('cms.archive.content', [
-                    'lang' => app()->getLocale(),
-                    'content_type_archive_key' => 'tenders',
-                ]) }}">Kembali
+            <a class="w-fit btn1 back -mt-7 lg:hidden" data-aos="fade-down" href="{{ route('cms.archive.content', [
+    'lang' => app()->getLocale(),
+    'content_type_archive_key' => 'tenders',
+]) }}">Kembali
                 <span>
                     <x-icon.arrow-back-white />
                 </span>

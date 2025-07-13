@@ -2,11 +2,12 @@
     @vite('resources/js/pages/single-building.js')
 @endPushOnce
 
-<x-layouts.app :title="$item->title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app>
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page :image="$item->featuredImage->url ?? Storage::url('media/bangunan-pabrik-hero.jpg')" h1="Bangunan Pabrik Siap Pakai" />
+        <x-partials.hero-page :image="$item->featuredImage->url ?? Storage::url('media/bangunan-pabrik-hero.jpg')"
+            h1="Bangunan Pabrik Siap Pakai" />
 
         <section id="bangunan-pabrik"
             class="flex flex-col my-18 lg:my-30 px-4 sm:px-6 lg:px-0 gap-18 lg:gap-20 lg:w-[1200px] lg:mx-auto">
@@ -23,7 +24,7 @@
                     </p>
                     @if ($item->whatsapp)
                         <!--button-->
-                        <a class="w-fit btn1 mt-5 wa-message"data-aos="fade-down" href="{{ $item->whatsapp }}"
+                        <a class="w-fit btn1 mt-5 wa-message" data-aos="fade-down" href="{{ $item->whatsapp }}"
                             target="_blank">hubungi
                             sekarang
                             <span>

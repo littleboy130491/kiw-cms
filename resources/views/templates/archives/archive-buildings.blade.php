@@ -1,7 +1,8 @@
-<x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app>
     <x-partials.header />
     <main>
-        <x-partials.hero-page :image="$record->featuredImage->url" h1="{{ $record->title ?? 'Bangunan Pabrik Siap Pakai' }}" />
+        <x-partials.hero-page :image="$record->featuredImage->url"
+            h1="{{ $record->title ?? 'Bangunan Pabrik Siap Pakai' }}" />
 
 
         <!--Start Bangunan Pabrik-->

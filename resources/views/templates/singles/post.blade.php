@@ -11,7 +11,7 @@
     ]);
 @endphp
 
-<x-layouts.app :title="$item->title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app>
     <x-partials.header />
     <main>
 
@@ -70,7 +70,7 @@
 
                 </div>
                 <!--button-->
-                <a class="w-fit btn1 back mt-5"data-aos="fade-down" href="{{ $archive_post_url }}">Kembali
+                <a class="w-fit btn1 back mt-5" data-aos="fade-down" href="{{ $archive_post_url }}">Kembali
                     <span>
                         <x-icon.arrow-back-white />
                     </span>
@@ -92,8 +92,7 @@
                     <p class="text-center">Alamat email Anda tidak akan dipublikasikan.</p>
                 </div>
                 <!--form-->
-                <form action="#" method="POST"
-                    class="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-5">
+                <form action="#" method="POST" class="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-5">
                     <div class="sm:w-[48.5%] lg:w-[49%]">
                         <label for="name" class="hidden">Nama</label>
                         <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required
@@ -102,14 +101,14 @@
 
                     <div class="sm:w-[48.5%] lg:w-[49%]">
                         <label for="email" class="hidden">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Alamat email contoh@email.com"
-                            required
+                        <input type="email" id="email" name="email" placeholder="Alamat email contoh@email.com" required
                             class="mt-1 w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
                     <div class="sm:w-full">
                         <label for="comment" class="hidden">Komentar</label>
-                        <textarea id="comment" name="comment" rows="8" placeholder="Tulis komentar Anda di sini..." required
+                        <textarea id="comment" name="comment" rows="8" placeholder="Tulis komentar Anda di sini..."
+                            required
                             class="w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </textarea>
                     </div>
@@ -228,8 +227,8 @@
                     <article class="mb-5">
                         <header class="flex flex-col gap-1">
                             <h5 class="name">Dewi Anggraini</h5>
-                            <time datetime="2025-05-26T11:16:10+07:00"
-                                class="text-[var(--color-text)] text-[.9em]">May 26, 2025 at 11:16 am</time>
+                            <time datetime="2025-05-26T11:16:10+07:00" class="text-[var(--color-text)] text-[.9em]">May
+                                26, 2025 at 11:16 am</time>
                         </header>
                         <section class="my-3">
                             <p>Lorem ipsum dolor sit amet consectetur adipiscing elit...</p>
@@ -238,8 +237,8 @@
                             <div class="gradient-blue text-white w-fit px-2 py-1 text-[.85em]">
                                 <a href="javascript:void(0);" class="reply-button">Balas</a>
                             </div>
-                            <time datetime="2025-05-26T11:16:56+07:00"
-                                class="text-[var(--color-text)] text-[.9em]">May 26, 2025 at 11:16 am</time>
+                            <time datetime="2025-05-26T11:16:56+07:00" class="text-[var(--color-text)] text-[.9em]">May
+                                26, 2025 at 11:16 am</time>
                         </div>
                     </article>
                 </li>
@@ -249,8 +248,8 @@
                     <article class="mb-5">
                         <header class="flex flex-col gap-1">
                             <h5 class="name">Mike</h5>
-                            <time datetime="2025-05-26T11:16:10+07:00"
-                                class="text-[var(--color-text)] text-[.9em]">May 26, 2025 at 11:16 am</time>
+                            <time datetime="2025-05-26T11:16:10+07:00" class="text-[var(--color-text)] text-[.9em]">May
+                                26, 2025 at 11:16 am</time>
                         </header>
                         <section class="my-3">
                             <p>Lorem ipsum dolor sit amet consectetur adipiscing elit...</p>
@@ -259,8 +258,8 @@
                             <div class="gradient-blue text-white w-fit px-2 py-1 text-[.85em]">
                                 <a href="javascript:void(0);" class="reply-button">Balas</a>
                             </div>
-                            <time datetime="2025-05-26T11:16:56+07:00"
-                                class="text-[var(--color-text)] text-[.9em]">May 26, 2025 at 11:16 am</time>
+                            <time datetime="2025-05-26T11:16:56+07:00" class="text-[var(--color-text)] text-[.9em]">May
+                                26, 2025 at 11:16 am</time>
                         </div>
                     </article>
                 </li>
@@ -271,7 +270,8 @@
             <!-- Hidden Reply Form -->
             <form id="reply-form-template"
                 class="reply-form flex flex-col sm:flex-row justify-between gap-2 flex-wrap hidden mt-4">
-                <textarea class="w-full p-2 border border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-blue-500"
+                <textarea
+                    class="w-full p-2 border border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Tulis Komentar Anda" id="comment" name="comment" rows="4"></textarea>
                 <div class="sm:w-[49%] lg:w-[49%]">
                     <label for="name" class="hidden">Nama</label>
@@ -281,8 +281,7 @@
 
                 <div class="sm:w-[49%] lg:w-[49%]">
                     <label for="email" class="hidden">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Alamat email contoh@email.com"
-                        required
+                    <input type="email" id="email" name="email" placeholder="Alamat email contoh@email.com" required
                         class="w-full p-2 border border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 <button type="submit" class="mt-2 px-3 py-1 bg-[var(--color-black)] w-fit text-white">Kirim</button>

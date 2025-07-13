@@ -1,4 +1,4 @@
-<x-layouts.app :title="$item->title ?? 'Penghargaan & Sertifikasi'" :body-classes="$bodyClasses">
+<x-layouts.app>
     <x-partials.header />
 
     <main>

@@ -1,7 +1,8 @@
-<x-layouts.app :title="$record->title ?? $title" :body-classes="$bodyClasses">
+<x-layouts.app>
     <x-partials.header />
     <main>
-        <x-partials.hero-page :image="$record->featuredImage->url ?? Storage::url('media/berita-hero.jpg')" h1="{{ $record->title ?? ($title ?? 'Berita Perusahaan') }}" />
+        <x-partials.hero-page :image="$record->featuredImage->url ?? Storage::url('media/berita-hero.jpg')"
+            h1="{{ $record->title ?? ($title ?? 'Berita Perusahaan') }}" />
 
         <!--Start Post Archive-->
         <section id="post-archive"

@@ -2,7 +2,7 @@
     @vite('resources/js/popup-modal-main.js')
 @endPushOnce
 
-<x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app>
     <x-partials.header />
 
     <main>

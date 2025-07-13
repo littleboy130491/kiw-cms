@@ -1,7 +1,7 @@
 @pushOnce('before_body_close')
     @vite('resources/js/pages/single-building.js')
 @endPushOnce
-<x-layouts.app :title="$item->title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app>
     <x-partials.header />
     <main>
 
@@ -22,7 +22,7 @@
                         </p>
                         @if ($item->whatsapp)
                             <!--button-->
-                            <a class="w-fit btn1 mt-5 wa-message"data-aos="fade-down" href="{{ $item->whatsapp }}"
+                            <a class="w-fit btn1 mt-5 wa-message" data-aos="fade-down" href="{{ $item->whatsapp }}"
                                 target="_blank">hubungi
                                 sekarang
                                 <span>
@@ -41,8 +41,7 @@
             <!--Start Spesifikasi-->
             @if ($item->specification)
                 <section id="spesifikasi" class="lg:py-30 py-18 bg-cover bg-[var(--color-transit)]">
-                    <div
-                        class="flex flex-col lg:flex-row lg:gap-8 gap-5 lg:px-0 lg:max-w-[1200px] lg:mx-auto sm:px-6 px-4">
+                    <div class="flex flex-col lg:flex-row lg:gap-8 gap-5 lg:px-0 lg:max-w-[1200px] lg:mx-auto sm:px-6 px-4">
 
                         <!--Heading-->
                         <h2 data-aos="fade-up" class="lg:w-1/3">Spesifikasi</h2>

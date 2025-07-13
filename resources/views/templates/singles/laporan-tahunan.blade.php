@@ -4,7 +4,7 @@
 
     $items = Report::with('fileMedia')->where('status', ContentStatus::Published)->get();
 @endphp
-<x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app>
     <x-partials.header />
     <main>
 

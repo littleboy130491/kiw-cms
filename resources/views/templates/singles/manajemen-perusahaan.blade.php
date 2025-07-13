@@ -2,7 +2,7 @@
     @vite('resources/js/popup-modal-main.js')
 @endPushOnce
 
-<x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app>
     <x-partials.header />
     <main>
 
@@ -27,8 +27,8 @@
             </x-loop.popup-item-manajemen>
 
             <!--item-->
-            <x-loop.popup-item-manajemen name="Dr. A.P. Ir. Sujarwanto Dwiatmoko, M.Si" position="President Commissioner"
-                :image="Storage::url('media/sujarwanto.jpg')">
+            <x-loop.popup-item-manajemen name="Dr. A.P. Ir. Sujarwanto Dwiatmoko, M.Si"
+                position="President Commissioner" :image="Storage::url('media/sujarwanto.jpg')">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis mi ac mattis vehicula.
                 Aliquam semper maximus metus, ut vulputate justo tempor vitae. Curabitur vestibulum sem eget massa
                 semper, a sagittis tortor accumsan. Duis luctus ante vel augue efficitur lacinia. Sed ut tortor in velit

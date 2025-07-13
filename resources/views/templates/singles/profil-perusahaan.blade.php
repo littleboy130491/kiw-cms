@@ -1,7 +1,7 @@
 @pushOnce('before_body_close')
     @vite('resources/js/pages/profil-perusahaan.js')
 @endPushOnce
-<x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app>
     <x-partials.header />
     <main>
 
@@ -77,34 +77,27 @@
                     <div class="relative">
                         <div class="swiper swiper-3">
                             <div class="swiper-wrapper !flex">
-                                <x-loop.perjalanan tahun="1988"
-                                    desc="
+                                <x-loop.perjalanan tahun="1988" desc="
                             PT KIW (Persero) sebelumnya bernama PT Kawasan Industri Cilacap (KIC), berdiri di Cilacap, Jawa Tengah.
                             " />
 
-                                <x-loop.perjalanan tahun="1998"
-                                    desc="
+                                <x-loop.perjalanan tahun="1998" desc="
                             Pindah ke kawasan industri baru di Semarang, Jawa Tengah dengan nama baru, yaitu: PT Kawasan Industri Wijayakusuma (Persero).
                             " />
 
-                                <x-loop.perjalanan tahun="2018"
-                                    desc="
+                                <x-loop.perjalanan tahun="2018" desc="
                             PT Putra Wijayakusuma Sakti (PWS) lahir sebagai anak perusahaan PT Kawasan Industri Wijayakusuma (Persero).
                             " />
-                                <x-loop.perjalanan tahun="2020"
-                                    desc="
+                                <x-loop.perjalanan tahun="2020" desc="
                             PT Kawasan Industri Terpadu Batang (KITB) adalah perusahaan joint venture antara PT KIW (Persero), PT PP (Persero), PTPN IX, dan Perusda Batang. Perusahaan ini membangun dan mengelola Kawasan Industri Terpadu Batang sebagai salah satu Proyek Strategis Nasional (PSN).
                             " />
-                                <x-loop.perjalanan tahun="2021"
-                                    desc="
+                                <x-loop.perjalanan tahun="2021" desc="
                             PT KIW (Persero) mendapatkan Penyertaan Modal Negara (PMN) guna pembangunan dan pengembangan KIT Batang.
                             " />
-                                <x-loop.perjalanan tahun="2022"
-                                    desc="
+                                <x-loop.perjalanan tahun="2022" desc="
                             PT KIW resmi menjadi anggota Holding Danareksa.
                             " />
-                                <x-loop.perjalanan tahun="2022"
-                                    desc="
+                                <x-loop.perjalanan tahun="2022" desc="
                             Peresmian Holding Danareksa oleh Menteri BUMN.
                             " />
                             </div>
@@ -153,8 +146,7 @@
                 <x-tab.tab-contents-saham id="tab2">
                     <div class="flex flex-col lg:flex-row lg:justify-between gap-12">
                         <div class="flex flex-col justify-between gap-10 lg:gap-20 lg:w-1/2">
-                            <img class="w-1/4 sm:w-1/5 lg:w-1/3" src="{{Storage::url('media/gbc-logo.png')}}"
-                                alt="PWS">
+                            <img class="w-1/4 sm:w-1/5 lg:w-1/3" src="{{Storage::url('media/gbc-logo.png')}}" alt="PWS">
                             <div class="flex flex-col gap-5">
                                 <h6 class="bullet-1">anak perusahaan</h6>
                                 <h2>Grand Batang City</h2>
@@ -164,7 +156,7 @@
                                 </p>
 
                                 <!--button-->
-                                <a class="w-fit btn1 lg:mt-5"data-aos="fade-down" href="https://grandbatangcity.co.id/"
+                                <a class="w-fit btn1 lg:mt-5" data-aos="fade-down" href="https://grandbatangcity.co.id/"
                                     target="_blank" rel="noopener noreferrer">kunjungi website
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -191,8 +183,7 @@
                 <x-tab.tab-contents-saham id="tab3">
                     <div class="flex flex-col lg:flex-row lg:justify-between gap-12">
                         <div class="flex flex-col justify-between gap-10 lg:gap-20 lg:w-1/2">
-                            <img class="w-1/4 sm:w-1/5 lg:w-1/3" src="{{Storage::url('media/pws-logo.png')}}"
-                                alt="PWS">
+                            <img class="w-1/4 sm:w-1/5 lg:w-1/3" src="{{Storage::url('media/pws-logo.png')}}" alt="PWS">
                             <div class="flex flex-col gap-5">
                                 <h6 class="bullet-1">anak perusahaan</h6>
                                 <h2>PT. Putra Wijaya Kusuma Sakti</h2>
@@ -202,7 +193,7 @@
                                 </p>
 
                                 <!--button-->
-                                <a class="w-fit btn1 lg:mt-5"data-aos="fade-down"
+                                <a class="w-fit btn1 lg:mt-5" data-aos="fade-down"
                                     href="https://putrawijayakusumasakti.co.id/" target="_blank"
                                     rel="noopener noreferrer">kunjungi website
                                     <span>
@@ -246,20 +237,15 @@
                     <img src="{{Storage::url('media/map-koneksi.png')}}">
 
                     <!-- Hotspot Items -->
-                    <x-loop.hotspot-item-koneksi-global top="20" left="30" country="Jepang"
-                        company="8" />
+                    <x-loop.hotspot-item-koneksi-global top="20" left="30" country="Jepang" company="8" />
 
-                    <x-loop.hotspot-item-koneksi-global top="80" left="70" country="Indonesia"
-                        company="5" />
+                    <x-loop.hotspot-item-koneksi-global top="80" left="70" country="Indonesia" company="5" />
 
-                    <x-loop.hotspot-item-koneksi-global top="10" left="72" country="Thailand"
-                        company="2" />
+                    <x-loop.hotspot-item-koneksi-global top="10" left="72" country="Thailand" company="2" />
 
-                    <x-loop.hotspot-item-koneksi-global top="11" left="75" country="Singapore"
-                        company="4" />
+                    <x-loop.hotspot-item-koneksi-global top="11" left="75" country="Singapore" company="4" />
 
-                    <x-loop.hotspot-item-koneksi-global top="11" left="78" country="Brazil"
-                        company="10" />
+                    <x-loop.hotspot-item-koneksi-global top="11" left="78" country="Brazil" company="10" />
 
                 </div>
             </div>

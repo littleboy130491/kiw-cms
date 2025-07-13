@@ -1,4 +1,4 @@
-<x-layouts.app :title="$title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app>
     <x-partials.header />
     <main>
 
@@ -72,32 +72,30 @@
                     <p class="text-center">Laporkan pelanggaran, keluhan, atau saran secara aman.</p>
                 </div>
                 <!--form-->
-                <form action="#" method="POST"
-                    class="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-5">
+                <form action="#" method="POST" class="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-5">
                     <div class="sm:w-[100%] lg:w-[100%]">
                         <label for="name" class="hidden">Nama</label>
-                        <input type="text" id="name" name="name" placeholder="Masukkan nama Lengkap Anda"
-                            required
+                        <input type="text" id="name" name="name" placeholder="Masukkan nama Lengkap Anda" required
                             class="mt-1 w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
                     <div class="sm:w-[48.5%] lg:w-[49%]">
                         <label for="email" class="hidden">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Alamat email contoh@email.com"
-                            required
+                        <input type="email" id="email" name="email" placeholder="Alamat email contoh@email.com" required
                             class="mt-1 w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
                     <div class="sm:w-[48.5%] lg:w-[49%]">
                         <label for="phone" class="hidden">Telepon</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Nomor Telepon" required
-                            pattern="[0-9]+" inputmode="numeric"
+                        <input type="tel" id="phone" name="phone" placeholder="Nomor Telepon" required pattern="[0-9]+"
+                            inputmode="numeric"
                             class="mt-1 w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
                     <div class="sm:w-full">
                         <label for="comment" class="hidden">Komentar</label>
-                        <textarea id="comment" name="comment" rows="8" placeholder="Tulis pesan Anda di sini..." required
+                        <textarea id="comment" name="comment" rows="8" placeholder="Tulis pesan Anda di sini..."
+                            required
                             class="w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </textarea>
                     </div>
