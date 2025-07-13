@@ -535,25 +535,7 @@
             </div>
 
             <!--Content-->
-            <div class="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-7">
-                <x-loop.artikel-berita label="
-                    Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
-                    " tag="Informasi" date="06/01/2025"
-                    :image="Storage::url('media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg')" url="#" />
-                <x-loop.artikel-berita label="
-                    Dirut KIW Berbagi Pengalaman Penerapan GCG di Program “Library Cafe” BPKP Jateng
-                    " tag="Informasi" date="06/01/2025" :image="Storage::url('media/library-caffe.jpg')" url="#" />
-                <x-loop.artikel-berita label="
-                    Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
-                    " tag="Informasi" date="06/01/2025"
-                    :image="Storage::url('media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg')" url="#" />
-                <x-loop.artikel-berita label="
-                    Langkah Nyata Kawasan Industri Wijayakusuma Wujudkan Kawasan Industri Modern dan Ramah Lingkungan
-                    " tag="Informasi" date="06/01/2025"
-                    :image="Storage::url('media/langkah-nyata-kawasan-industri-wijayakusuma.jpeg')" url="#" />
-
-
-            </div>
+            <x-loop.artikel-berita-grid />
 
             <!--button mobile-->
             <a class="!flex sm:!hidden w-fit btn1 mt-5" data-aos="fade-down" href="/archive-post">Berita Lainnya
