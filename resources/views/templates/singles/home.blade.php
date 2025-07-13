@@ -1,6 +1,10 @@
 @pushOnce('before_body_close')
     @vite('resources/js/pages/home.js')
 @endPushOnce
+
+@php
+    $archive_post_url = route('cms.archive.content', [app()->getLocale(), 'posts']);
+@endphp
 <x-layouts.app>
     <x-partials.header />
     <main>
@@ -522,7 +526,8 @@
                     <h2 data-aos="fade-up">Dapatkan Informasi Terbaru</h2>
                 </div>
                 <!--button desktop tablet-->
-                <a class="sm:!flex !hidden w-fit btn1 mt-5" data-aos="fade-down" href="/archive-post">Berita Lainnya
+                <a class="sm:!flex !hidden w-fit btn1 mt-5" data-aos="fade-down" href="{{ $archive_post_url }}">Berita
+                    Lainnya
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
@@ -538,7 +543,8 @@
             <x-loop.artikel-berita-grid />
 
             <!--button mobile-->
-            <a class="!flex sm:!hidden w-fit btn1 mt-5" data-aos="fade-down" href="/archive-post">Berita Lainnya
+            <a class="!flex sm:!hidden w-fit btn1 mt-5" data-aos="fade-down" href="{{ $archive_post_url }}">Berita
+                Lainnya
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
@@ -565,26 +571,7 @@
 
 
                 <!--Content-->
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-7">
-
-                    <x-loop.laporan-tahunan label="Laporan Tahunan PT KIW (persero) Tahun 2014"
-                        doc="Storage::url('media/lipsum.pdf')" />
-
-                    <x-loop.laporan-tahunan label="Laporan Auditor Independen Tahun 2013"
-                        doc="Storage::url('media/lipsum.pdf')" />
-
-                    <x-loop.laporan-tahunan label="Laporan Tahunan PT KIW (persero) Tahun 2015"
-                        doc="Storage::url('media/lipsum.pdf')" />
-
-                    <x-loop.laporan-tahunan label="Laporan Tahunan PT KIW (persero) Tahun 2016"
-                        doc="Storage::url('media/lipsum.pdf')" />
-
-                    <x-loop.laporan-tahunan label="Laporan Auditor Independen Tahun 2014" doc="media/lipsum.pdf" />
-
-                    <x-loop.laporan-tahunan label="Laporan Tahunan PT KIW (persero) Tahun 2017"
-                        doc="Storage::url('media/lipsum.pdf')" />
-
-                </div>
+                <x-loop.laporan-tahunan-grid />
             </div>
         </section>
         <!-- End Hubungan Investor Home -->
