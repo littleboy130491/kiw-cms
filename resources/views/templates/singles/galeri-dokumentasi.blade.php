@@ -25,7 +25,7 @@
 
             <!--Content-->
 
-            <x-instagram-feed type="image" :columns="4" />
+
 
 
         </section>
@@ -67,7 +67,7 @@
 
 
                 <x-tab.tab-contents-video id="tab2">
-                    <x-instagram-feed type="video" :columns="4" />
+
                 </x-tab.tab-contents-video>
 
             </div>
