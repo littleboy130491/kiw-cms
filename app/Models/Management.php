@@ -45,7 +45,6 @@ class Management extends Model
      */
     protected $casts = [
         'custom_fields' => 'array',
-        'position' => 'array',
         'menu_order' => 'integer',
         'status' => ContentStatus::class,
         'published_at' => 'datetime',
@@ -62,6 +61,7 @@ class Management extends Model
         'excerpt',
         'slug',
         'title',
+        'position',
     ];
 
 

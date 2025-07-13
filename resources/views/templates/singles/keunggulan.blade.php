@@ -1,5 +1,4 @@
 <x-layouts.app>
-
     <x-partials.header />
 
     <main>
