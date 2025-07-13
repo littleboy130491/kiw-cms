@@ -20,7 +20,7 @@
                 <div class="flex flex-row gap-5">
                     <div class="flex flex-row items-center gap-2">
                         <x-icon.tag-icon-white />
-                        <p class="!text-white">{{ $item_label }}</p>
+                        <p class="!text-white capitalize">{{ $item_label }}</p>
                     </div>
                     <div class="flex flex-row items-center gap-2">
                         <x-icon.calendar-icon-white />
@@ -45,7 +45,7 @@
                 <div class="flex flex-row gap-4">
                     <div class="flex flex-row items-center gap-2">
                         <x-icon.tag-icon-color />
-                        <p class="!text-[var(--color-purple)]">{{ $item_label }}</p>
+                        <p class="!text-[var(--color-purple)] capitalize">{{ $item_label }}</p>
                     </div>
                     <div class="flex flex-row items-center gap-2">
                         <x-icon.calendar-icon-color />
