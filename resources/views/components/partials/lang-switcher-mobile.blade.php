@@ -6,6 +6,9 @@
         'id' => ['flag' => 'indonesia.jpg', 'display' => 'ID'],
     ];
 @endphp
+@props(
+    ['slug']
+)
 <div class="mt-10 flex flex-row gap-5 items-center text-[var(--color-heading)]">
     @foreach($languages as $langCode => $langData)
         <a href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['lang' => $langCode])) }}"

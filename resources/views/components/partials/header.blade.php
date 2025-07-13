@@ -26,10 +26,10 @@
             'menuItems.children.children.linkable' // Add more levels if needed
         ])
         ->orderByRaw("CASE 
-                                                    WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 1
-                                                    WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 2
-                                                    ELSE 3
-                                                END", [$localizedLocation, $fallbackLocation])
+                                                                    WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 1
+                                                                    WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 2
+                                                                    ELSE 3
+                                                                END", [$localizedLocation, $fallbackLocation])
         ->first();
 @endphp
 
