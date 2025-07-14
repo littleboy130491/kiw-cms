@@ -43,7 +43,7 @@ class AchievementsList extends Component
         $this->resetPage();
         // Clear the search input
         $this->js('document.querySelector(\'input[type="search"]\').value = ""');
-        // Clear the year dropdown using a simpler selector
+        // Clear the year dropdown
         $this->js('document.querySelectorAll(\'select\')[0].value = ""');
     }
 
