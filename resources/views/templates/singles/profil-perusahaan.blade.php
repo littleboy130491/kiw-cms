@@ -102,12 +102,12 @@
                             " />
                             </div>
 
-                        </div>
+                            <!-- Custom icon.arrow Right -->
+                            <div
+                                class="absolute !top-10 lg:!top-15 swiper-button-next bg-white rounded-[100%] !h-[30px] !w-[30px] p-1 cursor-pointer z-10">
+                                <img class="w-2/3" src="{{Storage::url('media/arrow-right-solid.png')}}" alt="arrow">
+                            </div>
 
-                        <!-- Custom icon.arrow Right -->
-                        <div
-                            class="absolute !top-10 lg:!top-15 swiper-button-next bg-white rounded-[100%] !h-[30px] !w-[30px] p-1">
-                            <img class="w-2/3" src="{{Storage::url('media/arrow-right-solid.png')}}" alt="arrow">
                         </div>
 
                     </div>

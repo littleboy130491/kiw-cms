@@ -107,13 +107,13 @@
                 </div>
                 <!-- Custom icon.arrow Left -->
                 <div
-                    class="swiper-button-prev bg-[--white-transparent] hover:bg-[--color-blue] rounded-[100%] sm:!h-[30px] sm:!w-[30px] !h-[20px] !w-[20px] p-1">
+                    class="swiper-button-prev bg-[--white-transparent] hover:bg-[--color-blue] rounded-[100%] sm:!h-[30px] sm:!w-[30px] !h-[20px] !w-[20px] p-1 cursor-pointer">
                     <x-icon.arrow-left-white />
                 </div>
 
                 <!-- Custom icon.arrow Right -->
                 <div
-                    class="swiper-button-next bg-[--white-transparent] hover:bg-[--color-blue] rounded-[100%] sm:!h-[30px] sm:!w-[30px] !h-[20px] !w-[20px] p-1">
+                    class="swiper-button-next bg-[--white-transparent] hover:bg-[--color-blue] rounded-[100%] sm:!h-[30px] sm:!w-[30px] !h-[20px] !w-[20px] p-1 cursor-pointer">
                     <x-icon.arrow-right-white />
                 </div>
             </div>

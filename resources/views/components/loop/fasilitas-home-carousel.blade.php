@@ -16,12 +16,12 @@
 
         </div>
         <!-- Custom icon.arrow Left -->
-        <div class="swiper-button-prev gradient-blue rounded-[100%] !h-[30px] !w-[30px] p-1 ">
+        <div class="swiper-button-prev gradient-blue rounded-[100%] !h-[30px] !w-[30px] p-1 cursor-pointer">
             <x-icon.arrow-left-white />
         </div>
 
         <!-- Custom icon.arrow Right -->
-        <div class="swiper-button-next gradient-blue  rounded-[100%] !h-[30px] !w-[30px] p-1">
+        <div class="swiper-button-next gradient-blue  rounded-[100%] !h-[30px] !w-[30px] p-1 cursor-pointer">
             <x-icon.arrow-right-white />
         </div>
 

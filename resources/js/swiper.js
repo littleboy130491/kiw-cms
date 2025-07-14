@@ -1,8 +1,9 @@
 import Swiper from 'swiper';
-import 'swiper/css';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 // Default configuration shared across some swipers
 const defaultConfig = {
+  modules: [Navigation, Pagination, Autoplay],
   loop: true,
   spaceBetween: 20,
   pagination: {
@@ -40,6 +41,13 @@ const swiperConfigs = [
     selector: '.swiper-3',
     config: {
       ...defaultConfig,
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoHeight: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
       breakpoints: {
         1024: { slidesPerView: 1 },
         768: { slidesPerView: 1 },
@@ -90,15 +98,30 @@ const swiperConfigs = [
 ];
 
 // Initialize all swipers where the selector is found
-const swipers = swiperConfigs
-  .map(({ selector, config }) => {
-    const element = document.querySelector(selector);
-    if (element) {
-      return new Swiper(selector, config);
-    }
-    return null;
-  })
-  .filter((swiper) => swiper !== null);
+function initializeSwipers() {
+  const swipers = swiperConfigs
+    .map(({ selector, config }) => {
+      const element = document.querySelector(selector);
+      if (element) {
+        console.log(`Initializing swiper: ${selector}`);
+        return new Swiper(selector, config);
+      } else {
+        console.log(`Element not found: ${selector}`);
+      }
+      return null;
+    })
+    .filter((swiper) => swiper !== null);
+  
+  console.log(`Initialized ${swipers.length} swipers`);
+  return swipers;
+}
 
-// Export swipers if needed elsewhere
-export { swipers };
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeSwipers);
+} else {
+  initializeSwipers();
+}
+
+// Export for external use
+export { initializeSwipers };

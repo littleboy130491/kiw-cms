@@ -4,6 +4,7 @@
 
 @import "tailwindcss/preflight";
 @import "tailwindcss";
+@import "swiper/css";
 @source "../views";
 
 
@@ -879,38 +880,53 @@ h6 {
   display: none !important;
 }
 
-#fasilitas-home .swiper {
+/* swiper profil perusahaan - perjalanan */
+#perjalanan .swiper-button-next {
+  right: 0 !important;
+}
+
+#perjalanan .swiper-wrapper {
+  display: flex !important;
+  align-items: stretch;
+}
+
+#perjalanan .swiper-slide {
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column;
+}
+
+.fasilitas-home .swiper {
   margin-right: -200px !important;
 }
 
-#fasilitas-home .swiper-wrapper {
+.fasilitas-home .swiper-wrapper {
   display: flex !important;
   flex-direction: row;
 }
 
-#fasilitas-home .swiper-button-prev {
+.fasilitas-home .swiper-button-prev {
   left: -16px !important;
   top: 175px;
 }
 
-
-#fasilitas-home .swiper-button-next {
+.fasilitas-home .swiper-button-next {
   right: -16px !important;
   top: 175px !important;
 }
  
-#fasilitas-home .fasilitas-home-item:hover {
+.fasilitas-home .fasilitas-home-item:hover {
   background: linear-gradient(268deg, #1F77D3 1.1%, #321B71 99.1%);
 }
 
-#fasilitas-home .fasilitas-home-item:hover * {
+.fasilitas-home .fasilitas-home-item:hover * {
   color: white;
 }
 
 @media(max-width:544px) {
-  #fasilitas-home .swiper {
-  margin-right: unset !important;
-}
+  .fasilitas-home .swiper {
+    margin-right: unset !important;
+  }
 }
 
 /* swiper tenant */
@@ -920,12 +936,10 @@ h6 {
 
 #tenant-home .swiper-button-prev {
   left: -16px !important;
- 
 }
 
 #tenant-home .swiper-button-next {
   right: -12px !important;
- 
 }
 
 /* 2  baris teks */
