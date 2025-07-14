@@ -27,8 +27,8 @@ class PostSearch extends Component
 
     public function mount(array $routeParams = [], string $currentUrl = '')
     {
-        $this->relation = $routeParams['taxonomy_key'];
-        $this->slug = $routeParams['taxonomy_slug'];
+        $this->relation = $routeParams['taxonomy_key'] ?? '';
+        $this->slug = $routeParams['taxonomy_slug'] ?? '';
         $this->currentUrl = $currentUrl;
     }
 
