@@ -16,25 +16,29 @@
     <div class="grow gap-2 bg-cover flex flex-col bg-center"
         style="background-image: url('{{ $item->featuredImage->url ?? '' }}');">
         <div class="gradient-black-half grow px-6 py-6 h-full flex flex-col justify-end">
-            <div class="h-fit flex flex-col gap-2">
-                <div class="flex flex-row gap-5">
-                    <div class="flex flex-row items-center gap-2">
-                        <x-icon.tag-icon-white />
-                        <p class="!text-white capitalize">{{ $item_label }}</p>
+            <a href="{{$item_url}}">
+                <div class="h-fit flex flex-col gap-2">
+                    <div class="flex flex-row gap-5">
+                        <div class="flex flex-row items-center gap-2">
+                            <x-icon.tag-icon-white />
+                            <p class="!text-white capitalize">{{ $item_label }}</p>
+                        </div>
+                        <div class="flex flex-row items-center gap-2">
+                            <x-icon.calendar-icon-white />
+                            <p class="!text-white">
+                                {{ $item_date }}
+                            </p>
+                        </div>
                     </div>
-                    <div class="flex flex-row items-center gap-2">
-                        <x-icon.calendar-icon-white />
-                        <p class="!text-white">
-                            {{ $item_date }}
-                        </p>
-                    </div>
+                    <h5 class="!text-white ellipsis">
+                        {{ $item->title ?? '' }}
+                    </h5>
                 </div>
-                <h5 class="!text-white ellipsis">
-                    {{ $item->title ?? '' }}
-                </h5>
-            </div>
+            </a>
         </div>
+
     </div>
+
 
     <!-- Back -->
     <div

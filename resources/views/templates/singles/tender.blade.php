@@ -40,7 +40,10 @@
                     </div>
                 </div>
                 <!--button-->
-                <a class="w-fit btn1 back mt-5 lg:!flex !hidden" data-aos="fade-down" href="#">Kembali
+                <a class="w-fit btn1 back mt-5 lg:!flex !hidden" data-aos="fade-down" href="{{ route('cms.archive.content', [
+    'lang' => app()->getLocale(),
+    'content_type_archive_key' => 'tenders',
+]) }}">Kembali
                     <span>
                         <x-icon.arrow-back-white />
                     </span>

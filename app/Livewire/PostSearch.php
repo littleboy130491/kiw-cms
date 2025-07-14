@@ -25,10 +25,10 @@ class PostSearch extends Component
         'searchQuery' => 'nullable|string|max:255',
     ];
 
-    public function mount(string $relation = '', string $slug = '', string $currentUrl = '')
+    public function mount(array $routeParams = [], string $currentUrl = '')
     {
-        $this->relation = $relation;
-        $this->slug = $slug;
+        $this->relation = $routeParams['taxonomy_key'];
+        $this->slug = $routeParams['taxonomy_slug'];
         $this->currentUrl = $currentUrl;
     }
 
