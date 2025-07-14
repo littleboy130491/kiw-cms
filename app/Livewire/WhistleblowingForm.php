@@ -8,9 +8,8 @@ use Littleboy130491\Sumimasen\Livewire\SubmissionForm;
 use Littleboy130491\Sumimasen\Mail\FormSubmissionNotification;
 use Littleboy130491\Sumimasen\Models\Submission;
 
-class ContactForm extends SubmissionForm
+class WhistleblowingForm extends SubmissionForm
 {
-    public $company = '';
     public $source_page = '';
 
     public function mount()
@@ -22,10 +21,11 @@ class ContactForm extends SubmissionForm
     public function rules()
     {
         $rules = parent::rules();
-        $rules['company'] = 'nullable|string|max:255';
         $rules['phone'] = 'required|string|max:50'; // Make phone required
         $rules['message'] = 'required|string|min:10|max:2000';
         $rules['source_page'] = 'nullable|string|max:500';
+        // Remove subject requirement since whistleblowing form doesn't have subject field
+        unset($rules['subject']);
         return $rules;
     }
 
@@ -62,11 +62,10 @@ class ContactForm extends SubmissionForm
                     'name' => $this->name,
                     'email' => $this->email,
                     'message' => $this->message,
-                    'subject' => 'Contact Form Submission',
+                    'subject' => 'Whistleblowing Form Submission',
                     'phone' => $this->phone,
-                    'company' => $this->company,
                     'source_page' => $this->source_page,
-                    'submitted_at' => now()->setTimezone('Asia/Jakarta')->toISOString(),
+                    'submitted_at' => now()->toISOString(),
                     'ip_address' => request()->ip(),
                     'user_agent' => request()->userAgent(),
                 ],
@@ -91,7 +90,7 @@ class ContactForm extends SubmissionForm
             $this->dispatch('form-submitted-successfully');
 
             // Reset form after successful submission (but keep source_page)
-            $this->reset(['name', 'email', 'message', 'subject', 'phone', 'captcha', 'turnstile', 'company']);
+            $this->reset(['name', 'email', 'message', 'phone', 'captcha', 'turnstile']);
 
             // Reset bot protection widget after form reset
             if ($this->isBotProtectionEnabled()) {
@@ -109,7 +108,7 @@ class ContactForm extends SubmissionForm
             $this->dispatch('form-error');
 
             // Log the error for debugging
-            \Log::error('Form submission failed: ' . $e->getMessage(), [
+            \Log::error('Whistleblowing form submission failed: ' . $e->getMessage(), [
                 'trace' => $e->getTraceAsString()
             ]);
         }
@@ -117,6 +116,6 @@ class ContactForm extends SubmissionForm
 
     public function render()
     {
-        return view('livewire.contact-form');
+        return view('livewire.whistleblowing-form');
     }
 }
