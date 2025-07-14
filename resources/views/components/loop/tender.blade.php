@@ -19,17 +19,17 @@
         <p class="ellipsis">
             {{ $desc ?? '' }}
         </p>
-        @foreach ($item->specification as $spec)
-            <div class="flex flex-row items-center gap-2">
-                <x-icon.calendar-icon-color />
-                <p class="!text-[var(--color-purple)]">
+        <div class="flex flex-row items-center gap-2">
+            <x-icon.calendar-icon-color />
+            <p class="!text-[var(--color-purple)]">
+                @foreach ($item->specification as $spec)
                     @if (Str::of($spec['name'])->lower()->contains('tanggal'))
                         {{ $spec['value'] }}
                         @break
                     @endif
-                </p>
-            </div>
-        @endforeach
+                @endforeach
+            </p>
+        </div>
     </div>
 
     <div class="flex flex-col gap-5 mt-3">
