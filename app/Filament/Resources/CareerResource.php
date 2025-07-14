@@ -37,7 +37,7 @@ class CareerResource extends BaseContentResource
     protected static function formRelationshipsFields(): array
     {
         return [
-            ...static::formTaxonomyRelationshipField('careerCategories', tableName: 'career_categories'),
+            ...static::formTaxonomyRelationshipField('careerCategories', tableName: 'career_categories', multiple: false),
         ];
     }
 

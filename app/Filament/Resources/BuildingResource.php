@@ -78,7 +78,7 @@ class BuildingResource extends BaseContentResource
     protected static function formRelationshipsFields(): array
     {
         return [
-            ...static::formTaxonomyRelationshipField('buildingCategories', tableName: 'building_categories'),
+            ...static::formTaxonomyRelationshipField('buildingCategories', tableName: 'building_categories', multiple: false),
         ];
     }
 

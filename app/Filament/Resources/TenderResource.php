@@ -36,20 +36,20 @@ class TenderResource extends BaseContentResource
         ];
 
 
-          $defaultItems = collect($defaultSpecification)->map(fn($item) => [
+        $defaultItems = collect($defaultSpecification)->map(fn($item) => [
             'name' => $item,
         ])->toArray();
-    
-    return [
-        Repeater::make('specification')
-            ->schema([
-                TextInput::make('name')->nullable(),
-                TextInput::make('value')->nullable(),
-            ])
-            ->default($defaultItems)
-            ->columns(2)
-            ->columnSpanFull(),
-     
+
+        return [
+            Repeater::make('specification')
+                ->schema([
+                    TextInput::make('name')->nullable(),
+                    TextInput::make('value')->nullable(),
+                ])
+                ->default($defaultItems)
+                ->columns(2)
+                ->columnSpanFull(),
+
             Repeater::make('process')
                 ->columns(2)
                 ->schema([
@@ -60,8 +60,8 @@ class TenderResource extends BaseContentResource
 
                 ])
                 ->columnSpanFull()
-                ];
-        
+        ];
+
     }
 
     protected static function hiddenFields(): array
@@ -77,9 +77,9 @@ class TenderResource extends BaseContentResource
     protected static function formRelationshipsFields(): array
     {
         return [
-            ...static::formTaxonomyRelationshipField('tenderYear'),
-            ...static::formTaxonomyRelationshipField('tenderStatus'),
-            ...static::formTaxonomyRelationshipField('tenderLocation'),
+            ...static::formTaxonomyRelationshipField('tenderYear', multiple: false),
+            ...static::formTaxonomyRelationshipField('tenderStatus', multiple: false),
+            ...static::formTaxonomyRelationshipField('tenderLocation', multiple: false),
         ];
     }
 
