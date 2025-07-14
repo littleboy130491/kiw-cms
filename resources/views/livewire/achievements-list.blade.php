@@ -9,7 +9,7 @@
             <!--Category-->
             <div class="flex flex-row flex-wrap gap-2 justify-center sm:justify-start sm:w-1/2 lg:w-2/3">
                 <button wire:click="$set('selectedType', '')"
-                    class="btn6 group w-fit {{ $selectedType === '' ? 'active' : '' }}">
+                    class="btn6 group w-fit {{ $selectedType == '' ? 'active' : '' }}">
                     Semua
                 </button>
 
@@ -30,7 +30,9 @@
                             <img src="{{ Storage::url('media/search.png') }}">
                         </div>
                         <input type="search" placeholder="Cari disini..." wire:model.live.debounce.300ms="search"
-                            class="w-full pl-10 pr-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:var(--color-blue)" />
+                            x-on:forceClear.window="$el.value = ''"
+                            class="w-full pl-10 pr-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:var(--color-blue)"
+                            wire:key="search-input" />
                     </div>
 
                     <!--Year Dropdown-->

@@ -39,10 +39,12 @@ class AchievementsList extends Component
 
     public function resetFilters()
     {
-        $this->search = '';
-        $this->selectedType = '';
-        $this->selectedYear = '';
+        $this->reset(['search', 'selectedType', 'selectedYear']);
         $this->resetPage();
+        // Clear the search input
+        $this->js('document.querySelector(\'input[type="search"]\').value = ""');
+        // Clear the year dropdown using a simpler selector
+        $this->js('document.querySelectorAll(\'select\')[0].value = ""');
     }
 
     public function render()
@@ -51,7 +53,13 @@ class AchievementsList extends Component
             ->with(['featuredImage', 'achievementType', 'achievementYear'])
             ->where('status', 'published')
             ->when($this->search, function ($query) {
-                $query->where('title', 'like', "%{$this->search}%");
+                $currentLang = app()->getLocale();
+                $defaultLang = config('cms.default_language', 'en');
+
+                $query->where(function ($q) use ($currentLang, $defaultLang) {
+                    $q->whereRaw('LOWER(JSON_EXTRACT(title, ?)) LIKE LOWER(?)', ["$.{$currentLang}", "%{$this->search}%"])
+                        ->orWhereRaw('LOWER(JSON_EXTRACT(title, ?)) LIKE LOWER(?)', ["$.{$defaultLang}", "%{$this->search}%"]);
+                });
             })
             ->when($this->selectedType, function ($query) {
                 $query->whereHas('achievementType', function ($q) {
