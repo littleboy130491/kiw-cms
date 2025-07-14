@@ -32,7 +32,7 @@
             </p>
             <img class="absolute top-0 -left-3 w-12 z-10" src="{{ Storage::url('media/wa-bubble-caret.png') }}">
             <div class="flex flex-row justify-end gap-2 mt-3">
-                <p class="text-[.8em]">{{ date('H:i') }}</p>
+                <p class="text-[.8em]">{{ now()->setTimezone('Asia/Jakarta')->format('H:i') }}</p>
             </div>
         </div>
         <!-- input -->
