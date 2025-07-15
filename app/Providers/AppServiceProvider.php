@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Littleboy130491\Sumimasen\Settings\GeneralSettings;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +12,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton('settings', function ($app) {
+            return $app->make(GeneralSettings::class);
+        });
     }
 
     /**
