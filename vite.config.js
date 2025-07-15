@@ -10,7 +10,6 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/popup-modal-main.js',
                 'resources/js/pages/home.js',
-                'resources/js/pages/single-post.js',
                 'resources/js/pages/profil-perusahaan.js',
                 'resources/js/pages/single-building.js',
                 'resources/js/pages/karier.js',
