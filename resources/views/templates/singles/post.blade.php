@@ -74,7 +74,9 @@
         <!--End Post Content-->
 
         <!-- Start Comment Section -->
-        <livewire:comments :post="$item" />
+        @if(!($item->custom_fields['disable_comments'] ?? false))
+            <livewire:comments :post="$item" />
+        @endif
         <!-- End Comment Section -->
 
 
