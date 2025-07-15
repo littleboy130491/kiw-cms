@@ -173,7 +173,7 @@
 
                             <div class="flex gap-2 mt-2">
                                 <button type="submit"
-                                    class="px-2 py-1 text-[.85em] bg-blue-500 hover:bg-blue-600 w-fit text-white rounded-md cursor-pointer flex items-center"
+                                    class="px-2 py-1 text-[.85em] gradient-blue w-fit text-white rounded-md cursor-pointer flex items-center"
                                     wire:loading.attr="disabled" wire:loading.class="cursor-wait" wire:target="submitReply">
                                     <span wire:loading wire:target="submitReply">
                                         {!! $spinner !!}

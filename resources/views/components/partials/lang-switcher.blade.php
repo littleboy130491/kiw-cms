@@ -14,7 +14,11 @@ $languages = [
     'id' => ['flag' => 'indonesia.jpg', 'display' => 'ID'],
 ];
 
-$slugParam = match (Route::current()->getName()) {
+$currentRoute = Route::current();
+$currentRouteName = $currentRoute->getName();
+$currentParams = $currentRoute->parameters();
+
+$slugParam = match ($currentRouteName) {
     'cms.single.content' => 'content_slug',
     'cms.taxonomy.archive' => 'taxonomy_slug',
     'cms.archive.content' => 'content_type_archive_key',
@@ -22,8 +26,6 @@ $slugParam = match (Route::current()->getName()) {
 };
 
 $defaultLanguage = config('cms.default_language');
-$currentRoute = Route::current();
-$currentParams = $currentRoute->parameters();
 
 // Styling based on variant
 $containerClasses = match($variant) {
@@ -37,9 +39,9 @@ $linkBaseClasses = match($variant) {
 };
 
 // Inline slug resolution logic to avoid function redefinition
-$getSlugForLanguage = function($globalItem, $langCode, $slugParam, $defaultLanguage) {
+$getSlugForLanguage = function($globalItem, $langCode, $slugParam, $defaultLanguage) use ($currentRoute) {
     if (!$globalItem || !method_exists($globalItem, 'getTranslation')) {
-        return Route::current()->parameter($slugParam);
+        return $currentRoute->parameter($slugParam);
     }
     
     // Get the localized slug for this language
@@ -52,7 +54,7 @@ $getSlugForLanguage = function($globalItem, $langCode, $slugParam, $defaultLangu
     
     // Use localized slug if available, then default language slug, otherwise current slug
     return $localizedSlug 
-        ?: ($defaultSlug ?: ($globalItem->slug ?? Route::current()->parameter($slugParam)));
+        ?: ($defaultSlug ?: ($globalItem->slug ?? $currentRoute->parameter($slugParam)));
 };
 @endphp
 
