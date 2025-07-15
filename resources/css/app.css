@@ -586,9 +586,6 @@ h6 {
 
 }
 
-
-
-
 /* Custom Button 2 */
 .btn2 {
   background: white;
@@ -1226,4 +1223,10 @@ body .uwy.userway_p1 .userway_buttons_wrapper {
   left: 1.5rem !important;
   right: auto !important;
   transform: none !important;
+}
+
+@media (min-width: 1024px) {
+  .mobile-only {
+    display: none !important;
+  }
 }

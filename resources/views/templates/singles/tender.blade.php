@@ -1,7 +1,12 @@
+@php
+    $tender_archive_url = route('cms.archive.content', [
+        'lang' => app()->getLocale(),
+        'content_type_archive_key' => 'tenders',
+    ]);
+@endphp
 <x-layouts.app>
     <x-partials.header />
     <main>
-
         <x-partials.hero-page :image="Storage::url('media/tender-hero.jpg')" h1="Tender" />
 
         <!--Start Single Tender-->
@@ -40,10 +45,8 @@
                     </div>
                 </div>
                 <!--button-->
-                <a class="w-fit btn1 back mt-5 lg:!flex !hidden" data-aos="fade-down" href="{{ route('cms.archive.content', [
-    'lang' => app()->getLocale(),
-    'content_type_archive_key' => 'tenders',
-]) }}">Kembali
+                <a class="w-fit btn1 back mt-5 lg:!flex !hidden" data-aos="fade-down"
+                    href="{{ $tender_archive_url }}">Kembali
                     <span>
                         <x-icon.arrow-back-white />
                     </span>
@@ -76,11 +79,9 @@
 
             </div>
 
-            <!--button-->
-            <a class="w-fit btn1 back -mt-7 lg:hidden" data-aos="fade-down" href="{{ route('cms.archive.content', [
-    'lang' => app()->getLocale(),
-    'content_type_archive_key' => 'tenders',
-]) }}">Kembali
+            <!--button mobile only-->
+            <a class="w-fit btn1 mobile-only back -mt-7 lg:hidden" data-aos="fade-down"
+                href="{{ $tender_archive_url }}">Kembali
                 <span>
                     <x-icon.arrow-back-white />
                 </span>

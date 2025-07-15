@@ -1,3 +1,10 @@
+@php
+    $tender_archive_url = route('cms.archive.content', [
+        'lang' => app()->getLocale(),
+        'content_type_archive_key' => 'tenders',
+    ]);
+@endphp
+
 <x-layouts.app>
     <x-partials.header />
     <main>
@@ -101,8 +108,8 @@
                         <h2 data-aos="fade-up" class="sm:text-center text-left">Pengadaan yang Sedang Berlangsung</h2>
                     </div>
                     <!--button Desktop Tablet-->
-                    <a class="w-fit btn1 mt-5" data-aos="fade-down"
-                        href="{{ route('cms.archive.content', [app()->getLocale(), 'tenders']) }}">lihat
+                    <a class="w-fit btn1 self-end mt-5 sm:!flex !hidden" data-aos="fade-down"
+                        href="{{ $tender_archive_url }}">lihat
                         semua
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -119,6 +126,14 @@
 
                 <!--Content-->
                 <x-loop.tender-grid qty="4" />
+                <!--button mobile only-->
+                <a class="w-fit btn1 mobile-only back mt-7 lg:hidden" data-aos="fade-down"
+                    href="{{ $tender_archive_url }}">Kembali
+                    <span>
+                        <x-icon.arrow-back-white />
+                    </span>
+                </a>
+
 
             </div>
         </section>
