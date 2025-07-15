@@ -28,6 +28,7 @@ use Spatie\ResponseCache\Middlewares\DoNotCacheResponse;
 use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
 use Filament\Forms\Components\TextInput;
 use Datlechin\FilamentMenuBuilder\MenuPanel\ModelMenuPanel;
+use Illuminate\Support\Facades\Storage;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -64,8 +65,8 @@ class AdminPanelProvider extends PanelProvider
                 DoNotCacheResponse::class,
             ])
             ->brandName(config('cms.site_name'))
-            // ->brandLogo(config('cms.site_logo'))
-            ->favicon(config('cms.site_favicon'))
+            ->brandLogo(Storage::url('media/' . app('settings')->site_logo ?? config('cms.site_logo')))
+            ->favicon(Storage::url('media/' . app('settings')->site_favicon ?? config('cms.site_favicon')))
             ->theme(asset('css/filament/admin/theme.css'))
             ->plugins([
                 SumimasenPlugin::make()

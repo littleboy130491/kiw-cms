@@ -137,7 +137,10 @@ return [
 
     'navigation_menu_locations' => [
         'header' => 'Header',
-        'footer' => 'Footer',
+        'footer_menu_1' => 'Footer 1',
+        'footer_menu_2' => 'Footer 2',
+        'footer_menu_3' => 'Footer 3',
+
     ],
 
     'debug_mode' => [
