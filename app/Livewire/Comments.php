@@ -27,30 +27,52 @@ class Comments extends Component
     public $showReplyForm = false;
     public $replyFormMessage = '';
     public $replyFormError = '';
+    
+    // Accordion functionality
+    public $showReplies = [];
+    
+    // Session storage for persistent state
+    protected $sessionKey = 'comment_discussions_open';
 
-    protected $listeners = ['refreshComments' => '$refresh'];
+    protected $listeners = [
+        'refreshComments' => '$refresh',
+        'updateTurnstileToken' => 'updateTurnstileToken'
+    ];
 
     public function mount($post)
     {
         $this->post = $post;
         $this->loadComments();
+        
+        // Restore discussion state from session
+        $sessionKey = $this->sessionKey . '_' . $this->post->id;
+        $this->showReplies = session($sessionKey, []);
     }
 
     public function loadComments()
     {
+        // Load parent comments
         $this->comments = Comment::where('commentable_type', get_class($this->post))
             ->where('commentable_id', $this->post->id)
             ->where('status', CommentStatus::Approved)
             ->whereNull('parent_id')
-            ->with(['children' => function ($query) {
-                $query->where('status', CommentStatus::Approved)
-                      ->with(['children' => function ($subQuery) {
-                          $subQuery->where('status', CommentStatus::Approved);
-                      }]);
-            }])
             ->orderBy('created_at', 'desc')
             ->get();
+
+        // For each parent comment, load all replies in flat structure and count them
+        foreach ($this->comments as $comment) {
+            // Use the new descendants() method - much cleaner!
+            $descendants = $comment->descendants();
+            // Filter only approved comments
+            $flatReplies = $descendants->filter(function ($reply) {
+                return $reply->status === CommentStatus::Approved;
+            })->sortBy('created_at'); // Sort chronologically
+            
+            $comment->flatReplies = $flatReplies;
+            $comment->all_children_count = $flatReplies->count();
+        }
     }
+
 
     public function rules()
     {
@@ -86,7 +108,27 @@ class Comments extends Component
 
     public function submitComment()
     {
-        $this->validate();
+        // Add debugging for main comment Turnstile validation
+        if ($this->isBotProtectionEnabled() && $this->getBotProtectionType() === 'turnstile') {
+            \Log::info('Main Comment Turnstile Validation Debug', [
+                'turnstile_value' => $this->turnstile,
+                'turnstile_empty' => empty($this->turnstile),
+                'turnstile_length' => strlen($this->turnstile ?? ''),
+            ]);
+        }
+
+        try {
+            $this->validate();
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // Add specific debugging for Turnstile validation
+            if ($this->isBotProtectionEnabled() && $this->getBotProtectionType() === 'turnstile') {
+                \Log::info('Main Comment Turnstile Validation Failed', [
+                    'turnstile_value' => $this->turnstile,
+                    'validation_errors' => $e->errors(),
+                ]);
+            }
+            throw $e;
+        }
 
         Comment::create([
             'commentable_type' => get_class($this->post),
@@ -112,27 +154,122 @@ class Comments extends Component
 
     public function showReply($commentId)
     {
+        // If switching to a different reply form, reset Turnstile
+        if ($this->showReplyForm && $this->replyTo !== $commentId) {
+            $this->reset(['replyTurnstile']);
+            if ($this->isBotProtectionEnabled() && $this->getBotProtectionType() === 'turnstile') {
+                $this->dispatch('reset-turnstile');
+            }
+        }
+        
         $this->replyTo = $commentId;
         $this->showReplyForm = true;
         $this->reset(['replyName', 'replyEmail', 'replyContent', 'replyTurnstile', 'replyFormMessage', 'replyFormError']);
+        
+        // Find the parent comment and ensure its discussion stays open
+        $comment = Comment::find($commentId);
+        if ($comment) {
+            // If this is a reply to a reply, find the root parent
+            $rootParentId = $comment->parent_id ?? $commentId;
+            while ($comment && $comment->parent_id) {
+                $parentComment = Comment::find($comment->parent_id);
+                if ($parentComment && $parentComment->parent_id === null) {
+                    $rootParentId = $parentComment->id;
+                    break;
+                } elseif ($parentComment) {
+                    $comment = $parentComment;
+                } else {
+                    break;
+                }
+            }
+            
+            // Keep the discussion open for the root parent
+            $this->showReplies[$rootParentId] = true;
+        }
+        
+        // Reload comments to ensure fresh data
+        $this->loadComments();
     }
 
     public function hideReply()
     {
+        // Find the parent comment before hiding to keep discussion open
+        $rootParentId = null;
+        if ($this->replyTo) {
+            $comment = Comment::find($this->replyTo);
+            if ($comment) {
+                // Find the root parent
+                $rootParentId = $comment->parent_id ?? $this->replyTo;
+                while ($comment && $comment->parent_id) {
+                    $parentComment = Comment::find($comment->parent_id);
+                    if ($parentComment && $parentComment->parent_id === null) {
+                        $rootParentId = $parentComment->id;
+                        break;
+                    } elseif ($parentComment) {
+                        $comment = $parentComment;
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
+        
         $this->showReplyForm = false;
         $this->replyTo = null;
         $this->reset(['replyName', 'replyEmail', 'replyContent', 'replyTurnstile', 'replyFormMessage', 'replyFormError']);
+        
+        // Keep the discussion open if we found a root parent
+        if ($rootParentId) {
+            $this->showReplies[$rootParentId] = true;
+        }
+        
+        // Reload comments to ensure fresh data
+        $this->loadComments();
+    }
+
+    public function toggleReplies($commentId)
+    {
+        if (isset($this->showReplies[$commentId]) && $this->showReplies[$commentId]) {
+            $this->showReplies[$commentId] = false;
+        } else {
+            $this->showReplies[$commentId] = true;
+        }
+        
+        // Save to session for persistence
+        $sessionKey = $this->sessionKey . '_' . $this->post->id;
+        session([$sessionKey => $this->showReplies]);
+        
+        // Always reload comments to ensure fresh data and proper flatReplies
+        $this->loadComments();
     }
 
     public function submitReply()
     {
-        $this->validate($this->replyRules());
+        try {
+            $this->validate($this->replyRules());
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // Add specific debugging for Turnstile validation
+            if ($this->isBotProtectionEnabled() && $this->getBotProtectionType() === 'turnstile') {
+                \Log::info('Reply Turnstile Validation Debug', [
+                    'replyTurnstile_value' => $this->replyTurnstile,
+                    'replyTurnstile_empty' => empty($this->replyTurnstile),
+                    'validation_errors' => $e->errors(),
+                ]);
+            }
+            throw $e;
+        }
 
-        $parentComment = Comment::find($this->replyTo);
+        $targetComment = Comment::find($this->replyTo);
         
-        if (!$parentComment) {
+        if (!$targetComment) {
             $this->replyFormError = 'Komentar yang ingin Anda balas tidak ditemukan.';
             return;
+        }
+
+        // Find the root parent for Twitter-style flat replies
+        $rootParent = $targetComment->parent_id ? Comment::find($targetComment->parent_id) : $targetComment;
+        while ($rootParent && $rootParent->parent_id) {
+            $rootParent = Comment::find($rootParent->parent_id);
         }
 
         Comment::create([
@@ -142,12 +279,29 @@ class Comments extends Component
             'email' => $this->replyEmail,
             'content' => $this->replyContent,
             'status' => CommentStatus::Pending,
-            'parent_id' => $this->replyTo,
+            'parent_id' => $this->replyTo, // Keep the direct parent for @mentions
         ]);
+
+        // Find root parent to keep discussion open
+        $rootParentId = $targetComment->parent_id ?? $targetComment->id;
+        while ($targetComment && $targetComment->parent_id) {
+            $parentComment = Comment::find($targetComment->parent_id);
+            if ($parentComment && $parentComment->parent_id === null) {
+                $rootParentId = $parentComment->id;
+                break;
+            } elseif ($parentComment) {
+                $targetComment = $parentComment;
+            } else {
+                break;
+            }
+        }
 
         $this->replyFormMessage = 'Balasan Anda telah berhasil dikirim dan sedang menunggu persetujuan.';
         $this->reset(['replyName', 'replyEmail', 'replyContent', 'replyTurnstile']);
         $this->showReplyForm = false;
+        
+        // Keep the discussion open
+        $this->showReplies[$rootParentId] = true;
         
         // Reset Turnstile widget if enabled
         if ($this->isBotProtectionEnabled() && $this->getBotProtectionType() === 'turnstile') {
@@ -177,6 +331,10 @@ class Comments extends Component
     {
         // Skip validation for bot protection fields during typing
         if (in_array($propertyName, ['turnstile', 'replyTurnstile'])) {
+            // When Turnstile is updated, ensure the discussion stays open
+            if ($this->replyTo && $propertyName === 'replyTurnstile') {
+                $this->maintainDiscussionState();
+            }
             return;
         }
 
@@ -185,6 +343,87 @@ class Comments extends Component
             $this->validateOnly($propertyName, $this->replyRules());
         } else {
             $this->validateOnly($propertyName);
+        }
+    }
+
+    private function maintainDiscussionState()
+    {
+        if ($this->replyTo) {
+            $comment = Comment::find($this->replyTo);
+            if ($comment) {
+                // Find the root parent
+                $rootParentId = $comment->parent_id ?? $this->replyTo;
+                while ($comment && $comment->parent_id) {
+                    $parentComment = Comment::find($comment->parent_id);
+                    if ($parentComment && $parentComment->parent_id === null) {
+                        $rootParentId = $parentComment->id;
+                        break;
+                    } elseif ($parentComment) {
+                        $comment = $parentComment;
+                    } else {
+                        break;
+                    }
+                }
+                
+                // Keep the discussion open
+                $this->showReplies[$rootParentId] = true;
+                
+                // Save to session for persistence
+                $sessionKey = $this->sessionKey . '_' . $this->post->id;
+                session([$sessionKey => $this->showReplies]);
+                
+                \Log::info('Discussion state maintained', [
+                    'rootParentId' => $rootParentId,
+                    'replyTo' => $this->replyTo,
+                    'showReplies' => $this->showReplies
+                ]);
+            }
+        }
+    }
+
+    public function updateTurnstileToken($propertyName, $token)
+    {
+        \Log::info('updateTurnstileToken called', [
+            'propertyName' => $propertyName,
+            'token_length' => strlen($token),
+            'token_preview' => substr($token, 0, 20) . '...'
+        ]);
+        
+        if (in_array($propertyName, ['turnstile', 'replyTurnstile'])) {
+            $this->$propertyName = $token;
+            \Log::info('Token successfully set via updateTurnstileToken', [
+                'property' => $propertyName,
+                'value_set' => !empty($this->$propertyName)
+            ]);
+            
+            // Maintain discussion state when token is set via callback
+            if ($propertyName === 'replyTurnstile') {
+                $this->maintainDiscussionState();
+            }
+        } else {
+            \Log::warning('Invalid property name for Turnstile token', ['propertyName' => $propertyName]);
+        }
+    }
+
+    public function hydrate()
+    {
+        // This runs after every Livewire request to maintain state
+        
+        // Always restore discussion state from session first
+        $sessionKey = $this->sessionKey . '_' . $this->post->id;
+        $sessionState = session($sessionKey, []);
+        if (!empty($sessionState)) {
+            $this->showReplies = $sessionState;
+            \Log::info('Restored discussion state from session', [
+                'showReplies' => $this->showReplies,
+                'replyTo' => $this->replyTo,
+                'showReplyForm' => $this->showReplyForm
+            ]);
+        }
+        
+        // Also maintain state if reply form is open
+        if ($this->replyTo && $this->showReplyForm) {
+            $this->maintainDiscussionState();
         }
     }
 
