@@ -1,6 +1,6 @@
 @pushOnce('before_head_close')
     @if ($this->isBotProtectionEnabled() && $this->getBotProtectionType() === 'turnstile')
-        @turnstileScripts()
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
     @endif
 @endPushOnce
 
@@ -37,7 +37,7 @@
                     <textarea id="content" wire:model="content" rows="8" placeholder="Tulis komentar Anda di sini..."
                         required
                         class="w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 @error('content') border-red-500 @enderror">
-                                                                </textarea>
+                                                                                                </textarea>
                     @error('content') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
 
@@ -140,28 +140,35 @@
 
 
                             @if ($this->isBotProtectionEnabled())
-                                <div class="w-full flex justify-center mt-4 bg-yellow-100 p-4 border">
-                                    <div>
-                                        <p class="text-sm mb-2">DEBUG: Bot protection enabled, type: {{ $this->getBotProtectionType() }}</p>
-                                        @if ($this->getBotProtectionType() === 'turnstile')
-                                            <p class="text-sm mb-2">DEBUG: About to render Turnstile with ID: replyTurnstile{{ $comment->id }}</p>
-                                            <div class="border-2 border-red-500 p-2">
-                                                <x-turnstile id="replyTurnstile{{ $comment->id }}" wire:model="replyTurnstile" />
-                                            </div>
-                                            <p class="text-sm mt-2">DEBUG: Turnstile component rendered above (in red border)</p>
-                                        @else
-                                            <p class="text-sm">DEBUG: Not turnstile type</p>
-                                        @endif
-                                    </div>
+                                <div class="w-full flex justify-center mt-4">
+                                    @if ($this->getBotProtectionType() === 'turnstile')
+                                        <div id="replyTurnstile{{ $comment->id }}" class="cf-turnstile"
+                                            data-sitekey="{{ config('services.turnstile.key') }}"
+                                            data-callback="replyTurnstile{{ $comment->id }}Callback"
+                                            data-expired-callback="replyTurnstile{{ $comment->id }}ExpiredCallback"
+                                            data-timeout-callback="replyTurnstile{{ $comment->id }}ExpiredCallback" wire:ignore></div>
+                                    @endif
                                 </div>
                                 @error('replyTurnstile')
                                     <span class="text-red-500 text-sm mt-2 w-full text-center">{{ $message }}</span>
                                 @enderror
-                            @else
-                                <div class="w-full flex justify-center mt-4 bg-red-100 p-4 border">
-                                    <p class="text-sm">DEBUG: Bot protection is NOT enabled</p>
-                                </div>
                             @endif
+
+                            <script>
+                                window.replyTurnstile{{ $comment->id }}Callback = function (token) {
+                                    @this.set('replyTurnstile', token);
+                                }
+
+                                window.replyTurnstile{{ $comment->id }}ExpiredCallback = function () {
+                                    window.turnstile.reset('replyTurnstile{{ $comment->id }}');
+                                }
+
+                                @this.watch('replyTurnstile', (value, old) => {
+                                    if (!!old && !value) {
+                                        window.turnstile.reset('replyTurnstile{{ $comment->id }}');
+                                    }
+                                })
+                            </script>
 
                             <div class="flex gap-2 mt-2">
                                 <button type="submit"
@@ -252,13 +259,34 @@
                                             @if ($this->isBotProtectionEnabled())
                                                 <div class="w-full flex justify-center mt-4">
                                                     @if ($this->getBotProtectionType() === 'turnstile')
-                                                        <x-turnstile id="nestedReplyTurnstile{{ $reply->id }}" wire:model="replyTurnstile" />
+                                                        <div id="nestedReplyTurnstile{{ $reply->id }}" class="cf-turnstile"
+                                                            data-sitekey="{{ config('services.turnstile.key') }}"
+                                                            data-callback="nestedReplyTurnstile{{ $reply->id }}Callback"
+                                                            data-expired-callback="nestedReplyTurnstile{{ $reply->id }}ExpiredCallback"
+                                                            data-timeout-callback="nestedReplyTurnstile{{ $reply->id }}ExpiredCallback" wire:ignore>
+                                                        </div>
                                                     @endif
                                                 </div>
                                                 @error('replyTurnstile')
                                                     <span class="text-red-500 text-sm mt-2 w-full text-center">{{ $message }}</span>
                                                 @enderror
                                             @endif
+
+                                            <script>
+                                                window.nestedReplyTurnstile{{ $reply->id }}Callback = function (token) {
+                                                    @this.set('replyTurnstile', token);
+                                                }
+
+                                                window.nestedReplyTurnstile{{ $reply->id }}ExpiredCallback = function () {
+                                                    window.turnstile.reset('nestedReplyTurnstile{{ $reply->id }}');
+                                                }
+
+                                                @this.watch('replyTurnstile', (value, old) => {
+                                                    if (!!old && !value) {
+                                                        window.turnstile.reset('nestedReplyTurnstile{{ $reply->id }}');
+                                                    }
+                                                })
+                                            </script>
 
                                             <div class="flex gap-2 mt-2">
                                                 <button type="submit"
@@ -337,65 +365,63 @@
 
 @if ($this->isBotProtectionEnabled() && $this->getBotProtectionType() === 'turnstile')
     <script>
-        console.log('DEBUG: Turnstile script section loaded');
-        
         document.addEventListener('livewire:init', function () {
-            console.log('DEBUG: Livewire init event fired');
-            console.log('DEBUG: Turnstile available?', typeof turnstile !== 'undefined');
-            
-            // Check for Turnstile widgets on page
-            setInterval(() => {
-                const widgets = document.querySelectorAll('.cf-turnstile');
-                console.log('DEBUG: Found', widgets.length, 'Turnstile widgets on page');
-                widgets.forEach((widget, index) => {
-                    console.log('DEBUG: Widget', index, 'ID:', widget.id, 'Rendered:', widget.hasChildNodes());
+            // Function to render Turnstiles
+            function renderTurnstiles(root = document) {
+                root.querySelectorAll('.cf-turnstile:not([data-rendered])').forEach((container) => {
+                    let params = {
+                        sitekey: container.dataset.sitekey,
+                        callback: container.dataset.callback,
+                        'error-callback': container.dataset.errorCallback,
+                        'expired-callback': container.dataset.expiredCallback,
+                        'timeout-callback': container.dataset.timeoutCallback,
+                    };
+
+                    let widgetId = turnstile.render(container, params);
+                    if (widgetId) {
+                        container.dataset.rendered = 'true';
+                        container.dataset.widgetId = widgetId;
+                        container.style.display = 'block'; // Ensure visibility
+                    }
                 });
-            }, 2000);
-            
-            // Reset Turnstile when needed
-            Livewire.on('reset-turnstile', () => {
-                console.log('DEBUG: Reset turnstile event received');
-                if (typeof turnstile !== 'undefined') {
-                    const widgets = document.querySelectorAll('.cf-turnstile');
-                    console.log('DEBUG: Resetting', widgets.length, 'widgets');
-                    widgets.forEach(widget => {
-                        turnstile.reset(widget);
-                    });
-                } else {
-                    console.log('DEBUG: Turnstile not available for reset');
-                }
-            });
-            
-            // Listen for Livewire updates that might add new widgets
-            Livewire.on('$refresh', () => {
-                console.log('DEBUG: Livewire refresh event - checking for new widgets');
-                setTimeout(() => {
-                    const newWidgets = document.querySelectorAll('.cf-turnstile:not([data-initialized])');
-                    console.log('DEBUG: Found', newWidgets.length, 'uninitialized widgets');
-                    newWidgets.forEach(widget => {
-                        console.log('DEBUG: Attempting to initialize widget', widget.id);
-                        widget.setAttribute('data-initialized', 'true');
-                    });
-                }, 500);
-            });
-        });
-        
-        // Check if Turnstile loads after page load
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DEBUG: DOM loaded, checking Turnstile...');
-            
-            function checkTurnstile() {
-                if (typeof turnstile !== 'undefined') {
-                    console.log('DEBUG: Turnstile is available!');
-                    const widgets = document.querySelectorAll('.cf-turnstile');
-                    console.log('DEBUG: Found widgets:', widgets.length);
-                } else {
-                    console.log('DEBUG: Turnstile not yet available, retrying...');
-                    setTimeout(checkTurnstile, 1000);
-                }
             }
-            
-            checkTurnstile();
+
+            // Render initial widgets
+            if (typeof turnstile !== 'undefined') {
+                renderTurnstiles();
+            } else {
+                const interval = setInterval(() => {
+                    if (typeof turnstile !== 'undefined') {
+                        clearInterval(interval);
+                        renderTurnstiles();
+                    }
+                }, 100);
+            }
+
+            // Hook for dynamically added widgets
+            Livewire.hook('morph.added', ({ el }) => {
+                setTimeout(() => {
+                    renderTurnstiles(el);
+                }, 0);
+            });
+
+            // Additional hook after updates
+            Livewire.hook('commit', ({ succeed }) => {
+                succeed(() => {
+                    setTimeout(() => {
+                        renderTurnstiles();
+                    }, 0);
+                });
+            });
+
+            // Reset all Turnstiles
+            Livewire.on('reset-turnstile', () => {
+                document.querySelectorAll('.cf-turnstile[data-rendered]').forEach((container) => {
+                    if (container.dataset.widgetId) {
+                        turnstile.reset(container.dataset.widgetId);
+                    }
+                });
+            });
         });
     </script>
 @endif
