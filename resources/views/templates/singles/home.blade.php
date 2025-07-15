@@ -213,12 +213,11 @@
 
                     <x-loop.layanan-home number="02." label="Bangunan Pabrik Siap Pakai (BPSP)"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                        url="/archive-bangunan-pabrik-siap-pakai"
-                        :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
+                        url="/bpsp" :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
 
                     <x-loop.layanan-home number="03." label="Kerja sama Komersial Kawasan Industri"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                        url="/single-area-komersil-atm"
+                        url="/area-komersil/atm"
                         :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
                 </div>
 
