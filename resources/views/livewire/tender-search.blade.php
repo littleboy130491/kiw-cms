@@ -2,7 +2,7 @@
     class="flex flex-col gap-9 lg:gap-18 my-18 lg:my-30 px-4 sm:px-6 lg:px-0 lg:w-[1200px] lg:mx-auto">
 
     <!--Top Bar-->
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 z-50">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 z-10">
 
         <!--Title-->
         <h2 class="text-center sm:text-left">Temukan Tender Terbaru</h2>
@@ -87,4 +87,3 @@
     </div>
 
 </section>
-

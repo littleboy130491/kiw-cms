@@ -1,4 +1,3 @@
-import './accessibility.js';
 import './aos-animate.js';
 import './alpine.js';
 import './lightbox.js';

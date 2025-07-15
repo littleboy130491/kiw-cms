@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const headingText = heading.textContent.trim();
         const message = `Halo PT Kawasan Industri Wijayakusuma, saya ingin informasi mengenai ${headingText}`;
         const encodedMessage = encodeURIComponent(message);
-        const phoneNumber = "6281211118022";
+        const phoneNumber = window.waNumber ?? "6281211118022";
         link.href = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
     }
 });

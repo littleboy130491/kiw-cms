@@ -17,14 +17,14 @@
 
                 <!--Button-->
                 <div class="flex flex-col gap-5">
-                    <a class="sm:w-[400px] w-[100%] btn4 group" href="{{ config('cms.site_contact.link_address1') }}"
+                    <a class="sm:w-[400px] w-[100%] btn4 group"
+                        href="{{ app('settings')->link_address ?? config('cms.site_contact.link_address1') }}"
                         target="_blank" rel="noopener noreferrer">
-                        <span
-                            class="transition-all duration-300 sm:!text-[.9em] !text-[.8em]
+                        <span class="transition-all duration-300 sm:!text-[.9em] !text-[.8em]
                                     group-hover:text-transparent 
                                     group-hover:bg-clip-text 
                                     group-hover:[background-image:linear-gradient(268deg,#1F77D3_1.1%,#321B71_99.1%)]">
-                            {{ config('cms.site_contact.short_address1') }}
+                            {{ app('settings')->address ?? config('cms.site_contact.short_address1') }}
                         </span>
 
                         <span class="gradient-icon group-hover:hidden">
@@ -36,13 +36,13 @@
                         </span>
                     </a>
 
-                    <a class="sm:w-[300px] w-[90%] btn4 group" href="mailto:{{ config('cms.site_contact.email1') }}">
-                        <span
-                            class="transition-all duration-300 sm:!text-[.9em] !text-[.8em]
+                    <a class="sm:w-[300px] w-[90%] btn4 group"
+                        href="mailto:{{ app('settings')->email ?? config('cms.site_contact.email1') }}">
+                        <span class="transition-all duration-300 sm:!text-[.9em] !text-[.8em]
                                     group-hover:text-transparent 
                                     group-hover:bg-clip-text 
                                     group-hover:[background-image:linear-gradient(268deg,#1F77D3_1.1%,#321B71_99.1%)]">
-                            {{ config('cms.site_contact.email1') }}
+                            {{ app('settings')->email ?? config('cms.site_contact.email1') }}
                         </span>
 
                         <span class="gradient-icon group-hover:hidden">
@@ -54,13 +54,13 @@
                         </span>
                     </a>
 
-                    <a class="sm:w-[250px] w-[80%] btn4 group" href="tel:{{ config('cms.site_contact.phone1') }}">
-                        <span
-                            class="phone transition-all duration-300 sm:!text-[.9em] !text-[.8em]
+                    <a class="sm:w-[250px] w-[80%] btn4 group"
+                        href="tel:{{ app('settings')->phone_1 ?? config('cms.site_contact.phone1') }}">
+                        <span class="phone transition-all duration-300 sm:!text-[.9em] !text-[.8em]
                                     group-hover:text-transparent 
                                     group-hover:bg-clip-text 
                                     group-hover:[background-image:linear-gradient(268deg,#1F77D3_1.1%,#321B71_99.1%)]">
-                            {{ config('cms.site_contact.phone1') }}
+                            {{ app('settings')->phone_1 ?? config('cms.site_contact.phone1') }}
                         </span>
 
                         <span class="gradient-icon group-hover:hidden">
@@ -103,8 +103,8 @@
                     <h6 class="text-white uppercase">layanan</h6>
                     <div class="grid grid-rows-1 gap-2 !text-[.9em]">
                         <a href="/lahan-industri">Lahan Industri Siap Bangun</a>
-                        <a href="/archive-bangunan-pabrik-siap-pakai">Bangunan Pabrik Siap Pakai (BPSP)</a>
-                        <a href="/single-area-komersil-atm">Kerjasama Komersial Kawasan Industri</a>
+                        <a href="/bpsp">Bangunan Pabrik Siap Pakai (BPSP)</a>
+                        <a href="/area-komersil/atm">Kerjasama Komersial Kawasan Industri</a>
                     </div>
                 </div>
 
@@ -119,26 +119,29 @@
                 <div class="flex flex-row sm:gap-5 gap-8 sm:w-1/6">
                     <img class="sm:w-full w-24" src="{{ Storage::url('media/kiwinners.png') }}" alt="kiwinners">
                     <img class="sm:w-full w-24" src="{{ Storage::url('media/akhlak.png') }}" alt="akhlak">
-                    <img class="sm:w-full w-24" src="{{ Storage::url('media/bumn-untuk-indonesia.png') }}"
-                        alt="bumn">
+                    <img class="sm:w-full w-24" src="{{ Storage::url('media/bumn-untuk-indonesia.png') }}" alt="bumn">
                 </div>
 
                 <!--Social Media-->
                 <div class="flex flex-row sm:gap-5 gap-6 sm:w-1/6 w-[200px]">
-                    <a href="{{ config('cms.site_social_media.facebook') }}" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ app('settings')->facebook ?? config('cms.site_social_media.facebook') }}"
+                        target="_blank" rel="noopener noreferrer">
                         <img src="{{ Storage::url('media/facebook-white.png') }}" alt="facebook">
                     </a>
-                    <a href="{{ config('cms.site_social_media.twitter') }}" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ app('settings')->twitter ?? config('cms.site_social_media.twitter') }}" target="_blank"
+                        rel="noopener noreferrer">
                         <img src="{{ Storage::url('media/twitter-white.png') }}" alt="twitter">
                     </a>
-                    <a href="{{ config('cms.site_social_media.instagram') }}" target="_blank"
-                        rel="noopener noreferrer">
+                    <a href="{{ app('settings')->instagram ?? config('cms.site_social_media.instagram') }}"
+                        target="_blank" rel="noopener noreferrer">
                         <img src="{{ Storage::url('media/instagram-white.png') }}" alt="instagram">
                     </a>
-                    <a href="{{ config('cms.site_social_media.linkedin') }}" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ app('settings')->linkedin ?? config('cms.site_social_media.linkedin') }}"
+                        target="_blank" rel="noopener noreferrer">
                         <img src="{{ Storage::url('media/linkedin-white.png') }}" alt="linkedin">
                     </a>
-                    <a href="{{ config('cms.site_social_media.youtube') }}" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ app('settings')->youtube ?? config('cms.site_social_media.youtube') }}" target="_blank"
+                        rel="noopener noreferrer">
                         <img src="{{ Storage::url('media/youtube-white.png') }}" alt="youtube">
                     </a>
 
@@ -157,3 +160,4 @@
 
     </div>
 </footer>
+<x-partials.kiw-accessibility />

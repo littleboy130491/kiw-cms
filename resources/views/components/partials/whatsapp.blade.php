@@ -1,5 +1,5 @@
 @php
-    $waNumber = config('cms.site_social_media.whatsapp');
+    $waNumber = app('settings')->whatsapp_1 ?? config('cms.site_social_media.whatsapp');
 @endphp
 
 <div id="wa-widget" x-data="waWidget('{{ $waNumber }}')" class="fixed bottom-6 right-6 z-999 flex flex-col items-end">
@@ -57,13 +57,9 @@
     </button>
 </div>
 
-@pushOnce('before_head_close')
-    <!-- Alpine JS -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-@endPushOnce
-
 @pushOnce('before_body_close')
     <script>
+        window.waNumber = @json($waNumber);
         function waWidget(phone) {
             return {
                 open: false,

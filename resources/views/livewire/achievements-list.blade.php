@@ -4,7 +4,7 @@
         class="flex flex-col gap-9 lg:gap-18 my-18 lg:my-30 px-4 sm:px-6 lg:px-0 lg:w-[1200px] lg:mx-auto">
 
         <!--Top Bar-->
-        <div class="flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between gap-5 z-50">
+        <div class="flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between gap-5 z-10">
 
             <!--Category-->
             <div class="flex flex-row flex-wrap gap-2 justify-center sm:justify-start sm:w-1/2 lg:w-2/3">

@@ -3,6 +3,8 @@
 @php
     use Datlechin\FilamentMenuBuilder\Models\Menu;
 
+    $logo_url = Storage::url('media/' . app('settings')->site_logo ?? 'logo.png');
+
     // Get current language from URL segment (first segment after domain)
     $currentLang = request()->segment(1);
 
@@ -26,10 +28,10 @@
             'menuItems.children.children.linkable' // Add more levels if needed
         ])
         ->orderByRaw("CASE 
-                                                                                WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 1
-                                                                                WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 2
-                                                                                ELSE 3
-                                                                            END", [$localizedLocation, $fallbackLocation])
+                                                                                            WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 1
+                                                                                            WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 2
+                                                                                            ELSE 3
+                                                                                        END", [$localizedLocation, $fallbackLocation])
         ->first();
 @endphp
 
@@ -42,7 +44,7 @@
             <!--Logo-->
             <div class=" flex items-center ">
                 <a href="/"><img class="!w-12 sm:!w-14 lg:!w-20 mr-20 filter brightness-0 invert"
-                        src="{{ Storage::url('media/logo.png') }}" alt="logo"></a>
+                        src="{{ $logo_url }}" alt="logo"></a>
             </div>
 
             <div class="flex flex-col justify-between w-full grow">
@@ -95,13 +97,13 @@
                 @click="open = false"></div>
 
             <div x-show="open"
-                class="fixed top-0 right-0 w-[90%] h-[100vh] bg-cover shadow-lg z-50 transform transition-transform duration-300 ease-in-out lg:hidden"
+                class="fixed top-0 right-0 w-[90%] h-[100vh] bg-cover shadow-lg !z-90 transform transition-transform duration-300 ease-in-out lg:hidden"
                 style="background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 10%, rgba(255, 255, 255, 0.45) 100%), url({{ Storage::url('media/about-image.jpg') }});"
                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="translate-x-full"
                 x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
                 x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full">
 
-                <div class="px-6 mt-5">
+                <div class="px-6 mt-5 z-90">
                     <button @click="open = false" class="text-[var(--color-heading)] float-right">
                         ✕
                     </button>
@@ -110,7 +112,7 @@
 
                         <!--Logo-->
                         <div class=" flex items-center ">
-                            <a href="/"><img class="w-15" src="{{ Storage::url('media/logo.png') }}" alt="logo"></a>
+                            <a href="/"><img class="w-15" src="{{ $logo_url }}" alt="logo"></a>
                         </div>
 
                         @if ($menu && $menu->menuItems)
