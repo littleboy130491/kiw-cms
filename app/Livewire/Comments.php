@@ -61,7 +61,7 @@ class Comments extends Component
 
         // For each parent comment, load all replies in flat structure and count them
         foreach ($this->comments as $comment) {
-            // Use the new descendants() method - much cleaner!
+            // Use the new descendants() method
             $descendants = $comment->descendants();
             // Filter only approved comments
             $flatReplies = $descendants->filter(function ($reply) {
@@ -72,7 +72,6 @@ class Comments extends Component
             $comment->all_children_count = $flatReplies->count();
         }
     }
-
 
     public function rules()
     {
@@ -185,6 +184,9 @@ class Comments extends Component
             
             // Keep the discussion open for the root parent
             $this->showReplies[$rootParentId] = true;
+            
+            // Save to session immediately
+            $this->saveDiscussionState();
         }
         
         // Reload comments to ensure fresh data
@@ -221,6 +223,7 @@ class Comments extends Component
         // Keep the discussion open if we found a root parent
         if ($rootParentId) {
             $this->showReplies[$rootParentId] = true;
+            $this->saveDiscussionState();
         }
         
         // Reload comments to ensure fresh data
@@ -236,8 +239,7 @@ class Comments extends Component
         }
         
         // Save to session for persistence
-        $sessionKey = $this->sessionKey . '_' . $this->post->id;
-        session([$sessionKey => $this->showReplies]);
+        $this->saveDiscussionState();
         
         // Always reload comments to ensure fresh data and proper flatReplies
         $this->loadComments();
@@ -302,6 +304,7 @@ class Comments extends Component
         
         // Keep the discussion open
         $this->showReplies[$rootParentId] = true;
+        $this->saveDiscussionState();
         
         // Reset Turnstile widget if enabled
         if ($this->isBotProtectionEnabled() && $this->getBotProtectionType() === 'turnstile') {
@@ -368,9 +371,8 @@ class Comments extends Component
                 // Keep the discussion open
                 $this->showReplies[$rootParentId] = true;
                 
-                // Save to session for persistence
-                $sessionKey = $this->sessionKey . '_' . $this->post->id;
-                session([$sessionKey => $this->showReplies]);
+                // Save to session
+                $this->saveDiscussionState();
                 
                 \Log::info('Discussion state maintained', [
                     'rootParentId' => $rootParentId,
@@ -388,6 +390,9 @@ class Comments extends Component
             'token_length' => strlen($token),
             'token_preview' => substr($token, 0, 20) . '...'
         ]);
+        
+        // Skip re-render to prevent state loss
+        $this->skipRender();
         
         if (in_array($propertyName, ['turnstile', 'replyTurnstile'])) {
             $this->$propertyName = $token;
@@ -425,6 +430,12 @@ class Comments extends Component
         if ($this->replyTo && $this->showReplyForm) {
             $this->maintainDiscussionState();
         }
+    }
+
+    private function saveDiscussionState()
+    {
+        $sessionKey = $this->sessionKey . '_' . $this->post->id;
+        session([$sessionKey => $this->showReplies]);
     }
 
     public function render()

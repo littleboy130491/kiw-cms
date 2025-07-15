@@ -16,7 +16,6 @@ class PostSearch extends Component
     public $relation = '';
     public $slug = '';
     public $currentUrl = '';
-
     protected $queryString = [
         'searchQuery' => ['except' => ''],
     ];
@@ -97,12 +96,16 @@ class PostSearch extends Component
         return $query;
     }
 
+    protected function getPaginationNumber(): int {
+        return config('cms.content_models.posts.per_page') ?? config('cms.pagination_number', 12);
+    }
+
     public function render()
     {
         $query = $this->buildBaseQuery();
         $query = $this->applySearchFilter($query);
 
-        $posts = $query->paginate(12)
+        $posts = $query->paginate($this->getPaginationNumber())
             ->withPath($this->currentUrl)
             ->appends(['searchQuery' => $this->searchQuery]);
 

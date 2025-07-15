@@ -123,6 +123,10 @@ class TenderSearch extends Component
             ->toArray();
     }
 
+    protected function getPaginationNumber(): int {
+        return config('cms.content_models.tenders.per_page') ?? config('cms.pagination_number', 12);
+    }
+
     public function render()
     {
         $query = $this->buildBaseQuery();

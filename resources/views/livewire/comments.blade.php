@@ -1,3 +1,7 @@
+@php
+    $spinner = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
+@endphp
+
 @pushOnce('before_head_close')
     @if ($this->isBotProtectionEnabled() && $this->getBotProtectionType() === 'turnstile')
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
@@ -11,7 +15,7 @@
     <div class="py-18 lg:py-30 px-4 sm:px-6 lg:px-0 flex flex-col gap-7 lg:w-[1200px] lg:mx-auto">
         <!--title-->
         <div class="flex flex-col gap-5">
-            <h2 class="text-center">Tinggalkan Komentar</h2>
+            <h3 class="text-center">Tinggalkan Komentar</h3>
             <p class="text-center">Alamat email Anda tidak akan dipublikasikan.</p>
         </div>
 
@@ -53,18 +57,18 @@
                 @endif
 
                 <!--Button-->
-                <button type="submit" class="w-fit btn1 mt-5 flex items-center gap-2 text-white self-center"
-                    wire:loading.attr="disabled" wire:target="submitComment">
-                    <span wire:loading.remove wire:target="submitComment">Kirim Komentar</span>
-                    <span wire:loading wire:target="submitComment">Mengirim...</span>
-                    <span wire:loading.remove wire:target="submitComment">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
+                <button type="submit" class="w-fit btn1 mt-5 flex items-center gap-2 text-white self-center cursor-pointer rounded-md"
+                    wire:loading.attr="disabled" wire:loading.class="cursor-wait" wire:target="submitComment">
+                    <span wire:loading wire:target="submitComment">
+                        {!! $spinner !!}
                     </span>
+                    Kirim Komentar
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
                 </button>
             </form>
         @endif
@@ -86,34 +90,38 @@
 
     <!--Start Comment Area-->
     @if($comments->count() > 0)
+    <div class="comment-area py-18 lg:py-30 px-4 sm:px-6 lg:px-0 flex flex-col gap-7 lg:w-[1200px] lg:mx-auto">
+    <h3 class="comment-area-title">Diskusi</h3>
         <ol class="pb-18 lg:pb-30 px-4 sm:px-6 lg:px-0 flex flex-col gap-9 lg:w-[1200px] lg:mx-auto">
             @foreach($comments as $comment)
-                <li id="comment-{{ $comment->id }}">
+                <li id="comment-{{ $comment->id }}" class="border-b border-gray-300">
                     <!-- Main Comment -->
-                    <article class="mb-5">
-                        <header class="flex flex-col gap-1">
+                    <div class="mb-5">
+                        <div class="comment-name flex flex-col gap-1">
                             <h5 class="name">{{ $comment->name }}</h5>
-                        </header>
-                        <section class="my-3">
+                        </div>
+                        <div class="comment-content my-3">
                             <p>{{ $comment->content }}</p>
-                        </section>
+                        </div>
                         <div class="flex flex-row justify-between items-center mt-5">
                             <div class="flex gap-2">
-                                <div class="gradient-blue text-white w-fit px-2 py-1 text-[.85em]">
-                                    <button wire:click="showReply({{ $comment->id }})"
-                                        class="reply-button cursor-pointer">Balas</button>
-                                </div>
+                                <button wire:click="showReply({{ $comment->id }})" wire:loading.attr="disabled" wire:loading.class="cursor-wait" wire:target="showReply({{ $comment->id }})" class="reply-button cursor-pointer flex items-center gradient-blue text-white w-fit px-2 py-1 text-[.85em] rounded-md">
+                                    <span wire:loading wire:target="showReply({{ $comment->id }})" class="-ml-1 mr-2">
+                                        {!! $spinner !!}
+                                    </span>
+                                    Balas
+                                </button>
                                 @if($comment->all_children_count > 0)
-                                    <div class="bg-gray-600 text-white w-fit px-2 py-1 text-[.85em]">
-                                        <button wire:click="toggleReplies({{ $comment->id }})"
-                                            class="cursor-pointer">
-                                            @if(isset($showReplies[$comment->id]) && $showReplies[$comment->id])
-                                                Sembunyikan Diskusi ({{ $comment->all_children_count }})
-                                            @else
-                                                Lihat Diskusi ({{ $comment->all_children_count }})
-                                            @endif
-                                        </button>
-                                    </div>
+                                    <button wire:click="toggleReplies({{ $comment->id }})" wire:loading.attr="disabled" wire:loading.class="cursor-wait" wire:target="toggleReplies({{ $comment->id }})" class="cursor-pointer flex items-center bg-gray-600 text-white w-fit px-2 py-1 text-[.85em] rounded-md">
+                                    <span wire:loading wire:target="toggleReplies({{ $comment->id }})" class="-ml-1 mr-2">
+                                        {!! $spinner !!}
+                                    </span>
+                                    @if(isset($showReplies[$comment->id]) && $showReplies[$comment->id])
+                                        Sembunyikan Diskusi ({{ $comment->all_children_count }})
+                                    @else
+                                        Lihat Diskusi ({{ $comment->all_children_count }})
+                                    @endif
+                                </button>
                                 @endif
                             </div>
                             <time datetime="{{ $comment->created_at->setTimezone('Asia/Jakarta')->format('c') }}"
@@ -121,7 +129,7 @@
                                 {{ $comment->created_at->setTimezone('Asia/Jakarta')->format('M d, Y \\a\\t g:i a') }}
                             </time>
                         </div>
-                    </article>
+                    </div>
 
                     <!-- Reply Form -->
                     @if($showReplyForm && $replyTo == $comment->id)
@@ -165,13 +173,18 @@
 
                             <div class="flex gap-2 mt-2">
                                 <button type="submit"
-                                    class="px-3 py-1 bg-[var(--color-black)] w-fit text-white rounded cursor-pointer"
-                                    wire:loading.attr="disabled" wire:target="submitReply">
-                                    <span wire:loading.remove wire:target="submitReply">Kirim</span>
-                                    <span wire:loading wire:target="submitReply">Mengirim...</span>
+                                    class="px-2 py-1 text-[.85em] bg-blue-500 hover:bg-blue-600 w-fit text-white rounded-md cursor-pointer flex items-center"
+                                    wire:loading.attr="disabled" wire:loading.class="cursor-wait" wire:target="submitReply">
+                                    <span wire:loading wire:target="submitReply">
+                                        {!! $spinner !!}
+                                    </span>
+                                    Kirim
                                 </button>
-                                <button type="button" wire:click="hideReply"
-                                    class="px-3 py-1 bg-gray-500 w-fit text-white rounded cursor-pointer">
+                                <button type="button" wire:click="hideReply" wire:loading.attr="disabled" wire:loading.class="cursor-wait" wire:target="hideReply"
+                                    class="px-2 py-1 text-[.85em] bg-red-500 hover:bg-red-600 w-fit text-white rounded-md cursor-pointer flex items-center">
+                                    <span wire:loading wire:target="hideReply">
+                                        {!! $spinner !!}
+                                    </span>
                                     Batal
                                 </button>
                             </div>
@@ -191,14 +204,14 @@
                         </div>
                     @endif
 
-                    <!-- Twitter-style Flat Discussion -->
+                    <!-- Comment reply section -->
                     @if($comment->all_children_count > 0 && isset($showReplies[$comment->id]) && $showReplies[$comment->id])
-                        <div class="ml-8 mt-4 space-y-4">
+                        <div class="comment-reply-section ml-8 mt-4 space-y-4">
                             
                             @if($comment->flatReplies)
                                 @foreach($comment->flatReplies as $reply)
-                                <article class="bg-gray-50 p-4 border border-[var(--color-border)] rounded">
-                                    <header class="flex flex-col gap-1">
+                                <div class="p-4 border-b border-[var(--color-border)] last:border-b-0">
+                                    <div class="flex flex-col gap-1">
                                         @if($reply->parent)
                                             <p class="italic text-[.8em] text-gray-600">
                                                 Membalas <span class="font-medium">{{ $reply->parent->name }}</span>: 
@@ -206,15 +219,17 @@
                                             </p>
                                         @endif
                                         <h5 class="name font-medium">{{ $reply->name }}</h5>
-                                    </header>
-                                    <section class="my-3">
+</div>
+                                    <div class="my-3">
                                         <p>{{ $reply->content }}</p>
-                                    </section>
+</div>
                                     <div class="flex flex-row justify-between items-center mt-3">
-                                        <div class="gradient-blue text-white w-fit px-2 py-1 text-[.75em]">
-                                            <button wire:click="showReply({{ $reply->id }})"
-                                                class="reply-button cursor-pointer">Balas</button>
-                                        </div>
+                                        <button wire:click="showReply({{ $reply->id }})" wire:loading.attr="disabled" wire:loading.class="cursor-wait" wire:target="showReply({{ $reply->id }})" class="reply-button cursor-pointer flex items-center gradient-blue text-white w-fit px-2 py-1 text-[.75em] rounded-md">
+                                            <span wire:loading wire:target="showReply({{ $reply->id }})" class="-ml-1 mr-2">
+                                                {!! $spinner !!}
+                                            </span>
+                                            Balas
+                                        </button>
                                         <time datetime="{{ $reply->created_at->setTimezone('Asia/Jakarta')->format('c') }}"
                                             class="text-[var(--color-text)] text-[.8em]">
                                             {{ $reply->created_at->setTimezone('Asia/Jakarta')->format('M d, Y \\a\\t g:i a') }}
@@ -260,13 +275,18 @@
 
                                             <div class="flex gap-2">
                                                 <button type="submit"
-                                                    class="px-3 py-1 bg-[var(--color-black)] text-white rounded text-sm"
-                                                    wire:loading.attr="disabled" wire:target="submitReply">
-                                                    <span wire:loading.remove wire:target="submitReply">Kirim</span>
-                                                    <span wire:loading wire:target="submitReply">Mengirim...</span>
+                                                    class="px-2 py-1 text-[.75em] gradient-blue text-white rounded-md cursor-pointer flex items-center"
+                                                    wire:loading.attr="disabled" wire:loading.class="cursor-wait" wire:target="submitReply">
+                                                    <span wire:loading wire:target="submitReply">
+                                                        {!! $spinner !!}
+                                                    </span>
+                                                    Kirim
                                                 </button>
-                                                <button type="button" wire:click="hideReply"
-                                                    class="px-3 py-1 bg-gray-500 text-white rounded text-sm">
+                                                <button type="button" wire:click="hideReply" wire:loading.attr="disabled" wire:loading.class="cursor-wait" wire:target="hideReply"
+                                                    class="px-2 py-1 text-[.75em] bg-red-500 hover:bg-red-600 text-white rounded-md cursor-pointer flex items-center">
+                                                    <span wire:loading wire:target="hideReply">
+                                                        {!! $spinner !!}
+                                                    </span>
                                                     Batal
                                                 </button>
                                             </div>
@@ -285,7 +305,7 @@
                                             {{ $replyFormError }}
                                         </div>
                                     @endif
-                                </article>
+                            </div>
                                 @endforeach
                             @endif
                         </div>
@@ -293,6 +313,7 @@
                 </li>
             @endforeach
         </ol>
+</div>
     @endif
     <!--End Comment Area-->
 
@@ -321,20 +342,6 @@
                             console.log('Container ID:', container.id);
                             console.log('Token (first 20 chars):', token.substring(0, 20) + '...');
                             
-                            // Store discussion state before any Livewire updates
-                            const discussionStates = {};
-                            document.querySelectorAll('[wire\\:click*="toggleReplies"]').forEach(btn => {
-                                const match = btn.getAttribute('wire:click').match(/toggleReplies\((\d+)\)/);
-                                if (match) {
-                                    const commentId = match[1];
-                                    const isVisible = btn.textContent.includes('Sembunyikan');
-                                    if (isVisible) {
-                                        discussionStates[commentId] = true;
-                                        console.log('Stored discussion state for comment', commentId, ':', true);
-                                    }
-                                }
-                            });
-                            
                             // Find the Livewire component - try multiple approaches
                             let livewireComponent = container.closest('[wire\\:id]');
                             
@@ -360,36 +367,10 @@
                                     
                                     console.log('Setting property:', propertyName, 'with token');
                                     
-                                    // Set discussion states in Livewire component
-                                    try {
-                                        component.set('showReplies', discussionStates);
-                                        console.log('✓ Discussion states preserved');
-                                    } catch (error) {
-                                        console.error('Error preserving discussion states:', error);
-                                    }
+                                    // Use the listener method to avoid re-rendering
+                                    component.call('updateTurnstileToken', propertyName, token);
+                                    console.log('✓ Token set via updateTurnstileToken listener');
                                     
-                                    // Try multiple methods to set the token
-                                    try {
-                                        component.set(propertyName, token);
-                                        console.log('✓ Token set via component.set()');
-                                        
-                                        // Verify the token was set
-                                        setTimeout(() => {
-                                            const currentValue = component.get(propertyName);
-                                            console.log('Current value of', propertyName + ':', currentValue ? 'SET ✓' : 'EMPTY ✗');
-                                        }, 100);
-                                        
-                                    } catch (setError) {
-                                        console.error('Error setting token via component.set():', setError);
-                                        
-                                        // Fallback: Try updating via Livewire directly
-                                        try {
-                                            Livewire.emit('updateTurnstileToken', propertyName, token);
-                                            console.log('✓ Token set via Livewire.emit()');
-                                        } catch (emitError) {
-                                            console.error('Error setting token via emit:', emitError);
-                                        }
-                                    }
                                 } else {
                                     console.error('✗ Livewire component not found with ID:', livewireId);
                                 }
@@ -435,6 +416,33 @@
                 setTimeout(() => {
                     renderTurnstiles(el);
                 }, 100);
+            });
+
+            // Hook to preserve state before morph
+            Livewire.hook('morph.updating', ({ el, component }) => {
+                // Store current discussion state before update
+                const discussionStates = {};
+                el.querySelectorAll('[data-discussion-id]').forEach(discussion => {
+                    const id = discussion.dataset.discussionId;
+                    const isOpen = discussion.classList.contains('open') || 
+                                  discussion.style.display !== 'none';
+                    discussionStates[id] = isOpen;
+                });
+                window.tempDiscussionStates = discussionStates;
+            });
+
+            // Hook to restore state after morph
+            Livewire.hook('morph.updated', ({ el }) => {
+                if (window.tempDiscussionStates) {
+                    Object.entries(window.tempDiscussionStates).forEach(([id, isOpen]) => {
+                        const discussion = el.querySelector(`[data-discussion-id="${id}"]`);
+                        if (discussion && isOpen) {
+                            discussion.classList.add('open');
+                            discussion.style.display = 'block';
+                        }
+                    });
+                    delete window.tempDiscussionStates;
+                }
             });
 
             // Reset Turnstile when needed

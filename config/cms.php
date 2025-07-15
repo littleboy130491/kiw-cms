@@ -57,7 +57,8 @@ return [
             'has_single' => true,
             'archive_SEO_title' => 'Archive: Posts',
             'archive_SEO_description' => 'Archive of all posts',
-            'eager_load' => ['categories', 'tags']
+            'eager_load' => ['categories', 'tags'],
+            'per_page' => 12,
         ],
         'categories' => [
             'model' => Littleboy130491\Sumimasen\Models\Category::class,
