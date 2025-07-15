@@ -5,14 +5,11 @@
 @php
     $archive_post_url = route('cms.archive.content', [app()->getLocale(), 'posts']);
 @endphp
+
 <x-layouts.app>
     <x-partials.header />
     <main>
-
         <x-partials.splash-screen />
-
-
-
         <x-partials.popup-home />
 
         <!--Start Hero Banner-->
@@ -49,7 +46,7 @@
                                             investor.
                                         </p>
                                         <!--Button-->
-                                        <a class="w-fit btn2 mt-5" data-aos="fade-down" href="/#layanan-home">
+                                        <a class="w-fit btn2 mt-5" data-aos="fade-down" href="#layanan-home">
                                             <span class="gradient-text">Lihat Layanan</span>
                                             <img src="{{ Storage::url('media/arrow-right-solid.png') }}" alt="icon">
                                             </span>
@@ -92,7 +89,7 @@
                                             tempor incididunt.magna aliqua.
                                         </p>
                                         <!--Button-->
-                                        <a class="w-fit btn2 mt-5" data-aos="fade-down" href="/#layanan-home">
+                                        <a class="w-fit btn2 mt-5" data-aos="fade-down" href="#layanan-home">
                                             <span class="gradient-text">Lihat Layanan</span>
                                             <img src="{{ Storage::url('media/arrow-right-solid.png') }}" alt="icon">
                                             </span>

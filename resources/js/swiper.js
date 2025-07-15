@@ -1,5 +1,6 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/swiper-bundle.css';
 
 // Default configuration shared across some swipers
 const defaultConfig = {
@@ -111,7 +112,7 @@ function initializeSwipers() {
       return null;
     })
     .filter((swiper) => swiper !== null);
-  
+
   console.log(`Initialized ${swipers.length} swipers`);
   return swipers;
 }

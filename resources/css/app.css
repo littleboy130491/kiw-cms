@@ -1,10 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@custom-variant hover (&:hover);
+
 
 @import "tailwindcss/preflight";
 @import "tailwindcss";
-@import "swiper/css";
 @source "../views";
 
 
@@ -27,11 +28,9 @@
 /* Theme toggle */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/**
-* Paginator - Traditional style
-* Because Laravel defaults does not match well the design of daisyUI.
-*/
-
+html {
+  scroll-behavior: smooth;
+}
 
 /* global color */
 body.front-end {

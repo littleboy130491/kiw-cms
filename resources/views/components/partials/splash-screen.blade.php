@@ -24,7 +24,6 @@
     <img class="logo-item" data-year="2018" src="{{ Storage::url('media/pws-logo.png') }}" alt="Logo tahun 2018">
     <img class="logo-item" data-year="2020" src="{{ Storage::url('media/gbc-logo.png') }}" alt="Logo tahun 2020">
     <img class="logo-item" data-year="2022" src="{{ Storage::url('media/Danareksa.png') }}" alt="Logo tahun 2022">
-    <img class="logo-item" data-year="2022" src="{{ Storage::url('media/Danareksa.png') }}" alt="Logo tahun 2022">
     <img class="logo-item" data-year="2024" src="{{ Storage::url('media/Danareksa.png') }}" alt="Logo tahun 2024">
 
 </div>
