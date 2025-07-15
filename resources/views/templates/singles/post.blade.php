@@ -15,7 +15,7 @@
 
         <!--Start Post Content-->
 
-        <section id="single-tender"
+        <section id="single-post"
             class="flex flex-col lg:flex-row gap-18 my-18 lg:my-30 px-4 sm:px-6 lg:px-0 lg:w-[1200px] lg:mx-auto">
 
             <!--Main Content-->
@@ -24,7 +24,7 @@
                 <!--Top-->
                 <div class="flex flex-col gap-5">
                     <!--Meta-->
-                    <div data-aos="fade-down" class="flex flex-col sm:flex-row gap-4">
+                    <div data-aos="fade-down" class="flex flex-row flex-wrap sm:flex-nowrap gap-4">
                         <div class="flex flex-row gap-4 w-fit px-3 py-2 rounded-full bg-[var(--color-transit)]">
                             <div class="flex flex-row items-center gap-2">
                                 <x-icon.tag-icon-color />
