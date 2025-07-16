@@ -1,4 +1,3 @@
-{{-- components/language-switcher.blade.php --}}
 @props([
     'variant' => 'desktop', // 'desktop' or 'mobile'
     'class' => '',
@@ -8,10 +7,10 @@
     $globalItem = $globalItem ?? null;
 
     $languages = [
-        'en' => ['flag' => 'english.jpg', 'display' => 'English'],
-        'zh-cn' => ['flag' => 'mandarin.jpg', 'display' => 'Mandarin'],
-        'ko' => ['flag' => 'korea.jpg', 'display' => 'Korea'],
-        'id' => ['flag' => 'indonesia.jpg', 'display' => 'Indonesia'],
+        'en' => ['flag' => 'english.jpg', 'display' => 'English', 'code' => 'EN'],
+        'zh-cn' => ['flag' => 'mandarin.jpg', 'display' => 'Mandarin', 'code' => 'CN'],
+        'ko' => ['flag' => 'korea.jpg', 'display' => 'Korea', 'code' => 'KO'],
+        'id' => ['flag' => 'indonesia.jpg', 'display' => 'Indonesia', 'code' => 'ID'],
     ];
 
     $currentRoute = Route::current();
@@ -100,7 +99,11 @@
 
         <a href="{{ $languageUrl }}" class="{{ $linkBaseClasses }}{{ $activeClasses }}">
             <img class="w-5 h-4" src="{{ Storage::url('media/' . $langData['flag']) }}" alt="{{ $langCode }}">
-            {{ $langData['display'] }}
+            @if ($variant === 'mobile')
+                {{ $langData['code'] }}
+            @else
+                {{ $langData['display'] }}
+            @endif
         </a>
     @endforeach
 </div>
