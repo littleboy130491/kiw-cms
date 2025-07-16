@@ -70,7 +70,7 @@ class AdminPanelProvider extends PanelProvider
             ->theme(asset('css/filament/admin/theme.css'))
             ->plugins([
                 SumimasenPlugin::make()
-                    ->exceptResources(['post']),
+                    ->exceptResources(['post', 'page', 'archive']),
                 CuratorPlugin::make(),
                 BreezyCore::make()
                     ->myProfile(
