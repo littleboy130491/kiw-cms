@@ -135,6 +135,9 @@ class AdminPanelProvider extends PanelProvider
                     ->label('Users')
                     ->icon('heroicon-o-users'),
                 NavigationGroup::make()
+                    ->label('Patterns')
+                    ->icon('heroicon-o-cube'),
+                NavigationGroup::make()
                     ->label('Settings')
                     ->icon('heroicon-o-cog-6-tooth'),
             ]);
