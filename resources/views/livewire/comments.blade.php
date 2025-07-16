@@ -239,7 +239,7 @@
 
                         <!-- Comment reply section -->
                         @if ($comment->all_children_count > 0 && isset($showReplies[$comment->id]) && $showReplies[$comment->id])
-                            <div class="comment-reply-section ml-8 mt-4 space-y-4">
+                            <div class="comment-reply-section ml-2 sm:ml-8 mt-4 space-y-4">
 
                                 @if ($comment->flatReplies)
                                     @foreach ($comment->flatReplies as $reply)
