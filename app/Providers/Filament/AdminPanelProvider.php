@@ -99,6 +99,10 @@ class AdminPanelProvider extends PanelProvider
                             ->collapsed(true)
                             ->collapsible(true),
                         ModelMenuPanel::make()
+                            ->model(\App\Models\Archive::class)
+                            ->collapsed(true)
+                            ->collapsible(true),
+                        ModelMenuPanel::make()
                             ->model(\App\Models\Commercial::class)
                             ->collapsed(true)
                             ->collapsible(true),
