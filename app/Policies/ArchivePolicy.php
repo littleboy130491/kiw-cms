@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Archive;
+use Littleboy130491\Sumimasen\Models\Archive;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ArchivePolicy
