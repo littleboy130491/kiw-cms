@@ -58,10 +58,12 @@
                                         <div class="lg:w-1/5 sm:w-1/5 w-full self-center">
                                             <h5 class="text-white">Luas Area Tersedia</h5>
                                         </div>
-                                        <x-loop.counter-hero-home counter="36" unit="Ha" label="Lahan Industri" />
+                                        <x-loop.counter-hero-home counter="36" unit="Ha"
+                                            label="Lahan Industri" />
                                         <x-loop.counter-hero-home counter="1000" unit="Unit" label="BPSP" />
                                         <x-loop.counter-hero-home counter="200" unit="Unit" label="Foodcourt" />
-                                        <x-loop.counter-hero-home counter="50" unit="Persegi" label="Commercial Area" />
+                                        <x-loop.counter-hero-home counter="50" unit="Persegi"
+                                            label="Commercial Area" />
                                     </div>
                                 </div>
                             </div>
@@ -104,13 +106,13 @@
                 </div>
                 <!-- Custom icon.arrow Left -->
                 <div
-                    class="swiper-button-prev bg-[--white-transparent] hover:bg-[--color-blue] rounded-[100%] sm:!h-[30px] sm:!w-[30px] !h-[20px] !w-[20px] p-1 cursor-pointer">
+                    class="swiper-button-prev bg-[var(--white-transparent)] hover:bg-[var(--color-blue)] rounded-[100%] sm:!h-[30px] sm:!w-[30px] !h-[20px] !w-[20px] p-1 cursor-pointer">
                     <x-icon.arrow-left-white />
                 </div>
 
                 <!-- Custom icon.arrow Right -->
                 <div
-                    class="swiper-button-next bg-[--white-transparent] hover:bg-[--color-blue] rounded-[100%] sm:!h-[30px] sm:!w-[30px] !h-[20px] !w-[20px] p-1 cursor-pointer">
+                    class="swiper-button-next bg-[var(--white-transparent)] hover:bg-[var(--color-blue)] rounded-[100%] sm:!h-[30px] sm:!w-[30px] !h-[20px] !w-[20px] p-1 cursor-pointer">
                     <x-icon.arrow-right-white />
                 </div>
             </div>
@@ -144,8 +146,8 @@
                         <!--button-->
                         <a class="w-fit btn1 mt-5" data-aos="fade-down" href="/profil-perusahaan">selengkapnya
                             <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none">
                                     <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" />
                                     <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
@@ -208,8 +210,8 @@
                     <x-loop.layanan-home number="01." label="Lahan Industri Siap Bangun"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                         url="/lahan-industri" :image="Storage::url(
-        'media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg',
-    )" />
+                            'media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg',
+                        )" />
 
                     <x-loop.layanan-home number="02." label="Bangunan Pabrik Siap Pakai (BPSP)"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -217,8 +219,7 @@
 
                     <x-loop.layanan-home number="03." label="Kerja sama Komersial Kawasan Industri"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                        url="/area-komersil/atm"
-                        :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
+                        url="/area-komersil/atm" :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
                 </div>
 
 
@@ -241,33 +242,47 @@
                 <!--Content-->
                 <div class="flex lg:flex-row flex-col lg:px-0 lg:pb-0 pb-18 sm:px-6 px-4">
 
-                    <x-loop.keunggulan-home number="01." label="Layanan Perizinan" desc="
+                    <x-loop.keunggulan-home number="01." label="Layanan Perizinan"
+                        desc="
                         KIW menawarkan kemudahan dalam menjalankan bisnis melalui sistem pelayanan satu atap yang terintegrasi.
-                        " url="/keunggulan#perijinan" />
+                        "
+                        url="/keunggulan#perijinan" />
 
-                    <x-loop.keunggulan-home number="02." label="Lokasi Strategis" desc="
+                    <x-loop.keunggulan-home number="02." label="Lokasi Strategis"
+                        desc="
                         Kawasan Industri Wijayakusuma terletak di jalur utama Semarang, pusat pertumbuhan ekonomi di Jawa Tengah.
-                        " url="/keunggulan#lokasi" />
+                        "
+                        url="/keunggulan#lokasi" />
 
-                    <x-loop.keunggulan-home number="03." label="Berbasis Ekosistem" desc="
+                    <x-loop.keunggulan-home number="03." label="Berbasis Ekosistem"
+                        desc="
                         KIW mengusung ekosistem industri terintegrasi yang mendorong kolaborasi antar pelaku usaha untuk tumbuh secara berkelanjutan.
-                        " url="/keunggulan#ekosistem" />
+                        "
+                        url="/keunggulan#ekosistem" />
 
-                    <x-loop.keunggulan-home number="04." label="Infrastruktur & Fasilitas" desc="
+                    <x-loop.keunggulan-home number="04." label="Infrastruktur & Fasilitas"
+                        desc="
                         KIW dibangun dengan infrastruktur kelas industri yang lengkap dan modern.
-                        " url="/keunggulan#infrastruktur" />
+                        "
+                        url="/keunggulan#infrastruktur" />
 
-                    <x-loop.keunggulan-home number="05." label="Upah Minimum Kompetitif" desc="
+                    <x-loop.keunggulan-home number="05." label="Upah Minimum Kompetitif"
+                        desc="
                         KIW memiliki Upah Minimum yang relatif lebih rendah dibandingkan kota-kota besar seperti Jakarta atau Surabaya.
-                        " url="/keunggulan#upah" />
+                        "
+                        url="/keunggulan#upah" />
 
-                    <x-loop.keunggulan-home number="06." label="Sumber Daya Manusia" desc="
+                    <x-loop.keunggulan-home number="06." label="Sumber Daya Manusia"
+                        desc="
                         KIW dikelilingi institusi pendidikan dan pelatihan yang mencetak lulusan siap kerja dan terampil.
-                        " url="/keunggulan#sdm" />
+                        "
+                        url="/keunggulan#sdm" />
 
-                    <x-loop.keunggulan-home number="07." label="Ekosistem Klaster Bisnis" desc="
+                    <x-loop.keunggulan-home number="07." label="Ekosistem Klaster Bisnis"
+                        desc="
                         KIW mendukung ekosistem industri melalui fasilitas modern, tata kelola profesional, dan layanan satu pintu.
-                        " url="/keunggulan#bisnis" />
+                        "
+                        url="/keunggulan#bisnis" />
 
                 </div>
             </div>
@@ -289,7 +304,8 @@
 
                 <!-- Tab Contents -->
                 <x-tab.tab-contents-sektor id="tab1" label="Modern Textile and Garment Industry"
-                    :image="Storage::url('media/garmen.png')" desc="<p>
+                    :image="Storage::url('media/garmen.png')"
+                    desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
                         <li>Lorem ipsum dolor sit amet</li>
@@ -299,8 +315,8 @@
                     </p>
                     " />
 
-                <x-tab.tab-contents-sektor id="tab2" label="Wood & Furniture"
-                    :image="Storage::url('media/furniture.png')" desc="<p>
+                <x-tab.tab-contents-sektor id="tab2" label="Wood & Furniture" :image="Storage::url('media/furniture.png')"
+                    desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
                         <li>Lorem ipsum dolor sit amet</li>
@@ -310,8 +326,8 @@
                     </p>
                     " />
 
-                <x-tab.tab-contents-sektor id="tab3" label="Chemical & New Material"
-                    :image="Storage::url('media/chemical.png')" desc="<p>
+                <x-tab.tab-contents-sektor id="tab3" label="Chemical & New Material" :image="Storage::url('media/chemical.png')"
+                    desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
                         <li>Lorem ipsum dolor sit amet</li>
@@ -321,8 +337,8 @@
                     </p>
                     " />
 
-                <x-tab.tab-contents-sektor id="tab4" label="Consumer Goods & Food Procesing"
-                    :image="Storage::url('media/consumer.png')" desc="<p>
+                <x-tab.tab-contents-sektor id="tab4" label="Consumer Goods & Food Procesing" :image="Storage::url('media/consumer.png')"
+                    desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
                         <li>Lorem ipsum dolor sit amet</li>
@@ -332,7 +348,8 @@
                     </p>
                     " />
 
-                <x-tab.tab-contents-sektor id="tab5" label="Others" :image="Storage::url('media/others.png')" desc="<p>
+                <x-tab.tab-contents-sektor id="tab5" label="Others" :image="Storage::url('media/others.png')"
+                    desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
                         <li>Lorem ipsum dolor sit amet</li>
@@ -361,8 +378,8 @@
                     <!--button-->
                     <a class="w-fit btn1 mt-5" data-aos="fade-down" href="/fasilitas">semua fasilitas
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none">
                                 <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" />
                                 <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
@@ -492,10 +509,12 @@
                     <h2 data-aos="fade-up">Dapatkan Informasi Terbaru</h2>
                 </div>
                 <!--button desktop tablet-->
-                <a class="sm:!flex !hidden w-fit btn1 mt-5" data-aos="fade-down" href="{{ $archive_post_url }}">Berita
+                <a class="sm:!flex !hidden w-fit btn1 mt-5" data-aos="fade-down"
+                    href="{{ $archive_post_url }}">Berita
                     Lainnya
                     <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none">
                             <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" />
                             <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
@@ -512,7 +531,8 @@
             <a class="!flex sm:!hidden w-fit btn1 mt-5" data-aos="fade-down" href="{{ $archive_post_url }}">Berita
                 Lainnya
                 <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none">
                         <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" />
                         <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"

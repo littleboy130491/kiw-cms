@@ -35,7 +35,7 @@
 
         <!--Start Video-->
 
-        <section id="video-gallery" class="py-18 lg:py-30 bg-[--color-transit]">
+        <section id="video-gallery" class="py-18 lg:py-30 bg-[var(--color-transit)]">
             <div x-data="{ tab: 'tab1' }" class="px-4 sm:px-6 lg:px-0 lg:w-[1200px] lg:mx-auto gap-7">
 
                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 ">

@@ -38,8 +38,7 @@
                     </p>
                     <!--Image-->
                     <div class="relative">
-                        <a class="gallery-item" href="{{ Storage::url('media/gratifikasi.jpg') }}"
-                            data-lightbox="gallery">
+                        <a class="gallery-item" href="{{ Storage::url('media/gratifikasi.jpg') }}" data-lightbox="gallery">
                             <img class="rounded-md" src="{{ Storage::url('media/gratifikasi.jpg') }}">
                         </a>
                     </div>
@@ -62,7 +61,7 @@
         <!--End Post Content-->
 
         <!-- Start Form -->
-        <section id="whistleblowing-form" class="bg-[--color-transit]">
+        <section id="whistleblowing-form" class="bg-[var(--color-transit])">
 
             <!--Start Form-->
             <div class="py-18 lg:py-30 px-4 sm:px-6 lg:px-0 flex flex-col gap-7 lg:gap-9 lg:w-[1200px] lg:mx-auto">
