@@ -9,29 +9,32 @@
     $currentLang = request()->segment(1);
 
     // Validate if it's a valid language from your config
-    $availableLanguages = array_keys(config('cms.language_available', []));
-    if (!in_array($currentLang, $availableLanguages)) {
-        $currentLang = config('cms.default_language', 'en'); // fallback to default
-    }
+$availableLanguages = array_keys(config('cms.language_available', []));
+if (!in_array($currentLang, $availableLanguages)) {
+    $currentLang = config('cms.default_language', 'en'); // fallback to default
+}
 
-    $localizedLocation = $location . '_' . $currentLang;
-    $fallbackLocation = $location . '_' . config('cms.default_language', 'en');
+$localizedLocation = $location . '_' . $currentLang;
+$fallbackLocation = $location . '_' . config('cms.default_language', 'en');
 
-    $menu = Menu::query()
-        ->where('is_visible', true)
-        ->whereHas('locations', function ($query) use ($localizedLocation, $fallbackLocation, $location) {
-            $query->whereIn('location', [$localizedLocation, $fallbackLocation, $location]);
-        })
-        ->with([
-            'menuItems.linkable',
-            'menuItems.children.linkable',
-            'menuItems.children.children.linkable' // Add more levels if needed
+$menu = Menu::query()
+    ->where('is_visible', true)
+    ->whereHas('locations', function ($query) use ($localizedLocation, $fallbackLocation, $location) {
+        $query->whereIn('location', [$localizedLocation, $fallbackLocation, $location]);
+    })
+    ->with([
+        'menuItems.linkable',
+        'menuItems.children.linkable',
+        'menuItems.children.children.linkable', // Add more levels if needed
         ])
-        ->orderByRaw("CASE 
+        ->orderByRaw(
+            "CASE 
                                                                                             WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 1
                                                                                             WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 2
                                                                                             ELSE 3
-                                                                                        END", [$localizedLocation, $fallbackLocation])
+                                                                                        END",
+            [$localizedLocation, $fallbackLocation],
+        )
         ->first();
 @endphp
 
@@ -42,15 +45,15 @@
         <div class="lg:max-w-[1200px] mx-auto flex lg:pt-5 sm:pt-1 pt-1 justify-between gap-10">
 
             <!--Logo-->
-            <div class=" flex items-center ">
-                <a href="/"><img class="!w-12 sm:!w-14 lg:!w-20 mr-20 filter brightness-0 invert"
+            <div class="flex items-end ">
+                <a href="/"><img class="!w-48 sm:!w-48 lg:!w-56 mr-32 filter brightness-0 invert"
                         src="{{ $logo_url }}" alt="logo"></a>
             </div>
 
             <div class="flex flex-col justify-between w-full grow">
 
                 <!--Above Header-->
-                <div class="hidden lg:flex lg:flex-row lg:justify-end gap-5">
+                <div class="hidden lg:flex lg:flex-row lg:justify-end gap-5 mb-8">
 
                     <!--Button-->
                     <a class=" btn5 group w-fit" href="#" target="_blank" rel="noopener noreferrer">
@@ -112,7 +115,7 @@
 
                         <!--Logo-->
                         <div class=" flex items-center ">
-                            <a href="/"><img class="w-15" src="{{ $logo_url }}" alt="logo"></a>
+                            <a href="/"><img class="w-48" src="{{ $logo_url }}" alt="logo"></a>
                         </div>
 
                         @if ($menu && $menu->menuItems)

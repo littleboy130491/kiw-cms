@@ -13,7 +13,7 @@
         <section data-aos="zoom-in-up" id="lahan-industri"
             class="relative map-container my-18 lg:my-30 relative px-4 sm:px-6 lg:px-0 overflow-x-auto whitespace-nowrap max-w-full lg:w-[1200px] lg:mx-auto">
             <div class="relative inline-block min-w-full">
-                <img src="{{ Storage::url('media/lahan-industri.jpg') }}" class="w-full">
+                <img src="{{ Storage::url('media/4ebba16e-1b81-4316-9614-c6d3c7832e69.jpg') }}" class="w-full">
 
                 <!-- Hotspot Items -->
                 <x-loop.hotspot-item-lahan-industri top="20" left="50" label="Kaveling D" luas="4.50 Ha"
