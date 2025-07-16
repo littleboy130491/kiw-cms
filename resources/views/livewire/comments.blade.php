@@ -138,7 +138,7 @@
                                                 {!! $textSpinner !!}
                                             </span>
                                             @if (isset($showReplies[$comment->id]) && $showReplies[$comment->id])
-                                                Sembunyikan Diskusi ({{ $comment->all_children_count }})
+                                                Sembunyikan
                                             @else
                                                 Lihat Diskusi ({{ $comment->all_children_count }})
                                             @endif
