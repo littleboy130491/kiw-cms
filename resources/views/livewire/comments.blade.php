@@ -396,9 +396,6 @@
 
                         // Create a generic callback that finds the right Livewire property
                         params.callback = function(token) {
-                            console.log('Turnstile callback triggered');
-                            console.log('Container ID:', container.id);
-                            console.log('Token (first 20 chars):', token.substring(0, 20) + '...');
 
                             // Find the Livewire component - try multiple approaches
                             let livewireComponent = container.closest('[wire\\:id]');
@@ -410,7 +407,6 @@
 
                             if (livewireComponent) {
                                 const livewireId = livewireComponent.getAttribute('wire:id');
-                                console.log('Found Livewire component ID:', livewireId);
 
                                 const component = Livewire.find(livewireId);
 
@@ -424,11 +420,8 @@
                                         propertyName = 'replyTurnstile';
                                     }
 
-                                    console.log('Setting property:', propertyName, 'with token');
-
                                     // Use the listener method to avoid re-rendering
                                     component.call('updateTurnstileToken', propertyName, token);
-                                    console.log('✓ Token set via updateTurnstileToken listener');
 
                                 } else {
                                     console.error('✗ Livewire component not found with ID:',
@@ -441,13 +434,12 @@
                             }
                         };
 
-                        console.log('Rendering Turnstile for container:', container.id);
+
                         let widgetId = turnstile.render(container, params);
 
                         if (widgetId !== undefined) {
                             container.dataset.rendered = 'true';
                             container.dataset.widgetId = widgetId;
-                            console.log('✓ Turnstile rendered successfully, widget ID:', widgetId);
                         } else {
                             console.error('✗ Turnstile render returned undefined');
                         }
@@ -460,10 +452,8 @@
             // Wait for Turnstile to be available
             function waitForTurnstile() {
                 if (typeof turnstile !== 'undefined') {
-                    console.log('✓ Turnstile is available, rendering widgets');
                     renderTurnstiles();
                 } else {
-                    console.log('⏳ Waiting for Turnstile...');
                     setTimeout(waitForTurnstile, 100);
                 }
             }
@@ -475,7 +465,6 @@
             Livewire.hook('morph.added', ({
                 el
             }) => {
-                console.log('DOM morphed, checking for new Turnstile widgets');
                 setTimeout(() => {
                     renderTurnstiles(el);
                 }, 100);
@@ -515,13 +504,11 @@
 
             // Reset Turnstile when needed
             Livewire.on('reset-turnstile', () => {
-                console.log('Resetting Turnstile widgets');
                 if (typeof turnstile !== 'undefined') {
                     document.querySelectorAll('.cf-turnstile[data-rendered]').forEach((container) => {
                         if (container.dataset.widgetId) {
                             try {
                                 turnstile.reset(container.dataset.widgetId);
-                                console.log('✓ Reset widget:', container.dataset.widgetId);
                             } catch (error) {
                                 console.error('✗ Error resetting Turnstile:', error);
                             }
