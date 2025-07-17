@@ -24,7 +24,7 @@ class TenderSearch extends Component
 
     protected $rules = [
         'searchQuery' => 'nullable|string|max:255',
-        'tenderYear' => 'nullable|string',
+        'tenderYear' => 'nullable|string|max:255',
     ];
 
     public function mount(string $currentUrl = '')
@@ -47,10 +47,8 @@ class TenderSearch extends Component
         $this->searchQuery = '';
         $this->tenderYear = '';
         $this->resetPage();
-        // Clear the search input
-        $this->js('document.querySelector(\'input[type="search"]\').value = ""');
-        // Clear the year dropdown
-        $this->js('document.querySelectorAll(\'select\')[0].value = ""');
+
+        $this->dispatch('reset-filters');
     }
 
     private function buildBaseQuery(): Builder
@@ -70,22 +68,35 @@ class TenderSearch extends Component
                 $locale = app()->getLocale();
                 $defaultLang = config('cms.default_language');
 
+                // Validate locales
+                $allowedLocales = config('cms.language_available', ['en']);
+                if (!in_array($locale, $allowedLocales)) {
+                    $locale = $defaultLang;
+                }
+
+                // Escape LIKE wildcards
+                $searchTerm = str_replace(['%', '_'], ['\%', '\_'], $searchTerm);
+
                 $query->where(function ($q) use ($searchTerm, $locale, $defaultLang) {
+                    // Build JSON path as parameter
+                    $localePath = '$.' . $locale;
+                    $defaultPath = '$.' . $defaultLang;
+
                     // Case-insensitive search for translatable fields
-                    $q->where(function ($subQuery) use ($searchTerm, $locale, $defaultLang) {
+                    $q->where(function ($subQuery) use ($searchTerm, $localePath, $defaultPath) {
                         // Search in title (translatable)
-                        $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, '$.{$locale}'))) LIKE ?", ['%' . strtolower($searchTerm) . '%'])
-                            ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, '$.{$defaultLang}'))) LIKE ?", ['%' . strtolower($searchTerm) . '%']);
+                        $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, ?))) LIKE ?", [$localePath, '%' . strtolower($searchTerm) . '%'])
+                            ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, ?))) LIKE ?", [$defaultPath, '%' . strtolower($searchTerm) . '%']);
                     })
-                        ->orWhere(function ($subQuery) use ($searchTerm, $locale, $defaultLang) {
+                        ->orWhere(function ($subQuery) use ($searchTerm, $localePath, $defaultPath) {
                             // Search in content (translatable)
-                            $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(content, '$.{$locale}'))) LIKE ?", ['%' . strtolower($searchTerm) . '%'])
-                                ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(content, '$.{$defaultLang}'))) LIKE ?", ['%' . strtolower($searchTerm) . '%']);
+                            $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(content, ?))) LIKE ?", [$localePath, '%' . strtolower($searchTerm) . '%'])
+                                ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(content, ?))) LIKE ?", [$defaultPath, '%' . strtolower($searchTerm) . '%']);
                         })
-                        ->orWhere(function ($subQuery) use ($searchTerm, $locale, $defaultLang) {
+                        ->orWhere(function ($subQuery) use ($searchTerm, $localePath, $defaultPath) {
                             // Search in specification (translatable)
-                            $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(specification, '$.{$locale}'))) LIKE ?", ['%' . strtolower($searchTerm) . '%'])
-                                ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(specification, '$.{$defaultLang}'))) LIKE ?", ['%' . strtolower($searchTerm) . '%']);
+                            $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(specification, ?))) LIKE ?", [$localePath, '%' . strtolower($searchTerm) . '%'])
+                                ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(specification, ?))) LIKE ?", [$defaultPath, '%' . strtolower($searchTerm) . '%']);
                         });
                 });
             }
@@ -101,9 +112,19 @@ class TenderSearch extends Component
                 $locale = app()->getLocale();
                 $defaultLang = config('cms.default_language');
 
-                $q->where(function ($subQuery) use ($locale, $defaultLang) {
-                    $subQuery->whereRaw("JSON_UNQUOTE(JSON_EXTRACT(title, '$.{$locale}')) = ?", [$this->tenderYear])
-                        ->orWhereRaw("JSON_UNQUOTE(JSON_EXTRACT(title, '$.{$defaultLang}')) = ?", [$this->tenderYear]);
+                // Validate locales
+                $allowedLocales = config('cms.language_available', ['en']);
+                if (!in_array($locale, $allowedLocales)) {
+                    $locale = $defaultLang;
+                }
+
+                // Build JSON path as parameter
+                $localePath = '$.' . $locale;
+                $defaultPath = '$.' . $defaultLang;
+
+                $q->where(function ($subQuery) use ($localePath, $defaultPath) {
+                    $subQuery->whereRaw("JSON_UNQUOTE(JSON_EXTRACT(title, ?)) = ?", [$localePath, $this->tenderYear])
+                        ->orWhereRaw("JSON_UNQUOTE(JSON_EXTRACT(title, ?)) = ?", [$defaultPath, $this->tenderYear]);
                 });
             });
         }
@@ -123,8 +144,10 @@ class TenderSearch extends Component
             ->toArray();
     }
 
-    protected function getPaginationNumber(): int {
-        return config('cms.content_models.tenders.per_page') ?? config('cms.pagination_number', 12);
+    protected function getPaginationNumber(): int
+    {
+        $perPage = config('cms.content_models.tenders.per_page') ?? config('cms.pagination_number', 12);
+        return max((int) $perPage, 1);
     }
 
     public function render()
@@ -133,7 +156,7 @@ class TenderSearch extends Component
         $query = $this->applySearchFilter($query);
         $query = $this->applyTenderYearFilter($query);
 
-        $tenders = $query->paginate(12)
+        $tenders = $query->paginate($this->getPaginationNumber())
             ->withPath($this->currentUrl)
             ->appends([
                 'searchQuery' => $this->searchQuery,

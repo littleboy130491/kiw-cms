@@ -85,5 +85,12 @@
             </div>
         @endif
     </div>
-
+    @pushOnce('before_body_close')
+        <script>
+            window.addEventListener('reset-filters', () => {
+                document.querySelector('input[type="search"]').value = '';
+                document.querySelector('select').value = '';
+            });
+        </script>
+    @endPushOnce
 </section>

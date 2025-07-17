@@ -16,6 +16,7 @@ class PostSearch extends Component
     public $relation = '';
     public $slug = '';
     public $currentUrl = '';
+
     protected $queryString = [
         'searchQuery' => ['except' => ''],
     ];
@@ -52,10 +53,20 @@ class PostSearch extends Component
                     $locale = app()->getLocale();
                     $defaultLang = config('cms.default_language');
 
+                    // Validate locales
+                    $allowedLocales = config('cms.language_available');
+                    if (!in_array($locale, $allowedLocales)) {
+                        $locale = $defaultLang;
+                    }
+
                     // Case-insensitive JSON search
                     $q->where(function ($subQuery) use ($slug, $locale, $defaultLang) {
-                        $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(slug, '$.{$locale}'))) = ?", [$slug])
-                            ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(slug, '$.{$defaultLang}'))) = ?", [$slug]);
+                        // SECURITY FIX: Build JSON path as parameter instead of interpolation
+                        $localePath = '$.' . $locale;
+                        $defaultPath = '$.' . $defaultLang;
+
+                        $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(slug, ?))) = ?", [$localePath, $slug])
+                            ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(slug, ?))) = ?", [$defaultPath, $slug]);
                     });
                 });
             })
@@ -72,22 +83,29 @@ class PostSearch extends Component
                 $locale = app()->getLocale();
                 $defaultLang = config('cms.default_language');
 
+                // Escape LIKE wildcards
+                $searchTerm = str_replace(['%', '_'], ['\%', '\_'], $searchTerm);
+
                 $query->where(function ($q) use ($searchTerm, $locale, $defaultLang) {
-                    // Case-insensitive search for translatable fields
-                    $q->where(function ($subQuery) use ($searchTerm, $locale, $defaultLang) {
+                    // Build JSON path as parameter
+                    $localePath = '$.' . $locale;
+                    $defaultPath = '$.' . $defaultLang;
+
+                    // Search in translatable fields
+                    $q->where(function ($subQuery) use ($searchTerm, $localePath, $defaultPath) {
                         // Search in title (translatable)
-                        $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, '$.{$locale}'))) LIKE ?", ['%' . strtolower($searchTerm) . '%'])
-                            ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, '$.{$defaultLang}'))) LIKE ?", ['%' . strtolower($searchTerm) . '%']);
+                        $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, ?))) LIKE ?", [$localePath, '%' . strtolower($searchTerm) . '%'])
+                            ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, ?))) LIKE ?", [$defaultPath, '%' . strtolower($searchTerm) . '%']);
                     })
-                        ->orWhere(function ($subQuery) use ($searchTerm, $locale, $defaultLang) {
+                        ->orWhere(function ($subQuery) use ($searchTerm, $localePath, $defaultPath) {
                             // Search in content (translatable)
-                            $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(content, '$.{$locale}'))) LIKE ?", ['%' . strtolower($searchTerm) . '%'])
-                                ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(content, '$.{$defaultLang}'))) LIKE ?", ['%' . strtolower($searchTerm) . '%']);
+                            $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(content, ?))) LIKE ?", [$localePath, '%' . strtolower($searchTerm) . '%'])
+                                ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(content, ?))) LIKE ?", [$defaultPath, '%' . strtolower($searchTerm) . '%']);
                         })
-                        ->orWhere(function ($subQuery) use ($searchTerm, $locale, $defaultLang) {
+                        ->orWhere(function ($subQuery) use ($searchTerm, $localePath, $defaultPath) {
                             // Search in excerpt (translatable)
-                            $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(excerpt, '$.{$locale}'))) LIKE ?", ['%' . strtolower($searchTerm) . '%'])
-                                ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(excerpt, '$.{$defaultLang}'))) LIKE ?", ['%' . strtolower($searchTerm) . '%']);
+                            $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(excerpt, ?))) LIKE ?", [$localePath, '%' . strtolower($searchTerm) . '%'])
+                                ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(excerpt, ?))) LIKE ?", [$defaultPath, '%' . strtolower($searchTerm) . '%']);
                         });
                 });
             }
@@ -96,8 +114,10 @@ class PostSearch extends Component
         return $query;
     }
 
-    protected function getPaginationNumber(): int {
-        return config('cms.content_models.posts.per_page') ?? config('cms.pagination_number', 12);
+    protected function getPaginationNumber(): int
+    {
+        $perPage = config('cms.content_models.posts.per_page') ?? config('cms.pagination_number', 12);
+        return max((int) $perPage, 1);
     }
 
     public function render()
