@@ -12,7 +12,8 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page :image="Storage::url('media/karier-hero.jpg')" h1="Lowongan Kerja" />
+        <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/karier-hero.jpg')"
+            h1="{{$item->title ?? 'Lowongan Kerja'}}" />
 
         <!--Start Karier Content-->
 
