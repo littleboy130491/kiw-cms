@@ -14,7 +14,7 @@
     <main>
 
         <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/manajemen-hero.jpg')"
-            h1="{{$item->title ?? 'Manajemen Perusahaan' }}" />
+            h1="{{ $item->title ?? 'Manajemen Perusahaan' }}" />
 
         <!--Start Manajemen-->
         <section id="manajemen">
