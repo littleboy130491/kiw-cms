@@ -13,7 +13,7 @@
     <main>
 
         <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/karier-hero.jpg')"
-            h1="{{$item->title ?? 'Lowongan Kerja'}}" />
+            h1="{{ strip_tags($item->content) ?? 'Lowongan Kerja' }}" />
 
         <!--Start Karier Content-->
 

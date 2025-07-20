@@ -3,7 +3,7 @@
 
     <main>
         <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/mengapa-kiw-hero.jpg')"
-            h1="{{$item->title ?? 'Mengapa KIW?'}}" />
+            h1="{{ strip_tags($item->content) ?? 'Mengapa KIW?' }}" />
 
 
         <!--Keunggulan-->
