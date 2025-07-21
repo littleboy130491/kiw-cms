@@ -12,7 +12,6 @@
 <x-layouts.app>
     <x-partials.header />
     <main>
-
         <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/visi-misi-hero.jpg')"
             h1="{!! $item->title ?? 'Visi Misi & Tata Nilai' !!}" />
 

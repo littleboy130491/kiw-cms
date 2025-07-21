@@ -43,7 +43,7 @@ return [
 
     'content_models' => [
         'pages' => [
-            'model' => Littleboy130491\Sumimasen\Models\Page::class,
+            'model' => App\Models\Page::class,
             'name' => 'Pages',
             'type' => 'content',
             'has_archive' => false,
@@ -61,7 +61,7 @@ return [
             'per_page' => 12,
         ],
         'categories' => [
-            'model' => Littleboy130491\Sumimasen\Models\Category::class,
+            'model' => App\Models\Category::class,
             'name' => 'Categories',
             'type' => 'taxonomy',
             'has_archive' => true,
@@ -129,7 +129,7 @@ return [
     // ex: "about-us slug" does not exist in Pages, it will try to find in Posts
     'fallback_content_type' => 'posts',
 
-    'static_page_model' => Littleboy130491\Sumimasen\Models\Page::class,
+    'static_page_model' => App\Models\Page::class,
     'static_page_slug' => 'pages',
     'front_page_slug' => 'beranda',
 
