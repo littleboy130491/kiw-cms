@@ -84,6 +84,7 @@ class AdminPanelProvider extends PanelProvider
                 FilamentTranslatableFieldsPlugin::make(),
                 FilamentShieldPlugin::make(),
                 FilamentMenuBuilderPlugin::make()
+                    ->usingMenuItemModel(\App\Models\MenuItem::class)
                     ->showCustomTextPanel()
                     ->addLocations($this->getMenuLocations())
                     ->addMenuItemFields([
