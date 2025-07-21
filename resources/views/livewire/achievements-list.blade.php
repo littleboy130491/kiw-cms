@@ -12,7 +12,7 @@
                 Semua
             </button>
 
-            @foreach($achievementTypes as $type)
+            @foreach ($achievementTypes as $type)
                 <button wire:click="selectType({{ $type->id }})"
                     class="btn6 group w-fit {{ $selectedType == $type->id ? 'active' : '' }}">
                     {{ $type->title }}
@@ -39,7 +39,7 @@
                     <select wire:model.live="selectedYear"
                         class="w-full pl-3 pr-10 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:var(--color-blue) appearance-none">
                         <option value="">Pilih Tahun</option>
-                        @foreach($achievementYears as $year)
+                        @foreach ($achievementYears as $year)
                             <option value="{{ $year->id }}">{{ $year->title }}</option>
                         @endforeach
                     </select>
@@ -51,7 +51,7 @@
 
             <!--Reset Filter-->
             <div class="flex justify-center sm:justify-end min-h-[1.5rem]">
-                @if($search || $selectedType || $selectedYear)
+                @if ($search || $selectedType || $selectedYear)
                     <button wire:click="resetFilters"
                         class="text-[var(--color-blue)] hover:text-[var(--color-blue-dark)] text-sm underline cursor-pointer">
                         Reset Filter
@@ -68,13 +68,13 @@
     </div>
 
     <!--Content-->
-    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-12 z-99" wire:loading.remove>
+    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-12 z-10" wire:loading.remove>
         @forelse($achievements as $achievement)
             <div class="flex flex-col items-center">
                 <div class="flex flex-col justify-between items-center">
-                    @if($achievement->featuredImage)
-                        <img class="h-[250px] object-contain -mb-[20px] z-10" src="{{ $achievement->featuredImage->url }}"
-                            alt="{{ $achievement->title }}">
+                    @if ($achievement->featuredImage)
+                        <img class="h-[250px] object-contain -mb-[20px] z-10"
+                            src="{{ $achievement->featuredImage->url }}" alt="{{ $achievement->title }}">
                     @else
                         <img class="h-[250px] object-contain -mb-[20px] z-10"
                             src="{{ Storage::url('media/default-achievement.png') }}" alt="{{ $achievement->title }}">
@@ -91,7 +91,7 @@
     </div>
 
     <!--Pagination-->
-    @if($achievements->hasPages())
+    @if ($achievements->hasPages())
         <div class="flex justify-center mt-8">
             {{ $achievements->links() }}
         </div>
