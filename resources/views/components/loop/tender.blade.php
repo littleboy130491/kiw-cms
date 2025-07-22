@@ -20,16 +20,18 @@
             {{ $desc ?? '' }}
         </p>
         <div class="flex flex-row items-center gap-2">
-            <x-icon.calendar-icon-color />
-            <p class="!text-[var(--color-purple)]">
-                @foreach ($item->specification as $spec)
-                    @dd($item->specification)
-                    @if (Str::of($spec['name'])->lower()->contains('tanggal'))
-                        {{ $spec['value'] }}
+            @foreach ($item->specification as $spec)
+                @if (Str::of($spec['name'])->lower()->contains(['tanggal', 'date']))
+                    @if ($spec['value'])
+                        <x-icon.calendar-icon-color />
+                        <p class="!text-[var(--color-purple)]">
+                            {{ $spec['value'] }}
+                        </p>
                         @break
                     @endif
-                @endforeach
-            </p>
+                @endif
+            @endforeach
+
         </div>
     </div>
 
