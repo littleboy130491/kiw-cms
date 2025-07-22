@@ -5,9 +5,8 @@
             h1="{!! $item->title ?? 'Pedoman & Tata Kelola' !!}" />
         <!--Pedoman Tata Kelola-->
         <section id="pedoman-tata-kelola" class="flex flex-col ">
-            @foreach ($item->section as $block)
-                <x-loop.pedoman :h2="$block['data']['title']" :p="$block['data']['description']"
-                    :link="$block['data']['url']" :button="$block['data']['button_label']" />
+            @foreach ($item->block as $block)
+                <x-loop.pedoman :h2="$block['data']['title']" :p="$block['data']['description']" :link="$block['data']['url']" :button="$block['data']['button_label']" />
             @endforeach
         </section>
 

@@ -5,7 +5,6 @@ namespace App\Models;
 use Littleboy130491\Sumimasen\Models\Page as BasePage;
 use Datlechin\FilamentMenuBuilder\Concerns\HasMenuPanel;
 use Datlechin\FilamentMenuBuilder\Contracts\MenuPanelable;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Page extends BasePage implements MenuPanelable
 {

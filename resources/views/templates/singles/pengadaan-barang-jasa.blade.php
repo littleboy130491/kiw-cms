@@ -4,7 +4,7 @@
         'content_type_archive_key' => 'tenders',
     ]);
 
-    $blocksCollection = collect($item->section);
+    $blocksCollection = collect($item->block);
     $welcomeBlock = $blocksCollection->firstWhere('data.block_id', 'welcome');
     $backgroundBlock = $blocksCollection->firstWhere('data.block_id', 'background');
     $peringatanBlock = $blocksCollection->firstWhere('data.block_id', 'peringatan');

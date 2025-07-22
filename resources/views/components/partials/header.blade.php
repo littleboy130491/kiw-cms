@@ -48,14 +48,15 @@
                 <div class="hidden lg:flex lg:flex-row lg:justify-end gap-5 mb-8">
 
                     <!--Button-->
-                    <a class=" btn5 group w-fit" href="#" target="_blank" rel="noopener noreferrer">
+                    <a class=" btn5 group w-fit" href="{{ route('cms.static.page', [app()->getLocale(), 'kontak']) }}"
+                        rel="noopener">
                         Hubungi Kami
                         <span class="gradient-icon">
                             <x-icon.pencil />
                         </span>
                     </a>
 
-                    <a class=" btn5 group w-fit" href="#" target="_blank" rel="noopener noreferrer">
+                    <a class=" btn5 group w-fit" href="#" target="_blank" rel="noopener">
                         Unduh Brosur
                         <span class="gradient-icon">
                             <x-icon.download-icon-current />
@@ -117,14 +118,16 @@
 
                         <!-- Button -->
                         <div class="mt-10 flex flex-col gap-5">
-                            <a class=" btn9 group w-fit" href="#" target="_blank" rel="noopener noreferrer">
+                            <a class=" btn9 group w-fit"
+                                href="{{ route('cms.static.page', [app()->getLocale(), 'kontak']) }} target="_self"
+                                rel="noopener">
                                 Hubungi Kami
                                 <span class="gradient-icon">
                                     <x-icon.pencil />
                                 </span>
                             </a>
 
-                            <a class=" btn9 group w-fit" href="#" target="_blank" rel="noopener noreferrer">
+                            <a class=" btn9 group w-fit" href="#" target="_blank" rel="noopener">
                                 Unduh Brosur
                                 <span class="gradient-icon">
                                     <x-icon.download-icon-current />
