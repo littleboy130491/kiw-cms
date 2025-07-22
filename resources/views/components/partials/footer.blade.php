@@ -1,3 +1,39 @@
+@php
+    use Datlechin\FilamentMenuBuilder\Models\Menu;
+
+    $currentLang = app()->getLocale();
+    $availableLanguages = array_keys(config('cms.language_available', []));
+    if (!in_array($currentLang, $availableLanguages)) {
+        $currentLang = config('cms.default_language', 'en'); // fallback to default
+    }
+
+    // Helper to fetch a menu by location
+    $getMenu = function ($location) use ($currentLang) {
+        $localizedLocation = $location . '_' . $currentLang;
+        $fallbackLocation = $location . '_' . config('cms.default_language', 'en');
+
+        return Menu::query()
+            ->where('is_visible', true)
+            ->whereHas('locations', function ($q) use ($localizedLocation, $fallbackLocation, $location) {
+                $q->whereIn('location', [$localizedLocation, $fallbackLocation, $location]);
+            })
+            ->with(['menuItems.linkable'])
+            ->orderByRaw(
+                "CASE
+                    WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 1
+                    WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 2
+                    ELSE 3
+                END",
+                [$localizedLocation, $fallbackLocation],
+            )
+            ->first();
+    };
+    $menu_footer_1 = $getMenu('footer_menu_1');
+    $menu_footer_2 = $getMenu('footer_menu_2');
+    $menu_footer_3 = $getMenu('footer_menu_3');
+@endphp
+
+
 <!--Footer-->
 <footer id="footer" class="lg:pt-30 pt-18 bg-cover bg-[var(--color-transit)]"
     style="background-image:url('{{ Storage::url('media/Footer.jpg') }}')">
@@ -20,7 +56,8 @@
                     <a class="sm:w-[400px] w-[100%] btn4 group"
                         href="{{ app('settings')->link_address ?? config('cms.site_contact.link_address1') }}"
                         target="_blank" rel="noopener noreferrer">
-                        <span class="transition-all duration-300 sm:!text-[.9em] !text-[.8em]
+                        <span
+                            class="transition-all duration-300 sm:!text-[.9em] !text-[.8em]
                                     group-hover:text-transparent 
                                     group-hover:bg-clip-text 
                                     group-hover:[background-image:linear-gradient(268deg,#1F77D3_1.1%,#321B71_99.1%)]">
@@ -38,7 +75,8 @@
 
                     <a class="sm:w-[300px] w-[90%] btn4 group"
                         href="mailto:{{ app('settings')->email ?? config('cms.site_contact.email1') }}">
-                        <span class="transition-all duration-300 sm:!text-[.9em] !text-[.8em]
+                        <span
+                            class="transition-all duration-300 sm:!text-[.9em] !text-[.8em]
                                     group-hover:text-transparent 
                                     group-hover:bg-clip-text 
                                     group-hover:[background-image:linear-gradient(268deg,#1F77D3_1.1%,#321B71_99.1%)]">
@@ -56,7 +94,8 @@
 
                     <a class="sm:w-[250px] w-[80%] btn4 group"
                         href="tel:{{ app('settings')->phone_1 ?? config('cms.site_contact.phone1') }}">
-                        <span class="phone transition-all duration-300 sm:!text-[.9em] !text-[.8em]
+                        <span
+                            class="phone transition-all duration-300 sm:!text-[.9em] !text-[.8em]
                                     group-hover:text-transparent 
                                     group-hover:bg-clip-text 
                                     group-hover:[background-image:linear-gradient(268deg,#1F77D3_1.1%,#321B71_99.1%)]">
@@ -77,14 +116,7 @@
                 <div class="flex flex-col gap-6 text-white">
                     <h6 class="text-white uppercase">Link</h6>
                     <div class="grid grid-cols-2 gap-x-10 gap-y-2 !text-[.9em] lg:w-full sm:w-[150px]">
-                        <a href="/">Beranda</a>
-                        <a href="{{ route('cms.static.page', [app()->getLocale(), 'keunggulan']) }}">Keunggulan</a>
-                        <a href="/profil-perusahaan">Tentang</a>
-                        <a href="/pengadaan-barang-jasa">Informasi</a>
-                        <a href="/lahan-industri">Produk & Layanan</a>
-                        <a href="/galeri-dokumentasi">Media</a>
-                        <a href="/#tenant-home">Tenant</a>
-                        <a href="/kontak">Kontak</a>
+                        <x-partials.navigation-menu-footer :menu="$menu_footer_1" />
                     </div>
                 </div>
 
@@ -92,9 +124,7 @@
                 <div class="flex flex-col gap-6 text-white">
                     <h6 class="text-white uppercase">Akses</h6>
                     <div class="grid grid-rows-1 gap-2 !text-[.9em]">
-                        <a href="https://ppid.kiw.co.id/" target="_blank">PPID</a>
-                        <a href="#">CSIRT</a>
-                        <a href="/karier">Karier</a>
+                        <x-partials.navigation-menu-footer :menu="$menu_footer_2" />
                     </div>
                 </div>
 
@@ -102,9 +132,7 @@
                 <div class="flex flex-col gap-6 text-white">
                     <h6 class="text-white uppercase">layanan</h6>
                     <div class="grid grid-rows-1 gap-2 !text-[.9em]">
-                        <a href="/lahan-industri">Lahan Industri Siap Bangun</a>
-                        <a href="/bpsp">Bangunan Pabrik Siap Pakai (BPSP)</a>
-                        <a href="/area-komersil/atm">Kerjasama Komersial Kawasan Industri</a>
+                        <x-partials.navigation-menu-footer :menu="$menu_footer_3" />
                     </div>
                 </div>
 
@@ -119,7 +147,8 @@
                 <div class="flex flex-row sm:gap-5 gap-8 sm:w-1/6">
                     <img class="sm:w-full w-24" src="{{ Storage::url('media/kiwinners.png') }}" alt="kiwinners">
                     <img class="sm:w-full w-24" src="{{ Storage::url('media/akhlak.png') }}" alt="akhlak">
-                    <img class="sm:w-full w-24" src="{{ Storage::url('media/bumn-untuk-indonesia.png') }}" alt="bumn">
+                    <img class="sm:w-full w-24" src="{{ Storage::url('media/bumn-untuk-indonesia.png') }}"
+                        alt="bumn">
                 </div>
 
                 <!--Social Media-->

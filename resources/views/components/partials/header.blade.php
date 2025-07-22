@@ -5,34 +5,26 @@
 
     $logo_url = Storage::url('media/' . app('settings')->site_logo ?? 'logo.png');
 
-    // Get current language from URL segment (first segment after domain)
-    $currentLang = request()->segment(1);
+    $currentLang = app()->getLocale();
+    $availableLanguages = array_keys(config('cms.language_available', []));
+    if (!in_array($currentLang, $availableLanguages)) {
+        $currentLang = config('cms.default_language', 'en'); // fallback to default
+    }
 
-    // Validate if it's a valid language from your config
-$availableLanguages = array_keys(config('cms.language_available', []));
-if (!in_array($currentLang, $availableLanguages)) {
-    $currentLang = config('cms.default_language', 'en'); // fallback to default
-}
+    $localizedLocation = $location . '_' . $currentLang;
+    $fallbackLocation = $location . '_' . config('cms.default_language', 'en');
 
-$localizedLocation = $location . '_' . $currentLang;
-$fallbackLocation = $location . '_' . config('cms.default_language', 'en');
-
-$menu = Menu::query()
-    ->where('is_visible', true)
-    ->whereHas('locations', function ($query) use ($localizedLocation, $fallbackLocation, $location) {
-        $query->whereIn('location', [$localizedLocation, $fallbackLocation, $location]);
-    })
-    ->with([
-        'menuItems.linkable',
-        'menuItems.children.linkable',
-        'menuItems.children.children.linkable', // Add more levels if needed
-        ])
+    $menu = Menu::query()
+        ->where('is_visible', true)
+        ->whereHas('locations', function ($query) use ($localizedLocation, $fallbackLocation, $location) {
+            $query->whereIn('location', [$localizedLocation, $fallbackLocation, $location]);
+        })
+        ->with(['menuItems.linkable', 'menuItems.children.linkable', 'menuItems.children.children.linkable'])
         ->orderByRaw(
-            "CASE 
-                                                                                            WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 1
-                                                                                            WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 2
-                                                                                            ELSE 3
-                                                                                        END",
+            "CASE WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 1
+                    WHEN EXISTS (SELECT 1 FROM menu_locations WHERE menu_locations.menu_id = menus.id AND menu_locations.location = ?) THEN 2
+                    ELSE 3
+                    END",
             [$localizedLocation, $fallbackLocation],
         )
         ->first();
