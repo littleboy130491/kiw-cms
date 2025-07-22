@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Littleboy130491\SeoSuite\Models\Traits\InteractsWithSeoSuite;
 use Littleboy130491\Sumimasen\Enums\ContentStatus;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Tender extends Model
 {
@@ -71,6 +72,42 @@ class Tender extends Model
         'title',
         'specification',
     ];
+
+    protected function specification(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value, $attributes) {
+                // Get the raw JSON translations from attributes
+                $translations = json_decode($attributes['specification'] ?? '{}', true);
+
+                // Get current locale
+                $currentLocale = $this->getLocale();
+
+                // Get current locale's value
+                $currentValue = $translations[$currentLocale] ?? [];
+
+                // If current locale is empty, use fallback
+                if (empty($currentValue)) {
+                    // Try default language
+                    $defaultLocale = config('cms.default_language');
+
+                    if (isset($translations[$defaultLocale]) && !empty($translations[$defaultLocale])) {
+                        $currentValue = $translations[$defaultLocale];
+                    } else {
+                        // Return first non-empty translation
+                        foreach ($translations as $locale => $localeValue) {
+                            if (!empty($localeValue)) {
+                                $currentValue = $localeValue;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                return $currentValue;
+            }
+        );
+    }
 
     //--------------------------------------------------------------------------
     // Relationships

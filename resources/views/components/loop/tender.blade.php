@@ -23,6 +23,7 @@
             <x-icon.calendar-icon-color />
             <p class="!text-[var(--color-purple)]">
                 @foreach ($item->specification as $spec)
+                    @dd($item->specification)
                     @if (Str::of($spec['name'])->lower()->contains('tanggal'))
                         {{ $spec['value'] }}
                         @break
