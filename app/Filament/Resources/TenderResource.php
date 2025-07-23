@@ -10,6 +10,8 @@ use Littleboy130491\Sumimasen\Filament\Abstracts\BaseContentResource;
 
 class TenderResource extends BaseContentResource
 {
+
+
     protected static ?string $model = Tender::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-presentation-chart-line';
@@ -59,7 +61,7 @@ class TenderResource extends BaseContentResource
                         ->columnSpan(1),
 
                 ])
-                ->columnSpanFull()
+                ->columnSpanFull(),
         ];
 
     }

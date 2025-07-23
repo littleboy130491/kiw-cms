@@ -119,7 +119,7 @@
                         <!-- Button -->
                         <div class="mt-10 flex flex-col gap-5">
                             <a class=" btn9 group w-fit"
-                                href="{{ route('cms.static.page', [app()->getLocale(), 'kontak']) }} target="_self"
+                                href="{{ route('cms.static.page', [app()->getLocale(), 'kontak']) }}" target="_self"
                                 rel="noopener">
                                 Hubungi Kami
                                 <span class="gradient-icon">
