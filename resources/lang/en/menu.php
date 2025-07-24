@@ -6,4 +6,5 @@ return [
     'media' => 'Media',
     'informasi' => 'Information',
     'area_komersil' => 'Commercial Area',
+    'bpsp' => 'Bangunan Pabrik Siap Pakai',
 ];
