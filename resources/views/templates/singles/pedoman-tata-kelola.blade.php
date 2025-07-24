@@ -1,8 +1,7 @@
 <x-layouts.app>
     <x-partials.header />
     <main>
-        <x-partials.hero-page image="$item->featuredImage?->url ?? Storage::url('media/pedoman-hero.jpg')"
-            h1="{!! $item->title ?? 'Pedoman & Tata Kelola' !!}" />
+        <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/pedoman-hero.jpg')" h1="{!! $item->title ?? 'Pedoman & Tata Kelola' !!}" />
         <!--Pedoman Tata Kelola-->
         <section id="pedoman-tata-kelola" class="flex flex-col ">
             @foreach ($item->block as $block)
