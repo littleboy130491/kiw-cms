@@ -5,5 +5,3 @@ import '../counter.js';
 import '../video-modal.js';
 import '../video-inline.js';
 import '../youtube-src-conversion.js';
-import '../splash-screen.js';
-import '../popup-home.js';

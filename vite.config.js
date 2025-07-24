@@ -13,6 +13,8 @@ export default defineConfig({
                 'resources/js/pages/profil-perusahaan.js',
                 'resources/js/pages/single-building.js',
                 'resources/js/pages/karier.js',
+                'resources/js/splash-screen.js',
+                'resources/js/popup-home.js',
             ],
             refresh: true,
         }),
