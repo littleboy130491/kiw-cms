@@ -3,8 +3,6 @@ const switchers = document.querySelectorAll('#bg-switcher, .bg-switcher, [data-b
 const items = document.querySelectorAll('[data-bg]');
 
 if (switchers.length > 0 && items.length > 0) {
-    console.log(`BgSwitcher: Initialized ${switchers.length} switchers with ${items.length} background items`);
-    
     const primarySwitcher = switchers[0]; // Use first switcher as primary
     
     function activateItem(item) {
@@ -33,8 +31,6 @@ if (switchers.length > 0 && items.length > 0) {
     if (items.length > 0) {
         activateItem(items[0]);
     }
-} else {
-    console.log('BgSwitcher: No background switcher elements found');
 }
 
 

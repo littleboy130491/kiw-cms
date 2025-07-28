@@ -2,8 +2,6 @@
 const thumbnails = document.querySelectorAll('#video-home > div, .video-thumbnail, [data-video-thumbnail]');
 
 if (thumbnails.length > 0) {
-  console.log(`VideoInline: Initialized ${thumbnails.length} video thumbnails`);
-  
   thumbnails.forEach(thumbnail => {
     thumbnail.addEventListener('click', function () {
       const container = this.parentNode;
@@ -19,6 +17,4 @@ if (thumbnails.length > 0) {
       }
     });
   });
-} else {
-  console.log('VideoInline: No video thumbnail elements found');
 }

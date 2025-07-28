@@ -32,9 +32,8 @@ async function loadPageModules() {
     if ([...bodyClasses].some(cls => cls.includes('home')) || [...bodyClasses].some(cls => cls.includes('beranda'))) {
         try {
             await import('./pages/home.js');
-            console.log('✓ Loaded: page-home');
         } catch (error) {
-            console.warn('Failed to load page-home:', error);
+            // Failed to load page-home
         }
     }
     
@@ -42,9 +41,8 @@ async function loadPageModules() {
     if ([...bodyClasses].some(cls => cls.includes('profil')) || [...bodyClasses].some(cls => cls.includes('profile'))) {
         try {
             await import('./pages/profil-perusahaan.js');
-            console.log('✓ Loaded: page-profil');
         } catch (error) {
-            console.warn('Failed to load page-profil:', error);
+            // Failed to load page-profil
         }
     }
     
@@ -52,9 +50,8 @@ async function loadPageModules() {
     if ([...bodyClasses].some(cls => cls.includes('karier')) || [...bodyClasses].some(cls => cls.includes('career'))) {
         try {
             await import('./pages/karier.js');
-            console.log('✓ Loaded: page-karier');
         } catch (error) {
-            console.warn('Failed to load page-karier:', error);
+            // Failed to load page-karier
         }
     }
     
@@ -62,9 +59,8 @@ async function loadPageModules() {
     if ([...bodyClasses].some(cls => cls.includes('industri')) || [...bodyClasses].some(cls => cls.includes('industrial'))) {
         try {
             await import('./pages/lahan-industri.js');
-            console.log('✓ Loaded: page-lahan-industri');
         } catch (error) {
-            console.warn('Failed to load page-lahan-industri:', error);
+            // Failed to load page-lahan-industri
         }
     }
     
@@ -72,9 +68,8 @@ async function loadPageModules() {
     if ([...bodyClasses].some(cls => cls.includes('manajemen')) || [...bodyClasses].some(cls => cls.includes('management'))) {
         try {
             await import('./pages/manajemen-perusahaan.js');
-            console.log('✓ Loaded: page-manajemen-perusahaan');
         } catch (error) {
-            console.warn('Failed to load page-manajemen-perusahaan:', error);
+            // Failed to load page-manajemen-perusahaan
         }
     }
     
@@ -82,9 +77,8 @@ async function loadPageModules() {
     if ([...bodyClasses].some(cls => cls.includes('fasilitas')) || [...bodyClasses].some(cls => cls.includes('facilities')) || [...bodyClasses].some(cls => cls.includes('facility'))) {
         try {
             await import('./pages/fasilitas.js');
-            console.log('✓ Loaded: page-fasilitas');
         } catch (error) {
-            console.warn('Failed to load page-fasilitas:', error);
+            // Failed to load page-fasilitas
         }
     }
     
@@ -92,9 +86,8 @@ async function loadPageModules() {
     if (bodyClasses.contains('type-bpsp') || bodyClasses.contains('type-buildings')) {
         try {
             await import('./pages/single-building.js');
-            console.log('✓ Loaded: page-single-building');
         } catch (error) {
-            console.warn('Failed to load page-single-building:', error);
+            // Failed to load page-single-building
         }
     }
 }

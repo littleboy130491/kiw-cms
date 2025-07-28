@@ -74,4 +74,3 @@ observer.observe(document.body, {
   subtree: true
 });
 
-console.log('✓ Swiper auto-height initialized');

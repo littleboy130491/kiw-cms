@@ -12,8 +12,5 @@ if (iframes.length > 0) {
         }
     });
     
-    console.log(`YouTube: Converted ${iframes.length} YouTube URLs`);
-} else {
-    console.log('YouTube: No YouTube iframes found');
 }
 

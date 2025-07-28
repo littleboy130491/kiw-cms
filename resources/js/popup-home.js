@@ -2,8 +2,6 @@
 const popups = document.querySelectorAll('#popup-home, .popup-home, [data-home-popup]');
 
 if (popups.length > 0) {
-    console.log(`PopupHome: Initialized ${popups.length} home popups`);
-    
     popups.forEach(popup => {
         // Variabel waktu delay dalam detik
         const popupDelayInSeconds = 10; // Ganti angka dengan detik yang diinginkan
@@ -32,7 +30,5 @@ if (popups.length > 0) {
             popup.classList.add("hidden");
         });
     };
-} else {
-    console.log('PopupHome: No home popup elements found');
 }
 

@@ -11,12 +11,10 @@ class ModalController {
     const triggers = this.findModalTriggers();
 
     if (!this.modal && triggers.length === 0) {
-      console.log('Modal: No modal or triggers found');
       return;
     }
 
     this.setupGlobalFunctions();
-    console.log(`Modal: Initialized with ${triggers.length} triggers`);
   }
 
   findModalTriggers() {

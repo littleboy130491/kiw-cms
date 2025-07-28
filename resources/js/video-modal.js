@@ -4,8 +4,6 @@ const openButtons = document.querySelectorAll('#openVideoBtn, .open-video-btn, [
 const closeButtons = document.querySelectorAll('#closeVideoBtn, .close-video-btn, [data-close-video]');
 
 if (modals.length > 0) {
-  console.log(`VideoModal: Initialized ${modals.length} video modals`);
-  
   modals.forEach(modal => {
     const iframe = modal.querySelector('#youtubeIframe, iframe, [data-video-iframe]');
     
@@ -47,6 +45,4 @@ if (modals.length > 0) {
       btn.addEventListener('click', closeVideoModal);
     });
   });
-} else {
-  console.log('VideoModal: No video modal elements found');
 }

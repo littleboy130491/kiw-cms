@@ -19,9 +19,6 @@ if (headers.length > 0) {
         });
     });
     
-    console.log(`Accordion: Initialized ${headers.length} accordions`);
-} else {
-    console.log('Accordion: No accordion elements found');
 }
 
 

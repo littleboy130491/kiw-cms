@@ -24,12 +24,10 @@ class CounterModule {
     });
 
     if (allCounters.length === 0) {
-      console.log('Counter: No counter elements found');
       return;
     }
 
     this.setupCounters(allCounters);
-    console.log(`Counter: Initialized ${allCounters.length} counters`);
   }
 
   setupCounters(counters) {

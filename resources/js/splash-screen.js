@@ -2,12 +2,6 @@
 const splashScreen = document.getElementById("splash-screen");
 const logoSequence = document.getElementById("logo-sequence");
 
-console.log('Splash Screen Debug:', {
-  splashScreen: !!splashScreen,
-  logoSequence: !!logoSequence,
-  readyState: document.readyState
-});
-
 if (splashScreen && logoSequence) {
   // Ambil semua elemen logo dari HTML tersembunyi
   const logoElements = logoSequence.querySelectorAll(".logo-item");
@@ -24,8 +18,6 @@ if (splashScreen && logoSequence) {
   let index = 0;
   const logoImage = document.getElementById("logo-image");
   const yearText = document.getElementById("year-text");
-
-  console.log(`Splash Screen: Found ${logos.length} logo sequences`);
 
   function completeSplashScreen() {
     // Semua logo selesai ditampilkan atau tidak ada logo
@@ -52,23 +44,20 @@ if (splashScreen && logoSequence) {
   }
 
   function showNextLogo() {
-    console.log('showNextLogo called:', {
-      logoImage: !!logoImage,
-      yearText: !!yearText,
-      logosLength: logos.length,
-      index: index
-    });
-    
     // If no logos or elements, complete immediately
     if (!logoImage || !yearText || logos.length === 0) {
-      console.log('No logos or elements, completing splash screen in 2 seconds');
-      setTimeout(completeSplashScreen, 2000); // Show splash for 2 seconds then complete
+      setTimeout(completeSplashScreen, 2000); //
       return;
     }
 
     if (index < logos.length) {
+      // Add smooth transition
+      logoImage.style.transition = 'opacity 0.3s ease-in-out';
+      yearText.style.transition = 'opacity 0.3s ease-in-out';
+      
       // Fade out logo
       logoImage.style.opacity = 0;
+      yearText.style.opacity = 0;
 
       setTimeout(() => {
         // Ganti gambar logo dan tahun
@@ -77,32 +66,25 @@ if (splashScreen && logoSequence) {
 
         // Fade in logo
         logoImage.style.opacity = 1;
+        yearText.style.opacity = 1;
 
         // Lanjutkan ke logo berikutnya setelah jeda
         index++;
-        setTimeout(showNextLogo, 500); // jeda antar logo
-      }, 500); // waktu untuk fade out
+        setTimeout(showNextLogo, 500); // transition timing
+      }, 200); //  fade out timing
     } else {
       completeSplashScreen();
     }
   }
 
   // Start animation immediately since module loader ensures DOM is ready
-  document.body.classList.add("no-scroll"); // Kunci scroll sebelum animasi
+  document.body.classList.add("no-scroll");
   
-  // Start immediately, but also listen for window load as fallback
-  if (document.readyState === 'complete') {
-    showNextLogo();
-  } else {
-    window.addEventListener("load", () => {
-      showNextLogo();
-    });
-    // Also start after a short delay as fallback
-    setTimeout(() => {
-      showNextLogo();
-    }, 100);
-  }
+  // Start immediately with proper timing
+  requestAnimationFrame(() => {
+    setTimeout(showNextLogo, 200); // Small delay to ensure smooth start
+  });
 
 } else {
-  console.log('Splash Screen: No splash screen elements found');
+  // No splash screen elements found, don't block the page
 }

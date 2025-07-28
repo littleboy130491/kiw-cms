@@ -21,7 +21,4 @@ if (phoneLinks.length > 0) {
         }
     });
     
-    console.log(`Phone: Formatted ${phoneLinks.length} phone numbers`);
-} else {
-    console.log('Phone: No phone elements found');
 }

@@ -104,16 +104,12 @@ function initializeSwipers() {
     .map(({ selector, config }) => {
       const element = document.querySelector(selector);
       if (element) {
-        console.log(`Initializing swiper: ${selector}`);
         return new Swiper(selector, config);
-      } else {
-        console.log(`Element not found: ${selector}`);
       }
       return null;
     })
     .filter((swiper) => swiper !== null);
 
-  console.log(`Initialized ${swipers.length} swipers`);
   return swipers;
 }
 

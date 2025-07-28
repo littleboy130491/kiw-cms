@@ -27,9 +27,8 @@ function initAOS() {
       AOS.refresh();
     }, 100);
     
-    console.log('✓ AOS initialized successfully');
   } catch (error) {
-    console.warn('AOS initialization failed, showing elements:', error);
+    // AOS initialization failed, showing elements
     showAOSElements();
   }
 }

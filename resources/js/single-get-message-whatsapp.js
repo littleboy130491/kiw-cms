@@ -4,8 +4,6 @@ const headings = document.querySelectorAll('#bangunan-pabrik h2.get-message, .ge
 const links = document.querySelectorAll('#bangunan-pabrik a.wa-message, .wa-message, [data-whatsapp-link]');
 
 if (headings.length > 0 && links.length > 0) {
-    console.log(`WhatsAppMessage: Initialized ${headings.length} headings and ${links.length} WhatsApp links`);
-    
     headings.forEach((heading, index) => {
         const correspondingLink = links[index] || links[0]; // Use first link if no corresponding index
         
@@ -17,7 +15,5 @@ if (headings.length > 0 && links.length > 0) {
             correspondingLink.href = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
         }
     });
-} else {
-    console.log('WhatsAppMessage: No WhatsApp message elements found');
 }
 
