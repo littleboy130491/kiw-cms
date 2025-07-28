@@ -1,7 +1,3 @@
-@pushOnce('before_body_close')
-    @vite('resources/js/pages/home.js')
-@endPushOnce
-
 @php
     $archive_post_url = route('cms.archive.content', [app()->getLocale(), 'posts']);
 @endphp

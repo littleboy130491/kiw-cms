@@ -1,7 +1,3 @@
-@pushOnce('before_body_close')
-    @vite('resources/js/popup-modal-main.js')
-@endPushOnce
-
 <x-layouts.app>
     <x-partials.header />
 

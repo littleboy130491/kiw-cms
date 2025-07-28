@@ -1,6 +1,3 @@
-@pushOnce('before_body_close')
-    @vite('resources/js/popup-modal-main.js')
-@endPushOnce
 @php
     use App\Models\Facility;
     use Littleboy130491\Sumimasen\Enums\ContentStatus;

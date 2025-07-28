@@ -1,7 +1,4 @@
 @if ($shouldShow)
-    @pushOnce('before_body_close')
-        @vite('resources/js/splash-screen.js')
-    @endPushOnce
     <!--Opening Animation   -->
     <div id="splash-screen">
         <div class="logo-sequence min-w-[100vw] min-h-[100vh] flex flex-col justify-center items-center bg-cover bg-center bg-no-repeat"

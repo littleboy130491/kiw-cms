@@ -1,6 +1,3 @@
-@pushOnce('before_body_close')
-    @vite('resources/js/pages/karier.js')
-@endPushOnce
 @php
     use App\Models\Career;
     use Littleboy130491\Sumimasen\Enums\ContentStatus;

@@ -1,6 +1,6 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const phoneLinks = document.querySelectorAll('.phone');
+const phoneLinks = document.querySelectorAll('.phone, input[type="tel"], .phone-input');
 
+if (phoneLinks.length > 0) {
     phoneLinks.forEach(link => {
         let rawNumber = link.textContent.trim();
 
@@ -20,4 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
             link.textContent = link.textContent.replace(cleaned, formatted);
         }
     });
-});
+    
+    console.log(`Phone: Formatted ${phoneLinks.length} phone numbers`);
+} else {
+    console.log('Phone: No phone elements found');
+}

@@ -1,6 +1,3 @@
-@pushOnce('before_body_close')
-    @vite('resources/js/pages/single-building.js')
-@endPushOnce
 <x-layouts.app>
     <x-partials.header />
     <main>

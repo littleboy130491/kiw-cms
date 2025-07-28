@@ -117,12 +117,8 @@ function initializeSwipers() {
   return swipers;
 }
 
-// Initialize when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeSwipers);
-} else {
-  initializeSwipers();
-}
+// Initialize immediately since lazy loader ensures DOM is ready
+initializeSwipers();
 
 // Export for external use
 export { initializeSwipers };

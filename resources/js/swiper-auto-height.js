@@ -39,6 +39,39 @@ function debounce(func, wait = 100) {
 
 const debouncedEqualize = debounce(equalizeSwiperSlideHeights, 150);
 
-// Run on initial load and when the window is resized.
-window.addEventListener('load', equalizeSwiperSlideHeights);
+// Run immediately since lazy loader ensures DOM is ready
+equalizeSwiperSlideHeights();
+
+// Run after a short delay to ensure swipers are initialized
+setTimeout(equalizeSwiperSlideHeights, 100);
+
+// Run when window is resized
 window.addEventListener('resize', debouncedEqualize);
+
+// Also run on window load as fallback
+window.addEventListener('load', equalizeSwiperSlideHeights);
+
+// Listen for swiper slide changes to re-equalize heights
+document.addEventListener('swiperSlideChange', debouncedEqualize);
+
+// Re-run when new content is added dynamically
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.addedNodes.length > 0) {
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === Node.ELEMENT_NODE && 
+            (node.classList?.contains('same-height') || node.querySelector?.('.same-height'))) {
+          setTimeout(equalizeSwiperSlideHeights, 50);
+        }
+      });
+    }
+  });
+});
+
+// Observe the document for dynamic content changes
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});
+
+console.log('✓ Swiper auto-height initialized');
