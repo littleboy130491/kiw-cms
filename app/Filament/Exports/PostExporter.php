@@ -13,7 +13,7 @@ class PostExporter extends Exporter
 
     public static function getColumns(): array
     {
-        return [
+        $columns = [
             ExportColumn::make('id'),
             ExportColumn::make('author.name')
                 ->label('Author'),
@@ -25,59 +25,23 @@ class PostExporter extends Exporter
             ExportColumn::make('published_at'),
             ExportColumn::make('created_at'),
             ExportColumn::make('updated_at'),
+        ];
 
-            // Translatable columns for each language
-            ExportColumn::make('title.en')
-                ->label('Title (English)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('title', 'en')),
-            ExportColumn::make('title.id')
-                ->label('Title (Indonesian)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('title', 'id')),
-            ExportColumn::make('title.zh-cn')
-                ->label('Title (Chinese)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('title', 'zh-cn')),
-            ExportColumn::make('title.ko')
-                ->label('Title (Korean)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('title', 'ko')),
+        // Get available languages from CMS config
+        $languages = config('cms.language_available', []);
+        $translatableFields = ['title', 'slug', 'excerpt', 'content'];
 
-            ExportColumn::make('slug.en')
-                ->label('Slug (English)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('slug', 'en')),
-            ExportColumn::make('slug.id')
-                ->label('Slug (Indonesian)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('slug', 'id')),
-            ExportColumn::make('slug.zh-cn')
-                ->label('Slug (Chinese)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('slug', 'zh-cn')),
-            ExportColumn::make('slug.ko')
-                ->label('Slug (Korean)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('slug', 'ko')),
+        // Add translatable columns for each language
+        foreach ($translatableFields as $field) {
+            foreach ($languages as $langCode => $langName) {
+                $columns[] = ExportColumn::make("{$field}_{$langCode}")
+                    ->label(ucfirst($field) . " ({$langName})")
+                    ->formatStateUsing(fn($record) => $record->getTranslation($field, $langCode));
+            }
+        }
 
-            ExportColumn::make('excerpt.en')
-                ->label('Excerpt (English)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('excerpt', 'en')),
-            ExportColumn::make('excerpt.id')
-                ->label('Excerpt (Indonesian)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('excerpt', 'id')),
-            ExportColumn::make('excerpt.zh-cn')
-                ->label('Excerpt (Chinese)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('excerpt', 'zh-cn')),
-            ExportColumn::make('excerpt.ko')
-                ->label('Excerpt (Korean)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('excerpt', 'ko')),
-
-            ExportColumn::make('content.en')
-                ->label('Content (English)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('content', 'en')),
-            ExportColumn::make('content.id')
-                ->label('Content (Indonesian)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('content', 'id')),
-            ExportColumn::make('content.zh-cn')
-                ->label('Content (Chinese)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('content', 'zh-cn')),
-            ExportColumn::make('content.ko')
-                ->label('Content (Korean)')
-                ->formatStateUsing(fn($record) => $record->getTranslation('content', 'ko')),
+        // Add remaining columns
+        $columns = array_merge($columns, [
 
             // Featured Image
             ExportColumn::make('featuredImage.url')
@@ -113,8 +77,9 @@ class PostExporter extends Exporter
 
                     return json_encode($urls);
                 }),
+        ]);
 
-        ];
+        return $columns;
     }
 
     public static function getCompletedNotificationBody(Export $export): string
