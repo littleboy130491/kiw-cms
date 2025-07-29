@@ -1,15 +1,8 @@
-// Static imports for Vite build compatibility
 import './alpine.js';
-import './accessibility.js';
 import './aos-animate.js';
 import './lightbox.js';
 import './phone-separator.js';
 import './bg-switcher.js';
-import './accordion.js';
-import './tippy.js';
-import './popup-modal-controller.js';
-import './popup-init-modal-events.js';
-import './single-get-message-whatsapp.js';
 
 // Wait for DOM to be ready
 function waitForDOM() {
