@@ -1,2 +1,15 @@
+# Allow all user agents
 User-agent: *
-Disallow:
+
+Disallow: /vendor/
+Disallow: /resources/
+Disallow: /bootstrap/
+Disallow: /node_modules/
+Disallow: /admin/
+Disallow: /_debugbar/
+Disallow: /telescope/
+Disallow: /horizon/
+
+# Allow everything else
+Allow: /
+

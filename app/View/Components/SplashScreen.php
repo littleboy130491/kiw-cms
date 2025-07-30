@@ -42,6 +42,7 @@ class SplashScreen extends Component
             }
         } else {
             $this->shouldShow = true;
+
         }
     }
 

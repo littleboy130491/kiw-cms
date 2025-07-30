@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(php artisan:*)",
+      "Bash(ls:*)",
+      "Bash(~/.config/herd/bin/php.bat artisan:*)",
+      "Bash(\"/c/Users/user/.config/herd/bin/php.bat\" artisan tinker --execute=\"echo ''Test connection'';\")"
     ],
     "deny": []
   }
