@@ -93,7 +93,6 @@ return [
             'type' => 'content',
             'slug' => 'bpsp',
             'has_archive' => true,
-            'archive_page_slug' => 'bpsp',
             'has_single' => true,
             'eager_load' => ['buildingCategories'],
         ],
