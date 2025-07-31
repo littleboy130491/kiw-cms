@@ -48,7 +48,7 @@
                 <div class="hidden lg:flex lg:flex-row lg:justify-end gap-5 mb-8">
 
                     <!--Button-->
-                    <a class=" btn5 group w-fit" href="{{ route('cms.static.page', [app()->getLocale(), 'kontak']) }}"
+                    <a class=" btn5 group w-fit" href="{{ route('cms.page', [app()->getLocale(), 'kontak']) }}"
                         rel="noopener">
                         Hubungi Kami
                         <span class="gradient-icon">
@@ -119,7 +119,7 @@
                         <!-- Button -->
                         <div class="mt-10 flex flex-col gap-5">
                             <a class=" btn9 group w-fit"
-                                href="{{ route('cms.static.page', [app()->getLocale(), 'kontak']) }}" target="_self"
+                                href="{{ route('cms.page', [app()->getLocale(), 'kontak']) }}" target="_self"
                                 rel="noopener">
                                 Hubungi Kami
                                 <span class="gradient-icon">

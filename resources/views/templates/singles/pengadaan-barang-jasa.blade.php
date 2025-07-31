@@ -1,7 +1,7 @@
 @php
-    $tender_archive_url = route('cms.archive.content', [
+    $tender_archive_url = route('cms.page', [
         'lang' => app()->getLocale(),
-        'content_type_archive_key' => 'tenders',
+        'slug' => 'tenders',
     ]);
 
     $blocksCollection = collect($item->block);
@@ -15,7 +15,8 @@
 <x-layouts.app>
     <x-partials.header />
     <main>
-        <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/pengadaan-hero.jpg')" h1="{!! $item->title ?? 'Pengadaan Barang & Jasa' !!}" />
+        <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/pengadaan-hero.jpg')"
+            h1="{!! $item->title ?? 'Pengadaan Barang & Jasa' !!}" />
 
         <!--Start About Pengadaan-->
         <section id="about-pengadaan" class="relative bg-contain bg-no-repeat bg-bottom z-10"
@@ -37,12 +38,11 @@
                                 <p>
                                     {!! $welcomeBlock['data']['description'] !!}
                                 </p>
-                                <a class="w-fit btn1 mt-5" data-aos="fade-down"
-                                    href="{{ $welcomeBlock['data']['url'] }}" target="_blank"
-                                    rel="noopener noreferrer">{{ $welcomeBlock['data']['button_label'] }}
+                                <a class="w-fit btn1 mt-5" data-aos="fade-down" href="{{ $welcomeBlock['data']['url'] }}"
+                                    target="_blank" rel="noopener noreferrer">{{ $welcomeBlock['data']['button_label'] }}
                                     <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                            fill="none">
                                             <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round" />
                                             <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2"
@@ -87,9 +87,11 @@
                 <!--Heading-->
                 <div class="flex flex-col justify-start gap-5">
                     <h6 data-aos="fade-down" class="bullet-1 sm:text-center text-left sm:self-center">
-                        {{ $panduanPengadaanBlock['data']['subtitle'] }}</h6>
+                        {{ $panduanPengadaanBlock['data']['subtitle'] }}
+                    </h6>
                     <h2 data-aos="fade-up" class="sm:text-center text-left">
-                        {{ $panduanPengadaanBlock['data']['title'] }}</h2>
+                        {{ $panduanPengadaanBlock['data']['title'] }}
+                    </h2>
                 </div>
                 <x-loop.panduan-pengadaan-grid />
 
@@ -109,7 +111,8 @@
                     <div class="flex flex-row justify-between">
                         <div class="flex flex-col justify-start gap-5">
                             <h6 data-aos="fade-down" class="bullet-1 sm:text-left text-left">
-                                {{ $pengadaanTerbaruBlock['data']['subtitle'] }}</h6>
+                                {{ $pengadaanTerbaruBlock['data']['subtitle'] }}
+                            </h6>
                             <h2 data-aos="fade-up" class="sm:text-center text-left">
                                 {{ $pengadaanTerbaruBlock['data']['title'] }}
                             </h2>
@@ -119,8 +122,8 @@
                             href="{{ $tender_archive_url }}">lihat
                             semua
                             <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
                                     <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" />
                                     <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
@@ -137,8 +140,7 @@
                     <a class="w-fit btn1 mobile-only mt-7 lg:hidden" data-aos="fade-down"
                         href="{{ $tender_archive_url }}">Lihat Semua
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" />
                                 <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"

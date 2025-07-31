@@ -19,6 +19,6 @@ class Archive extends BaseArchive implements MenuPanelable
     {
         $locale = app()->getLocale();
 
-        return fn(self $model) => route('cms.archive.content', [$locale, $model->slug]);
+        return fn(self $model) => route('cms.page', [$locale, $model->slug]);
     }
 }

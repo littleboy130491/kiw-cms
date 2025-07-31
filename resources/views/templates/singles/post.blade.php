@@ -1,9 +1,9 @@
 @php
     $item_date = $item->published_at?->format('d-m-Y') ?? ($item->created_at?->format('d-m-Y') ?? '');
     $item_label = $item->categories->first()?->slug ?? '';
-    $archive_post_url = $item_url = route('cms.archive.content', [
+    $archive_post_url = $item_url = route('cms.page', [
         'lang' => app()->getLocale(),
-        'content_type_archive_key' => 'posts',
+        'slug' => 'posts',
     ]);
 @endphp
 

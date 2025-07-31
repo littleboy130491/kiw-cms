@@ -19,7 +19,7 @@
     if (!$currentRoute) {
         $currentRouteName = null;
         $currentParams = [];
-        $slugParam = 'page_slug'; // Default fallback
+        $slugParam = 'slug'; // Default fallback
     } else {
         $currentRouteName = $currentRoute->getName();
         $currentParams = $currentRoute->parameters();
@@ -27,8 +27,8 @@
         $slugParam = match ($currentRouteName) {
             'cms.single.content' => 'content_slug',
             'cms.taxonomy.archive' => 'taxonomy_slug',
-            'cms.archive.content' => 'content_type_archive_key',
-            default => 'page_slug',
+            'cms.page' => 'slug',
+            default => 'slug',
         };
     }
 

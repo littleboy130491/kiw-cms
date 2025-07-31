@@ -7,15 +7,15 @@
     open: false,
     selected: 'Pilih Kategori',
     categories: @js(
-    $categories->map(function ($category) {
-        return [
-            'id' => $category->id,
-            'title' => $category->title,
-            'slug' => $category->slug,
-            'url' => route('cms.taxonomy.archive', [app()->getLocale(), config('cms.content_models.categories.slug') ?? 'categories', $category->slug]),
-        ];
-    }),
-)
+        $categories->map(function ($category) {
+            return [
+                'id' => $category->id,
+                'title' => $category->title,
+                'slug' => $category->slug,
+                'url' => route('cms.taxonomy.archive', [app()->getLocale(), config('cms.content_models.categories.slug') ?? 'categories', $category->slug]),
+            ];
+        }),
+    )
 }" @click.away="open = false">
 
     <input type="text" placeholder="Pilih Kategori"
@@ -36,7 +36,7 @@
 
         <!-- All Categories Option -->
         <li>
-            <a href="{{ route('cms.archive.content', [app()->getLocale(), config('cms.content_models.posts.slug') ?? 'posts']) }}"
+            <a href="{{ route('cms.page', [app()->getLocale(), config('cms.content_models.posts.slug') ?? 'posts']) }}"
                 class="block px-4 py-2 hover:bg-[var(--color-blue)] hover:text-white transition-colors duration-150"
                 @click="selected = 'Semua Kategori'; open = false">
                 Semua Kategori

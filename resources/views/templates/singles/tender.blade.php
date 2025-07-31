@@ -1,7 +1,7 @@
 @php
-    $tender_archive_url = route('cms.archive.content', [
+    $tender_archive_url = route('cms.page', [
         'lang' => app()->getLocale(),
-        'content_type_archive_key' => 'tenders',
+        'slug' => 'tenders',
     ]);
 @endphp
 <x-layouts.app>
