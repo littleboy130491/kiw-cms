@@ -59,14 +59,13 @@ class PostSearch extends Component
                         $locale = $defaultLang;
                     }
 
-                    // Case-insensitive JSON search
+                    // Handle Spatie translatable slug lookup
                     $q->where(function ($subQuery) use ($slug, $locale, $defaultLang) {
-                        // SECURITY FIX: Build JSON path as parameter instead of interpolation
-                        $localePath = '$.' . $locale;
-                        $defaultPath = '$.' . $defaultLang;
-
-                        $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(slug, ?))) = ?", [$localePath, $slug])
-                            ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(slug, ?))) = ?", [$defaultPath, $slug]);
+                        // For Spatie translatable, we need to check the translated value
+                        $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(slug, ?))) = ?", ["$.$locale", $slug])
+                            ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(slug, ?))) = ?", ["$.$defaultLang", $slug])
+                            ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(slug, ?))) = ?", ["$.id", $slug])
+                            ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(slug, ?))) = ?", ["$.en", $slug]);
                     });
                 });
             })
