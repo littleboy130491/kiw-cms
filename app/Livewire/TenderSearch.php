@@ -17,6 +17,8 @@ class TenderSearch extends Component
     public $tenderYear = '';
     public $currentUrl = '';
 
+    public $content = '';
+
     protected $queryString = [
         'searchQuery' => ['except' => ''],
         'tenderYear' => ['except' => ''],
@@ -27,9 +29,10 @@ class TenderSearch extends Component
         'tenderYear' => 'nullable|string|max:255',
     ];
 
-    public function mount(string $currentUrl = '')
+    public function mount(string $currentUrl = '', string $content = '')
     {
         $this->currentUrl = $currentUrl;
+        $this->content = $content;
     }
 
     public function updatingSearchQuery()
@@ -152,6 +155,7 @@ class TenderSearch extends Component
 
     public function render()
     {
+
         $query = $this->buildBaseQuery();
         $query = $this->applySearchFilter($query);
         $query = $this->applyTenderYearFilter($query);

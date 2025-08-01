@@ -1,10 +1,8 @@
 <x-layouts.app>
     <x-partials.header />
     <main>
-        <x-partials.hero-page :image="$record->featuredImage->url"
-            h1="{{ $record->title ?? $title ?? 'Bangunan Pabrik Siap Pakai' }}" />
 
-
+        <x-partials.hero-page :image="isset($record->featuredImage) ? $record->featuredImage->url : Storage::url('media/bpsp.jpg')" h1="{{ $record->title ?? ($title ?? 'Bangunan Pabrik Siap Pakai') }}" />
         <!--Start Bangunan Pabrik-->
 
         <section id="bangunan-pabrik"

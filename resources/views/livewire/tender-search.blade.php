@@ -5,7 +5,7 @@
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 z-10">
 
         <!--Title-->
-        <h2 class="text-center sm:text-left">Temukan Tender Terbaru</h2>
+        <h2 class="text-center sm:text-left">{{ strip_tags($content) ?? 'Temukan Tender Terbaru' }}</h2>
 
         <!--Field-->
         <div class="flex flex-col sm:flex-row-reverse gap-2 sm:w-1/2 lg:w-1/3">
@@ -25,7 +25,7 @@
                 <select wire:model.live="tenderYear"
                     class="w-full pl-3 pr-10 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:var(--color-blue) appearance-none bg-white">
                     <option value="">Pilih Tahun</option>
-                    @foreach($tenderYears as $year)
+                    @foreach ($tenderYears as $year)
                         <option value="{{ $year }}">{{ $year }}</option>
                     @endforeach
                 </select>
@@ -39,15 +39,15 @@
     </div>
 
     <!--Clear Filters-->
-    @if($searchQuery || $tenderYear)
+    @if ($searchQuery || $tenderYear)
         <div class="flex items-center gap-4">
             <span class="text-sm text-gray-600">Filter aktif:</span>
-            @if($searchQuery)
+            @if ($searchQuery)
                 <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
                     Pencarian: "{{ $searchQuery }}"
                 </span>
             @endif
-            @if($tenderYear)
+            @if ($tenderYear)
                 <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
                     Tahun: {{ $tenderYear }}
                 </span>

@@ -17,6 +17,8 @@ class PostSearch extends Component
     public $slug = '';
     public $currentUrl = '';
 
+    public $content = '';
+
     protected $queryString = [
         'searchQuery' => ['except' => ''],
     ];
@@ -25,11 +27,12 @@ class PostSearch extends Component
         'searchQuery' => 'nullable|string|max:255',
     ];
 
-    public function mount(array $routeParams = [], string $currentUrl = '')
+    public function mount(array $routeParams = [], string $currentUrl = '', string $content = '')
     {
         $this->relation = $routeParams['taxonomy_key'] ?? '';
         $this->slug = $routeParams['taxonomy_slug'] ?? '';
         $this->currentUrl = $currentUrl;
+        $this->content = $content;
     }
 
     public function updatingSearchQuery()

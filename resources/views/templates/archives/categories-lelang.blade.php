@@ -1,9 +1,8 @@
 <x-layouts.app>
     <x-partials.header />
     <main>
-        <x-partials.hero-page :image="$record->featuredImage->url ?? Storage::url('media/lelang-hero.jpg')"
-            h1="{{ $record->title ?? ($title ?? 'Lelang') }}" />
 
+        <x-partials.hero-page :image="isset($record->featuredImage) ? $record->featuredImage->url : Storage::url('media/lelang-hero.jpg')" h1="{{ $record->title ?? ($title ?? 'Lelang') }}" />
 
         <!--Start Post Archive-->
         <section id="post-archive"
