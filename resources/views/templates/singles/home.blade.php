@@ -1,483 +1,227 @@
 @php
     $archive_post_url = route('cms.page', [app()->getLocale(), 'posts']);
-
-    // Collect and organize content blocks
-    $blocksCollection = collect($item->section ?? []);
-    $heroBlock = $blocksCollection->firstWhere('data.block_id', 'hero-banner');
-    $aboutBlock = $blocksCollection->firstWhere('data.block_id', 'about-home');
-    $layananBlock = $blocksCollection->firstWhere('data.block_id', 'layanan-home');
-    $keunggulanBlock = $blocksCollection->firstWhere('data.block_id', 'keunggulan-home');
-    $sektorIndustriBlock = $blocksCollection->firstWhere('data.block_id', 'sektor-industri');
-    $fasilitasBlock = $blocksCollection->firstWhere('data.block_id', 'fasilitas-home');
-    $videoBlock = $blocksCollection->firstWhere('data.block_id', 'video-home');
-    $tenantBlock = $blocksCollection->firstWhere('data.block_id', 'tenant-home');
-    $artikelBeritaBlock = $blocksCollection->firstWhere('data.block_id', 'artikel-berita-home');
-    $hubunganInvestorBlock = $blocksCollection->firstWhere('data.block_id', 'hubungan-investor-home');
-
-    $splashScreenSetOnce = filter_var($item->custom_fields['splash_screen_set_once'] ?? false, FILTER_VALIDATE_BOOLEAN);
-    $popupScreenSetOnce = filter_var($item->custom_fields['popup_set_once'] ?? false, FILTER_VALIDATE_BOOLEAN);
 @endphp
 
 <x-layouts.app>
     <x-partials.header />
     <main>
 
-        <x-splash-screen :set-once="$splashScreenSetOnce" />
-        <x-popup-home :setOnce="$popupScreenSetOnce" />
+        <x-splash-screen :setOnce="false" />
+        <x-popup-home :setOnce="false" />
 
         <!--Start Hero Banner-->
-        @if ($heroBlock)
-            <section id="{{ $heroBlock['data']['block_id'] ?? 'hero-banner' }}"
-                class="relative bg-cover bg-center overflow-hidden">
-                <div class="swiper swiper-hero">
-                    <div class="swiper-wrapper relative">
+        <section id="hero-banner" class="relative bg-cover bg-center overflow-hidden">
+            <div class="swiper swiper-hero">
+                <div class="swiper-wrapper relative">
 
-                        <!--Item Video-->
-                        <div class="swiper-slide relative overflow-hidden">
-                            <div class="absolute inset-0 z-0">
-                                <img id="video-fallback"
-                                    src="{{ isset($heroBlock['data']['image']) && $heroBlock['data']['image'] ? Storage::url($heroBlock['data']['image']) : Storage::url('media/background-home.jpg') }}"
-                                    alt="Banner Image" class="w-full h-full object-cover absolute inset-0 z-0" />
-                                @if (isset($heroBlock['data']['video_url']) && $heroBlock['data']['video_url'])
-                                    <iframe id="video-frame"
-                                        class="absolute inset-0 w-full h-full object-cover scale-[3] sm:scale-[1.5] lg:scale-[1.5]"
-                                        src="{{ $heroBlock['data']['video_url'] }}" title="YouTube video background"
-                                        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-                                    </iframe>
-                                @endif
-                            </div>
-                            <!-- overlay -->
-                            <div class="bg-[var(--color-overlayblack)] z-10 bg-opacity-60 relative">
-                                <div class="gradient-black-hero">
+                    <!--Item Video-->
+                    <div class="swiper-slide relative overflow-hidden">
+                        <div class="absolute inset-0 z-0">
+                            <img id="video-fallback" src="{{ Storage::url('media/background-home.jpg') }}"
+                                alt="Banner Image" class="w-full h-full object-cover absolute inset-0 z-0" />
+                            <iframe id="video-frame"
+                                class="absolute inset-0 w-full h-full object-cover scale-[3] sm:scale-[1.5] lg:scale-[1.5]"
+                                src="https://www.youtube.com/embed/1t_z7FMcsOw?autoplay=1&loop=1&mute=1&controls=0&playlist=1t_z7FMcsOw&modestbranding=1&showinfo=0"
+                                title="YouTube video background" frameborder="0" allow="autoplay; encrypted-media"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <!-- overlay -->
+                        <div class="bg-[var(--color-overlayblack)] z-10 bg-opacity-60 relative">
+                            <div class="gradient-black-hero">
+                                <div
+                                    class=" flex flex-col justify-between items-start lg:pt-13 sm:pb-2 lg:pb-7 pb-6 lg:h-[110vh] sm:h-[600px] h-[654px]">
+                                    <!-- content -->
                                     <div
-                                        class=" flex flex-col justify-between items-start lg:pt-13 sm:pb-2 lg:pb-7 pb-6 lg:h-[110vh] sm:h-[600px] h-[654px]">
-                                        <!-- content -->
-                                        <div
-                                            class="flex flex-col items-start gap-5 sm:p-6 p-4 lg:w-[1200px] lg:mx-auto lg:px-0 sm:pt-8 px-4 mt-40 z-20">
-                                            <h1 data-aos="fade-up"
-                                                class="text-left text-white lg:max-w-[600px] sm:max-w-[500px] lg:!text-[2.8rem] sm:!text-[2.2rem] !text-[1.6rem]">
-                                                {{ $heroBlock['data']['title'] ?? 'Kawasan Industri Strategis untuk Pertumbuhan Bisnis' }}
-                                            </h1>
-                                            <p class="text-white lg:max-w-[700px] sm:max-w-[400px] text-left">
-                                                {!! $heroBlock['data']['description'] ??
-            'Fasilitas lengkap, aksesibilitas tinggi, dan dukungan profesional bagi investor.' !!}
-                                            </p>
-                                            @if (
-                                                    isset($heroBlock['data']['url']) &&
-                                                    isset($heroBlock['data']['button_label']) &&
-                                                    $heroBlock['data']['url'] &&
-                                                    $heroBlock['data']['button_label']
-                                                )
-                                                <!--Button-->
-                                                <a class="w-fit btn2 mt-5" data-aos="fade-down"
-                                                    href="{{ $heroBlock['data']['url'] }}">
-                                                    <span class="gradient-text">{{ $heroBlock['data']['button_label'] }}</span>
-                                                    <img src="{{ Storage::url('media/arrow-right-solid.png') }}" alt="icon">
-                                                    </span>
-                                                </a>
-                                            @endif
+                                        class="flex flex-col items-start gap-5 sm:p-6 p-4 lg:w-[1200px] lg:mx-auto lg:px-0 sm:pt-8 px-4 mt-40 z-20">
+                                        <h1 data-aos="fade-up"
+                                            class="text-left text-white lg:max-w-[600px] sm:max-w-[500px] lg:!text-[2.8rem] sm:!text-[2.2rem] !text-[1.6rem]">
+                                            Kawasan Industri Strategis untuk Pertumbuhan Bisnis
+                                        </h1>
+                                        <p class="text-white lg:max-w-[700px] sm:max-w-[400px] text-left">
+                                            Fasilitas lengkap, aksesibilitas tinggi, dan dukungan profesional bagi
+                                            investor.
+                                        </p>
+                                        <!--Button-->
+                                        <a class="w-fit btn2 mt-5" data-aos="fade-down" href="#layanan-home">
+                                            <span class="gradient-text">Lihat Layanan</span>
+                                            <img src="{{ Storage::url('media/arrow-right-solid.png') }}" alt="icon">
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <!-- counter -->
+                                    <div
+                                        class="counter-hero-home flex flex-row flex-wrap justify-between lg:w-[1200px] lg:mx-auto sm:gap-0 gap-y-5 mt-5 lg:px-0 sm:px-6 px-4">
+                                        <div class="lg:w-1/5 sm:w-1/5 w-full self-center">
+                                            <h5 class="text-white">Luas Area Tersedia</h5>
                                         </div>
-                                        <!-- counter -->
-                                        <div
-                                            class="counter-hero-home flex flex-row flex-wrap justify-between lg:w-[1200px] lg:mx-auto sm:gap-0 gap-y-5 mt-5 lg:px-0 sm:px-6 px-4">
-                                            <div class="lg:w-1/5 sm:w-1/5 w-full self-center">
-                                                <h5 class="text-white">Luas Area Tersedia</h5>
-                                            </div>
-                                            <x-loop.counter-hero-home counter="36" unit="Ha" label="Lahan Industri" />
-                                            <x-loop.counter-hero-home counter="1000" unit="Unit" label="BPSP" />
-                                            <x-loop.counter-hero-home counter="200" unit="Unit" label="Foodcourt" />
-                                            <x-loop.counter-hero-home counter="50" unit="Persegi" label="Commercial Area" />
-                                        </div>
+                                        <x-loop.counter-hero-home counter="36" unit="Ha"
+                                            label="Lahan Industri" />
+                                        <x-loop.counter-hero-home counter="1000" unit="Unit" label="BPSP" />
+                                        <x-loop.counter-hero-home counter="200" unit="Unit" label="Foodcourt" />
+                                        <x-loop.counter-hero-home counter="50" unit="Persegi"
+                                            label="Commercial Area" />
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!--Item Photo (secondary slide)-->
-                        <div class="swiper-slide relative bg-cover bg-no-repeat overflow-hidden"
-                            style="background-image:url('{{ Storage::url('media/hero-home-2.jpg') }}')">
+                    <!--Item Photo-->
+                    <div class="swiper-slide relative bg-cover bg-no-repeat overflow-hidden"
+                        style="background-image:url('{{ Storage::url('media/hero-home-2.jpg') }}')">
 
-                            <!-- overlay -->
-                            <div class="bg-[var(--color-overlayblack)] z-10 bg-opacity-60 relative">
-                                <div class="gradient-black-hero">
+                        <!-- overlay -->
+                        <div class="bg-[var(--color-overlayblack)] z-10 bg-opacity-60 relative">
+                            <div class="gradient-black-hero">
+                                <div
+                                    class=" flex flex-col justify-between items-start lg:pt-13 sm:pb-2 lg:pb-7 pb-6 lg:h-[110vh] sm:h-[600px] h-[654px]">
+                                    <!-- content -->
                                     <div
-                                        class=" flex flex-col justify-between items-start lg:pt-13 sm:pb-2 lg:pb-7 pb-6 lg:h-[110vh] sm:h-[600px] h-[654px]">
-                                        <!-- content -->
-                                        <div
-                                            class="flex flex-col items-start gap-5 sm:p-6 p-4 lg:w-[1200px] lg:mx-auto lg:px-0 sm:pt-8 px-4 mt-40 z-20">
-                                            <h1 data-aos="fade-up"
-                                                class="text-left text-white lg:max-w-[600px] sm:max-w-[500px] lg:!text-[2.8rem] sm:!text-[2.2rem] !text-[1.6rem]">
-                                                {{ $heroBlock['data']['subtitle'] ?? 'Dukungan Infrastruktur Lengkap untuk Kesuksesan Bisnis Anda' }}
-                                            </h1>
-                                            <p class="text-white lg:max-w-[700px] sm:max-w-[400px] text-left">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                                tempor incididunt.magna aliqua.
-                                            </p>
-                                            @if (
-                                                    isset($heroBlock['data']['url']) &&
-                                                    isset($heroBlock['data']['button_label']) &&
-                                                    $heroBlock['data']['url'] &&
-                                                    $heroBlock['data']['button_label']
-                                                )
-                                                <!--Button-->
-                                                <a class="w-fit btn2 mt-5" data-aos="fade-down"
-                                                    href="{{ $heroBlock['data']['url'] }}">
-                                                    <span class="gradient-text">{{ $heroBlock['data']['button_label'] }}</span>
-                                                    <img src="{{ Storage::url('media/arrow-right-solid.png') }}" alt="icon">
-                                                    </span>
-                                                </a>
-                                            @endif
-                                        </div>
+                                        class="flex flex-col items-start gap-5 sm:p-6 p-4 lg:w-[1200px] lg:mx-auto lg:px-0 sm:pt-8 px-4 mt-40 z-20">
+                                        <h1 data-aos="fade-up"
+                                            class="text-left text-white lg:max-w-[600px] sm:max-w-[500px] lg:!text-[2.8rem] sm:!text-[2.2rem] !text-[1.6rem]">
+                                            Dukungan Infrastruktur Lengkap untuk Kesuksesan Bisnis Anda
+                                        </h1>
+                                        <p class="text-white lg:max-w-[700px] sm:max-w-[400px] text-left">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt.magna aliqua.
+                                        </p>
+                                        <!--Button-->
+                                        <a class="w-fit btn2 mt-5" data-aos="fade-down" href="#layanan-home">
+                                            <span class="gradient-text">Lihat Layanan</span>
+                                            <img src="{{ Storage::url('media/arrow-right-solid.png') }}" alt="icon">
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-                    </div>
-                    <!-- Custom icon.arrow Left -->
-                    <div
-                        class="swiper-button-prev bg-[var(--white-transparent)] hover:bg-[var(--color-blue)] rounded-[100%] sm:!h-[30px] sm:!w-[30px] !h-[20px] !w-[20px] p-1 cursor-pointer">
-                        <x-icon.arrow-left-white />
                     </div>
 
-                    <!-- Custom icon.arrow Right -->
-                    <div
-                        class="swiper-button-next bg-[var(--white-transparent)] hover:bg-[var(--color-blue)] rounded-[100%] sm:!h-[30px] sm:!w-[30px] !h-[20px] !w-[20px] p-1 cursor-pointer">
-                        <x-icon.arrow-right-white />
-                    </div>
+
                 </div>
-            </section>
-        @else
-            <!-- Fallback to original hero banner if no CMS block -->
-            <section id="hero-banner" class="relative bg-cover bg-center overflow-hidden">
-                <div class="swiper swiper-hero">
-                    <div class="swiper-wrapper relative">
-                        <!--Item Video-->
-                        <div class="swiper-slide relative overflow-hidden">
-                            <div class="absolute inset-0 z-0">
-                                <img id="video-fallback" src="{{ Storage::url('media/background-home.jpg') }}"
-                                    alt="Banner Image" class="w-full h-full object-cover absolute inset-0 z-0" />
-                                <iframe id="video-frame"
-                                    class="absolute inset-0 w-full h-full object-cover scale-[3] sm:scale-[1.5] lg:scale-[1.5]"
-                                    src="https://www.youtube.com/embed/1t_z7FMcsOw?autoplay=1&loop=1&mute=1&controls=0&playlist=1t_z7FMcsOw&modestbranding=1&showinfo=0"
-                                    title="YouTube video background" frameborder="0" allow="autoplay; encrypted-media"
-                                    allowfullscreen>
-                                </iframe>
-                            </div>
-                            <!-- overlay -->
-                            <div class="bg-[var(--color-overlayblack)] z-10 bg-opacity-60 relative">
-                                <div class="gradient-black-hero">
-                                    <div
-                                        class=" flex flex-col justify-between items-start lg:pt-13 sm:pb-2 lg:pb-7 pb-6 lg:h-[110vh] sm:h-[600px] h-[654px]">
-                                        <!-- content -->
-                                        <div
-                                            class="flex flex-col items-start gap-5 sm:p-6 p-4 lg:w-[1200px] lg:mx-auto lg:px-0 sm:pt-8 px-4 mt-40 z-20">
-                                            <h1 data-aos="fade-up"
-                                                class="text-left text-white lg:max-w-[600px] sm:max-w-[500px] lg:!text-[2.8rem] sm:!text-[2.2rem] !text-[1.6rem]">
-                                                Kawasan Industri Strategis untuk Pertumbuhan Bisnis
-                                            </h1>
-                                            <p class="text-white lg:max-w-[700px] sm:max-w-[400px] text-left">
-                                                Fasilitas lengkap, aksesibilitas tinggi, dan dukungan profesional bagi
-                                                investor.
-                                            </p>
-                                            <!--Button-->
-                                            <a class="w-fit btn2 mt-5" data-aos="fade-down" href="#layanan-home">
-                                                <span class="gradient-text">Lihat Layanan</span>
-                                                <img src="{{ Storage::url('media/arrow-right-solid.png') }}" alt="icon">
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <!-- counter -->
-                                        <div
-                                            class="counter-hero-home flex flex-row flex-wrap justify-between lg:w-[1200px] lg:mx-auto sm:gap-0 gap-y-5 mt-5 lg:px-0 sm:px-6 px-4">
-                                            <div class="lg:w-1/5 sm:w-1/5 w-full self-center">
-                                                <h5 class="text-white">Luas Area Tersedia</h5>
-                                            </div>
-                                            <x-loop.counter-hero-home counter="36" unit="Ha" label="Lahan Industri" />
-                                            <x-loop.counter-hero-home counter="1000" unit="Unit" label="BPSP" />
-                                            <x-loop.counter-hero-home counter="200" unit="Unit" label="Foodcourt" />
-                                            <x-loop.counter-hero-home counter="50" unit="Persegi" label="Commercial Area" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Item Photo-->
-                        <div class="swiper-slide relative bg-cover bg-no-repeat overflow-hidden"
-                            style="background-image:url('{{ Storage::url('media/hero-home-2.jpg') }}')">
-                            <!-- overlay -->
-                            <div class="bg-[var(--color-overlayblack)] z-10 bg-opacity-60 relative">
-                                <div class="gradient-black-hero">
-                                    <div
-                                        class=" flex flex-col justify-between items-start lg:pt-13 sm:pb-2 lg:pb-7 pb-6 lg:h-[110vh] sm:h-[600px] h-[654px]">
-                                        <!-- content -->
-                                        <div
-                                            class="flex flex-col items-start gap-5 sm:p-6 p-4 lg:w-[1200px] lg:mx-auto lg:px-0 sm:pt-8 px-4 mt-40 z-20">
-                                            <h1 data-aos="fade-up"
-                                                class="text-left text-white lg:max-w-[600px] sm:max-w-[500px] lg:!text-[2.8rem] sm:!text-[2.2rem] !text-[1.6rem]">
-                                                Dukungan Infrastruktur Lengkap untuk Kesuksesan Bisnis Anda
-                                            </h1>
-                                            <p class="text-white lg:max-w-[700px] sm:max-w-[400px] text-left">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                                tempor incididunt.magna aliqua.
-                                            </p>
-                                            <!--Button-->
-                                            <a class="w-fit btn2 mt-5" data-aos="fade-down" href="#layanan-home">
-                                                <span class="gradient-text">Lihat Layanan</span>
-                                                <img src="{{ Storage::url('media/arrow-right-solid.png') }}" alt="icon">
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Custom icon.arrow Left -->
-                    <div
-                        class="swiper-button-prev bg-[var(--white-transparent)] hover:bg-[var(--color-blue)] rounded-[100%] sm:!h-[30px] sm:!w-[30px] !h-[20px] !w-[20px] p-1 cursor-pointer">
-                        <x-icon.arrow-left-white />
-                    </div>
-                    <!-- Custom icon.arrow Right -->
-                    <div
-                        class="swiper-button-next bg-[var(--white-transparent)] hover:bg-[var(--color-blue)] rounded-[100%] sm:!h-[30px] sm:!w-[30px] !h-[20px] !w-[20px] p-1 cursor-pointer">
-                        <x-icon.arrow-right-white />
-                    </div>
+                <!-- Custom icon.arrow Left -->
+                <div
+                    class="swiper-button-prev bg-[var(--white-transparent)] hover:bg-[var(--color-blue)] rounded-[100%] sm:!h-[30px] sm:!w-[30px] !h-[20px] !w-[20px] p-1 cursor-pointer">
+                    <x-icon.arrow-left-white />
                 </div>
-            </section>
-        @endif
+
+                <!-- Custom icon.arrow Right -->
+                <div
+                    class="swiper-button-next bg-[var(--white-transparent)] hover:bg-[var(--color-blue)] rounded-[100%] sm:!h-[30px] sm:!w-[30px] !h-[20px] !w-[20px] p-1 cursor-pointer">
+                    <x-icon.arrow-right-white />
+                </div>
+            </div>
+        </section>
         <!--End Hero Banner-->
 
         <!-- Start About Home -->
-        @if ($aboutBlock)
-            <section id="{{ $aboutBlock['data']['block_id'] ?? 'about-home' }}"
-                class="bg-[var(--color-transit)] lg:py-30 py-18">
-                <div
-                    class="flex flex-col overflow-hidden relative lg:gap-0 sm:gap-10 gap-10  lg:px-0 lg:lg:max-w-[1200px] lg:mx-auto sm:px-6 px-4">
-                    <!--top content-->
-                    <div class="flex lg:flex-row flex-col justify-between !gap-15 items-start lg:-mb-10">
-                        <!--content left-->
-                        <div class="flex flex-col justify-start gap-5 lg:!w-[55%]">
-                            @if (isset($aboutBlock['data']['subtitle']) && $aboutBlock['data']['subtitle'])
-                                <h6 data-aos="fade-down" class="bullet-1">{{ $aboutBlock['data']['subtitle'] }}</h6>
-                            @endif
-                            @if (isset($aboutBlock['data']['title']) && $aboutBlock['data']['title'])
-                                <h2 data-aos="fade-up" class="text-[var(--color-heading)]">
-                                    {{ $aboutBlock['data']['title'] }}
-                                </h2>
-                            @endif
+        <section id="about-home" class="bg-[var(--color-transit)] lg:py-30 py-18">
+            <div
+                class="flex flex-col overflow-hidden relative lg:gap-0 sm:gap-10 gap-10  lg:px-0 lg:lg:max-w-[1200px] lg:mx-auto sm:px-6 px-4">
+                <!--top content-->
+                <div class="flex lg:flex-row flex-col justify-between !gap-15 items-start lg:-mb-10">
+                    <!--content left-->
+                    <div class="flex flex-col justify-start gap-5 lg:!w-[55%]">
+                        <h6 data-aos="fade-down" class="bullet-1">tentang kiw</h6>
+                        <h2 data-aos="fade-up" class="text-[var(--color-heading)]">Pilar Industri Jawa Tengah</h2>
 
-                            @if (isset($aboutBlock['data']['description']) && $aboutBlock['data']['description'])
-                                <div class="body-text text-[var(--color-text)]">
-                                    {!! $aboutBlock['data']['description'] !!}
-                                </div>
-                            @endif
-                            <!--ISO-->
-                            <div class="flex flex-row items-center gap-5 mt-4">
-                                <img src="{{ Storage::url('media/iso-1.png') }}" alt="iso">
-                                <img src="{{ Storage::url('media/iso-2.png') }}" alt="iso">
-                                <img src="{{ Storage::url('media/iso-3.png') }}" alt="iso">
-                                <p class="!text-[var(--color-heading)] !text-[1.3em] w-[60px]">ISO Certificate</p>
-                            </div>
-                            @if (
-                                    isset($aboutBlock['data']['url']) &&
-                                    isset($aboutBlock['data']['button_label']) &&
-                                    $aboutBlock['data']['url'] &&
-                                    $aboutBlock['data']['button_label']
-                                )
-                                <!--button-->
-                                <a class="w-fit btn1 mt-5" data-aos="fade-down"
-                                    href="{{ $aboutBlock['data']['url'] }}">{{ $aboutBlock['data']['button_label'] }}
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                            fill="none">
-                                            <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                            <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                </a>
-                            @endif
+                        <p class="body-text text-[var(--color-text)]">
+                            PT Kawasan Industri Wijayakusuma (KIW) merupakan perusahaan yang bergerak di bidang
+                            pengembangan dan pengelolaan kawasan industri. Pemegang saham KIW antara lain; Kementerian
+                            BUMN, PT Danareksa (Persero), Pemerintah Provinsi Jawa Tengah, dan Pemerintah Kabupaten
+                            Cilacap.
+                        </p>
+                        <!--ISO-->
+                        <div class="flex flex-row items-center gap-5 mt-4">
+                            <img src="{{ Storage::url('media/iso-1.png') }}" alt="iso">
+                            <img src="{{ Storage::url('media/iso-2.png') }}" alt="iso">
+                            <img src="{{ Storage::url('media/iso-3.png') }}" alt="iso">
+                            <p class="!text-[var(--color-heading)] !text-[1.3em] w-[60px]">ISO Certificate</p>
                         </div>
-
-                        <!--image top right-->
-                        <div class="lg;!w-[45%]">
-                            <img class="rounded-2xl lg:!h-[550px] sm:!h-[450px] lg:!w-[unset] sm:!w-[100vw] object-cover"
-                                src="{{ isset($aboutBlock['data']['image']) && $aboutBlock['data']['image'] ? Storage::url($aboutBlock['data']['image']) : Storage::url('media/construction-site-with-cranes-construction-worker.jpg') }}"
-                                alt="about">
-                        </div>
+                        <!--button-->
+                        <a class="w-fit btn1 mt-5" data-aos="fade-down" href="/profil-perusahaan">selengkapnya
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </a>
                     </div>
 
-                    <!--bottom content-->
-                    <div class="flex sm:flex-row flex-col-reverse justify-start items-center gap-10">
-                        <!--content left-->
-                        <div class="sm:w-[48%] w-[100%]">
-                            <img class="rounded-2xl h-[340px] object-cover"
-                                src="{{ Storage::url('media/pointing-sketch.jpg') }}">
-                        </div>
-
-                        <!--content right-->
-                        <div class="grid grid-cols-2 gap-8">
-                            <x-loop.counter-about-home counter="36" label="Tahun Pengalaman" />
-                            <x-loop.counter-about-home counter="100" label="Tenant Bekerjasama" />
-                            <x-loop.counter-about-home counter="5" label="Penghargaan" />
-                            <x-loop.counter-about-home counter="4" label="Sertifikasi" />
-                        </div>
+                    <!--image top right-->
+                    <div class="lg;!w-[45%]">
+                        <img class="rounded-2xl lg:!h-[550px] sm:!h-[450px] lg:!w-[unset] sm:!w-[100vw] object-cover"
+                            src="{{ Storage::url('media/construction-site-with-cranes-construction-worker.jpg') }}"
+                            alt="about">
                     </div>
                 </div>
-            </section>
-        @else
-            <!-- Fallback to original about section -->
-            <section id="about-home" class="bg-[var(--color-transit)] lg:py-30 py-18">
-                <div
-                    class="flex flex-col overflow-hidden relative lg:gap-0 sm:gap-10 gap-10  lg:px-0 lg:lg:max-w-[1200px] lg:mx-auto sm:px-6 px-4">
-                    <!--top content-->
-                    <div class="flex lg:flex-row flex-col justify-between !gap-15 items-start lg:-mb-10">
-                        <!--content left-->
-                        <div class="flex flex-col justify-start gap-5 lg:!w-[55%]">
-                            <h6 data-aos="fade-down" class="bullet-1">tentang kiw</h6>
-                            <h2 data-aos="fade-up" class="text-[var(--color-heading)]">Pilar Industri Jawa Tengah</h2>
 
-                            <p class="body-text text-[var(--color-text)]">
-                                PT Kawasan Industri Wijayakusuma (KIW) merupakan perusahaan yang bergerak di bidang
-                                pengembangan dan pengelolaan kawasan industri. Pemegang saham KIW antara lain;
-                                Kementerian
-                                BUMN, PT Danareksa (Persero), Pemerintah Provinsi Jawa Tengah, dan Pemerintah Kabupaten
-                                Cilacap.
-                            </p>
-                            <!--ISO-->
-                            <div class="flex flex-row items-center gap-5 mt-4">
-                                <img src="{{ Storage::url('media/iso-1.png') }}" alt="iso">
-                                <img src="{{ Storage::url('media/iso-2.png') }}" alt="iso">
-                                <img src="{{ Storage::url('media/iso-3.png') }}" alt="iso">
-                                <p class="!text-[var(--color-heading)] !text-[1.3em] w-[60px]">ISO Certificate</p>
-                            </div>
-                            <!--button-->
-                            <a class="w-fit btn1 mt-5" data-aos="fade-down" href="/profil-perusahaan">selengkapnya
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none">
-                                        <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </span>
-                            </a>
-                        </div>
 
-                        <!--image top right-->
-                        <div class="lg;!w-[45%]">
-                            <img class="rounded-2xl lg:!h-[550px] sm:!h-[450px] lg:!w-[unset] sm:!w-[100vw] object-cover"
-                                src="{{ Storage::url('media/construction-site-with-cranes-construction-worker.jpg') }}"
-                                alt="about">
-                        </div>
+                <!--bottom content-->
+                <div class="flex sm:flex-row flex-col-reverse justify-start items-center gap-10">
+                    <!--content left-->
+                    <div class="sm:w-[48%] w-[100%]">
+                        <img class="rounded-2xl h-[340px] object-cover"
+                            src="{{ Storage::url('media/pointing-sketch.jpg') }}">
                     </div>
 
-                    <!--bottom content-->
-                    <div class="flex sm:flex-row flex-col-reverse justify-start items-center gap-10">
-                        <!--content left-->
-                        <div class="sm:w-[48%] w-[100%]">
-                            <img class="rounded-2xl h-[340px] object-cover"
-                                src="{{ Storage::url('media/pointing-sketch.jpg') }}">
-                        </div>
+                    <!--content right-->
+                    <div class="grid grid-cols-2 gap-8">
 
-                        <!--content right-->
-                        <div class="grid grid-cols-2 gap-8">
-                            <x-loop.counter-about-home counter="36" label="Tahun Pengalaman" />
-                            <x-loop.counter-about-home counter="100" label="Tenant Bekerjasama" />
-                            <x-loop.counter-about-home counter="5" label="Penghargaan" />
-                            <x-loop.counter-about-home counter="4" label="Sertifikasi" />
-                        </div>
+                        <x-loop.counter-about-home counter="36" label="Tahun Pengalaman" />
+
+                        <x-loop.counter-about-home counter="100" label="Tenant Bekerjasama" />
+
+                        <x-loop.counter-about-home counter="5" label="Penghargaan" />
+
+                        <x-loop.counter-about-home counter="4" label="Sertifikasi" />
+
                     </div>
                 </div>
-            </section>
-        @endif
+            </div>
+        </section>
         <!-- End About Home -->
 
         <!-- Start Layanan Home -->
-        @if ($layananBlock)
-            <section id="{{ $layananBlock['data']['block_id'] ?? 'layanan-home' }}" class="lg:py-30 py-18 bg-cover "
-                style="background-image: url('{{ isset($layananBlock['data']['image']) && $layananBlock['data']['image'] ? Storage::url($layananBlock['data']['image']) : Storage::url('media/bg-grad.jpg') }}');">
-                <div
-                    class="flex flex-col overflow-hidden relative lg:gap-20 sm:gap-10 gap-10 lg:px-0 lg:max-w-[1200px] lg:mx-auto sm:px-6 px-4">
+        <section id="layanan-home" class="lg:py-30 py-18 bg-cover "
+            style="background-image: url('{{ Storage::url('media/bg-grad.jpg') }}');">
+            <div
+                class="flex flex-col overflow-hidden relative lg:gap-20 sm:gap-10 gap-10 lg:px-0 lg:max-w-[1200px] lg:mx-auto sm:px-6 px-4">
 
-                    <!--Heading-->
-                    <div class="flex flex-col justify-start items-center gap-5">
-                        @if (isset($layananBlock['data']['subtitle']) && $layananBlock['data']['subtitle'])
-                            <h6 class="bullet-2 text-white text-center" data-aos="fade-down">
-                                {{ $layananBlock['data']['subtitle'] }}
-                            </h6>
-                        @endif
-                        @if (isset($layananBlock['data']['title']) && $layananBlock['data']['title'])
-                            <h2 class="text-white text-center lg:w-[700px]" data-aos="fade-up">
-                                {{ $layananBlock['data']['title'] }}
-                            </h2>
-                        @endif
-                        @if (isset($layananBlock['data']['description']) && $layananBlock['data']['description'])
-                            <div class="text-white text-center">
-                                {!! $layananBlock['data']['description'] !!}
-                            </div>
-                        @endif
-                    </div>
-
-                    <!--Content-->
-                    <div class="flex lg:flex-row flex-col gap-7">
-                        <x-loop.layanan-home number="01." label="Lahan Industri Siap Bangun"
-                            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                            url="/lahan-industri" :image="Storage::url(
-                'media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg',
-            )" />
-
-                        <x-loop.layanan-home number="02." label="Bangunan Pabrik Siap Pakai (BPSP)"
-                            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                            url="/bpsp" :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
-
-                        <x-loop.layanan-home number="03." label="Kerja sama Komersial Kawasan Industri"
-                            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                            url="/area-komersil/atm"
-                            :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
-                    </div>
-
+                <!--Heading-->
+                <div class="flex flex-col justify-start items-center gap-5">
+                    <h6 class="bullet-2 text-white text-center" data-aos="fade-down">layanan kami</h6>
+                    <h2 class="text-white text-center lg:w-[700px]" data-aos="fade-up">Solusi Komprehensif untuk
+                        Kebutuhan Industri</h2>
                 </div>
-            </section>
-        @else
-            <!-- Fallback to original layanan section -->
-            <section id="layanan-home" class="lg:py-30 py-18 bg-cover "
-                style="background-image: url('{{ Storage::url('media/bg-grad.jpg') }}');">
-                <div
-                    class="flex flex-col overflow-hidden relative lg:gap-20 sm:gap-10 gap-10 lg:px-0 lg:max-w-[1200px] lg:mx-auto sm:px-6 px-4">
 
-                    <!--Heading-->
-                    <div class="flex flex-col justify-start items-center gap-5">
-                        <h6 class="bullet-2 text-white text-center" data-aos="fade-down">layanan kami</h6>
-                        <h2 class="text-white text-center lg:w-[700px]" data-aos="fade-up">Solusi Komprehensif untuk
-                            Kebutuhan Industri</h2>
-                    </div>
+                <!--Content-->
+                <div class="flex lg:flex-row flex-col gap-7">
 
-                    <!--Content-->
-                    <div class="flex lg:flex-row flex-col gap-7">
-                        <x-loop.layanan-home number="01." label="Lahan Industri Siap Bangun"
-                            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                            url="/lahan-industri" :image="Storage::url(
-                'media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg',
-            )" />
+                    <x-loop.layanan-home number="01." label="Lahan Industri Siap Bangun"
+                        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        url="/lahan-industri" :image="Storage::url(
+                            'media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg',
+                        )" />
 
-                        <x-loop.layanan-home number="02." label="Bangunan Pabrik Siap Pakai (BPSP)"
-                            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                            url="/bpsp" :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
+                    <x-loop.layanan-home number="02." label="Bangunan Pabrik Siap Pakai (BPSP)"
+                        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        url="/bpsp" :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
 
-                        <x-loop.layanan-home number="03." label="Kerja sama Komersial Kawasan Industri"
-                            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                            url="/area-komersil/atm"
-                            :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
-                    </div>
-
+                    <x-loop.layanan-home number="03." label="Kerja sama Komersial Kawasan Industri"
+                        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        url="/area-komersil/atm" :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
                 </div>
-            </section>
-        @endif
+
+
+            </div>
+        </section>
         <!-- End Layanan Home -->
 
         <!--Start Keunggulan-->
@@ -495,33 +239,47 @@
                 <!--Content-->
                 <div class="flex lg:flex-row flex-col lg:px-0 lg:pb-0 pb-18 sm:px-6 px-4">
 
-                    <x-loop.keunggulan-home number="01." label="Layanan Perizinan" desc="
+                    <x-loop.keunggulan-home number="01." label="Layanan Perizinan"
+                        desc="
                         KIW menawarkan kemudahan dalam menjalankan bisnis melalui sistem pelayanan satu atap yang terintegrasi.
-                        " url="/keunggulan#perijinan" />
+                        "
+                        url="/keunggulan#perijinan" />
 
-                    <x-loop.keunggulan-home number="02." label="Lokasi Strategis" desc="
+                    <x-loop.keunggulan-home number="02." label="Lokasi Strategis"
+                        desc="
                         Kawasan Industri Wijayakusuma terletak di jalur utama Semarang, pusat pertumbuhan ekonomi di Jawa Tengah.
-                        " url="/keunggulan#lokasi" />
+                        "
+                        url="/keunggulan#lokasi" />
 
-                    <x-loop.keunggulan-home number="03." label="Berbasis Ekosistem" desc="
+                    <x-loop.keunggulan-home number="03." label="Berbasis Ekosistem"
+                        desc="
                         KIW mengusung ekosistem industri terintegrasi yang mendorong kolaborasi antar pelaku usaha untuk tumbuh secara berkelanjutan.
-                        " url="/keunggulan#ekosistem" />
+                        "
+                        url="/keunggulan#ekosistem" />
 
-                    <x-loop.keunggulan-home number="04." label="Infrastruktur & Fasilitas" desc="
+                    <x-loop.keunggulan-home number="04." label="Infrastruktur & Fasilitas"
+                        desc="
                         KIW dibangun dengan infrastruktur kelas industri yang lengkap dan modern.
-                        " url="/keunggulan#infrastruktur" />
+                        "
+                        url="/keunggulan#infrastruktur" />
 
-                    <x-loop.keunggulan-home number="05." label="Upah Minimum Kompetitif" desc="
+                    <x-loop.keunggulan-home number="05." label="Upah Minimum Kompetitif"
+                        desc="
                         KIW memiliki Upah Minimum yang relatif lebih rendah dibandingkan kota-kota besar seperti Jakarta atau Surabaya.
-                        " url="/keunggulan#upah" />
+                        "
+                        url="/keunggulan#upah" />
 
-                    <x-loop.keunggulan-home number="06." label="Sumber Daya Manusia" desc="
+                    <x-loop.keunggulan-home number="06." label="Sumber Daya Manusia"
+                        desc="
                         KIW dikelilingi institusi pendidikan dan pelatihan yang mencetak lulusan siap kerja dan terampil.
-                        " url="/keunggulan#sdm" />
+                        "
+                        url="/keunggulan#sdm" />
 
-                    <x-loop.keunggulan-home number="07." label="Ekosistem Klaster Bisnis" desc="
+                    <x-loop.keunggulan-home number="07." label="Ekosistem Klaster Bisnis"
+                        desc="
                         KIW mendukung ekosistem industri melalui fasilitas modern, tata kelola profesional, dan layanan satu pintu.
-                        " url="/keunggulan#bisnis" />
+                        "
+                        url="/keunggulan#bisnis" />
 
                 </div>
             </div>
@@ -543,7 +301,8 @@
 
                 <!-- Tab Contents -->
                 <x-tab.tab-contents-sektor id="tab1" label="Modern Textile and Garment Industry"
-                    :image="Storage::url('media/garmen.png')" desc="<p>
+                    :image="Storage::url('media/garmen.png')"
+                    desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
                         <li>Lorem ipsum dolor sit amet</li>
@@ -553,8 +312,8 @@
                     </p>
                     " />
 
-                <x-tab.tab-contents-sektor id="tab2" label="Wood & Furniture"
-                    :image="Storage::url('media/furniture.png')" desc="<p>
+                <x-tab.tab-contents-sektor id="tab2" label="Wood & Furniture" :image="Storage::url('media/furniture.png')"
+                    desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
                         <li>Lorem ipsum dolor sit amet</li>
@@ -564,8 +323,8 @@
                     </p>
                     " />
 
-                <x-tab.tab-contents-sektor id="tab3" label="Chemical & New Material"
-                    :image="Storage::url('media/chemical.png')" desc="<p>
+                <x-tab.tab-contents-sektor id="tab3" label="Chemical & New Material" :image="Storage::url('media/chemical.png')"
+                    desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
                         <li>Lorem ipsum dolor sit amet</li>
@@ -575,8 +334,8 @@
                     </p>
                     " />
 
-                <x-tab.tab-contents-sektor id="tab4" label="Consumer Goods & Food Procesing"
-                    :image="Storage::url('media/consumer.png')" desc="<p>
+                <x-tab.tab-contents-sektor id="tab4" label="Consumer Goods & Food Procesing" :image="Storage::url('media/consumer.png')"
+                    desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
                         <li>Lorem ipsum dolor sit amet</li>
@@ -586,7 +345,8 @@
                     </p>
                     " />
 
-                <x-tab.tab-contents-sektor id="tab5" label="Others" :image="Storage::url('media/others.png')" desc="<p>
+                <x-tab.tab-contents-sektor id="tab5" label="Others" :image="Storage::url('media/others.png')"
+                    desc="<p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
                     <ul class='list-disc pl-6 mt-5'>
                         <li>Lorem ipsum dolor sit amet</li>
@@ -615,8 +375,8 @@
                     <!--button-->
                     <a class="w-fit btn1 mt-5" data-aos="fade-down" href="/fasilitas">semua fasilitas
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none">
                                 <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" />
                                 <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
@@ -737,96 +497,21 @@
 
 
         <!--Start Artikel Berita-->
-        @if ($artikelBeritaBlock)
-            <section id="{{ $artikelBeritaBlock['data']['block_id'] ?? 'artikel-berita-home' }}"
-                class="lg:max-w-[1200px] lg:mx-auto flex flex-col lg:my-30 my-18 lg:px-0 sm:px-6 px-4 gap-8">
-                <!--Title-->
-                <div class="flex sm:flex-row flex-col justify-between items-end">
-                    <div class="flex flex-col gap-5">
-                        @if (isset($artikelBeritaBlock['data']['subtitle']) && $artikelBeritaBlock['data']['subtitle'])
-                            <h6 class="bullet-1" data-aos="fade-down">{{ $artikelBeritaBlock['data']['subtitle'] }}
-                            </h6>
-                        @endif
-                        @if (isset($artikelBeritaBlock['data']['title']) && $artikelBeritaBlock['data']['title'])
-                            <h2 data-aos="fade-up">{{ $artikelBeritaBlock['data']['title'] }}</h2>
-                        @endif
-                    </div>
-                    @if (
-                            isset($artikelBeritaBlock['data']['url']) &&
-                            isset($artikelBeritaBlock['data']['button_label']) &&
-                            $artikelBeritaBlock['data']['url'] &&
-                            $artikelBeritaBlock['data']['button_label']
-                        )
-                        <!--button desktop tablet-->
-                        <a class="sm:!flex !hidden w-fit btn1 mt-5" data-aos="fade-down"
-                            href="{{ $artikelBeritaBlock['data']['url'] }}">{{ $artikelBeritaBlock['data']['button_label'] }}
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </span>
-                        </a>
-                    @endif
+        <section id="artikel-berita-home"
+            class="lg:max-w-[1200px] lg:mx-auto flex flex-col lg:my-30 my-18 lg:px-0 sm:px-6 px-4 gap-8">
+            <!--Title-->
+            <div class="flex sm:flex-row flex-col justify-between items-end">
+                <div class="flex flex-col gap-5">
+                    <h6 class="bullet-1" data-aos="fade-down">Artikel & Berita</h6>
+                    <h2 data-aos="fade-up">Dapatkan Informasi Terbaru</h2>
                 </div>
-
-                <!--Content-->
-                <x-loop.artikel-berita-grid />
-
-                @if (
-                        isset($artikelBeritaBlock['data']['url']) &&
-                        isset($artikelBeritaBlock['data']['button_label']) &&
-                        $artikelBeritaBlock['data']['url'] &&
-                        $artikelBeritaBlock['data']['button_label']
-                    )
-                    <!--button mobile-->
-                    <a class="!flex sm:!hidden w-fit btn1 mt-5" data-aos="fade-down"
-                        href="{{ $artikelBeritaBlock['data']['url'] }}">{{ $artikelBeritaBlock['data']['button_label'] }}
-                        <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </span>
-                    </a>
-                @endif
-            </section>
-        @else
-            <!-- Fallback to original artikel section -->
-            <section id="artikel-berita-home"
-                class="lg:max-w-[1200px] lg:mx-auto flex flex-col lg:my-30 my-18 lg:px-0 sm:px-6 px-4 gap-8">
-                <!--Title-->
-                <div class="flex sm:flex-row flex-col justify-between items-end">
-                    <div class="flex flex-col gap-5">
-                        <h6 class="bullet-1" data-aos="fade-down">Artikel & Berita</h6>
-                        <h2 data-aos="fade-up">Dapatkan Informasi Terbaru</h2>
-                    </div>
-                    <!--button desktop tablet-->
-                    <a class="sm:!flex !hidden w-fit btn1 mt-5" data-aos="fade-down" href="{{ $archive_post_url }}">Berita
-                        Lainnya
-                        <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </span>
-                    </a>
-                </div>
-
-                <!--Content-->
-                <x-loop.artikel-berita-grid />
-
-                <!--button mobile-->
-                <a class="!flex sm:!hidden w-fit btn1 mt-5" data-aos="fade-down" href="{{ $archive_post_url }}">Berita
+                <!--button desktop tablet-->
+                <a class="sm:!flex !hidden w-fit btn1 mt-5" data-aos="fade-down"
+                    href="{{ $archive_post_url }}">Berita
                     Lainnya
                     <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none">
                             <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" />
                             <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
@@ -834,8 +519,25 @@
                         </svg>
                     </span>
                 </a>
-            </section>
-        @endif
+            </div>
+
+            <!--Content-->
+            <x-loop.artikel-berita-grid />
+
+            <!--button mobile-->
+            <a class="!flex sm:!hidden w-fit btn1 mt-5" data-aos="fade-down" href="{{ $archive_post_url }}">Berita
+                Lainnya
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none">
+                        <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </a>
+        </section>
         <!--End Artikel Berita-->
 
         <!-- Start Hubungan Investor Home -->
