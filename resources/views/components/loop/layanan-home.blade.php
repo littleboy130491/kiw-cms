@@ -4,7 +4,6 @@
     <!--front-->
     <div class="flex flex-col justify-between grow gap-15 px-6 pt-6">
         <div class="flex flex-col gap-3">
-            <h6 class="text-white">{{ $number ?? '' }}</h6>
             <h3 class="text-white">{{ $label ?? '' }}</h3>
         </div>
         <div>
@@ -15,7 +14,7 @@
 
     <!--back-->
     <div class="absolute group-hover:top-[0%] top-[100%] transition-all duration-[500ms] flex flex-col justify-between bg-white rounded-2xl gap-15 px-6 pt-6 h-full">
-        <h6>{{ $number ?? '' }}</h6>
+        <div></div>
         <div class="flex flex-col gap-5">
             <h3>{{ $label ?? '' }}</h3>
             <p>{{ $desc ?? '' }}</p>

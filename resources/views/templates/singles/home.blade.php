@@ -204,17 +204,17 @@
                 <!--Content-->
                 <div class="flex lg:flex-row flex-col gap-7">
 
-                    <x-loop.layanan-home number="01." label="Lahan Industri Siap Bangun"
+                    <x-loop.layanan-home label="Lahan Industri Siap Bangun"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                         url="/lahan-industri" :image="Storage::url(
                             'media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg',
                         )" />
 
-                    <x-loop.layanan-home number="02." label="Bangunan Pabrik Siap Pakai (BPSP)"
+                    <x-loop.layanan-home label="Bangunan Pabrik Siap Pakai (BPSP)"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                         url="/bpsp" :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
 
-                    <x-loop.layanan-home number="03." label="Kerja sama Komersial Kawasan Industri"
+                    <x-loop.layanan-home label="Kerja sama Komersial Kawasan Industri"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                         url="/area-komersil/atm" :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
                 </div>
