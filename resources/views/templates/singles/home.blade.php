@@ -238,48 +238,56 @@
 
                 <!--Content-->
                 <div class="flex lg:flex-row flex-col lg:px-0 lg:pb-0 pb-18 sm:px-6 px-4">
-
-                    <x-loop.keunggulan-home number="01." label="Layanan Perizinan"
-                        desc="
-                        KIW menawarkan kemudahan dalam menjalankan bisnis melalui sistem pelayanan satu atap yang terintegrasi.
-                        "
-                        url="/keunggulan#perijinan" />
-
-                    <x-loop.keunggulan-home number="02." label="Lokasi Strategis"
-                        desc="
-                        Kawasan Industri Wijayakusuma terletak di jalur utama Semarang, pusat pertumbuhan ekonomi di Jawa Tengah.
-                        "
-                        url="/keunggulan#lokasi" />
-
-                    <x-loop.keunggulan-home number="03." label="Berbasis Ekosistem"
-                        desc="
-                        KIW mengusung ekosistem industri terintegrasi yang mendorong kolaborasi antar pelaku usaha untuk tumbuh secara berkelanjutan.
-                        "
-                        url="/keunggulan#ekosistem" />
-
-                    <x-loop.keunggulan-home number="04." label="Infrastruktur & Fasilitas"
-                        desc="
-                        KIW dibangun dengan infrastruktur kelas industri yang lengkap dan modern.
-                        "
-                        url="/keunggulan#infrastruktur" />
-
-                    <x-loop.keunggulan-home number="05." label="Upah Minimum Kompetitif"
-                        desc="
-                        KIW memiliki Upah Minimum yang relatif lebih rendah dibandingkan kota-kota besar seperti Jakarta atau Surabaya.
-                        "
-                        url="/keunggulan#upah" />
-
-                    <x-loop.keunggulan-home number="06." label="Sumber Daya Manusia"
-                        desc="
-                        KIW dikelilingi institusi pendidikan dan pelatihan yang mencetak lulusan siap kerja dan terampil.
-                        "
-                        url="/keunggulan#sdm" />
-
-                    <x-loop.keunggulan-home number="07." label="Ekosistem Klaster Bisnis"
-                        desc="
-                        KIW mendukung ekosistem industri melalui fasilitas modern, tata kelola profesional, dan layanan satu pintu.
-                        "
-                        url="/keunggulan#bisnis" />
+                    @php
+                        $keunggulan = [
+                            [
+                                'number' => '01.',
+                                'label' => 'Layanan Perizinan',
+                                'desc' => 'KIW menawarkan kemudahan dalam menjalankan bisnis melalui sistem pelayanan satu atap yang terintegrasi.',
+                                'url' => '/keunggulan#perijinan',
+                            ],
+                            [
+                                'number' => '02.',
+                                'label' => 'Lokasi Strategis',
+                                'desc' => 'Kawasan Industri Wijayakusuma terletak di jalur utama Semarang, pusat pertumbuhan ekonomi di Jawa Tengah.',
+                                'url' => '/keunggulan#lokasi',
+                            ],
+                            [
+                                'number' => '03.',
+                                'label' => 'Area Bebas Banjir',
+                                'desc' => 'KIW terletak di area bebas banjir yang terjamin ketersediaan air.',
+                                'url' => '/keunggulan#area-bebas-banjir',
+                            ],
+                            [
+                                'number' => '04.',
+                                'label' => 'Kelengkapan Infrastruktur & Fasilitas',
+                                'desc' => 'KIW dibangun dengan infrastruktur kelas industri yang lengkap dan modern.',
+                                'url' => '/keunggulan#infrastruktur',
+                            ],
+                            [
+                                'number' => '05.',
+                                'label' => 'Upah Minimum Kompetitif',
+                                'desc' => 'KIW memiliki Upah Minimum yang relatif lebih rendah dibandingkan kota-kota besar seperti Jakarta atau Surabaya.',
+                                'url' => '/keunggulan#upah',
+                            ],
+                            [
+                                'number' => '06.',
+                                'label' => 'Sumber Daya Manusia',
+                                'desc' => 'KIW dikelilingi institusi pendidikan dan pelatihan yang mencetak lulusan siap kerja dan terampil.',
+                                'url' => '/keunggulan#sdm',
+                            ],
+                            [
+                                'number' => '07.',
+                                'label' => 'Ekosistem Klaster Bisnis',
+                                'desc' => 'KIW mendukung ekosistem industri melalui fasilitas modern, tata kelola profesional, dan layanan satu pintu.',
+                                'url' => '/keunggulan#bisnis',
+                            ],
+                        ];
+                    @endphp
+                    @foreach ($keunggulan as $item)
+                    <x-loop.keunggulan-home :number="$item['number']" :label="$item['label']"
+                        :desc="$item['desc']" :url="$item['url']" />
+                    @endforeach
 
                 </div>
             </div>
