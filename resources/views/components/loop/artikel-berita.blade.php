@@ -18,14 +18,14 @@
         <div class="gradient-black-half grow px-6 py-6 h-full flex flex-col justify-end">
             <a href="{{$item_url}}">
                 <div class="h-fit flex flex-col gap-2">
-                    <div class="flex flex-row gap-5">
+                    <div class="flex flex-row justify-start items-center gap-5">
                         <div class="flex flex-row items-center gap-2">
                             <x-icon.tag-icon-white />
-                            <p class="!text-white capitalize">{{ $item_label }}</p>
+                            <p class="!text-white capitalize text-[.8em]">{{ $item_label }}</p>
                         </div>
                         <div class="flex flex-row items-center gap-2">
                             <x-icon.calendar-icon-white />
-                            <p class="!text-white">
+                            <p class="!text-white text-[.8em]">
                                 {{ $item_date }}
                             </p>
                         </div>
@@ -46,14 +46,14 @@
         <a href="{{$item_url}}">
             <!-- Informasi dan Tanggal -->
             <div class="flex flex-col gap-5">
-                <div class="flex flex-row gap-4">
+                <div class="flex flex-row justify-start items-center gap-4">
                     <div class="flex flex-row items-center gap-2">
                         <x-icon.tag-icon-color />
-                        <p class="!text-[var(--color-purple)] capitalize">{{ $item_label }}</p>
+                        <p class="!text-[var(--color-purple)] capitalize text-[.8em]">{{ $item_label }}</p>
                     </div>
                     <div class="flex flex-row items-center gap-2">
                         <x-icon.calendar-icon-color />
-                        <p class="!text-[var(--color-purple)]">
+                        <p class="!text-[var(--color-purple)] text-[.8em]">
                             {{ $item_date }}
                         </p>
                     </div>

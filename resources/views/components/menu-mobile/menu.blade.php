@@ -1,1 +1,1 @@
-<li><a href="{{ $url }}" class="block hover:text-[var(--color-lightblue)]">{{ $menu }}</a></li>
+<li><a href="{{ $url }}" class="block hover:text-[var(--color-lightblue)] {{ $url === route(Route::current()->getName(), request()->route()->parameters()) ? 'active !text-[var(--color-lightblue)]' : '' }}">{{ $menu }}</a></li>

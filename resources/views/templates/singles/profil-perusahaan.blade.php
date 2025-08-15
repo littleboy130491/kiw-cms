@@ -249,6 +249,82 @@
         </section>
         <!--End Koneksi Global-->
 
+        <!--Start Tab Sektor Industri-->
+        <section id="tab" class="my-18 lg:my-30 px-4 sm:px-6 lg:px-0 lg:w-[1200px] lg:mx-auto relative">
+        <div x-data="{ tab: 'tab1' }" class="rounded-md">
+            <!-- Tab Headers -->
+            <div
+                class="header-sektor-wrap lg:flex lg:flex-row lg:justify-start lg:gap-5 grid grid-cols-2 gap-2 justify-center z-1">
+                <x-tab.tab-headers-sektor title="Modern Textile & Garment" tab="tab1" />
+                <x-tab.tab-headers-sektor title="Wood & Furniture" tab="tab2" />
+                <x-tab.tab-headers-sektor title="Chemical & New Material" tab="tab3" />
+                <x-tab.tab-headers-sektor title="Consumer Goods & Food Procesing" tab="tab4" />
+                <x-tab.tab-headers-sektor title="Others" tab="tab5" />
+            </div>
+
+            <!-- Tab Contents -->
+            <x-tab.tab-contents-sektor id="tab1" label="Modern Textile and Garment Industry"
+                :image="Storage::url('media/garmen.png')"
+                desc="<p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
+                <ul class='list-disc pl-6 mt-5'>
+                    <li>Lorem ipsum dolor sit amet</li>
+                    <li>Lorem ipsum dolor sit amet</li>
+                    <li>Lorem ipsum dolor sit amet</li>
+                </ul>
+                </p>
+                " />
+
+            <x-tab.tab-contents-sektor id="tab2" label="Wood & Furniture" :image="Storage::url('media/furniture.png')"
+                desc="<p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
+                <ul class='list-disc pl-6 mt-5'>
+                    <li>Lorem ipsum dolor sit amet</li>
+                    <li>Lorem ipsum dolor sit amet</li>
+                    <li>Lorem ipsum dolor sit amet</li>
+                </ul>
+                </p>
+                " />
+
+            <x-tab.tab-contents-sektor id="tab3" label="Chemical & New Material" :image="Storage::url('media/chemical.png')"
+                desc="<p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
+                <ul class='list-disc pl-6 mt-5'>
+                    <li>Lorem ipsum dolor sit amet</li>
+                    <li>Lorem ipsum dolor sit amet</li>
+                    <li>Lorem ipsum dolor sit amet</li>
+                </ul>
+                </p>
+                " />
+
+            <x-tab.tab-contents-sektor id="tab4" label="Consumer Goods & Food Procesing" :image="Storage::url('media/consumer.png')"
+                desc="<p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
+                <ul class='list-disc pl-6 mt-5'>
+                    <li>Lorem ipsum dolor sit amet</li>
+                    <li>Lorem ipsum dolor sit amet</li>
+                    <li>Lorem ipsum dolor sit amet</li>
+                </ul>
+                </p>
+                " />
+
+            <x-tab.tab-contents-sektor id="tab5" label="Others" :image="Storage::url('media/others.png')"
+                desc="<p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a augue in erat fermentum imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sodales semper tincidunt. Curabitur varius ultricies magna eleifend tincidunt. Suspendisse fringilla malesuada metus eu rutrum. Proin neque ante, fermentum sed hendrerit eget, scelerisque at risus. In posuere dui a neque dictum placerat.
+                <ul class='list-disc pl-6 mt-5'>
+                    <li>Lorem ipsum dolor sit amet</li>
+                    <li>Lorem ipsum dolor sit amet</li>
+                    <li>Lorem ipsum dolor sit amet</li>
+                </ul>
+                </p>
+                " />
+
+
+        </div>
+    </section>
+
+    <!--End Sektor Industri-->
+
 
     </main>
     <x-partials.whatsapp />

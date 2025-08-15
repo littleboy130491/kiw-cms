@@ -89,7 +89,7 @@
     };
 @endphp
 
-<div class="{{ $containerClasses }} {{ $class }}">
+<div class="{{ $containerClasses }} {{ $class }} translate-header">
     @foreach ($languages as $langCode => $langData)
         @php
             $isActive = app()->getLocale() === $langCode;
