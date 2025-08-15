@@ -1272,3 +1272,85 @@ body .uwy.userway_p1 .userway_buttons_wrapper {
   background: linear-gradient(180deg,rgba(31, 119, 211, 0.8) 0%, rgba(50, 27, 113, 0.8) 100%);
 
 }
+
+
+/* header */
+.header-custom {
+  position: absolute;
+  transform: translateY(0);
+}
+
+
+
+.header-custom.header-fixed {
+  position: fixed;
+  background: var(--color-white);
+  animation: fadeInBg 0.6s ease forwards;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding-bottom: 18px !important;
+
+}
+
+@keyframes fadeInBg {
+  from {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  to {
+    background-color: rgba(255, 255, 255, 1);
+  }
+}
+
+
+.header-custom.header-fixed .logo img {
+  filter: none;
+}
+
+.header-custom.header-fixed .desktop-header nav > ul > li > a {
+  color: var(--color-black) !important;
+}
+
+.header-custom.header-fixed .desktop-header nav > ul > li > a:hover {
+  color: var(--color-blue) !important;
+}
+
+.header-custom.header-fixed .desktop-header nav > ul > li > a.active {
+  color: var(--color-blue) !important;
+}
+
+
+.header-custom.header-fixed .desktop-header nav {
+  @apply h-9;
+}
+
+.header-custom.header-fixed .desktop-header .translate-header a {
+  @apply text-[var(--color-black)];
+}
+
+.header-custom.header-fixed .desktop-header .above-header {
+  @apply hidden;
+}
+
+.header-custom.header-fixed .logo img {
+  @apply !w-35 !h-full;
+}
+
+.header-custom.header-fixed .desktop-header nav > ul > li > ul {
+  @apply mt-8;
+}
+
+
+@media (max-width: 921px) {
+.header-custom.header-fixed {
+  @apply !pb-2 mt-[-2px];
+}
+
+.header-custom.header-fixed .logo img {
+  @apply !w-[120px] mt-[-10px];
+}
+
+}
+
+/* header menu no link */
+.header-custom .no-link {
+  @apply cursor-default;
+}

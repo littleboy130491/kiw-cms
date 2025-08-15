@@ -17,7 +17,7 @@
                 <h4 class="text-white text-[1.2em]">Customer Service KIW</h4>
             </div>
 
-            <button @click="open = false" class="text-white text-[2em]">&times;</button>
+            <button @click="open = false" class="text-white text-[2em] cursor-pointer">&times;</button>
         </div>
         <div class="p-4 bg-white space-y-2 m-6 rounded-md bubble-wa relative">
 

@@ -146,9 +146,9 @@
                 <!--Partner-->
                 <div class="flex flex-row sm:gap-5 gap-8 sm:w-1/6">
                     <img class="sm:w-full w-24" src="{{ Storage::url('media/kiwinners.png') }}" alt="kiwinners">
-                    <img class="sm:w-full w-24" src="{{ Storage::url('media/akhlak.png') }}" alt="akhlak">
+                    <!-- <img class="sm:w-full w-24" src="{{ Storage::url('media/akhlak.png') }}" alt="akhlak">
                     <img class="sm:w-full w-24" src="{{ Storage::url('media/bumn-untuk-indonesia.png') }}"
-                        alt="bumn">
+                        alt="bumn"> -->
                 </div>
 
                 <!--Social Media-->

@@ -1,5 +1,5 @@
 <a href="{{ $url ?? '' }}"
-    class="flex text-[.9em] items-center justify-between px-4 py-2 text-[var(--color-heading)] hover:bg-[var(--color-lightblue)] hover:text-white">
+    class="flex text-[.9em] items-center justify-between px-4 py-2 text-[var(--color-heading)] hover:bg-[var(--color-lightblue)] hover:text-white {{ $url === route(Route::current()->getName(), request()->route()->parameters()) ? 'active hover:!text-white !text-[var(--color-lightblue)]'  : '' }}">
     {{ $title ?? '' }}
     <svg class="ml-2 h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd"
