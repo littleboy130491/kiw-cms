@@ -81,11 +81,15 @@
                     @endif
                     <img class="z-1" src="{{ Storage::url('media/frame-awards.png') }}" alt="frame-awards">
                 </div>
-                <p class="text-[var(--color-heading)] text-center">{{ $achievement->title }}</p>
+                <div class="flex flex-col gap-2 items-center">
+                    <p class="text-sm text-[var(--color-heading)] -mb-2">{{ $achievement->achievementYear->first()->title ?? '' }}</p>
+                    <h5 class="text-[var(--color-heading)] text-center font-bold text-[1em]">{{ $achievement->title }}</h5>
+                    <p class="text-sm text-[var(--color-text)] text-[.8em] italic">{{ $achievement->giver ?? 'Yayasan ABC' }}</p>
+                </div>
             </div>
         @empty
             <div class="col-span-full text-center py-12">
-                <p class="text-gray-500 text-lg">Tidak ada penghargaan atau sertifikasi yang ditemukan.</p>
+                <p class="text-[var(--color-text)] text-lg">Tidak ada penghargaan atau sertifikasi yang ditemukan.</p>
             </div>
         @endforelse
     </div>

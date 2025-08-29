@@ -4,7 +4,8 @@
     <main>
         <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/penghargaan-hero.jpg')"
             h1="{!! $item->title ?? 'Penghargaan & Sertifikasi' !!}" />
-
+        
+         
         <livewire:achievements-list />
     </main>
 

@@ -117,6 +117,48 @@
         <!--End Hero Banner-->
 
         <!-- Start About Home -->
+        @php
+            $aboutHome = [
+                'contentTop' => [
+                    'subTitle' => 'tentang kiw',
+                    'title' => 'Pilar Industri Jawa Tengah',
+                    'desc' => 'PT Kawasan Industri Wijayakusuma (KIW) merupakan perusahaan yang bergerak di bidang pengembangan dan pengelolaan kawasan industri. Pemegang saham KIW antara lain; Kementerian BUMN, PT Danareksa (Persero), Pemerintah Provinsi Jawa Tengah, dan Pemerintah Kabupaten Cilacap.',
+                    'iso' => [
+                        'images' => [
+                            Storage::url('media/iso-1.png'),
+                            Storage::url('media/iso-2.png'),
+                            Storage::url('media/iso-3.png'),
+                        ],
+                        'label' => 'ISO Certificate',
+                    ],
+                    'btnText' => 'Selengkapnya',
+                    'btnLink' => '/profil-perusahaan',
+                ],
+                'contentBottom' => [
+                    'image' => Storage::url('media/about-home-bottom.jpg'),
+                    'counter' => [
+                [
+                    'counter' => 36,
+                    'label' => 'Tahun Pengalaman',
+                ],
+                [
+                    'counter' => 100,
+                    'label' => 'Tenant Bekerjasama',
+                ],
+                [
+                    'counter' => 5,
+                    'label' => 'Penghargaan',
+                ],
+                [
+                    'counter' => 4,
+                    'label' => 'Sertifikasi',
+                ],
+            ],
+                ],    
+            ];
+        @endphp
+
+
         <section id="about-home" class="bg-[var(--color-transit)] lg:py-30 py-18">
             <div
                 class="flex flex-col overflow-hidden relative lg:gap-0 sm:gap-10 gap-10  lg:px-0 lg:lg:max-w-[1200px] lg:mx-auto sm:px-6 px-4">
@@ -124,24 +166,21 @@
                 <div class="flex lg:flex-row flex-col justify-between !gap-15 items-start lg:-mb-10">
                     <!--content left-->
                     <div class="flex flex-col justify-start gap-5 lg:!w-[55%]">
-                        <h6 data-aos="fade-down" class="bullet-1">tentang kiw</h6>
-                        <h2 data-aos="fade-up" class="text-[var(--color-heading)]">Pilar Industri Jawa Tengah</h2>
+                        <h6 data-aos="fade-down" class="bullet-1">{{ $aboutHome['contentTop']['subTitle'] }}</h6>
+                        <h2 data-aos="fade-up" class="text-[var(--color-heading)]">{{ $aboutHome['contentTop']['title'] }}</h2>
 
                         <p class="body-text text-[var(--color-text)]">
-                            PT Kawasan Industri Wijayakusuma (KIW) merupakan perusahaan yang bergerak di bidang
-                            pengembangan dan pengelolaan kawasan industri. Pemegang saham KIW antara lain; Kementerian
-                            BUMN, PT Danareksa (Persero), Pemerintah Provinsi Jawa Tengah, dan Pemerintah Kabupaten
-                            Cilacap.
+                            {{ $aboutHome['contentTop']['desc'] }}
                         </p>
                         <!--ISO-->
                         <div class="flex flex-row items-center gap-5 mt-4">
-                            <img src="{{ Storage::url('media/iso-1.png') }}" alt="iso">
-                            <img src="{{ Storage::url('media/iso-2.png') }}" alt="iso">
-                            <img src="{{ Storage::url('media/iso-3.png') }}" alt="iso">
-                            <p class="!text-[var(--color-heading)] !text-[1.3em] w-[60px]">ISO Certificate</p>
+                            @foreach ($aboutHome['contentTop']['iso']['images'] as $image)
+                                <img src="{{ $image }}" alt="iso">
+                            @endforeach
+                            <p class="!text-[var(--color-heading)] !text-[1.3em] w-[60px]">{{ $aboutHome['contentTop']['iso']['label'] }}</p>
                         </div>
                         <!--button-->
-                        <a class="w-fit btn1 mt-5" data-aos="fade-down" href="/profil-perusahaan">selengkapnya
+                        <a class="w-fit btn1 mt-5" data-aos="fade-down" href="{{ $aboutHome['contentTop']['btnLink'] }}">{{ $aboutHome['contentTop']['btnText'] }}
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none">
@@ -173,15 +212,9 @@
 
                     <!--content right-->
                     <div class="grid grid-cols-2 gap-8">
-
-                        <x-loop.counter-about-home counter="36" label="Tahun Pengalaman" />
-
-                        <x-loop.counter-about-home counter="100" label="Tenant Bekerjasama" />
-
-                        <x-loop.counter-about-home counter="5" label="Penghargaan" />
-
-                        <x-loop.counter-about-home counter="4" label="Sertifikasi" />
-
+                    @foreach ($aboutHome['contentBottom']['counter'] as $counter)
+                        <x-loop.counter-about-home :counter="$counter['counter']" :label="$counter['label']" />
+                    @endforeach
                     </div>
                 </div>
             </div>
@@ -189,6 +222,38 @@
         <!-- End About Home -->
 
         <!-- Start Layanan Home -->
+        @php
+            $layananHome = [
+                'layananTitle' => [
+                    'subTitle' => 'layanan kami',
+                    'title' => 'Solusi Komprehensif untuk Kebutuhan Industri',
+                ],
+                'layananContent' => [
+                    [
+                        'label' => 'Lahan Industri Siap Bangun',
+                        'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                        'image' => Storage::url('media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg'),
+                        'btnText' => 'Selengkapnya',
+                        'btnLink' => '/lahan-industri',
+                    ],
+                    [
+                        'label' => 'Bangunan Pabrik Siap Pakai (BPSP)',
+                        'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                        'image' => Storage::url('media/exterior-view-modern-industrial-building.jpg'),
+                        'btnText' => 'Selengkapnya',
+                        'btnLink' => '/bpsp',
+                    ],
+                    [
+                        'label' => 'Kawasan Industri Terpadu',
+                        'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                        'image' => Storage::url('media/modern-industrial-area.jpg'),
+                        'btnText' => 'Selengkapnya',
+                        'btnLink' => '/kawasan-industri',
+                    ],
+                ],    
+            ];
+        @endphp
+
         <section id="layanan-home" class="lg:py-30 py-18 bg-cover "
             style="background-image: url('{{ Storage::url('media/bg-grad.jpg') }}');">
             <div
@@ -196,27 +261,19 @@
 
                 <!--Heading-->
                 <div class="flex flex-col justify-start items-center gap-5">
-                    <h6 class="bullet-2 text-white text-center" data-aos="fade-down">layanan kami</h6>
-                    <h2 class="text-white text-center lg:w-[700px]" data-aos="fade-up">Solusi Komprehensif untuk
-                        Kebutuhan Industri</h2>
+                    <h6 class="bullet-2 text-white text-center" data-aos="fade-down">{{ $layananHome['layananTitle']['subTitle'] }}</h6>
+                    <h2 class="text-white text-center lg:w-[700px]" data-aos="fade-up">{{ $layananHome['layananTitle']['title'] }}</h2>
                 </div>
 
                 <!--Content-->
                 <div class="flex lg:flex-row flex-col gap-7">
-
-                    <x-loop.layanan-home label="Lahan Industri Siap Bangun"
-                        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                        url="/lahan-industri" :image="Storage::url(
-                            'media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg',
-                        )" />
-
-                    <x-loop.layanan-home label="Bangunan Pabrik Siap Pakai (BPSP)"
-                        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                        url="/bpsp" :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
-
-                    <x-loop.layanan-home label="Kerja sama Komersial Kawasan Industri"
-                        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                        url="/area-komersil/atm" :image="Storage::url('media/exterior-view-modern-industrial-building.jpg')" />
+                    @foreach($layananHome['layananContent'] as $layananContent)
+                    <x-loop.layanan-home label="{{ $layananContent['label'] }}"
+                        desc="{{ $layananContent['desc'] }}"
+                        url="{{ $layananContent['btnLink'] }}" :image="
+                            $layananContent['image']
+                        " />
+                    @endforeach
                 </div>
 
 
@@ -398,7 +455,7 @@
                 <h6 class="bullet-1 self-center">
                     Tenant kami
                 </h6>
-                <h2 class="text-center">Tenant dari Berbagai Sektor Industri</h2>
+                <h2 class="text-center" data-aos="fade-up">Tenant dari Berbagai Sektor Industri</h2>
             </div>
             <!--carousel-->
             <div class="relative w-full lg:max-w-[100vw] overflow-hidden">

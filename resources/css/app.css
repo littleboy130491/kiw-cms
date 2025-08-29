@@ -1354,3 +1354,12 @@ body .uwy.userway_p1 .userway_buttons_wrapper {
 .header-custom .no-link {
   @apply cursor-default;
 }
+
+
+/* ping hotspot */
+.ping-slow {
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.ping-fast {
+  animation: ping 0.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
