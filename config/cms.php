@@ -97,6 +97,15 @@ return [
             'eager_load' => ['buildingCategories'],
         ],
 
+        'career' => [
+            'model' => App\Models\Career::class,
+            'name' => 'career',
+            'type' => 'content',
+            'slug' => 'karier',
+            'has_archive' => true,
+            'has_single' => true,
+        ],
+
         'commercials' => [
             'model' => App\Models\Commercial::class,
             'name' => 'Commercials',

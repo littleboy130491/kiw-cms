@@ -1065,7 +1065,7 @@ h6 {
 
 /* counter hero home */
 .counter-hero-home .counter-item:last-child {
-  border: none;
+  border-right: none;
   padding-right: 0;
 }
 
@@ -1353,4 +1353,13 @@ body .uwy.userway_p1 .userway_buttons_wrapper {
 /* header menu no link */
 .header-custom .no-link {
   @apply cursor-default;
+}
+
+
+/* ping hotspot */
+.ping-slow {
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.ping-fast {
+  animation: ping 0.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }

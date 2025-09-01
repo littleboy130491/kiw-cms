@@ -10,44 +10,46 @@
             class="relative map-container my-18 lg:my-30 relative px-4 sm:px-6 lg:px-0 overflow-x-auto whitespace-nowrap max-w-full lg:w-[1200px] lg:mx-auto">
             <div class="relative inline-block min-w-full">
                 <img src="{{ Storage::url('media/4ebba16e-1b81-4316-9614-c6d3c7832e69.jpg') }}" class="w-full">
-
+                @php
+                $lahan_industri = [
+                    [
+                        'top' => '30',
+                        'left' => '50',
+                        'label' => 'Kaveling D',
+                        'luas' => '4.50 Ha',
+                        'image' => 'media/kaveling-d.jpg',
+                        'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                    ],
+                    [
+                        'top' => '55',
+                        'left' => '22',
+                        'label' => 'Kaveling C',
+                        'luas' => '1.50 Ha',
+                        'image' => 'media/kaveling-d.jpg',
+                        'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                    ],
+                    [
+                        'top' => '55',
+                        'left' => '90',
+                        'label' => 'Kaveling C',
+                        'luas' => '1.50 Ha',
+                        'image' => 'media/kaveling-d.jpg',
+                        'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                    ],
+                ];
+                @endphp
                 <!-- Hotspot Items -->
-                <x-loop.hotspot-item-lahan-industri top="20" left="50" label="Kaveling D" luas="4.50 Ha"
-                    :image="Storage::url('media/kaveling-d.jpg')">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                </x-loop.hotspot-item-lahan-industri>
-
-                <x-loop.hotspot-item-lahan-industri top="40" left="20" label="Kaveling A" luas="3.50 Ha"
-                    :image="Storage::url('media/kaveling-d.jpg')">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                </x-loop.hotspot-item-lahan-industri>
-
-
-                <x-loop.hotspot-item-lahan-industri top="55" left="22" label="Kaveling C" luas="1.50 Ha"
-                    :image="Storage::url('media/kaveling-d.jpg')">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                </x-loop.hotspot-item-lahan-industri>
-
-                <x-loop.hotspot-item-lahan-industri top="55" left="90" label="Kaveling C" luas="1.50 Ha"
-                    :image="Storage::url('media/kaveling-d.jpg')">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                </x-loop.hotspot-item-lahan-industri>
+                @foreach ($lahan_industri as $item)
+                <x-loop.hotspot-item-lahan-industri
+                    :top="$item['top']"
+                    :left="$item['left']"
+                    :label="$item['label']"
+                    :luas="$item['luas']"
+                    :image="Storage::url($item['image'])"
+                >
+                    {{ $item['desc'] }}
+                    </x-loop.hotspot-item-lahan-industri>
+                @endforeach
             </div>
             </div>
         </section>

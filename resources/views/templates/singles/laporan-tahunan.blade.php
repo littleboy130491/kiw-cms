@@ -3,6 +3,9 @@
     use Littleboy130491\Sumimasen\Enums\ContentStatus;
 
     $items = Report::with('fileMedia')->where('status', ContentStatus::Published)->get();
+    
+    /*Revisi penambahan cover image*/
+    $cover = Storage::url('media/1c5403f2-a698-4715-8ae0-3bd76d765b8a.jpg');
 @endphp
 <x-layouts.app>
     <x-partials.header />
@@ -20,6 +23,7 @@
                         class="grow min-w-[900px] sm:min-w-[100%] text-left text-[var(--color-heading)] bg-[var(--color-transit)] rounded-md">
                         <thead class="text-[var(--color-heading)] border-b border-[var(--color-border)]">
                             <tr>
+                                <th class="px-6 py-3">Cover</th>
                                 <th class="px-6 py-3">Title</th>
                                 <th class="px-6 py-3">Size</th>
                                 <th class="px-6 py-3">Format</th>
@@ -29,7 +33,7 @@
                         </thead>
                         <tbody>
                             @foreach ($items as $item)
-                                <x-loop.table-data :item="$item" />
+                                <x-loop.table-data :item="$item" :cover="$cover"/>
                             @endforeach
                         </tbody>
                     </table>
