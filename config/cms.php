@@ -101,7 +101,7 @@ return [
             'model' => App\Models\Career::class,
             'name' => 'career',
             'type' => 'content',
-            'slug' => 'karier-rev',
+            'slug' => 'karier',
             'has_archive' => true,
             'has_single' => true,
         ],

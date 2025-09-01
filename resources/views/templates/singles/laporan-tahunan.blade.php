@@ -5,7 +5,7 @@
     $items = Report::with('fileMedia')->where('status', ContentStatus::Published)->get();
     
     /*Revisi penambahan cover image*/
-    $image = Storage::url('media/ad3bb3b5-7931-4fae-85e5-8a266e55bfe5.jpg');
+    $cover = Storage::url('media/1c5403f2-a698-4715-8ae0-3bd76d765b8a.jpg');
 @endphp
 <x-layouts.app>
     <x-partials.header />
@@ -33,7 +33,7 @@
                         </thead>
                         <tbody>
                             @foreach ($items as $item)
-                                <x-loop.table-data :item="$item" :cover="$image"/>
+                                <x-loop.table-data :item="$item" :cover="$cover"/>
                             @endforeach
                         </tbody>
                     </table>

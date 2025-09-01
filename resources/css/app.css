@@ -1065,7 +1065,7 @@ h6 {
 
 /* counter hero home */
 .counter-hero-home .counter-item:last-child {
-  border: none;
+  border-right: none;
   padding-right: 0;
 }
 

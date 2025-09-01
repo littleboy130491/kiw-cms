@@ -1,4 +1,5 @@
 @php
+    //Start About Temporary Data
     $about = [
         'title' => 'Pilar Industri Jawa Tengah',
         'paragraphs-bold' => [
@@ -16,24 +17,30 @@
             'label' => 'ISO Certificate'
         ]
     ];
+    //End About Temporary Data
 
+    //Start About Perjalanan Temporary Data
     $aboutPerjalanan = [
         'counter' => [
             [
                 'counter' => 36,
                 'label' => 'Tahun Pengalaman',
+                'suffix' => '+',
             ],
             [
                 'counter' => 100,
                 'label' => 'Tenant Bekerjasama',
+                'suffix' => '+',
             ],
             [
                 'counter' => 5,
                 'label' => 'Penghargaan',
+                'suffix' => '+',
             ],
             [
                 'counter' => 4,
                 'label' => 'Sertifikasi',
+                'suffix' => '+',
             ],
             
 
@@ -77,7 +84,9 @@
             ],
         ],
     ];
+    //End About Perjalanan Temporary Data
 
+    //Start Tab Afiliasi Perusahaan Temporary Data
     $tabAfiliasiPerusahaan = [
         'tabsTitle' => [
             ['tab' => 'Pemegang Saham'],
@@ -129,7 +138,9 @@
             ]],
         ]
     ];
+    //End Tab Afiliasi Perusahaan Temporary Data
 
+    //Start Hotspot Koneksi Global Temporary Data
     $hotspotKoneksiGlobal = [
         'subTitle' => 'Koneksi Global',
         'title' => 'Dipercaya oleh Lebih dari 100 Perusahaan Global',
@@ -188,7 +199,9 @@
             ],
         ]
     ];
+    //End Hotspot Koneksi Global Temporary Data
 
+    //Start Tab Sektor Industri Temporary Data
     $tabSektorIndustri = [
         'tabsTitle' => [
             ['tab' => 'Modern Textile & Garment'],
@@ -250,6 +263,7 @@
             ]],
         ]
     ];
+    //End Tab Sektor Industri Temporary Data
 
     
 @endphp
@@ -298,7 +312,7 @@
             <div
                 class="sm:max-w-full sm:-top-12 lg:left-1/2 grid grid-cols-2 -mt-14 sm:grid-cols-4 gap-5 lg:w-[1200px] lg:mx-auto">
                 @foreach ($aboutPerjalanan['counter'] as $counter)
-                    <x-loop.counter-profil :counter="$counter['counter']" :label="$counter['label']" />
+                    <x-loop.counter-profil :counter="$counter['counter']" :label="$counter['label']" :suffix="$counter['suffix']" />
                 @endforeach
             </div>
 

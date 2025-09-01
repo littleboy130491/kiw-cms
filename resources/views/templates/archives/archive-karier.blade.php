@@ -2,22 +2,24 @@
     $karier = [
                 [
                     'title' => 'Staff Pengembangan Kawasan',
-                    'url' => '/single-karier',
+                    'slug' => 'staff-pengembangan-kawasan',
                     'image' => Storage::url('media/karier-1.jpg'),
                 ],
 
                 [
                     'title' => 'Analis Investasi & Pengembangan Bisnis',
-                    'url' => '/single-karier',
+                    'slug' => 'analis-investasi-pengembangan-bisnis',
                     'image' => Storage::url('media/karier-1.jpg'),
                 ],
 
                 [
                     'title' => 'Staff Legal & Perizinan',
-                    'url' => '/single-karier', 
+                    'slug' => 'staff-legal-perizinan',
                     'image' => Storage::url('media/karier-1.jpg'),
                 ],
-            ];  
+            ];
+      //  $url = route('cms.single.content', [app()->getLocale(), 'karier', $item['slug']]);
+        $url = 'single-karier';  
 @endphp
 
 <x-layouts.app>
@@ -34,12 +36,11 @@
             <h2 data-aos="fade-up">Cari Posisi yang Tersedia</h2>
     
             <div class="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
-          
+        
                 @foreach ($karier as $item)
-                    <x-loop.karier-grid :title="$item['title']" :url="$item['url']" :image="$item['image']"/>
+                  <x-loop.karier-grid :title="$item['title']" :url="$url" :image="$item['image']"/>
                 @endforeach
             </div>
-
         </section>
 
         <!--End Karier Content-->

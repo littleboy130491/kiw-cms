@@ -1,8 +1,4 @@
 @php
-    $heroPage = [
-        'title' => 'Kontak',
-        'background' => Storage::url( 'media/kontak-hero.jpg'),
-    ];
     $contactBlock = [
         'titleContact' => [
             'title' => 'Hubungi Kami',
@@ -96,7 +92,7 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page :image="$heroPage['background']" h1="{{ $heroPage['title'] }}" />
+        <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/kontak-hero.jpg')" h1="{!! $item->title ?? 'Kontak' !!}" />
 
 
         <!--Start Informasi Kontak-->
