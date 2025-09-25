@@ -11,13 +11,13 @@
         ->limit($qty)
         ->orderByDesc('created_at')
         ->get();
-   $backgroundHome = Storage::url('media/1c5403f2-a698-4715-8ae0-3bd76d765b8a.jpg');
+   $thumbnailHome = Storage::url('media/dadc9265-8fd2-4f59-92af-7869b39f6272.png');
 @endphp
 <!--Content-->
 @if ($items->isNotEmpty())
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-7">
         @foreach ($items as $item)
-           <x-loop.laporan-tahunan :item="$item" :backgroundHome="$backgroundHome" />
+           <x-loop.laporan-tahunan :item="$item" :thumbnailHome="$thumbnailHome" />
         @endforeach
     </div>
 @else

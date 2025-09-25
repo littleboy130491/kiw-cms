@@ -30,7 +30,6 @@ class SplashScreen extends Component
             ['year' => '2018', 'src' => 'media/pws-logo.png', 'alt' => 'Logo tahun 2018'],
             ['year' => '2020', 'src' => 'media/gbc-logo.png', 'alt' => 'Logo tahun 2020'],
             ['year' => '2022', 'src' => 'media/Danareksa.png', 'alt' => 'Logo tahun 2022'],
-            ['year' => '2024', 'src' => 'media/Danareksa.png', 'alt' => 'Logo tahun 2024'],
         ];
 
         // Check if splash screen should show based on session

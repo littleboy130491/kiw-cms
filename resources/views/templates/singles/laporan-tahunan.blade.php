@@ -5,7 +5,7 @@
     $items = Report::with('fileMedia')->where('status', ContentStatus::Published)->get();
     
     /*Revisi penambahan cover image*/
-    $cover = Storage::url('media/1c5403f2-a698-4715-8ae0-3bd76d765b8a.jpg');
+    $cover = Storage::url('media/dadc9265-8fd2-4f59-92af-7869b39f6272.png');
 @endphp
 <x-layouts.app>
     <x-partials.header />

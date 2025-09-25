@@ -28,7 +28,32 @@
             [$localizedLocation, $fallbackLocation],
         )
         ->first();
+
+        // Revisi penambahan fungsi editing logo
+        $logoSize = [
+            'desktopWidth' => '76',
+            'tabletWidth'  => '56',    
+            'mobileWidth'  => '46',
+        ];
+      
 @endphp
+
+
+<style>
+    .logo-img {
+        width: {{ $logoSize['mobileWidth'] }}px !important;
+    }
+    @media (min-width: 640px) { /* sm */
+        .logo-img {
+            width: {{ $logoSize['tabletWidth'] }}px !important;
+        }
+    }
+    @media (min-width: 1024px) { /* lg */
+        .logo-img {
+            width: {{ $logoSize['desktopWidth'] }}px !important;
+        }
+    }
+</style>
 
 <!--Start Header Menu-->
 
@@ -43,8 +68,13 @@
 
             <!--Logo-->
             <div class="logo flex items-end">
-                <a href="/"><img class="!w-48 sm:!w-48 lg:!w-56 mr-32 filter brightness-0 invert"
-                        src="{{ $logo_url }}" alt="logo"></a>
+                <a href="/">
+                <img 
+                    class="logo-img h-auto mr-32 filter brightness-0 invert"
+                    src="{{ $logo_url }}" 
+                    alt="logo"
+                >
+                </a>
             </div>
 
             <div class="desktop-header flex flex-col justify-between w-full grow">
@@ -117,7 +147,7 @@
 
                         <!--Logo-->
                         <div class=" flex items-center ">
-                            <a href="/"><img class="w-48" src="{{ $logo_url }}" alt="logo"></a>
+                            <a href="/"><img class="h-25" src="{{ $logo_url }}" alt="logo"></a>
                         </div>
 
                         @if ($menu && $menu->menuItems)
