@@ -27,11 +27,6 @@
                                     'label' => 'BPSP',
                                 ],
                                 [
-                                    'counter' => 200,
-                                    'suffix' => 'Unit',
-                                    'label' => 'Foodcourt',
-                                ],
-                                [
                                     'counter' => 50,
                                     'suffix' => 'Persegi',
                                     'label' => 'Commercial Area',
@@ -81,11 +76,6 @@
                                     'counter' => 100,
                                     'suffix' => 'Unit',
                                     'label' => 'BPSP',
-                                ],
-                                [
-                                    'counter' => 200,
-                                    'suffix' => 'Unit',
-                                    'label' => 'Foodcourt',
                                 ],
                                 [
                                     'counter' => 50,
@@ -177,6 +167,10 @@
             //End Layanan Home Temporary Data
 
             //Start Keunggulan Home Temporary Data
+            $keungggulanTitle = [
+                'subTitle' => 'keunggulan',
+                'title' => 'Alasan Memilih KIW?',
+            ];
             $keunggulan = [
                             [
                                 'number' => '01.',
@@ -233,6 +227,10 @@
             //End Video Home Temporary Data
 
             //Start Tenant Logo Temporary Data
+            $tenantTitle = [
+                'subTitle' => 'Tenant Kami',
+                'title' => 'Tenant dari Berbagai Sektor Industri',
+            ];
             $tenantLogo = [
                 [
                     'image' => Storage::url('media/logoipsum-1.png'),
@@ -254,6 +252,31 @@
                 ],
             ];
             //End Tenant Logo Temporary Data
+
+            //Start Fasilitas Temporary Data
+            $fasilitasHome = [
+                'subTitle' => 'Fasilitas',
+                'title' => 'Fasilitas Industri yang Lengkap',
+                ];
+            //End Fasilitas Logo Temporary Data
+
+            //Start Berita Temporary Data
+            $beritaHome = [
+                [
+                    'subTitle' => 'Artikel & Berita',
+                    'title' => 'Dapatkan Informasi Terbaru',
+                ],
+            ];
+            //End Berita Logo Temporary Data
+
+            //Start Laporan Temporary Data
+            $laporanHome = [
+                [
+                    'subTitle' => 'Anual Report',
+                    'title' => 'Laporan Tahunan & Audit Perusahaan',
+                ],
+            ];
+            //End Laporan Logo Temporary Data
 @endphp
 
 <x-layouts.app>
@@ -389,8 +412,8 @@
 
                 <!--Title-->
                 <div class="flex flex-col gap-5 lg:px-0 sm:px-6 px-4">
-                    <h6 class="lg:text-center !text-white bullet-2" data-aos="fade-down">Keunggulan</h6>
-                    <h2 class="lg:text-center !text-white" data-aos="fade-up">Alasan Memilih KIW?</h2>
+                    <h6 class="lg:text-center !text-white bullet-2" data-aos="fade-down">{{ $keungggulanTitle['subTitle'] }}</h6>
+                    <h2 class="lg:text-center !text-white" data-aos="fade-up">{{ $keungggulanTitle['title'] }}</h2>
                 </div>
 
                 <!--Content-->
@@ -411,8 +434,8 @@
                 <!--title-->
                 <div class="flex flex-col justify-between gap-5 sm:!w-[40%]">
                     <div class="flex flex-col justify-between gap-5">
-                        <h6 class="bullet-1" data-aos="fade-down">fasilitas Penunjang</h6>
-                        <h2 data-aos="fade-up">Lingkungan Industri yang Lengkap</h2>
+                        <h6 class="bullet-1" data-aos="fade-down">{{ $fasilitasHome['subTitle'] }}</h6>
+                        <h2 data-aos="fade-up">{{ $fasilitasHome['title'] }}</h2>
                     </div>
 
                     <!--button-->
@@ -509,9 +532,9 @@
         <section id="tenant-home" class="my-18 lg:my-30 px-4 sm:px-6 lg:px-0 flex flex-col lg:gap-9 gap-7">
             <div class="flex flex-col gap-5 lg:max-w-[1200px] lg:mx-auto">
                 <h6 class="bullet-1 self-center">
-                    Tenant kami
+                    {{ $tenantTitle['subTitle'] }}
                 </h6>
-                <h2 class="text-center" data-aos="fade-up">Tenant dari Berbagai Sektor Industri</h2>
+                <h2 class="text-center" data-aos="fade-up">{{ $tenantTitle['title'] }}</h2>
             </div>
             <!--carousel-->
             <div class="relative w-full lg:max-w-[100vw] overflow-hidden">
@@ -535,8 +558,8 @@
             <!--Title-->
             <div class="flex sm:flex-row flex-col justify-between items-end">
                 <div class="flex flex-col gap-5">
-                    <h6 class="bullet-1" data-aos="fade-down">Artikel & Berita</h6>
-                    <h2 data-aos="fade-up">Dapatkan Informasi Terbaru</h2>
+                    <h6 class="bullet-1" data-aos="fade-down">{{ $beritaHome[0]['subTitle'] }}</h6>
+                    <h2 data-aos="fade-up">{{ $beritaHome[0]['title'] }}</h2>
                 </div>
                 <!--button desktop tablet-->
                 <a class="sm:!flex !hidden w-fit btn1 mt-5" data-aos="fade-down"
@@ -580,13 +603,27 @@
 
                 <!--Heading-->
                 <div class="flex flex-col justify-start gap-5">
-                    <h6 class="bullet-1 sm:text-center text-left sm:self-center" data-aos="fade-down">Anual Report</h6>
-                    <h2 class="sm:text-center text-left" data-aos="fade-up">Laporan Tahunan & Audit Perusahaan</h2>
+                    <h6 class="bullet-1 sm:text-center text-left sm:self-center" data-aos="fade-down">{{ $laporanHome[0]['subTitle'] }}</h6>
+                    <h2 class="sm:text-center text-left" data-aos="fade-up">{{ $laporanHome[0]['title'] }}</h2>
                 </div>
 
 
                 <!--Content-->
                 <x-loop.laporan-tahunan-grid />
+                <div class="flex justify-center">
+                <!--button desktop tablet-->
+                <a class="sm:!flex !hidden w-fit btn1 mt-5" data-aos="fade-down"
+                    href="/laporan-tahunan">Laporan Lainnya
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none">
+                            <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </a></div>
             </div>
         </section>
         <!-- End Hubungan Investor Home -->

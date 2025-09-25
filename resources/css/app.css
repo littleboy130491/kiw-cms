@@ -1363,3 +1363,9 @@ body .uwy.userway_p1 .userway_buttons_wrapper {
 .ping-fast {
   animation: ping 0.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
+
+/* header logo fixed*/
+.header-custom.header-fixed .logo img {
+  @apply !h-[55px] object-contain;
+}
+
