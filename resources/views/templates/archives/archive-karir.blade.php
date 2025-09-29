@@ -18,7 +18,7 @@
                     'image' => Storage::url('media/karier-1.jpg'),
                 ],
             ];
-      //  $url = route('cms.single.content', [app()->getLocale(), 'karier', $item['slug']]);
+      //  $url = route('cms.single.content', [app()->getLocale(), 'karir', $item['slug']]);
         $url = 'single-karier';  
 @endphp
 
