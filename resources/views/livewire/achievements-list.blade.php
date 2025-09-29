@@ -70,13 +70,13 @@
     <!--Content-->
     <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-12 z-10" wire:loading.remove>
         @forelse($achievements as $achievement)
-            <div class="flex flex-col items-center">
+            <div class="flex flex-col items-center group">
                 <div class="flex flex-col justify-between items-center">
                     @if ($achievement->featuredImage)
-                        <img class="h-[250px] object-contain -mb-[20px] z-10"
+                        <img class="h-[250px] object-contain -mb-[20px] z-10 group-hover:scale-110 transition-all duration-300"
                             src="{{ $achievement->featuredImage->url }}" alt="{{ $achievement->title }}">
                     @else
-                        <img class="h-[250px] object-contain -mb-[20px] z-10"
+                        <img class="h-[250px] object-contain -mb-[20px] z-10 group-hover:scale-110 transition-all duration-300"
                             src="{{ Storage::url('media/default-achievement.png') }}" alt="{{ $achievement->title }}">
                     @endif
                     <img class="z-1" src="{{ Storage::url('media/frame-awards.png') }}" alt="frame-awards">

@@ -10,7 +10,7 @@
 
 <!-- Item -->
 <div
-    class="berita-item group transition-all duration-[500ms] relative flex flex-col !min-h-70 rounded-2xl overflow-hidden">
+    class="berita-item group transition-all duration-[500ms] relative flex flex-col !min-h-70 rounded-md overflow-hidden">
 
     <!-- Front -->
     <div class="grow gap-2 bg-cover flex flex-col bg-center"

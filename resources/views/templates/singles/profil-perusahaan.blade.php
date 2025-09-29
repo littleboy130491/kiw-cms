@@ -90,8 +90,8 @@
     $tabAfiliasiPerusahaan = [
         'tabsTitle' => [
             ['tab' => 'Pemegang Saham'],
-            ['tab' => 'Anak Perusahaan 1'],
-            ['tab' => 'Anak Perusahaan 2'],
+            ['tab' => 'PT PWS'],
+            ['tab' => 'PT KITB'],
         ],
 
         'tabsContent' => [
@@ -451,31 +451,6 @@
             </div>
         </section>
         <!--End Koneksi Global-->
-
-        <!--Start Tab Sektor Industri-->
-        <section id="tab" class="my-18 lg:my-30 px-4 sm:px-6 lg:px-0 lg:w-[1200px] lg:mx-auto relative">
-        <div x-data="{ tab: 'tab1' }" class="rounded-md">
-            <!-- Tab Headers -->
-            <div
-                class="header-sektor-wrap lg:flex lg:flex-row lg:justify-start lg:gap-5 grid grid-cols-2 gap-2 justify-center z-1">
-                @foreach ($tabSektorIndustri['tabsTitle'] as $index => $item)
-                <x-tab.tab-headers-sektor 
-                    :title="$item['tab']" 
-                    :tab="'tab' . ($index + 1)" 
-                />
-            @endforeach
-            </div>
-
-            <!-- Tab Contents -->
-            @foreach ($tabSektorIndustri['tabsContent'] as $index => $item)
-            <x-tab.tab-contents-sektor id="tab{{ $index + 1 }}" :title="$item['tab']['tabContentLeft']['title']"
-                :image="$item['tab']['tabContentRight']['image']" :desc="$item['tab']['tabContentLeft']['desc']" />
-            @endforeach
-        </div>
-    </section>
-
-    <!--End Sektor Industri-->
-
 
     </main>
     <x-partials.whatsapp />

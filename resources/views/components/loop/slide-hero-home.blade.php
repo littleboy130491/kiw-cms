@@ -46,17 +46,19 @@
                         <div class="counter-hero-home flex flex-row flex-wrap sm:flex-nowrap justify-start lg:w-[1200px] lg:mx-auto sm:gap-0 gap-y-5 mt-5 lg:px-0 sm:px-6 px-4">
 
                             @if (!empty($slide['counter']['title']))
-                                <div class="lg:w-1/5 sm:w-1/5 w-full self-center">
+                                <div class="lg:w-1/5 sm:w-1/5 w-full self-center lg:mr-5">
                                     <h5 class="text-white">{{ $slide['counter']['title'] }}</h5>
                                 </div>
                             @endif
                             
+                            <div class="flex flex-row flex-wrap sm:flex-nowrap justify-between w-full lg:gap-2 sm:gap-1 gap-y-5">
                             @foreach ($slide['counter']['items'] as $counter)
                                 <x-loop.counter-hero-home 
                                     :counter="$counter['counter']" 
                                     :unit="$counter['suffix']" 
                                     :label="$counter['label']" />
                             @endforeach
+                            </div>
 
                         </div>
                     @endif
@@ -100,22 +102,23 @@
                     </div>
 
                     @if (!empty($slide['counter']['items']))
-                        <div class="counter-hero-home flex flex-row flex-wrap justify-start lg:w-[1200px] lg:mx-auto sm:gap-0 gap-y-5 mt-5 lg:px-0 sm:px-6 px-4">
+                    <div class="counter-hero-home flex flex-row flex-wrap sm:flex-nowrap justify-start lg:w-[1200px] lg:mx-auto sm:gap-0 gap-y-5 mt-5 lg:px-0 sm:px-6 px-4">
 
                             @if (!empty($slide['counter']['title']))
-                                <div class="lg:w-1/5 sm:w-1/5 w-full self-center">
+                                <div class="lg:w-1/5 sm:w-1/5 w-full self-center lg:mr-5">
                                     <h5 class="text-white">{{ $slide['counter']['title'] }}</h5>
                                 </div>
                             @endif
-
+                            
+                            <div class="flex flex-row flex-wrap sm:flex-nowrap justify-between w-full lg:gap-2 sm:gap-1 gap-y-5">
                             @foreach ($slide['counter']['items'] as $counter)
                                 <x-loop.counter-hero-home 
                                     :counter="$counter['counter']" 
                                     :unit="$counter['suffix']" 
                                     :label="$counter['label']" />
                             @endforeach
-
-                        </div>
+                            </div>
+                    </div>
                     @endif
 
                 </div>

@@ -463,8 +463,6 @@
 
 
         <!--Start Video Home-->
-        
-        
         <section id="video-home"
             class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden lg:max-w-[1200px] lg:mx-auto lg:my-30 my-18 lg:px-0 sm:px-6 px-4">
 
@@ -598,8 +596,7 @@
 
         <!-- Start Hubungan Investor Home -->
         <section id="hubungan-investor-home" class="lg:py-30 py-18 bg-cover bg-[var(--color-transit)]">
-            <div
-                class="flex flex-col overflow-hidden relative lg:gap-9 sm:gap-7 gap-7  lg:px-0 lg:lg:max-w-[1200px] lg:mx-auto sm:px-6 px-4">
+            <div class="flex flex-col overflow-hidden relative lg:gap-9 sm:gap-7 gap-7  lg:px-0 lg:lg:max-w-[1200px] lg:mx-auto sm:px-6 px-4">
 
                 <!--Heading-->
                 <div class="flex flex-col justify-start gap-5">
@@ -612,7 +609,7 @@
                 <x-loop.laporan-tahunan-grid />
                 <div class="flex justify-center">
                 <!--button desktop tablet-->
-                <a class="sm:!flex !hidden w-fit btn1 mt-5" data-aos="fade-down"
+                <a class="w-fit btn1 mt-5" data-aos="fade-down"
                     href="/laporan-tahunan">Laporan Lainnya
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

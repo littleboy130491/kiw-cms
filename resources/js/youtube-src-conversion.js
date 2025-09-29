@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", () => {
 const iframes = document.querySelectorAll('iframe[src*="youtube"], [data-youtube]');
 
 if (iframes.length > 0) {
@@ -13,4 +14,5 @@ if (iframes.length > 0) {
     });
     
 }
+});
 

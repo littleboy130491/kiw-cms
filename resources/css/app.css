@@ -1369,3 +1369,15 @@ body .uwy.userway_p1 .userway_buttons_wrapper {
   @apply !h-[55px] object-contain;
 }
 
+
+/* tender text excerpt */
+.text-excerpt-tender * {
+  @apply line-clamp-3;
+}
+
+/* pengadaan terbaru pengadaan barang dan jasa */
+#pengadaan-terbaru .tender-loop .con-front,
+#pengadaan-terbaru .tender-loop .con-back
+{
+  @apply bg-white;
+}
