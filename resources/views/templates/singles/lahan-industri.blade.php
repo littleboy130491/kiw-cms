@@ -19,6 +19,8 @@
                         'luas' => '4.50 Ha',
                         'image' => 'media/kaveling-d.jpg',
                         'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                        'note' => '*Calon investor tidak wajib membeli satu kavling penuh. Pembelian lahan dapat
+                        disesuaikan dengan kebutuhan, sesuai rencana bisnis yang diinginkan.',
                     ],
                     [
                         'top' => '55',
@@ -27,6 +29,8 @@
                         'luas' => '1.50 Ha',
                         'image' => 'media/kaveling-d.jpg',
                         'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                        'note' => '*Calon investor tidak wajib membeli satu kavling penuh. Pembelian lahan dapat
+                        disesuaikan dengan kebutuhan, sesuai rencana bisnis yang diinginkan.',
                     ],
                     [
                         'top' => '55',
@@ -35,6 +39,8 @@
                         'luas' => '1.50 Ha',
                         'image' => 'media/kaveling-d.jpg',
                         'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                        'note' => '*Calon investor tidak wajib membeli satu kavling penuh. Pembelian lahan dapat
+                        disesuaikan dengan kebutuhan, sesuai rencana bisnis yang diinginkan.',
                     ],
                 ];
                 @endphp
@@ -89,8 +95,7 @@
                             <div class="flex flex-col gap-2">
                                 <h5>Updated by: 26/05/2025</h5>
                                 <p class="text-[#DD2F2F] italic">
-                                    *Calon investor tidak wajib membeli satu kavling penuh. Pembelian lahan dapat
-                                    disesuaikan dengan kebutuhan, sesuai rencana bisnis yang diinginkan.
+                                    {{ $item['note'] }}
                                 </p>
                             </div>
                         </div>

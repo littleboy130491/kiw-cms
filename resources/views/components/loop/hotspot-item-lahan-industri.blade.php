@@ -14,7 +14,7 @@
     <span class="absolute inset-0 rounded-full animate-ping pointer-events-none"></span>
     
     <!-- Ikon lokasi -->
-    <i class="fa-solid fa-location-dot text-blue-600 text-[30px] z-10 relative cursor-pointer animate-top-down"></i>
+    <i class="fa-solid fa-location-dot text-red-600 text-[30px] z-10 relative cursor-pointer animate-top-down"></i>
     <!-- Hidden Info -->
     <div class="hidden">
         <h6 class="position">Luas Tanah: {{ $luas }}</h6>

@@ -3,6 +3,7 @@
         'lang' => app()->getLocale(),
         'slug' => 'tenders',
     ]);
+    $item_image = isset($item->featuredImage) ? $item->featuredImage->url : Storage::url('media/content-default.jpg');
 @endphp
 <x-layouts.app>
     <x-partials.header />
@@ -15,6 +16,10 @@
 
             <!--Main Content-->
             <div class="flex flex-col gap-10 lg:w-2/3">
+                <!--featured image-->
+              
+                 <img class="rounded-md rounded-b-none w-full h-full object-cover object-top" src="{{ $item_image }}">
+               
 
                 <!--Title-->
                 <div class="flex flex-col gap-5">

@@ -1,5 +1,5 @@
 <!--Item-->
-<div class="group transition-all duration-[500ms]  relative flex flex-col bg-[var(--color-transparent)] rounded-2xl overflow-hidden lg:w-1/3">
+<div class="group transition-all duration-[500ms]  relative flex flex-col bg-[var(--color-transparent)] rounded-md overflow-hidden lg:w-1/3">
     
     <!--front-->
     <div class="flex flex-col justify-between grow gap-15 px-6 pt-6">
@@ -13,7 +13,7 @@
     </div>
 
     <!--back-->
-    <div class="absolute group-hover:top-[0%] top-[100%] transition-all duration-[500ms] flex flex-col justify-between bg-white rounded-2xl gap-15 px-6 pt-6 h-full">
+    <div class="absolute group-hover:top-[0%] top-[100%] transition-all duration-[500ms] flex flex-col justify-between bg-white rounded-md gap-15 px-6 pt-6 h-full">
         <div></div>
         <div class="flex flex-col gap-5">
             <h3>{{ $label ?? '' }}</h3>

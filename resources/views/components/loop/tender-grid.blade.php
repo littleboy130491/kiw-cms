@@ -8,6 +8,8 @@
         ->where('status', ContentStatus::Published)
         ->limit($qty)
         ->get();
+
+    $image = Storage::url('media/a0e32957-9163-495b-813c-cc617f66dfc6.jpg')
 @endphp
 
 @if ($items->isNotEmpty())
