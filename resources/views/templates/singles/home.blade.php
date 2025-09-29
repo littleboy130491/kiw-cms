@@ -167,11 +167,12 @@
             //End Layanan Home Temporary Data
 
             //Start Keunggulan Home Temporary Data
-            $keungggulanTitle = [
+            $keunggulanHome = [
+            'keunggulanTitle' => [
                 'subTitle' => 'keunggulan',
                 'title' => 'Alasan Memilih KIW?',
-            ];
-            $keunggulan = [
+            ],
+            'keunggulanItem' => [
                             [
                                 'number' => '01.',
                                 'label' => 'Layanan Perizinan',
@@ -214,7 +215,8 @@
                                 'desc' => 'KIW mendukung ekosistem industri melalui fasilitas modern, tata kelola profesional, dan layanan satu pintu.',
                                 'url' => '/keunggulan#bisnis',
                             ],
-                        ];
+                        ],
+            ];
             //End Keunggulan Home Temporary Data
 
             //Start Video Home Temporary Data
@@ -227,11 +229,13 @@
             //End Video Home Temporary Data
 
             //Start Tenant Logo Temporary Data
-            $tenantTitle = [
+
+            $tenantHome = [
+            'tenantTitle' => [
                 'subTitle' => 'Tenant Kami',
                 'title' => 'Tenant dari Berbagai Sektor Industri',
-            ];
-            $tenantLogo = [
+            ],
+            'tenantLogo' => [
                 [
                     'image' => Storage::url('media/logoipsum-1.png'),
                 ],
@@ -250,6 +254,7 @@
                 [
                     'image' => Storage::url('media/logoipsum-8.png'),
                 ],
+            ],
             ];
             //End Tenant Logo Temporary Data
 
@@ -412,13 +417,13 @@
 
                 <!--Title-->
                 <div class="flex flex-col gap-5 lg:px-0 sm:px-6 px-4">
-                    <h6 class="lg:text-center !text-white bullet-2" data-aos="fade-down">{{ $keungggulanTitle['subTitle'] }}</h6>
-                    <h2 class="lg:text-center !text-white" data-aos="fade-up">{{ $keungggulanTitle['title'] }}</h2>
+                    <h6 class="lg:text-center !text-white bullet-2" data-aos="fade-down">{{ $keunggulanHome['keunggulanTitle']['subTitle'] }}</h6>
+                    <h2 class="lg:text-center !text-white" data-aos="fade-up">{{ $keunggulanHome['keunggulanTitle']['title'] }}</h2>
                 </div>
 
                 <!--Content-->
                 <div class="flex lg:flex-row flex-col lg:px-0 lg:pb-0 pb-18 sm:px-6 px-4">
-                    @foreach ($keunggulan as $item)
+                    @foreach ($keunggulanHome['keunggulanItem'] as $item)
                     <x-loop.keunggulan-home :number="$item['number']" :label="$item['label']"
                         :desc="$item['desc']" :url="$item['url']" />
                     @endforeach
@@ -530,15 +535,15 @@
         <section id="tenant-home" class="my-18 lg:my-30 px-4 sm:px-6 lg:px-0 flex flex-col lg:gap-9 gap-7">
             <div class="flex flex-col gap-5 lg:max-w-[1200px] lg:mx-auto">
                 <h6 class="bullet-1 self-center">
-                    {{ $tenantTitle['subTitle'] }}
+                    {{ $tenantHome['tenantTitle']['subTitle'] }}
                 </h6>
-                <h2 class="text-center" data-aos="fade-up">{{ $tenantTitle['title'] }}</h2>
+                <h2 class="text-center" data-aos="fade-up">{{ $tenantHome['tenantTitle']['title'] }}</h2>
             </div>
             <!--carousel-->
             <div class="relative w-full lg:max-w-[100vw] overflow-hidden">
                 <div class="swiper-logo ">
                     <div class="swiper-wrapper lg:!flex lg:gap-5">
-                        @foreach ($tenantLogo as $tenantLogo)
+                        @foreach ($tenantHome['tenantLogo'] as $tenantLogo)
                             <x-loop.tenant-logo :image="$tenantLogo['image']" />
                         @endforeach
                     </div>
