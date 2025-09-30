@@ -1,5 +1,5 @@
 @php
-    $karier = [
+    $karir = [
                 [
                     'title' => 'Staff Pengembangan Kawasan',
                     'slug' => 'staff-pengembangan-kawasan',
@@ -19,7 +19,7 @@
                 ],
             ];
       //  $url = route('cms.single.content', [app()->getLocale(), 'karir', $item['slug']]);
-        $url = 'single-karier';  
+        $url = 'single-karir';  
 @endphp
 
 <x-layouts.app>
@@ -37,7 +37,7 @@
     
             <div class="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
         
-                @foreach ($karier as $item)
+                @foreach ($karir as $item)
                   <x-loop.karier-grid :title="$item['title']" :url="$url" :image="$item['image']"/>
                 @endforeach
             </div>
