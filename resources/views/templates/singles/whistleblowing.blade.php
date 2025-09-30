@@ -1,9 +1,4 @@
 @php
-    $heroPage = [
-        'title' => 'Whistleblowing',
-        'background' => Storage::url('media/whistleblowing-hero.jpg'),
-    ];
-
     $whistleblowingBlock = [
         'title' => 'Whistleblowing',
         'descTop' => '
@@ -50,7 +45,7 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page :image="$heroPage['background']" h1="{!! $heroPage['title'] !!}" />
+    <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/whistleblowing-hero.jpg')" h1="{!! $item->title ?? 'Whistleblowing' !!}" />
 
         <!--Start Post Content-->
 

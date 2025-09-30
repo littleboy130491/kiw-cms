@@ -4,7 +4,7 @@
 
 <tr class="even:bg-[var(--color-darktransit)] ">
     <td class="px-6 py-4">
-        <img class="w-full h-[80px] object-contain object-left" src="{{ $cover ?? '' }}">
+        <img class="w-full h-[80px] object-contain object-left" src="{{ $image ?? '' }}">
     </td>
     <td class="px-6 py-4">{{ $item->title ?? '' }}</td>
     <td class="px-6 py-4">{{ $file->getSizeForHumans() ?? '' }}</td>
