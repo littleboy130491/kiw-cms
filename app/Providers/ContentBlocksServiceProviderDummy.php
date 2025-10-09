@@ -9,7 +9,7 @@ use Filament\Forms\Components\TextInput;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Support\ServiceProvider;
 
-class ContentBlocksServiceProvider extends ServiceProvider
+class ContentBlocksServiceProviderDummy extends ServiceProvider
 {
     /**
      * Register services.

@@ -1,20 +1,26 @@
+@php
+    $url = route('cms.single.content', ['lang' => app()->getLocale(), 'content_type_key' => 'karir', 'content_slug' => $item->slug]);
+@endphp
+
 <!--Item-->
 <div class="group transition-all duration-[500ms]  relative flex flex-col bg-[var(--color-transit)] rounded-2xl overflow-hidden">
     
     <!--front-->
     <div class="flex flex-col justify-between grow gap-7 px-6 pt-6">
         <div class="flex flex-col gap-3">
-            <a href="{{ $url ?? '' }}"><h4 class="text-[var(--color-heading)]">{{ $title ?? '' }}</h4></a>
+            <a href="{{ $url ?? '' }}"><h4 class="text-[var(--color-heading)]">{{ $item->title ?? '' }}</h4></a>
         </div>
         <div>
-            <a href="{{ $url ?? '' }}"><img class="rounded-sm rounded-b-none w-full object-cover" src="{{ $image ?? '' }}"></a>
+            <a href="{{ $url ?? '' }}">
+                <x-curator-glider :media="$item->featured_image" class="rounded-sm rounded-b-none w-full object-cover" />
+            </a>
         </div>
         
     </div>
 
     <!--back-->
     <div class="absolute group-hover:top-[0%] top-[100%] transition-all duration-[500ms] flex flex-col justify-between bg-[var(--color-transit)] rounded-2xl gap-15 px-6 pt-6 h-full w-full">
-        <a href="{{ $url ?? '' }}"><h4>{{ $title ?? '' }}</h4></a>
+        <a href="{{ $url ?? '' }}"><h4>{{ $item->title ?? '' }}</h4></a>
             <div class="flex flex-col justify-between gap-5">
                 <div class="mt-3">
                     <a class="w-full btn3" href="{{ $url ?? '' }}">

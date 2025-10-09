@@ -1,34 +1,7 @@
-@php
-    $karir = [
-                [
-                    'title' => 'Staff Pengembangan Kawasan',
-                    'slug' => 'staff-pengembangan-kawasan',
-                    'image' => Storage::url('media/karier-1.jpg'),
-                ],
-
-                [
-                    'title' => 'Analis Investasi & Pengembangan Bisnis',
-                    'slug' => 'analis-investasi-pengembangan-bisnis',
-                    'image' => Storage::url('media/karier-1.jpg'),
-                ],
-
-                [
-                    'title' => 'Staff Legal & Perizinan',
-                    'slug' => 'staff-legal-perizinan',
-                    'image' => Storage::url('media/karier-1.jpg'),
-                ],
-            ];
-      //  $url = route('cms.single.content', [app()->getLocale(), 'karir', $item['slug']]);
-        $url = 'single-karir';  
-@endphp
-
 <x-layouts.app>
     <x-partials.header />
     <main>
-
-        <x-partials.hero-page :image="Storage::url('media/karier-hero.jpg')"
-            h1="Lowongan Kerja" />
-
+        <x-partials.hero-page :image="isset($record->featuredImage) ? $record->featuredImage->url : Storage::url('media/karier-hero.jpg')" h1="{{ strip_tags($record->content) ?? ($record->title ?? 'Lowongan Kerja') }}" />
         <!--Start Karier Content-->
 
         <section id="karier" class="my-18 lg:my-30 px-4 sm:px-6 lg:px-0 lg:max-w-[1200px] lg:mx-auto flex flex-col gap-8">
@@ -37,8 +10,8 @@
     
             <div class="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
         
-                @foreach ($karir as $item)
-                  <x-loop.karier-grid :title="$item['title']" :url="$url" :image="$item['image']"/>
+                @foreach ($items as $item)
+                  <x-loop.karir-grid :item="$item"/>
                 @endforeach
             </div>
         </section>
