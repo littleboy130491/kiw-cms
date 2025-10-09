@@ -237,7 +237,4 @@
     </main>
     <x-partials.whatsapp />
     <x-partials.footer />
-    @push('before_body_close')
-    @vite('resources/js/youtube-src-conversion.js')
-    @endpush
 </x-layouts.app>

@@ -83,6 +83,15 @@ async function loadPageModules() {
             // Failed to load page-single-building
         }
     }
+
+    // Galeri dokumentasi page modules
+    if (bodyClasses.contains('dokumentasi') || bodyClasses.contains('documentation')) {
+        try {
+            await import('./pages/galeri-dokumentasi.js');
+        } catch (error) {
+            // Failed to load page-galeri-dokumentasi
+        }
+    }
 }
 
 // Initialize page module loading
