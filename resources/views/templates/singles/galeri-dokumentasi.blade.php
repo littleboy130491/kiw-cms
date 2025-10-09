@@ -44,8 +44,7 @@
 <x-layouts.app>
     <x-partials.header />
     <main>
-
-        <x-partials.hero-page :image="Storage::url('media/galeri-dokumentasi-hero.jpg')" h1="Galeri Dokumentasi" />
+       <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/galeri-dokumentasi-hero.jpg')" h1="{{$item->title ?? 'Galeri Dokumentasi'}}" />
 
         <!--Start Foto-->
 
@@ -69,7 +68,7 @@
 
             <!--Content-->
             <x-instagram-feed type="image" :columns="4" />
-
+            <x-instagram-behold/>
 
 
         </section>

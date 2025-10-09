@@ -2,24 +2,48 @@
     $url = route('cms.single.content', ['lang' => app()->getLocale(), 'content_type_key' => 'karir', 'content_slug' => $item->slug]);
 @endphp
 
+
 <!--Item-->
-<div class="group transition-all duration-[500ms]  relative flex flex-col bg-[var(--color-transit)] rounded-2xl overflow-hidden">
+<div class="career-loop group transition-all duration-[500ms]  relative flex flex-col bg-[var(--color-transit)] rounded-2xl overflow-hidden">
     
     <!--front-->
-    <div class="flex flex-col justify-between grow gap-7 px-6 pt-6">
-        <div class="flex flex-col gap-3">
+    <div class="front flex flex-col justify-between grow gap-3 px-6 pt-6">
+        <div class="flex justify-start items-center gap-2">
+            <div class="flex flex-row items-center gap-2">
+                <x-icon.calendar-icon-color />
+                <p class="!text-[var(--color-purple)] text-[.8em]">
+                    {{$item->published_at?->format('d M Y') ?? $item->created_at?->format('d M Y')}}
+                </p>          
+            </div>
+            <span>-</span>
+            <p class="!text-[var(--color-purple)] text-[.8em]">
+                {{ $item->careerCategories->first()?->title ?? 'Full Time' }}
+            </p> 
+        </div>
+        <div class="flex flex-col gap-3 mb-5">
             <a href="{{ $url ?? '' }}"><h4 class="text-[var(--color-heading)]">{{ $item->title ?? '' }}</h4></a>
         </div>
         <div>
             <a href="{{ $url ?? '' }}">
                 <x-curator-glider :media="$item->featured_image" class="rounded-sm rounded-b-none w-full object-cover" />
-            </a>
         </div>
         
     </div>
 
     <!--back-->
-    <div class="absolute group-hover:top-[0%] top-[100%] transition-all duration-[500ms] flex flex-col justify-between bg-[var(--color-transit)] rounded-2xl gap-15 px-6 pt-6 h-full w-full">
+    <div class="back absolute group-hover:top-[0%] top-[100%] transition-all duration-[500ms] flex flex-col justify-end bg-[var(--color-transit)] rounded-2xl gap-3 px-6 pt-6 h-full w-full">
+        <div class="flex justify-start items-center gap-2">
+            <div class="flex flex-row items-center gap-2">
+                <x-icon.calendar-icon-color />
+                <p class="!text-[var(--color-purple)] text-[.8em]">
+                    {{$item->published_at?->format('d M Y') ?? $item->created_at?->format('d M Y')}}
+                </p>          
+            </div>
+            <span>-</span>
+            <p class="!text-[var(--color-purple)] text-[.8em]">
+                 {{ $item->careerCategories->first()?->title ?? 'Full Time' }}
+            </p> 
+        </div>
         <a href="{{ $url ?? '' }}"><h4>{{ $item->title ?? '' }}</h4></a>
             <div class="flex flex-col justify-between gap-5">
                 <div class="mt-3">
