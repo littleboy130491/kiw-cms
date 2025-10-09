@@ -3,7 +3,7 @@
         'lang' => app()->getLocale(),
         'slug' => 'tenders',
     ]);
-    $item_image = isset($item->featuredImage) ? $item->featuredImage->url : Storage::url('media/content-default.jpg');
+    $item_image = $item->featuredImage?->url ?? Storage::url('media/content-default.jpg');
 @endphp
 <x-layouts.app>
     <x-partials.header />

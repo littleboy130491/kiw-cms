@@ -5,7 +5,7 @@
         'content_slug' => $item->slug,
     ]);
 
-    $item_image = isset($item->featuredImage) ? $item->featuredImage->url : Storage::url('media/content-default.jpg');
+    $item_image = $item->featuredImage?->url ?? Storage::url('media/content-default.jpg');
 @endphp
 
 

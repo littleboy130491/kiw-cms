@@ -4,12 +4,10 @@
     use App\Models\Tender;
     use Littleboy130491\Sumimasen\Enums\ContentStatus;
 
-    $items = Tender::with(['tenderYear', 'tenderStatus', 'tenderLocation'])
+    $items = Tender::with(['tenderYear', 'tenderStatus', 'tenderLocation', 'featuredImage'])
         ->where('status', ContentStatus::Published)
         ->limit($qty)
         ->get();
-
-    $image = Storage::url('media/a0e32957-9163-495b-813c-cc617f66dfc6.jpg')
 @endphp
 
 @if ($items->isNotEmpty())
