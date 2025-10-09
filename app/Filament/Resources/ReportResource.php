@@ -22,7 +22,6 @@ class ReportResource extends BaseContentResource
             'template',
             'custom_fields',
             'content',
-            'featured_image',
         ];
     }
     protected static function additionalTranslatableFormFields(?string $locale): array

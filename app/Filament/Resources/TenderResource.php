@@ -72,7 +72,6 @@ class TenderResource extends BaseContentResource
             'excerpt',
             'template',
             'custom_fields',
-            'featured_image'
         ];
     }
 
