@@ -34,6 +34,7 @@ class Facility extends Model
         'status',
         'template',
         'title',
+        'facility_category',
     ];
 
 

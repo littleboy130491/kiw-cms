@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\FacilityResource\Pages;
 use App\Models\Facility;
 use Littleboy130491\Sumimasen\Filament\Abstracts\BaseContentResource;
+use Filament\Forms\Components\Select;
 
 class FacilityResource extends BaseContentResource
 {
@@ -21,6 +22,18 @@ class FacilityResource extends BaseContentResource
             'excerpt',
             'template',
             'custom_fields',
+        ];
+    }
+
+    protected static function additionalNonTranslatableFormFields(): array
+    {
+
+        return [
+            Select::make('facility_category')
+                ->options([
+                    'utama' => 'Utama',
+                    'penunjang' => 'Penunjang',
+                ])
         ];
     }
 
