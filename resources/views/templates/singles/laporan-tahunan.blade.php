@@ -2,10 +2,7 @@
     use App\Models\Report;
     use Littleboy130491\Sumimasen\Enums\ContentStatus;
 
-    $items = Report::with('fileMedia')->where('status', ContentStatus::Published)->get();
-    
-    /*Revisi penambahan cover image*/
-    $thumbnailLaporan = Storage::url('media/dadc9265-8fd2-4f59-92af-7869b39f6272.png');
+    $items = Report::with(['fileMedia', 'featuredImage'])->where('status', ContentStatus::Published)->get();
 @endphp
 <x-layouts.app>
     <x-partials.header />
@@ -33,7 +30,7 @@
                         </thead>
                         <tbody>
                             @foreach ($items as $item)
-                                <x-loop.table-data :item="$item" :image="$thumbnailLaporan"/>
+                                <x-loop.table-data :item="$item"/>
                             @endforeach
                         </tbody>
                     </table>
