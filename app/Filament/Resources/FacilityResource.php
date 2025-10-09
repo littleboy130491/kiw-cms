@@ -34,6 +34,7 @@ class FacilityResource extends BaseContentResource
                     'utama' => 'Utama',
                     'penunjang' => 'Penunjang',
                 ])
+                ->default('utama'),
         ];
     }
 

@@ -3,11 +3,8 @@
     use Littleboy130491\Sumimasen\Enums\ContentStatus;
 
     $items = Facility::with('featuredImage')->where('status', ContentStatus::Published)->get();
-
-    // Hanya contoh pemisahan kategori Fasilitas Utama dan Fasilitas Penunjang
-    $utamaIds = [1,2,3,4];
-    $fasilitasUtama = $items->whereIn('id', $utamaIds);
-    $fasilitasPenunjang = $items->filter(fn($item) => $item->id >= 5);
+    $fasilitasUtama = $items->where('facility_category', 'utama');
+    $fasilitasPenunjang = $items->where('facility_category', 'penunjang');
     $fasilitasTitle = [
         'fasilitasUtama' => 'Fasilitas Utama',
         'fasilitasPenunjang' => 'Fasilitas Penunjang',
