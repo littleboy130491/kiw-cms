@@ -80,7 +80,7 @@
                         
                         @if(str_contains($item->cta, 'mailto:'))
                             <div class="flex flex-col gap-5">
-                                <h4>Subject Email:</h4>
+                                <h3>Subject Email:</h3>
                                 <p class="text-[var(--color-blue)]">{{ $item->careerCategories->first()?->title ?? 'Full Time' }} - {{ $item->title }} - Nama Lengkap</p>
                             </div>
                         @endif
