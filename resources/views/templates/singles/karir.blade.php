@@ -36,13 +36,33 @@
             <div class="flex flex-col lg:flex-row gap-10 mt-10">
 
                 <div class="flex flex-col gap-10 lg:w-1/2">
-                    <div>{!! $item->content !!}</div>
+                    @if($item->content)
+                        <div>
+                            <h3>
+                                {{ __('career.description') }}:
+                            </h3>
+                            <div class="mt-4">
+                                {!! $item->content !!}
+                            </div>
+                        </div>
+                    @endif
+                    
+                    @if($item->qualifications)
+                        <div>
+                            <h3>
+                                {{ __('career.qualifications') }}:
+                            </h3>
+                            <div class="mt-4">
+                                {!! $item->qualifications !!}
+                            </div>
+                        </div>
+                    @endif
 
                         <div class="flex flex-col gap-0">
                             @if(str_contains($item->cta, 'mailto:'))
-                                <h4>Send your Resume to:</h4>
+                                <h3>Send your Resume to:</h3>
                             @else
-                                <h4>Apply to:</h4>
+                                <h3>Apply to:</h3>
                             @endif
                             <!--button-->
                             <a class="w-fit btn1 mt-5"data-aos="fade-down" href="{{ $item->cta }}" target="_blank">{{ $item->cta_label ?? 'Apply' }}

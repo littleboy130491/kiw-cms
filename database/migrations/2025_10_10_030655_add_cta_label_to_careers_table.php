@@ -14,6 +14,10 @@ return new class extends Migration {
             $table->string('cta_label')
                 ->nullable()
                 ->after('cta');
+            $table->json('qualifications')
+                ->nullable()
+                ->after(column: 'content');
+          
         });
     }
 
@@ -24,6 +28,7 @@ return new class extends Migration {
     {
         Schema::table('careers', function (Blueprint $table) {
             $table->dropColumn('cta_label');
+            $table->dropColumn('qualifications');
         });
     }
 };

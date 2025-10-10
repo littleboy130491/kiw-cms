@@ -6,6 +6,7 @@ use App\Filament\Resources\CareerResource\Pages;
 use App\Models\Career;
 use Filament\Forms\Components\TextInput;
 use Littleboy130491\Sumimasen\Filament\Abstracts\BaseContentResource;
+use FilamentTiptapEditor\TiptapEditor;
 
 class CareerResource extends BaseContentResource
 {
@@ -34,6 +35,18 @@ class CareerResource extends BaseContentResource
             TextInput::make('cta_label')
                 ->label('Call to Action (label)')
                 ->nullable(),
+        ];
+    }
+
+    protected static function additionalTranslatableFormFields(?string $locale): array
+    {
+
+        return [
+           TiptapEditor::make('qualifications')
+                ->profile('simple')
+                ->nullable()
+                ->extraInputAttributes(['style' => 'min-height: 12rem;'])
+                ->columnSpanFull(),
         ];
     }
 

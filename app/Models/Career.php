@@ -38,6 +38,7 @@ class Career extends Model
         'status',
         'template',
         'title',
+        'qualifications',
     ];
 
 
@@ -64,6 +65,7 @@ class Career extends Model
         'excerpt',
         'slug',
         'title',
+        'qualifications',
     ];
 
 
