@@ -7,6 +7,11 @@ return [
         'image/webp',
         'image/svg+xml',
         'application/pdf',
+        // Allow video uploads
+        'video/mp4',
+        'video/quicktime', // MOV
+        'video/x-msvideo', // AVI
+        'video/x-matroska', // MKV
     ],
     'cloud_disks' => [
         's3',
@@ -40,7 +45,7 @@ return [
     'is_limited_to_directory' => false,
     'is_tenant_aware' => true,
     'tenant_ownership_relationship_name' => 'tenant',
-    'max_size' => 5000,
+    'max_size' => 102400,
     'model' => \Awcodes\Curator\Models\Media::class,
     'min_size' => 0,
     'path_generator' => null,
