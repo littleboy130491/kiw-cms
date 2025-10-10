@@ -1,5 +1,7 @@
 @php
     use App\Models\Archive;
+    use App\Models\Career;
+
     $record = Archive::where('slug->id', 'karir')->first();
     $karir_archive_url = route('cms.page', [
         'lang' => app()->getLocale(),
@@ -7,6 +9,10 @@
     ]);
     $item_image = $item->featuredImage?->url ?? Storage::url('media/content-default.jpg');
 
+    $relatedItems = Career::where('id', '!=', $item->id)
+                        ->latest()
+                        ->limit(3)
+                        ->get();
 @endphp
 
 
@@ -15,7 +21,6 @@
     <main>
 
         <x-partials.hero-page :image="isset($record->featuredImage) ? $record->featuredImage->url : Storage::url('media/karier-hero.jpg')" h1="{{ strip_tags($record->content) ?? ($record->title ?? 'Lowongan Kerja') }}" />
-
 
         <section id="single-karier" class="my-18 lg:my-30 px-4 sm:px-6 lg:px-0 lg:max-w-[1200px] lg:mx-auto">
             <div class="pb-10 border border-0 border-b-1 border-b-[var(--color-border)] flex flex-col gap-">
@@ -34,9 +39,13 @@
                     <div>{!! $item->content !!}</div>
 
                         <div class="flex flex-col gap-0">
-                            <h4>Send your Resume to:</h4>
+                            @if(str_contains($item->cta, 'mailto:'))
+                                <h4>Send your Resume to:</h4>
+                            @else
+                                <h4>Apply to:</h4>
+                            @endif
                             <!--button-->
-                            <a class="w-fit btn1 mt-5"data-aos="fade-down" href="mailto:{{ $item->cta }}" target="_blank">{{ $item->cta }}
+                            <a class="w-fit btn1 mt-5"data-aos="fade-down" href="{{ $item->cta }}" target="_blank">{{ $item->cta_label ?? 'Apply' }}
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none">
@@ -48,11 +57,15 @@
                                 </span>
                             </a>
                         </div>
+                        
+                        @if(str_contains($item->cta, 'mailto:'))
+                            <div class="flex flex-col gap-5">
+                                <h4>Subject Email:</h4>
+                                <p class="text-[var(--color-blue)]">{{ $item->careerCategories->first()?->title ?? 'Full Time' }} - {{ $item->title }} - Nama Lengkap</p>
+                            </div>
+                        @endif
 
-                        <div class="flex flex-col gap-5">
-                            <h4>Subject Email:</h4>
-                            <p class="text-[var(--color-blue)]">{{ $item->careerCategories->first()?->title ?? 'Full Time' }} - {{ $item->title }} - Nama Lengkap</p>
-                        </div>
+
                 </div>
                 
             
@@ -87,7 +100,9 @@
                 </div>
                 <div>
                     <div class="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
-                        
+                        @foreach ($relatedItems as $item)
+                            <x-loop.karir-grid :item="$item"/>
+                        @endforeach
                     </div>
                 </div>
 

@@ -29,7 +29,10 @@ class CareerResource extends BaseContentResource
 
         return [
             TextInput::make('cta')
-                ->label('Call to Action')
+                ->label('Call to Action (link)')
+                ->nullable(),
+            TextInput::make('cta_label')
+                ->label('Call to Action (label)')
                 ->nullable(),
         ];
     }

@@ -28,6 +28,7 @@ class Career extends Model
     protected $fillable = [
         'content',
         'cta',
+        'cta_label',
         'custom_fields',
         'excerpt',
         'featured_image',
