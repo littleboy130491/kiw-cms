@@ -6,8 +6,8 @@
 @endphp
 
 <a class=" btn5 group w-fit" href="{{ $btnUrl }}" target="_blank" rel="noopener">
-                        {{ $btnLabel }}
-                        <span class="gradient-icon">
-                            <x-icon.download-icon-current />
-                        </span>
-                    </a>
+    {{ $btnLabel }}
+    <span class="gradient-icon">
+        <x-icon.download-icon-current />
+    </span>
+</a>

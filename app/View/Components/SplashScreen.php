@@ -43,12 +43,7 @@ class SplashScreen extends Component
         $componentRecord = ComponentModel::where('title', 'splash-screen')->first();
        
         if ($componentRecord) {
-            $sections = $componentRecord->section;
-
-            // If multilingual content, fallback to default language if empty
-            if (empty($sections)) {
-                $sections = $componentRecord->getTranslation('section', config('cms.default_language'), true);
-            }
+            $sections = $componentRecord->block;
 
             // Use Laravel collection for easier manipulation
             $items = collect($sections);

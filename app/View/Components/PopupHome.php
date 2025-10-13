@@ -32,12 +32,7 @@ class PopupHome extends Component
 
         // Extract data from the record if it exists
         if ($componentRecord) {
-            $sections = $componentRecord->section;
-
-            // get from the main locale if empty
-            if (empty($componentRecord->section)) {
-                $sections = $componentRecord->getTranslation('section', config('cms.default_language'), true);
-            }
+            $sections = $componentRecord->block;
        
             if (isset($sections[0])) {
                 $data = $sections[0]['data'];
