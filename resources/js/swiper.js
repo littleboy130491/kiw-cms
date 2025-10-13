@@ -71,31 +71,32 @@ const swiperConfigs = [
       },
     },
   },
-  {
-    selector: '.swiper-logo',
-    config: {
-      slidesPerView: 7,
-      spaceBetween: 20,
-      loop: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      pagination: {
-        el: '.swiper-logo .swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        0: { slidesPerView: 2, spaceBetween: 10 },
-        768: { slidesPerView: 3, spaceBetween: 20 },
-        1024: { slidesPerView: 7, spaceBetween: 20 },
-      },
+{
+  selector: '.swiper-logo',
+  config: {
+    ...defaultConfig, // tambahkan ini agar module Autoplay ikut
+    slidesPerView: 7,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-logo .swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      0: { slidesPerView: 2, spaceBetween: 10 },
+      768: { slidesPerView: 3, spaceBetween: 20 },
+      1024: { slidesPerView: 7, spaceBetween: 20 },
     },
   },
+}
 ];
 
 // Initialize all swipers where the selector is found

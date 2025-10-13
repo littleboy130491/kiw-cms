@@ -2,7 +2,8 @@ import './alpine.js';
 import './aos-animate.js';
 import './lightbox.js';
 import './phone-separator.js';
-import './bg-switcher.js';
+import './bg-switcher.js'
+import './youtube-src-conversion.js'
 
 // Wait for DOM to be ready
 function waitForDOM() {
