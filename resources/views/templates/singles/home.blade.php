@@ -254,6 +254,12 @@
                 [
                     'image' => Storage::url('media/logoipsum-8.png'),
                 ],
+                [
+                    'image' => Storage::url('media/logoipsum-8.png'),
+                ],
+                [
+                    'image' => Storage::url('media/logoipsum-8.png'),
+                ],
             ],
             ];
             //End Tenant Logo Temporary Data
@@ -455,7 +461,7 @@
                             </svg>
                         </span>
                     </a>
-                </div>
+              </div>
 
                 <!--carousel-->
                 <x-loop.fasilitas-home-carousel />
