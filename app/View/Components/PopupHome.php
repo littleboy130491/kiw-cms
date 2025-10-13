@@ -13,6 +13,7 @@ class PopupHome extends Component
     public string $image;
     public string $alt;
     public bool $shouldShow;
+    public ?string $url;
 
     public function __construct(
         bool $setOnce = true,
@@ -27,7 +28,7 @@ class PopupHome extends Component
         $this->setOnce = $setOnce;
         $this->image = $image;
         $this->alt = $alt;
-
+        $this->url = null;
 
         // Extract data from the record if it exists
         if ($componentRecord) {
@@ -55,6 +56,11 @@ class PopupHome extends Component
                     if ($media && $media->alt) {
                         $this->alt = $media->alt;
                     }
+                }
+
+                // Set URL if available
+                if (isset($data['url'])) {
+                    $this->url = $data['url'];
                 }
             }
         }

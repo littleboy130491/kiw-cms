@@ -3,7 +3,13 @@
         <div class="bg-white p-4 rounded-lg shadow-lg max-w-sm w-full relative">
             <button onclick="closePopup()"
                 class="absolute sm:-top-9 sm:-right-6 -top-13 -right-0 text-white text-[2em] cursor-pointer">&times;</button>
-            <img src="{{ Storage::url($image) }}" alt="{{ $alt }}" class="rounded-lg" />
+            @if ($url)
+                <a href="{{ $url }}" target="_blank" rel="noopener noreferrer">
+                    <img src="{{ Storage::url($image) }}" alt="{{ $alt }}" class="rounded-lg" />
+                </a>
+            @else
+                <img src="{{ Storage::url($image) }}" alt="{{ $alt }}" class="rounded-lg" />
+            @endif
         </div>
     </div>
 @endif
