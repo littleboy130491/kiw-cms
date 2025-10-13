@@ -20,19 +20,25 @@ class PopupHome extends Component
         string $alt = 'Popup Image'
     ) {
         // Get the component record
-        $componentRecord = ComponentModel::where('title', 'popup')->first();
+        $componentRecord = ComponentModel::where('title', 'popup')
+                            ->first(); 
    
         // Default values
         $this->setOnce = $setOnce;
         $this->image = $image;
         $this->alt = $alt;
 
+
         // Extract data from the record if it exists
-        if ($componentRecord && !empty($componentRecord->section)) {
-            // Spatie Translatable already decodes JSON, so section is an array
+        if ($componentRecord) {
             $sections = $componentRecord->section;
 
-            if (isset($sections[0]) && $sections[0]['type'] === 'section_with_image') {
+            // get from the main locale if empty
+            if (empty($componentRecord->section)) {
+                $sections = $componentRecord->getTranslation('section', config('cms.default_language'), true);
+            }
+       
+            if (isset($sections[0])) {
                 $data = $sections[0]['data'];
 
                 // Set setOnce based on description field
