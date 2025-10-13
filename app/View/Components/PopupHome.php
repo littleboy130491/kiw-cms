@@ -4,6 +4,8 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\Session;
+use Littleboy130491\Sumimasen\Models\Component as ComponentModel;
+use Awcodes\Curator\Models\Media;
 
 class PopupHome extends Component
 {
@@ -17,9 +19,39 @@ class PopupHome extends Component
         string $image = 'media/bulan-K3.jpg',
         string $alt = 'Popup Image'
     ) {
+        // Get the component record
+        $componentRecord = ComponentModel::where('title', 'popup')->first();
+   
+        // Default values
         $this->setOnce = $setOnce;
         $this->image = $image;
         $this->alt = $alt;
+
+        // Extract data from the record if it exists
+        if ($componentRecord && !empty($componentRecord->section)) {
+            // Spatie Translatable already decodes JSON, so section is an array
+            $sections = $componentRecord->section;
+
+            if (isset($sections[0]) && $sections[0]['type'] === 'section_with_image') {
+                $data = $sections[0]['data'];
+
+                // Set setOnce based on description field
+                if (isset($data['description']) && $data['description'] === 'setOnce') {
+                    $this->setOnce = true;
+                }
+
+                // Set image from Curator
+                if (isset($data['image'])) {
+                    $media = Media::find($data['image']);
+                    $this->image = $media ? $media->path : $this->image;
+                 
+                    // Optionally use alt text from media if available
+                    if ($media && $media->alt) {
+                        $this->alt = $media->alt;
+                    }
+                }
+            }
+        }
 
         // Check if popup should show based on session
         if ($this->setOnce) {
