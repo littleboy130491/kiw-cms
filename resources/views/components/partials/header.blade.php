@@ -83,20 +83,9 @@
                 <div class="hidden lg:flex lg:flex-row lg:justify-end gap-5 mb-8 above-header">
 
                     <!--Button-->
-                    <a class=" btn5 group w-fit" href="{{ route('cms.page', [app()->getLocale(), 'kontak']) }}"
-                        rel="noopener">
-                        Hubungi Kami
-                        <span class="gradient-icon">
-                            <x-icon.pencil />
-                        </span>
-                    </a>
+                    <x-sumimasen-cms::component-loader name="header-btn-hubungi" />
 
-                    <a class=" btn5 group w-fit" href="#" target="_blank" rel="noopener">
-                        Unduh Brosur
-                        <span class="gradient-icon">
-                            <x-icon.download-icon-current />
-                        </span>
-                    </a>
+                    <x-sumimasen-cms::component-loader name="header-btn-brosur" />
 
                     <!--Translate-->
                     <x-partials.lang-switcher variant="desktop" />

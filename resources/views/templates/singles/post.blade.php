@@ -11,7 +11,7 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page :image="$item->featuredImage?->url" />
+        <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/berita-hero.jpg')" />
 
         <!--Start Post Content-->
 

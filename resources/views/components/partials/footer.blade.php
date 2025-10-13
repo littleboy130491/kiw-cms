@@ -1,5 +1,6 @@
 @php
     use Datlechin\FilamentMenuBuilder\Models\Menu;
+    use Littleboy130491\Sumimasen\Models\Component;
 
     $currentLang = app()->getLocale();
     $availableLanguages = array_keys(config('cms.language_available', []));
@@ -31,6 +32,10 @@
     $menu_footer_1 = $getMenu('footer_menu_1');
     $menu_footer_2 = $getMenu('footer_menu_2');
     $menu_footer_3 = $getMenu('footer_menu_3');
+
+    $prefooter = Component::firstWhere('title', 'prefooter');
+    $prefooter_title = $prefooter->section['data']['title'] ?? 'Mulai Investasi Anda di Kawasan Industri Strategis!';
+  
 @endphp
 
 
@@ -42,11 +47,9 @@
 
         <!--Main Content-->
         <div>
-            <!--Title-->
-            <div class="mb-15">
-                <h2 class="!text-white lg:w-[850px] sm:w-[500px] footer" data-aos="fade-up">Mulai Investasi Anda di
-                    Kawasan Industri Strategis!</h2>
-            </div>
+            <!--Prefooter-->
+            <x-sumimasen-cms::component-loader name="prefooter" />
+            
 
             <!--Content-->
             <div class="flex sm:flex-row flex-col lg:gap-5 gap-18 justify-between">
@@ -184,7 +187,7 @@
         <!--Copyrights-->
         <div
             class="text-white text-center py-5 border-t-1 border-[var(--color-bordertransparent)] sm:!text-[.9em] !text-[.65em]">
-            {{ date('Y') }} © Kawasan Industri Wijayakusuma | Seluruh Hak Cipta Dilindungi
+            {{ date('Y') }} © Kawasan Industri Wijayakusuma | {{ __('footer.copyright') }}
         </div>
 
     </div>
