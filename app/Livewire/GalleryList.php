@@ -26,7 +26,10 @@ class GalleryList extends Component
 
     public function updatedActiveTab()
     {
+        $this->selectedMonth = null;
+        $this->selectedYear = null;
         $this->resetPagination();
+        $this->dispatch('reset-filters');
     }
 
     public function updatedSelectedMonth()

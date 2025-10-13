@@ -56,6 +56,7 @@ $galleryPerusahaan = [
                     <select 
                         id="month-filter"
                         wire:model.live="selectedMonth"
+                        wire:key="month-{{ $activeTab }}"
                         class="block w-full h-[45px] pl-3 pr-2 rounded-md border-gray-300 shadow-sm focus:border-[var(--color-blue)] focus:ring-[var(--color-blue)] sm:text-sm"
                     >
                         <option value="">{{$galleryPerusahaan[1]['filter']['allMonth']}}</option>
@@ -69,6 +70,7 @@ $galleryPerusahaan = [
                     <select 
                         id="year-filter"
                         wire:model.live="selectedYear"
+                        wire:key="year-{{ $activeTab }}"
                         class="block w-full h-[45px] pl-3 pr-2 rounded-md border-gray-300 shadow-sm focus:border-[var(--color-blue)] focus:ring-[var(--color-blue)] sm:text-sm"
                     >
                         <option value="">{{$galleryPerusahaan[1]['filter']['allYear']}}</option>
@@ -165,4 +167,5 @@ $galleryPerusahaan = [
     <div wire:loading wire:target="activeTab,selectedMonth,selectedYear" class="fixed top-4 right-4 bg-indigo-600 text-white px-4 py-2 rounded-md shadow-lg">
         Loading...
     </div>
+   
 </div>

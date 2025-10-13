@@ -859,6 +859,7 @@ h6 {
   background: linear-gradient(268deg, var(--color-lightblue) 1.1%, var(--color-blue) 99.1%);
   cursor: pointer;
   color: white;
+  border: 1px solid transparent;
   text-transform: uppercase;
   font-family: "Manrope";
   font-style: normal;
@@ -873,13 +874,13 @@ h6 {
   gap: 20px;
   border-radius: 60px;
   transition: background 0.5s ease;
-  border: none;
 }
 
 .btn11.active {
   background: linear-gradient(268deg, var(--color-lightblue) 1.1%, var(--color-blue) 99.1%);
   cursor: pointer;
   color: white;
+  border: 1px solid transparent;
   text-transform: uppercase;
   font-family: "Manrope";
   font-style: normal;
@@ -894,7 +895,6 @@ h6 {
   gap: 20px;
   border-radius: 60px;
   transition: background 0.5s ease;
-  border: none;
 }
 
 
