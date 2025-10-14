@@ -1,59 +1,39 @@
+@php
+    $blocks = collect($item->block);
+    
+    $imageSections = $blocks
+        ->where('data.block_id', 'image')
+        ->pluck('data')
+        ->values();
+ 
+    $hotspots = $blocks
+        ->where('data.block_id', 'hotspot')
+        ->pluck('data')
+        ->values();
+
+@endphp
 <x-layouts.app>
     <x-partials.header />
 
     <main>
-        <x-partials.hero-page :image="Storage::url('media/lahan-industri-hero.jpg')" h1="Lahan Industri" />
+        <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/lahan-industri-hero.jpg')" h1="{{ $item->title }}" />
 
         <!--Start Lahan Industri-->
 
         <section data-aos="zoom-in-up" id="lahan-industri"
             class="relative map-container my-18 lg:my-30 relative px-4 sm:px-6 lg:px-0 overflow-x-auto whitespace-nowrap max-w-full lg:w-[1200px] lg:mx-auto">
             <div class="relative inline-block min-w-full">
-                <img src="{{ Storage::url('media/4ebba16e-1b81-4316-9614-c6d3c7832e69.jpg') }}" class="w-full">
-                @php
-                $lahan_industri = [
-                    [
-                        'top' => '30',
-                        'left' => '50',
-                        'label' => 'Kaveling D',
-                        'luas' => '4.50 Ha',
-                        'image' => 'media/kaveling-d.jpg',
-                        'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                        'note' => '*Calon investor tidak wajib membeli satu kavling penuh. Pembelian lahan dapat
-                        disesuaikan dengan kebutuhan, sesuai rencana bisnis yang diinginkan.',
-                    ],
-                    [
-                        'top' => '55',
-                        'left' => '22',
-                        'label' => 'Kaveling C',
-                        'luas' => '1.50 Ha',
-                        'image' => 'media/kaveling-d.jpg',
-                        'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                        'note' => '*Calon investor tidak wajib membeli satu kavling penuh. Pembelian lahan dapat
-                        disesuaikan dengan kebutuhan, sesuai rencana bisnis yang diinginkan.',
-                    ],
-                    [
-                        'top' => '55',
-                        'left' => '90',
-                        'label' => 'Kaveling C',
-                        'luas' => '1.50 Ha',
-                        'image' => 'media/kaveling-d.jpg',
-                        'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                        'note' => '*Calon investor tidak wajib membeli satu kavling penuh. Pembelian lahan dapat
-                        disesuaikan dengan kebutuhan, sesuai rencana bisnis yang diinginkan.',
-                    ],
-                ];
-                @endphp
+                <img src="{{ $imageSections[0]['media_url'] }}" class="w-full">
                 <!-- Hotspot Items -->
-                @foreach ($lahan_industri as $item)
+                @foreach ($hotspots as $item)
                 <x-loop.hotspot-item-lahan-industri
                     :top="$item['top']"
                     :left="$item['left']"
-                    :label="$item['label']"
+                    :label="$item['title']"
                     :luas="$item['luas']"
-                    :image="Storage::url($item['image'])"
+                    :image="$item['media_url']"
                 >
-                    {{ $item['desc'] }}
+                    {{ $item['description'] }}
                     </x-loop.hotspot-item-lahan-industri>
                 @endforeach
             </div>
@@ -82,7 +62,7 @@
                 <div class="modal-content pb-6 px-6">
                     <div class="flex flex-col md:flex-row gap-6">
                         <div class="modal-image w-full md:w-1/3">
-                            <img class="w-full rounded-md" src="" alt="Foto Manajemen">
+                            <img class="w-full rounded-md" src="">
                         </div>
                         <div class="modal-info w-full md:w-2/3 flex flex-col gap-7">
                             <div class="flex flex-col gap-2">
