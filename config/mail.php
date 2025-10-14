@@ -104,6 +104,11 @@ return [
             // ],
         ],
 
+        'brevo' => [
+            'transport' => 'brevo',
+            // ...
+        ],
+
     ],
 
     /*

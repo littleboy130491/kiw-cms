@@ -276,6 +276,8 @@
                 [
                     'subTitle' => 'Artikel & Berita',
                     'title' => 'Dapatkan Informasi Terbaru',
+                    'btnText' => 'Berita Lainnya',
+                    'btnLink' => '/berita',
                 ],
             ];
             //End Berita Logo Temporary Data
@@ -285,6 +287,8 @@
                 [
                     'subTitle' => 'Anual Report',
                     'title' => 'Laporan Tahunan & Audit Perusahaan',
+                    'btnText' => 'Laporan Tahunan',
+                    'btnLink' => '/laporan-tahunan',
                 ],
             ];
             //End Laporan Logo Temporary Data
@@ -560,6 +564,25 @@
         </section>
         <!--End Tenant-->
 
+        <!--Start Instagram Feed-->
+        <section id="instagram-feed-home" class="lg:max-w-[1200px] lg:mx-auto flex flex-col lg:my-30 my-18 lg:px-0 sm:px-6 px-4 gap-8">
+            <!--Title-->
+            <div class="flex flex-col gap-5">
+                <h6 class="bullet-1 self-center" data-aos="fade-down">Ikuti Kami</h6>
+                <h2 class="text-center" data-aos="fade-up">Instagram Feed</h2>
+            </div>
+            
+            <!--Content-->
+            <x-behold-instagram-feed
+                type="all"
+                :columns="3"
+                :limit="6"
+                :show-caption="false"
+                :show-likes="false"
+                :show-timestamp="false"
+            />
+        </section>
+        <!--End Instagram Feed-->
 
         <!--Start Artikel Berita-->
         <section id="artikel-berita-home"
@@ -572,8 +595,7 @@
                 </div>
                 <!--button desktop tablet-->
                 <a class="sm:!flex !hidden w-fit btn1 mt-5" data-aos="fade-down"
-                    href="{{ $archive_post_url }}">Berita
-                    Lainnya
+                    href="{{ $archive_post_url }}">{{ $beritaHome[0]['btnText'] }}
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -590,8 +612,7 @@
             <x-loop.artikel-berita-grid />
 
             <!--button mobile-->
-            <a class="!flex sm:!hidden w-fit btn1 mt-5" data-aos="fade-down" href="{{ $archive_post_url }}">Berita
-                Lainnya
+            <a class="!flex sm:!hidden w-fit btn1 mt-5" data-aos="fade-down" href="{{ $archive_post_url }}">{{ $beritaHome[0]['btnText'] }}
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none">
@@ -618,10 +639,10 @@
 
                 <!--Content-->
                 <x-loop.laporan-tahunan-grid />
-                <div class="flex justify-center">
+                <div class="flex sm:justify-center justify-start">
                 <!--button desktop tablet-->
                 <a class="w-fit btn1 mt-5" data-aos="fade-down"
-                    href="/laporan-tahunan">Laporan Lainnya
+                    href="{{ $laporanHome[0]['btnLink'] }}">{{ $laporanHome[0]['btnText'] }}
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
