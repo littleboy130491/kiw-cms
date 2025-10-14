@@ -1,5 +1,4 @@
 @php
-dd($item->block);
     // Process CMS blocks into organized data structure
     $blocks = collect($item->block);
     
