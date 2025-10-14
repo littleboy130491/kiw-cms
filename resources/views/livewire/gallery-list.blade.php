@@ -69,12 +69,12 @@
     {{-- Media Grid --}}
     <div wire:loading.class="opacity-50" class="transition-opacity">
         @if($mediaItems->count() > 0)
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+            <div class="{{ $activeTab === 'videos' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' }} gap-6 mb-8">
                 @foreach($mediaItems as $media)
                     <div class="group relative bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
                         @if($activeTab === 'images')
                             {{-- Image with Lightbox --}}
-                            <a href="{{ $media->url }}" data-lightbox="gallery-{{ $activeTab }}" data-title="{{ $media->alt ?? $media->name }}">
+                            <a href="{{ $media->url }}" data-lightbox="gallery-{{ $activeTab }}">
                                 <div class="aspect-square bg-gray-200 overflow-hidden">
                                     <img 
                                         src="{{ $media->url }}" 
@@ -97,14 +97,6 @@
                             </div>
                         @endif
 
-                        {{-- Optional: Media Info --}}
-                        @if($media->name || $media->alt)
-                            <div class="p-3 bg-gray-50">
-                                <p class="text-sm text-gray-600 truncate">
-                                    {{ $media->alt ?? $media->name }}
-                                </p>
-                            </div>
-                        @endif
                     </div>
                 @endforeach
             </div>

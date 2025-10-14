@@ -2,8 +2,8 @@ import './alpine.js';
 import './aos-animate.js';
 import './lightbox.js';
 import './phone-separator.js';
-import './bg-switcher.js'
-import './youtube-src-conversion.js'
+import './bg-switcher.js';
+import './youtube-src-conversion.js';
 
 // Wait for DOM to be ready
 function waitForDOM() {
@@ -85,14 +85,6 @@ async function loadPageModules() {
         }
     }
 
-    // Galeri dokumentasi page modules
-    if (bodyClasses.contains('dokumentasi') || bodyClasses.contains('documentation')) {
-        try {
-            await import('./pages/galeri-dokumentasi.js');
-        } catch (error) {
-            // Failed to load page-galeri-dokumentasi
-        }
-    }
 }
 
 // Initialize page module loading
