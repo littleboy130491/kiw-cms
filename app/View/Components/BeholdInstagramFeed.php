@@ -101,24 +101,45 @@ class BeholdInstagramFeed extends Component
         $transformed = [];
         
         foreach ($posts as $post) {
+            // Get appropriate image sizes from Behold
+            $mediaUrl = null;
+            $thumbnailUrl = null;
+            
+            if (isset($post['sizes'])) {
+                // Use large size for main display for better quality
+                $mediaUrl = $post['sizes']['large']['mediaUrl'] ?? $post['sizes']['medium']['mediaUrl'] ?? $post['mediaUrl'] ?? null;
+                // Use medium size for thumbnail
+                $thumbnailUrl = $post['sizes']['medium']['mediaUrl'] ?? $post['sizes']['small']['mediaUrl'] ?? $post['thumbnailUrl'] ?? null;
+            } else {
+                // Fallback to original URLs
+                $mediaUrl = $post['mediaUrl'] ?? $post['thumbnailUrl'] ?? null;
+                $thumbnailUrl = $post['thumbnailUrl'] ?? $post['mediaUrl'] ?? null;
+            }
+            
             $feedItem = [
                 'id' => $post['id'],
                 'media_type' => $post['mediaType'],
-                'media_url' => $post['mediaUrl'] ?? $post['thumbnailUrl'] ?? null,
-                'thumbnail_url' => $post['thumbnailUrl'] ?? $post['mediaUrl'] ?? null,
+                'media_url' => $mediaUrl,
+                'thumbnail_url' => $thumbnailUrl,
                 'permalink' => $post['permalink'],
                 'timestamp' => $post['timestamp'],
                 'caption' => $post['caption'] ?? $post['prunedCaption'] ?? null,
                 'like_count' => 0, // Behold doesn't provide like count
                 'isReel' => $post['isReel'] ?? false,
+                'sizes' => $post['sizes'] ?? null, // Pass through sizes for potential use
             ];
             
             // Handle carousel albums
             if ($post['mediaType'] === 'CAROUSEL_ALBUM' && isset($post['children'])) {
                 // Use the first child's media as the main media
                 $firstChild = $post['children'][0];
-                $feedItem['media_url'] = $firstChild['mediaUrl'];
-                $feedItem['thumbnail_url'] = $firstChild['mediaUrl'];
+                if (isset($firstChild['sizes'])) {
+                    $feedItem['media_url'] = $firstChild['sizes']['large']['mediaUrl'] ?? $firstChild['sizes']['medium']['mediaUrl'] ?? $firstChild['mediaUrl'];
+                    $feedItem['thumbnail_url'] = $firstChild['sizes']['medium']['mediaUrl'] ?? $firstChild['sizes']['small']['mediaUrl'] ?? $firstChild['mediaUrl'];
+                } else {
+                    $feedItem['media_url'] = $firstChild['mediaUrl'];
+                    $feedItem['thumbnail_url'] = $firstChild['mediaUrl'];
+                }
             }
             
             $transformed[] = $feedItem;

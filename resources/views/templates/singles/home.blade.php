@@ -564,25 +564,6 @@
         </section>
         <!--End Tenant-->
 
-        <!--Start Instagram Feed-->
-        <section id="instagram-feed-home" class="lg:max-w-[1200px] lg:mx-auto flex flex-col lg:my-30 my-18 lg:px-0 sm:px-6 px-4 gap-8">
-            <!--Title-->
-            <div class="flex flex-col gap-5">
-                <h6 class="bullet-1 self-center" data-aos="fade-down">Ikuti Kami</h6>
-                <h2 class="text-center" data-aos="fade-up">Instagram Feed</h2>
-            </div>
-            
-            <!--Content-->
-            <x-behold-instagram-feed
-                type="all"
-                :columns="3"
-                :limit="6"
-                :show-caption="false"
-                :show-likes="false"
-                :show-timestamp="false"
-            />
-        </section>
-        <!--End Instagram Feed-->
 
         <!--Start Artikel Berita-->
         <section id="artikel-berita-home"

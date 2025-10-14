@@ -24,9 +24,9 @@
                 <a href="{{ $feed['permalink'] }}" target="_blank" rel="noopener noreferrer" class="block">
                     @if (in_array($feed['media_type'], ['IMAGE', 'CAROUSEL_ALBUM']))
                         @if($feed['media_type'] === 'CAROUSEL_ALBUM')
-                            <div class="relative">
+                            <div class="relative aspect-square bg-gray-100 rounded-md overflow-hidden">
                                 <img src="{{ $feed['media_url'] }}" alt="{{ $feed['caption'] ?? 'Instagram Carousel' }}"
-                                    class="w-full h-48 lg:h-60 object-cover rounded-md" loading="lazy" />
+                                    class="w-full h-full" style="object-fit: cover;" loading="lazy" />
                                 <div class="absolute top-2 right-2 bg-black bg-opacity-50 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM2 7a2 2 0 012-2h12a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V7z"/>
@@ -34,14 +34,16 @@
                                 </div>
                             </div>
                         @else
-                            <img src="{{ $feed['media_url'] }}" alt="{{ $feed['caption'] ?? 'Instagram Image' }}"
-                                class="w-full h-48 lg:h-60 object-cover rounded-md" loading="lazy" />
+                            <div class="relative aspect-square bg-gray-100 rounded-md overflow-hidden">
+                                <img src="{{ $feed['media_url'] }}" alt="{{ $feed['caption'] ?? 'Instagram Image' }}"
+                                    class="w-full h-full" style="object-fit: cover;" loading="lazy" />
+                            </div>
                         @endif
                     @elseif($feed['media_type'] === 'VIDEO')
-                        <div class="relative">
+                        <div class="relative aspect-square bg-gray-100 rounded-md overflow-hidden">
                             <img src="{{ $feed['thumbnail_url'] ?? $feed['media_url'] }}"
                                 alt="{{ $feed['caption'] ?? 'Instagram Video' }}"
-                                class="w-full h-48 lg:h-60 object-cover rounded-md" loading="lazy" />
+                                class="w-full h-full" style="object-fit: cover;" loading="lazy" />
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <svg class="w-12 h-12 text-white opacity-75" fill="currentColor" viewBox="0 0 20 20">
                                     <path

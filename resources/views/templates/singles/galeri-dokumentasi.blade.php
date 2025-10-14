@@ -24,7 +24,17 @@
             </div>
 
             <!--Content-->
-            <x-instagram-behold/>
+         
+            <x-behold-instagram-feed
+                type="all"
+                :columns="3"
+                :limit="40"
+                :show-caption="false"
+                :show-likes="false"
+                :show-timestamp="false"
+            />
+        </section>
+       
 
 
         </section>
@@ -55,7 +65,14 @@
 
 
                 <x-tab.tab-contents-video id="tab2">
-                    <x-instagram-feed type="video" :columns="4" limit="20" />
+                     <x-behold-instagram-feed
+                        type="reel"
+                        :columns="3"
+                        :limit="40"
+                        :show-caption="false"
+                        :show-likes="false"
+                        :show-timestamp="false"
+                    />
                 </x-tab.tab-contents-video>
 
             </div>
@@ -67,10 +84,6 @@
         <section id="kegiatan-perusahaan-gallery"
             class="flex flex-col my-18 lg:my-30 px-4 sm:px-6 lg:px-0 gap-7 lg:gap-10 lg:w-[1200px] lg:mx-auto">
             <livewire:gallery-list />
-           
-
-
-
         </section>
         <!--End Kegiatan Perusahaan-->
 
