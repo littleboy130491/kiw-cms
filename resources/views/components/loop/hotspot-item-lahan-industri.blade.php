@@ -7,7 +7,7 @@
     <i class="fa-solid fa-location-dot text-red-600 text-[30px] z-10 relative cursor-pointer animate-top-down"></i>
     <!-- Hidden Info -->
     <div class="hidden">
-        <h6 class="position">Luas Tanah: {{ $luas }}</h6>
+        <h6 class="position">{{ __('lahan-industri.luas_tanah') }} {{ $luas }}</h6>
         <h4 class="name">{{ $label }}</h4>
         <img class="photo" src="{{ asset($image) }}">
     </div>

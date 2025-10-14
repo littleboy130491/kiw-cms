@@ -87,8 +87,8 @@
             <div class="w-full flex justify-center">
                 <button type="submit" class="w-fit btn1 mt-5 flex items-center gap-2 text-white"
                     wire:loading.attr="disabled" wire:target="submit" id="submit-button">
-                    <span wire:loading.remove wire:target="submit">Kirim</span>
-                    <span wire:loading wire:target="submit">Mengirim...</span>
+                    <span wire:loading.remove wire:target="submit">{{ __('kontak.submit') }}</span>
+                    <span wire:loading wire:target="submit">{{ __('kontak.submitting') }}</span>
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
