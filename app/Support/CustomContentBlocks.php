@@ -68,7 +68,7 @@ class CustomContentBlocks
                 TextInput::make('left')
                     ->numeric(),
                 TextInput::make(name: 'company'),
-                CuratorPicker::make('flag')
+                CuratorPicker::make('image')
                     ->label('Flag')
                     ->acceptedFileTypes(['image/*'])
                     ->helperText('Accepted file types: image only'),
