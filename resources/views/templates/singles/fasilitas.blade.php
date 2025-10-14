@@ -15,7 +15,7 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/fasilitas-hero.jpg')" h1="{{ strip_tags($item->content) ?? 'Fasilitas' }}" />
+        <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/fasilitas-hero.jpg')" h1="{{ $item->title ?? 'Fasilitas' }}" />
 
 
         <!--Start Fasilitas Content-->
