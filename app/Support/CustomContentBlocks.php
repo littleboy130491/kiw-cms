@@ -6,6 +6,7 @@ use Filament\Forms\Components\Builder as FormsBuilder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Filament\Forms\Components\Toggle;
 
 class CustomContentBlocks
 {
@@ -23,17 +24,29 @@ class CustomContentBlocks
     private static function getHotspotLahanIndustriBlock(): FormsBuilder\Block
     {
         return FormsBuilder\Block::make('hotspot-lahan-industri')
-            ->label('Custom Block')
+            ->label('Hotspot Lahan Industri')
             ->schema([
                 TextInput::make('block_id')
                     ->label('Block ID')
                     ->helperText('Identifier for the block')
                     ->columnSpanFull(),
-                TextInput::make('custom_field')
-                    ->label('Custom Field'),
-                Textarea::make('custom_description')
-                    ->label('Custom Description')
+                TextInput::make('title'),
+                TextInput::make('luas'),
+                TextInput::make('top')
+                    ->numeric(),
+                TextInput::make('left')
+                    ->numeric(),
+                Textarea::make('description')
                     ->columnSpanFull(),
+                Textarea::make('note')
+                    ->columnSpanFull(),
+                CuratorPicker::make('pointer')
+                    ->label('Pointer')
+                    ->acceptedFileTypes(['image/*'])
+                    ->helperText('Accepted file types: image only'),
+                Toggle::make('hide')
+                    ->label('Hide Block')
+                    ->helperText('Hide this block from display'),
             ])
             ->columns(2);
     }
