@@ -145,7 +145,8 @@ class AdminPanelProvider extends PanelProvider
                 NavigationGroup::make()
                     ->label('Settings')
                     ->icon('heroicon-o-cog-6-tooth'),
-            ]);
+            ])
+            ->globalSearch(false);
     }
 
     public function boot(): void

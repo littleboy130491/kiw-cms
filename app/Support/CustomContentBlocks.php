@@ -15,16 +15,14 @@ class CustomContentBlocks
     public static function getCustomBlocks(): array
     {
         return [
-            static::getCustomBlock(),
-            static::getAnotherCustomBlock(),
-            static::getTestimonialBlock(),
+            static::getHotspotLahanIndustriBlock(),
             // Add more custom blocks here
         ];
     }
 
-    private static function getCustomBlock(): FormsBuilder\Block
+    private static function getHotspotLahanIndustriBlock(): FormsBuilder\Block
     {
-        return FormsBuilder\Block::make('custom')
+        return FormsBuilder\Block::make('hotspot-lahan-industri')
             ->label('Custom Block')
             ->schema([
                 TextInput::make('block_id')
@@ -40,42 +38,4 @@ class CustomContentBlocks
             ->columns(2);
     }
 
-    private static function getAnotherCustomBlock(): FormsBuilder\Block
-    {
-        return FormsBuilder\Block::make('another_custom')
-            ->label('Another Custom Block')
-            ->schema([
-                TextInput::make('block_id')
-                    ->label('Block ID')
-                    ->columnSpanFull(),
-                TextInput::make('another_field')
-                    ->label('Another Field'),
-                TextInput::make('extra_field')
-                    ->label('Extra Field'),
-            ])
-            ->columns(2);
-    }
-
-    private static function getTestimonialBlock(): FormsBuilder\Block
-    {
-        return FormsBuilder\Block::make('testimonial')
-            ->label('Testimonial')
-            ->schema([
-                TextInput::make('block_id')
-                    ->label('Block ID')
-                    ->columnSpanFull(),
-                TextInput::make('author_name')
-                    ->label('Author Name'),
-                TextInput::make('author_title')
-                    ->label('Author Title'),
-                Textarea::make('quote')
-                    ->label('Testimonial Quote')
-                    ->columnSpanFull(),
-                CuratorPicker::make('author_image')
-                    ->label('Author Photo')
-                    ->acceptedFileTypes(['image/*'])
-                    ->preserveFilenames(),
-            ])
-            ->columns(2);
-    }
 }
