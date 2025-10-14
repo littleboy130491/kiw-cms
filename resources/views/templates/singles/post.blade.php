@@ -28,11 +28,11 @@
                         <div class="flex flex-row gap-4 w-fit px-3 py-2 rounded-full bg-[var(--color-transit)]">
                             <div class="flex flex-row items-center gap-2">
                                 <x-icon.tag-icon-color />
-                                <p class="!text-[var(--color-purple)] capitalize">{{ $item_label }}</p>
+                                <p class="!text-[var(--color-purple)] capitalize sm:text-[.9em] text-[.7em]">{{ $item_label }}</p>
                             </div>
                             <div class="flex flex-row items-center gap-2">
                                 <x-icon.calendar-icon-color />
-                                <p class="!text-[var(--color-purple)]">{{ $item_date }}</p>
+                                <p class="!text-[var(--color-purple)] sm:text-[.9em] text-[.7em]">{{ $item_date }}</p>
                             </div>
                         </div>
                         <div class="flex flex-row gap-4 w-fit">
@@ -43,7 +43,7 @@
                             <div class="flex flex-row gap-1 items-center">
                                 <img class="w-[15px]" src="{{ Storage::url('media/view.png') }}">
                                 <span id="like-text"
-                                    class="text-[var(--color-purple)]">{{ $item->getPageViewsAttribute() }}</span>
+                                    class="text-[var(--color-purple)] sm:text-[.9em] text-[.7em]">{{ $item->getPageViewsAttribute() }}</span>
                             </div>
                         </div>
                     </div>

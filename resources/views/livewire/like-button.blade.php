@@ -9,7 +9,7 @@
         src="{{ Storage::url('media/liked.png') }}" wire:loading.class="opacity-50" wire:target="toggleLike">
 
     @if ($showCount)
-        <span class="text-[var(--color-purple)] transition-all duration-200" wire:loading.class="opacity-50"
+        <span class="text-[var(--color-purple)] transition-all duration-200 sm:text-[.9em] text-[.7em]" wire:loading.class="opacity-50"
             wire:target="toggleLike">
             {{ number_format($likesCount) }} {{ $likesCount == 1 ? 'Like' : 'Likes' }}
         </span>
