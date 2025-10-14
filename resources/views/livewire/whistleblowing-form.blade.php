@@ -8,8 +8,8 @@
     <!--form-->
     <form wire:submit.prevent="submit" class="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-5">
         <div class="sm:w-[100%] lg:w-[100%]">
-            <label for="name" class="hidden">Nama</label>
-            <input type="text" id="name" placeholder="Masukkan nama Lengkap Anda" required
+            <label for="name" class="hidden">{{ __('whistleblowing.name') }}</label>
+            <input type="text" id="name" placeholder="{{ __('whistleblowing.full_name') }}" required
                 class="mt-1 w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 @error('name') border-red-500 @enderror"
                 wire:model="name">
             @error('name')
@@ -18,8 +18,8 @@
         </div>
 
         <div class="sm:w-[48.5%] lg:w-[49%]">
-            <label for="email" class="hidden">Email</label>
-            <input type="email" id="email" placeholder="Alamat email contoh@email.com" required
+            <label for="email" class="hidden">{{ __('whistleblowing.email') }}</label>
+            <input type="email" id="email" placeholder="{{ __('whistleblowing.email_placeholder') }}" required
                 class="mt-1 w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 @error('email') border-red-500 @enderror"
                 wire:model="email">
             @error('email')
@@ -28,8 +28,8 @@
         </div>
 
         <div class="sm:w-[48.5%] lg:w-[49%]">
-            <label for="phone" class="hidden">Telepon</label>
-            <input type="tel" id="phone" placeholder="Nomor Telepon" required pattern="[0-9]+" inputmode="numeric"
+            <label for="phone" class="hidden">{{ __('whistleblowing.phone') }}</label>
+            <input type="tel" id="phone" placeholder="{{ __('whistleblowing.phone_number') }}" required pattern="[0-9]+" inputmode="numeric"
                 class="mt-1 w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 @error('phone') border-red-500 @enderror"
                 wire:model="phone">
             @error('phone')
@@ -38,8 +38,8 @@
         </div>
 
         <div class="sm:w-full">
-            <label for="comment" class="hidden">Komentar</label>
-            <textarea id="comment" rows="8" placeholder="Tulis pesan Anda di sini..." required
+            <label for="comment" class="hidden">{{ __('whistleblowing.comment') }}</label>
+            <textarea id="comment" rows="8" placeholder="{{ __('whistleblowing.write_message') }}" required
                 class="w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 @error('message') border-red-500 @enderror"
                 wire:model="message"></textarea>
             @error('message')
@@ -77,8 +77,8 @@
             <div class="w-full flex justify-center">
                 <button type="submit" class="w-fit btn1 mt-5 flex items-center gap-2 text-white self-center"
                     wire:loading.attr="disabled" wire:target="submit" id="submit-button">
-                    <span wire:loading.remove wire:target="submit">Kirim</span>
-                    <span wire:loading wire:target="submit">Mengirim...</span>
+                    <span wire:loading.remove wire:target="submit">{{ __('whistleblowing.submit') }}</span>
+                    <span wire:loading wire:target="submit">{{ __('whistleblowing.submitting') }}</span>
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
