@@ -46,7 +46,42 @@ class CustomContentBlocks
                     ->helperText('Accepted file types: image only'),
                 Toggle::make('hide')
                     ->label('Hide Block')
-                    ->helperText('Hide this block from display'),
+                    ->helperText('Hide this block from display')
+                    ->columnSpanFull(),
+            ])
+            ->columns(2);
+    }
+
+    private static function getTabProfilPerusahaanBlock(): FormsBuilder\Block
+    {
+        return FormsBuilder\Block::make('tab-profil-perusahaan')
+            ->label('Tab Profil Perusahaan')
+            ->schema([
+                TextInput::make('block_id')
+                    ->label('Block ID')
+                    ->helperText('Identifier for the block')
+                    ->columnSpanFull(),
+                TextInput::make('tab_title'),
+                TextInput::make('content_title'),
+                TextInput::make('content_subtitle'),
+                Textarea::make('description')
+                    ->columnSpanFull(),
+                TextInput::make('cta'),
+                TextInput::make('cta_label'),
+                Textarea::make('note')
+                    ->columnSpanFull(),
+                CuratorPicker::make('image')
+                    ->label('Image')
+                    ->acceptedFileTypes(['image/*'])
+                    ->helperText('Accepted file types: image only'),
+                CuratorPicker::make('logo')
+                    ->label('Logo')
+                    ->acceptedFileTypes(['image/*'])
+                    ->helperText('Accepted file types: image only'),
+                Toggle::make('hide')
+                    ->label('Hide Block')
+                    ->helperText('Hide this block from display')
+                    ->columnSpanFull(),
             ])
             ->columns(2);
     }
