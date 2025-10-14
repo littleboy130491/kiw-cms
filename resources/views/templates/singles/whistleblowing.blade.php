@@ -1,38 +1,13 @@
 @php
+    // Extract data from CMS blocks
+    $section1Block = collect($item->block)->firstWhere('data.block_id', 'section-1');
+    $section2Block = collect($item->block)->firstWhere('data.block_id', 'section-2');
+    
     $whistleblowingBlock = [
-        'title' => 'Whistleblowing',
-        'descTop' => '
-        <p>
-            Dalam rangka menerapkan tata kelola perusahaan yang baik <b>(Good Corporate Governance)</b> dan
-            untuk menciptakan Pejabat dan Karyawan PT KIW yang bersih dan berwibawa, maka diterbitkan Surat
-            Keputusan Direksi Nomor : 57/SK/D.KIW/12/2018 tentang kebijakan perusahaan yang mengatur
-            tentang <b>Whistle Blowing System</b> (WBS) dan Nomor : 47/SK/D.KIW/11/2018 tentang Pengendalian
-            Gratifikasi dan Pembentukan Unit Pengendali Gratifikasi (UPG).
-            <br><br>
-            WBS adalah system yang mengelola pengaduan/pengungkapan mengenai perilaku melawan hukum,
-            perbuatan tidak etis/tidak semestinya secara rahasia, yang digunakan untuk mengoptimalkan peran
-            serta Karyawan serta pihak yang berkepentingan dengan PT KIW dan Mitra Bisnis dalam mengungkap
-            pelanggaran yang terjadi di lingkungan PT KIW.
-            <br><br>
-            Disebut Pelapor, yaitu Karyawan/pihak yang berkepentingan serta mitra bisnis PT KIW dan
-            Stakeholder lainnya. Identitas pelapor dijamin kerahasiaannya oleh perusahaan dan perusahaan
-            menjamin perlindungan terhadap pelapor dari segala bentuk ancaman, intimidasi, hukuman, ataupun
-            tindakan tidak menyenangkan dari pihak manapun selama pelapor menjaga kasus yang diadukan kepada
-            pihak manapun.
-        </p>
-        ',
-        'image' => Storage::url('media/gratifikasi.jpg'),
-        'descBottom' => '
-                <p>
-                        Tata cara pelaporan dengan membuat pengaduan/pengungkapan dan mengirimkannya ke Pengelola WBS
-                        melalui
-                        SMS ke <b><a
-                                href="https://api.whatsapp.com/send?phone=6281211118021&text=Halo%20PT%20Kawasan%20Industri%20Wijayakusuma,%20saya%20ingin%20pengaduan%20Whistleblowing,"
-                                target="_blank">Nomor HP : 081211118021</a></b> atau kirim email ke
-                        <b><a href="mailto:wbs@kiw.co.id">wbs@kiw.co.id</a></b> atau anda bisa mengisi form dibawah ini
-                        :
-                </p>
-        '
+        'title' => $section1Block['data']['title'] ?? 'Whistleblowing',
+        'descTop' => $section1Block['data']['description'] ?? '',
+        'image' => $section1Block['data']['media_url'] ?? Storage::url('media/gratifikasi.jpg'),
+        'descBottom' => $section2Block['data']['description'] ?? ''
     ];
 
     $formBlock = [
@@ -45,7 +20,7 @@
     <x-partials.header />
     <main>
 
-    <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/whistleblowing-hero.jpg')" h1="{!! $item->title ?? 'Whistleblowing' !!}" />
+    <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/whistleblowing-hero.jpg')" h1="{{ $item->title ?? 'Whistleblowing' }}" />
 
         <!--Start Post Content-->
 
@@ -56,7 +31,7 @@
             <div class="flex flex-col gap-7 lg:gap-9">
                 <!--Title-->
                 <h2 data-aos="fade-up">
-                    {!! $whistleblowingBlock['title'] !!}
+                    {{  $whistleblowingBlock['title'] }}
                 </h2>
 
                 <!--Content-->
