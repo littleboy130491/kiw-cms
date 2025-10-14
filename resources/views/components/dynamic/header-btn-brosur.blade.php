@@ -7,7 +7,7 @@
 
 <a class=" btn5 group w-fit" href="{{ $btnUrl }}" target="_blank" rel="noopener">
     {{ $btnLabel }}
-    <span class="gradient-icon">
+    <span class="gradient-icon fill-[white]">
         <x-icon.download-icon-current />
     </span>
 </a>
