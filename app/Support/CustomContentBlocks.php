@@ -17,7 +17,7 @@ class CustomContentBlocks
     {
         return [
             static::getHotspotLahanIndustriBlock(),
-            // Add more custom blocks here
+            static::getTabProfilPerusahaanBlock(),
         ];
     }
 
