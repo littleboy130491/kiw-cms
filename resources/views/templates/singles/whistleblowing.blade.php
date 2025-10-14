@@ -2,7 +2,8 @@
     // Extract data from CMS blocks
     $section1Block = collect($item->block)->firstWhere('data.block_id', 'section-1');
     $section2Block = collect($item->block)->firstWhere('data.block_id', 'section-2');
-    
+    $formulirPengaduanBlock = collect($item->block)->firstWhere('data.block_id', 'formulir-pengaduan');
+
     $whistleblowingBlock = [
         'title' => $section1Block['data']['title'] ?? 'Whistleblowing',
         'descTop' => $section1Block['data']['description'] ?? '',
@@ -11,8 +12,8 @@
     ];
 
     $formBlock = [
-        'title' => 'Formulir Pengaduan',
-        'desc' => 'Laporkan pelanggaran, keluhan, atau saran secara aman.',
+        'title' => $formulirPengaduanBlock['data']['title'],
+        'desc' => $formulirPengaduanBlock['data']['description'],
     ];
 @endphp
 
