@@ -18,6 +18,7 @@ class CustomContentBlocks
         return [
             static::getHotspotLahanIndustriBlock(),
             static::getTabProfilPerusahaanBlock(),
+            static::getHotspotKoneksiGlobalBlock(),
         ];
     }
 
@@ -52,6 +53,33 @@ class CustomContentBlocks
             ->columns(2);
     }
 
+    private static function getHotspotKoneksiGlobalBlock(): FormsBuilder\Block
+    {
+        return FormsBuilder\Block::make('hotspot-koneksi-global')
+            ->label('Hotspot Koneksi Global')
+            ->schema([
+                TextInput::make('block_id')
+                    ->label('Block ID')
+                    ->helperText('Identifier for the block')
+                    ->columnSpanFull(),
+                TextInput::make('country'),
+                TextInput::make('top')
+                    ->numeric(),
+                TextInput::make('left')
+                    ->numeric(),
+                TextInput::make(name: 'company'),
+                CuratorPicker::make('flag')
+                    ->label('Flag')
+                    ->acceptedFileTypes(['image/*'])
+                    ->helperText('Accepted file types: image only'),
+                Toggle::make('hide')
+                    ->label('Hide Block')
+                    ->helperText('Hide this block from display')
+                    ->columnSpanFull(),
+            ])
+            ->columns(2);
+    }
+
     private static function getTabProfilPerusahaanBlock(): FormsBuilder\Block
     {
         return FormsBuilder\Block::make('tab-profil-perusahaan')
@@ -68,8 +96,6 @@ class CustomContentBlocks
                     ->columnSpanFull(),
                 TextInput::make('cta'),
                 TextInput::make('cta_label'),
-                Textarea::make('note')
-                    ->columnSpanFull(),
                 CuratorPicker::make('image')
                     ->label('Image')
                     ->acceptedFileTypes(['image/*'])
