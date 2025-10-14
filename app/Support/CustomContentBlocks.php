@@ -40,8 +40,8 @@ class CustomContentBlocks
                     ->columnSpanFull(),
                 Textarea::make('note')
                     ->columnSpanFull(),
-                CuratorPicker::make('pointer')
-                    ->label('Pointer')
+                CuratorPicker::make('image')
+                    ->label('Image')
                     ->acceptedFileTypes(['image/*'])
                     ->helperText('Accepted file types: image only'),
                 Toggle::make('hide')
