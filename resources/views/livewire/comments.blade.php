@@ -21,16 +21,16 @@
     <div class="py-18 lg:py-30 px-4 sm:px-6 lg:px-0 flex flex-col gap-7 lg:w-[1200px] lg:mx-auto">
         <!--title-->
         <div class="flex flex-col gap-5">
-            <h3 class="text-center">Tinggalkan Komentar</h3>
-            <p class="text-center">Alamat email Anda tidak akan dipublikasikan.</p>
+            <h3 class="text-center">{{ __('comment.leave_comment') }}</h3>
+            <p class="text-center">{{ __('comment.email_not_published') }}</p>
         </div>
 
         <!--form-->
         @if (!session()->has('message'))
             <form wire:submit="submitComment" class="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-5">
                 <div class="sm:w-[48.5%] lg:w-[49%]">
-                    <label for="name" class="hidden">Nama</label>
-                    <input type="text" id="name" wire:model="name" placeholder="Masukkan nama Anda" required
+                    <label for="name" class="hidden">{{ __('comment.name') }}</label>
+                    <input type="text" id="name" wire:model="name" placeholder="{{ __('comment.enter_name') }}" required
                         class="mt-1 w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 @error('name') border-red-500 @enderror">
                     @error('name')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -38,8 +38,8 @@
                 </div>
 
                 <div class="sm:w-[48.5%] lg:w-[49%]">
-                    <label for="email" class="hidden">Email</label>
-                    <input type="email" id="email" wire:model="email" placeholder="Alamat email contoh@email.com"
+                    <label for="email" class="hidden">{{ __('comment.email') }}</label>
+                    <input type="email" id="email" wire:model="email" placeholder="{{ __('comment.email_placeholder') }}"
                         required
                         class="mt-1 w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 @error('email') border-red-500 @enderror">
                     @error('email')
@@ -48,8 +48,8 @@
                 </div>
 
                 <div class="sm:w-full">
-                    <label for="content" class="hidden">Komentar</label>
-                    <textarea id="content" wire:model="content" rows="8" placeholder="Tulis komentar Anda di sini..." required
+                    <label for="content" class="hidden">{{ __('comment.write_comment') }}</label>
+                    <textarea id="content" wire:model="content" rows="8" placeholder="{{ __('comment.write_comment') }}" required
                         class="w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 @error('content') border-red-500 @enderror">
                                                                                                             </textarea>
                     @error('content')
@@ -75,7 +75,7 @@
                     <span wire:loading wire:target="submitComment">
                         {!! $spinner !!}
                     </span>
-                    Kirim Komentar
+                    {{ __('comment.submit_comment') }}
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                         viewBox="0 0 24 24">
                         <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
@@ -105,7 +105,7 @@
     <!--Start Comment Area-->
     @if ($comments->count() > 0)
         <div class="comment-area py-18 lg:py-30 px-4 sm:px-6 lg:px-0 flex flex-col gap-7 lg:w-[1200px] lg:mx-auto">
-            <h3 class="comment-area-title">Diskusi</h3>
+            <h3 class="comment-area-title">{{ __('comment.discussion') }}</h3>
             <ol class="pb-18 lg:pb-30 px-4 sm:px-6 lg:px-0 flex flex-col gap-9 lg:w-[1200px] lg:mx-auto">
                 @foreach ($comments as $comment)
                     <li id="comment-{{ $comment->id }}" class="border-b border-gray-300">
@@ -126,7 +126,7 @@
                                             class="-ml-1 mr-2">
                                             {!! $spinner !!}
                                         </span>
-                                        Balas
+                                        {{ __('comment.reply') }}
                                     </button>
                                     @if ($comment->all_children_count > 0)
                                         <button wire:click="toggleReplies({{ $comment->id }})"
@@ -138,9 +138,9 @@
                                                 {!! $textSpinner !!}
                                             </span>
                                             @if (isset($showReplies[$comment->id]) && $showReplies[$comment->id])
-                                                Sembunyikan
+                                                {{ __('comment.hide') }}
                                             @else
-                                                Lihat Diskusi ({{ $comment->all_children_count }})
+                                                {{ __('comment.view_discussion') }} ({{ $comment->all_children_count }})
                                             @endif
                                         </button>
                                     @endif
@@ -157,18 +157,18 @@
                             <form wire:submit="submitReply"
                                 class="reply-form flex flex-col sm:flex-row justify-between gap-2 flex-wrap mt-4 bg-white p-4 border border-[var(--color-border)] rounded">
                                 <div class="sm:w-full">
-                                    <label for="reply-content-{{ $comment->id }}" class="hidden">Balasan</label>
+                                    <label for="reply-content-{{ $comment->id }}" class="hidden">{{ __('comment.reply_placeholder') }}</label>
                                     <textarea wire:model="replyContent"
                                         class="w-full p-2 border border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-blue-500 @error('replyContent') border-red-500 @enderror"
-                                        placeholder="Tulis balasan Anda" id="reply-content-{{ $comment->id }}" rows="4" required></textarea>
+                                        placeholder="{{ __('comment.reply_placeholder') }}" id="reply-content-{{ $comment->id }}" rows="4" required></textarea>
                                     @error('replyContent')
                                         <span class="text-red-500 text-sm">{{ $message }}</span>
                                     @enderror
                                 </div>
 
                                 <div class="sm:w-[49%] lg:w-[49%]">
-                                    <label for="reply-name-{{ $comment->id }}" class="hidden">Nama</label>
-                                    <input type="text" wire:model="replyName" placeholder="Masukkan nama Anda"
+                                    <label for="reply-name-{{ $comment->id }}" class="hidden">{{ __('comment.name') }}</label>
+                                    <input type="text" wire:model="replyName" placeholder="{{ __('comment.enter_name') }}"
                                         required id="reply-name-{{ $comment->id }}"
                                         class="w-full p-2 border border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-blue-500 @error('replyName') border-red-500 @enderror">
                                     @error('replyName')
@@ -177,9 +177,9 @@
                                 </div>
 
                                 <div class="sm:w-[49%] lg:w-[49%]">
-                                    <label for="reply-email-{{ $comment->id }}" class="hidden">Email</label>
+                                    <label for="reply-email-{{ $comment->id }}" class="hidden">{{ __('comment.email') }}</label>
                                     <input type="email" wire:model="replyEmail"
-                                        placeholder="Alamat email contoh@email.com" required
+                                        placeholder="{{ __('comment.email_placeholder') }}" required
                                         id="reply-email-{{ $comment->id }}"
                                         class="w-full p-2 border border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-blue-500 @error('replyEmail') border-red-500 @enderror">
                                     @error('replyEmail')
@@ -208,7 +208,7 @@
                                         <span wire:loading wire:target="submitReply">
                                             {!! $spinner !!}
                                         </span>
-                                        Kirim
+                                        {{ __('comment.submit') }}
                                     </button>
                                     <button type="button" wire:click="hideReply" wire:loading.attr="disabled"
                                         wire:loading.class="cursor-wait" wire:target="hideReply"
@@ -216,7 +216,7 @@
                                         <span wire:loading wire:target="hideReply" class="mr-2">
                                             {!! $textSpinner !!}
                                         </span>
-                                        Batal
+                                        {{ __('comment.cancel') }}
                                     </button>
                                 </div>
                             </form>
@@ -247,7 +247,7 @@
                                             <div class="flex flex-col gap-1">
                                                 @if ($reply->parent)
                                                     <p class="italic text-[.8em] text-gray-600">
-                                                        Membalas <span
+                                                        {{ __('comment.replying_to') }} <span
                                                             class="font-medium">{{ $reply->parent->name }}</span>:
                                                         "{{ Str::limit($reply->parent->content, 50) }}"
                                                     </p>
@@ -266,7 +266,7 @@
                                                         class="-ml-1 mr-2">
                                                         {!! $spinner !!}
                                                     </span>
-                                                    Balas
+                                                    {{ __('comment.reply') }}
                                                 </button>
                                                 <time
                                                     datetime="{{ $reply->created_at->setTimezone('Asia/Jakarta')->format('c') }}"
@@ -281,10 +281,10 @@
                                                     class="reply-form flex flex-col gap-3 mt-4 bg-white p-3 border border-[var(--color-border)] rounded">
                                                     <div>
                                                         <label for="flat-reply-content-{{ $reply->id }}"
-                                                            class="hidden">Balasan</label>
+                                                            class="hidden">{{ __('comment.reply_placeholder') }}</label>
                                                         <textarea wire:model="replyContent"
                                                             class="w-full p-2 border border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-blue-500 @error('replyContent') border-red-500 @enderror"
-                                                            placeholder="Tulis balasan Anda" id="flat-reply-content-{{ $reply->id }}" rows="3" required></textarea>
+                                                            placeholder="{{ __('comment.reply_placeholder') }}" id="flat-reply-content-{{ $reply->id }}" rows="3" required></textarea>
                                                         @error('replyContent')
                                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                                         @enderror
@@ -293,7 +293,7 @@
                                                     <div class="flex gap-2">
                                                         <div class="w-1/2">
                                                             <input type="text" wire:model="replyName"
-                                                                placeholder="Nama" required
+                                                                placeholder="{{ __('comment.name') }}" required
                                                                 class="w-full p-2 border border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-blue-500 @error('replyName') border-red-500 @enderror">
                                                             @error('replyName')
                                                                 <span
@@ -302,7 +302,7 @@
                                                         </div>
                                                         <div class="w-1/2">
                                                             <input type="email" wire:model="replyEmail"
-                                                                placeholder="Email" required
+                                                                placeholder="{{ __('comment.email') }}" required
                                                                 class="w-full p-2 border border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-blue-500 @error('replyEmail') border-red-500 @enderror">
                                                             @error('replyEmail')
                                                                 <span
@@ -334,7 +334,7 @@
                                                             <span wire:loading wire:target="submitReply">
                                                                 {!! $spinner !!}
                                                             </span>
-                                                            Kirim
+                                                            {{ __('comment.submit') }}
                                                         </button>
                                                         <button type="button" wire:click="hideReply"
                                                             wire:loading.attr="disabled"
@@ -343,7 +343,7 @@
                                                             <span wire:loading wire:target="hideReply" class="mr-2">
                                                                 {!! $textSpinner !!}
                                                             </span>
-                                                            Batal
+                                                            {{ __('comment.cancel') }}
                                                         </button>
                                                     </div>
                                                 </form>
