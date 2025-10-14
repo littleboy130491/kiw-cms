@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use Filament\Widgets;
 
 class Dashboard extends \Filament\Pages\Dashboard
 {
@@ -12,18 +13,13 @@ class Dashboard extends \Filament\Pages\Dashboard
     protected function getHeaderWidgets(): array
     {
         return [
-            //     // StatsOverview::class,
-            // Widgets\PageViewsWidget::class,
-            // Widgets\VisitorsWidget::class,
-            // Widgets\ActiveUsersOneDayWidget::class,
-            // Widgets\ActiveUsersSevenDayWidget::class,
-            // Widgets\ActiveUsersTwentyEightDayWidget::class,
-            // Widgets\SessionsWidget::class,
-            // Widgets\SessionsDurationWidget::class,
-            // Widgets\SessionsByCountryWidget::class,
-            // Widgets\SessionsByDeviceWidget::class,
-            // Widgets\MostVisitedPagesWidget::class,
-            // Widgets\TopReferrersListWidget::class,
+        ];
+    }
+
+    public function getWidgets(): array
+    {
+        return [
+            Widgets\AccountWidget::class,
         ];
     }
 }
