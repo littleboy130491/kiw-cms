@@ -12,8 +12,8 @@
             'value' => '120',
         ],
         'heightMobile' => [
-            'unit' => 'px', // add radio or select px or vh
-            'value' => '600',
+            'unit' => 'vh', // add radio or select px or vh
+            'value' => '100',
         ],
     ];
     $sliderHome = [
