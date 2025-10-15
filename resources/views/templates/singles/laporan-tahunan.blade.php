@@ -4,7 +4,7 @@
 
     $items = Report::with(['fileMedia', 'featuredImage'])
                 ->where('status', ContentStatus::Published)
-                ->orderBy('created_at', 'desc')
+                ->orderBy('published_at', 'desc')
                 ->get();
 @endphp
 <x-layouts.app>
