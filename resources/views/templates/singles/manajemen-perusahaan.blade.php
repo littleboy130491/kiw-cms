@@ -2,7 +2,12 @@
     use App\Models\Management;
     use Littleboy130491\Sumimasen\Enums\ContentStatus;
 
-    $items = Management::with('featuredImage')->where('status', ContentStatus::Published)->get();
+    $items = Management::with('featuredImage')
+                ->where('status', ContentStatus::Published)
+                ->get();
+    $commissioners = $items->where('level', 'commissioner');
+    $directors = $items->where('level','bod');
+    $heads = $items->where('level','heads');
 @endphp
 
 <x-layouts.app>
@@ -16,7 +21,20 @@
         <section id="manajemen">
             <!--Section per Position-->
             <x-loop.manajemen-grid :items="$items" />
+
+            @if($commissioners->isNotEmpty())
+                <x-loop.manajemen-grid :items="$commissioners" level="Commissioners"/>
+            @endif
+
+            @if($directors->isNotEmpty())
+                <x-loop.manajemen-grid :items="$directors" level="Board of Directors"/>
+            @endif
+
+            @if($heads->isNotEmpty())
+                <x-loop.manajemen-grid :items="$heads" level="Divison Head"/>
+            @endif
         </section>
+
 
         <!--Popup Content-->
         <div id="modal" class="fixed inset-0 flex items-center justify-center z-50 hidden">

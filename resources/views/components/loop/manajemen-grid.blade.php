@@ -1,6 +1,7 @@
 @props([
     'position' => '',
     'items' => null,
+    'level' => '',
 ])
 
 @php
@@ -17,6 +18,9 @@ if ($position && $items->isNotEmpty()) {
 
 @if ($items->isNotEmpty())
     <div class="manajemen {{ $position }} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-9 my-18 lg:my-30 px-4 sm:px-6 lg:px-0 lg:w-[1200px] lg:mx-auto">
+        @if($level)
+        <h2>{{ $level }}</h2>
+        @endif
         @foreach ($items as $item)
             <x-loop.manajemen-item-popup :item="$item" />
         @endforeach
