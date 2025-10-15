@@ -2,6 +2,20 @@
     $archive_post_url = route('cms.page', [app()->getLocale(), 'posts']);
 
     //Start Hero Slide Temporary Data
+    $sliderHeight = [
+        'heightDesktop' => [
+            'unit' => 'vh', // add radio or select px or vh
+            'value' => '120',
+        ],
+        'heightTablet' => [
+            'unit' => 'vh', // add radio or select px or vh
+            'value' => '120',
+        ],
+        'heightMobile' => [
+            'unit' => 'px', // add radio or select px or vh
+            'value' => '600',
+        ],
+    ];
     $sliderHome = [
                 [
                     'slide' => [
@@ -307,7 +321,7 @@
                 <div class="swiper-wrapper relative">
 
                     @foreach ($sliderHome as $item)
-                        <x-loop.slide-hero-home :slide="$item['slide']" />
+                        <x-loop.slide-hero-home :slide="$item['slide']" :height="$sliderHeight" />
                     @endforeach
 
                 </div>

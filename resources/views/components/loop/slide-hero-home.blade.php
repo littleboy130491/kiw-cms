@@ -1,6 +1,26 @@
-@props(['slide'])
+@props(['slide', 'height'])
 
 @if (!empty($slide['backgroundVideo']))
+
+
+<style>
+    @media (min-width: 921px) {
+        .slide-height {
+            height: {{ $height['heightDesktop']['value'] }}{{ $height['heightDesktop']['unit'] }};
+        }
+    }
+    @media (min-width: 545px) and (max-width: 920px) {
+        .slide-height {
+            height: {{ $height['heightTablet']['value'] }}{{ $height['heightTablet']['unit'] }};
+        }
+    }
+    @media (max-width: 544px) {
+        .slide-height {
+            height: {{ $height['heightMobile']['value'] }}{{ $height['heightMobile']['unit'] }};
+        }
+    }
+</style>
+
     <div class="swiper-slide relative overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img src="{{ $slide['background'] }}" alt="Banner Image"
@@ -14,7 +34,8 @@
         <!-- overlay -->
         <div class="bg-[var(--color-overlayblack)] z-10 bg-opacity-60 relative">
             <div class="gradient-black-hero">
-                <div class="flex flex-col justify-between items-start lg:pt-13 sm:pb-2 lg:pb-7 pb-6 lg:h-[110vh] sm:h-[650px] h-[700px]">
+                <div class="flex flex-col justify-between items-start lg:pt-13 sm:pb-2 lg:pb-7 pb-6 slide-height">
+
 
                     <!-- content -->
                     <div class="flex flex-col items-start gap-5 sm:p-6 p-4 lg:w-[1200px] lg:mx-auto lg:px-0 sm:pt-8 px-4 lg:mt-40 mt-28 mb-10 z-20">
@@ -73,7 +94,8 @@
         style="background-image:url('{{ $slide['background'] }}')">
         <div class="bg-[var(--color-overlayblack)] z-10 bg-opacity-60 relative">
             <div class="gradient-black-hero">
-                <div class="flex flex-col justify-between items-start lg:pt-13 sm:pb-2 lg:pb-7 pb-6 lg:h-[110vh] sm:h-[650px] h-[700px]">
+                <div class="flex flex-col justify-between items-start lg:pt-13 sm:pb-2 lg:pb-7 pb-6 slide-height">
+
 
                     <!-- content -->
                     <div class="flex flex-col items-start gap-5 sm:p-6 p-4 lg:w-[1200px] lg:mx-auto lg:px-0 sm:pt-8 px-4 lg:mt-40 mt-28 mb-10 z-20">
