@@ -1,0 +1,28 @@
+// First, check your mail configuration
+use Illuminate\Support\Facades\Mail;
+echo 'Default Mailer: ' . config('mail.default');
+echo 'From Address: ' . config('mail.from.address');
+echo 'From Name: ' . config('mail.from.name');
+echo 'Brevo API Key: ' . (config('services.brevo.key') ? 'Set' : 'Not set');
+
+// Test with log mailer first (to verify setup without sending)
+config(['mail.default' => 'log']);
+Mail::raw('This is a test email logged instead of sent.', function ($message) {
+    $message->to('test@example.com')
+            ->subject('Test Email (Logged)');
+});
+echo 'Email logged successfully! Check storage/logs/laravel.log';
+
+// Switch back to Brevo
+config(['mail.default' => 'brevo']);
+
+// Try sending with Brevo (may fail due to IP restriction)
+try {
+    Mail::raw('This is a test email from your Laravel application.', function ($message) {
+        $message->to('your-email@example.com')
+                ->subject('Test Email from Laravel (Brevo)');
+    });
+    echo 'Email sent successfully via Brevo!';
+} catch (Exception $e) {
+    echo 'Error: ' . $e->getMessage();
+}

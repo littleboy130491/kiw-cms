@@ -145,21 +145,8 @@
 
                         <!-- Button -->
                         <div class="mt-10 flex flex-col gap-5">
-                            <a class=" btn9 group w-fit"
-                                href="{{ route('cms.page', [app()->getLocale(), 'kontak']) }}" target="_self"
-                                rel="noopener">
-                                Hubungi Kami
-                                <span class="gradient-icon">
-                                    <x-icon.pencil />
-                                </span>
-                            </a>
-
-                            <a class=" btn9 group w-fit" href="#" target="_blank" rel="noopener">
-                                Unduh Brosur
-                                <span class="gradient-icon">
-                                    <x-icon.download-icon-current />
-                                </span>
-                            </a>
+                            <x-sumimasen-cms::component-loader name="header-btn-hubungi" class="btn9 group w-fit" />
+                            <x-sumimasen-cms::component-loader name="header-btn-brosur" class="btn9 group w-fit" />
                         </div>
 
                         <!--Lang switcher mobile-->
