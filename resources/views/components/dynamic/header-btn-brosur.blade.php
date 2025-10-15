@@ -1,11 +1,19 @@
+@props(['componentData', 'class' => null])
+
 @php
+
     $blocksCollection = collect($componentData->block);
     $headerBlock = $blocksCollection->firstWhere('data.block_id', 'header-btn-brosur');
-    $btnUrl = $prefooterBlock['data']['url'] ?? '#';
-    $btnLabel = $prefooterBlock['data']['button_label'] ?? 'Unduh Brosur';
+    $btnUrl = $headerBlock['data']['url'] ?? '#';
+    $btnLabel = $headerBlock['data']['button_label'] ?? 'Unduh Brosur';
+
+    // Use custom class if provided, otherwise use default
+    $buttonClass = $class ?? 'btn5 group w-fit';
+    
 @endphp
 
-<a {{ $attributes->class(['group', 'w-fit'])->merge(['class' => 'btn5']) }} 
+<a class="{{ $buttonClass }}" 
+   {{ $attributes->except('class') }}
     href="{{ $btnUrl }}" target="_blank" rel="noopener">
     {{ $btnLabel }}
     <span class="gradient-icon fill-[white]">

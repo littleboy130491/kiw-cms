@@ -143,10 +143,10 @@
                             <x-partials.navigation-menu-header-mobile :menu="$menu" />
                         @endif
 
-                        <!-- Button -->
+                        <!-- Button Off-Canvas-->
                         <div class="mt-10 flex flex-col gap-5">
-                            <x-sumimasen-cms::component-loader name="header-btn-hubungi" class="btn9 group w-fit" />
-                            <x-sumimasen-cms::component-loader name="header-btn-brosur" class="btn9 group w-fit" />
+                            <x-sumimasen-cms::component-loader name="header-btn-hubungi" class="btn9 group w-fit" iconColor="black"/>
+                            <x-sumimasen-cms::component-loader name="header-btn-brosur" class="btn9 group w-fit" iconColor="black"/>
                         </div>
 
                         <!--Lang switcher mobile-->
