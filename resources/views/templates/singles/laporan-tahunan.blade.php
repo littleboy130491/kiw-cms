@@ -2,7 +2,10 @@
     use App\Models\Report;
     use Littleboy130491\Sumimasen\Enums\ContentStatus;
 
-    $items = Report::with(['fileMedia', 'featuredImage'])->where('status', ContentStatus::Published)->get();
+    $items = Report::with(['fileMedia', 'featuredImage'])
+                ->where('status', ContentStatus::Published)
+                ->orderBy('created_at', 'desc')
+                ->get();
 @endphp
 <x-layouts.app>
     <x-partials.header />
