@@ -54,7 +54,7 @@
     
     // Tab Afiliasi Perusahaan
     $tabBlocks = $blocks->where('data.block_id', 'tab');
-  dd($tabBlocks);
+
     $tabAfiliasiPerusahaan = [
         'tabsTitle' => $tabBlocks->map(function($tab) {
             return ['tab' => $tab['data']['tab_title'] ?? ''];
