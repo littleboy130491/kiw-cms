@@ -30,6 +30,7 @@ class Management extends Model
         'featured_image',
         'menu_order',
         'position',
+        'level',
         'published_at',
         'slug',
         'status',

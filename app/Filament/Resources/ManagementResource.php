@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ManagementResource\Pages;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 use App\Models\Management;
 
 use Littleboy130491\Sumimasen\Filament\Abstracts\BaseContentResource;
@@ -30,6 +31,20 @@ class ManagementResource extends BaseContentResource
 
         return [
             TextInput::make('position')->nullable(),
+        ];
+    }
+
+    protected static function additionalNonTranslatableFormFields(): array
+    {
+
+        return [
+            Select::make('level')
+                ->options([
+                    'commissioner' => 'Commissioner',
+                    'bod'   => 'Board of Directors',
+                    'heads' => 'Heads'
+                ])
+                ->required(),
         ];
     }
 
