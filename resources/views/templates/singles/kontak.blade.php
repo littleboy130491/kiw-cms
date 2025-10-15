@@ -38,12 +38,12 @@
             'title' => __('kontak.email'),
             'item' => [
                 [
-                    'link' => config('cms.site_contact.email1'),
+                    'link' => 'mailto:' . config('cms.site_contact.email1'),
                     'label' => '',
                     'desc' => config('cms.site_contact.email1'),
                 ],
                 [
-                    'link' => config('cms.site_contact.email2'),
+                    'link' => 'mailto:' . config('cms.site_contact.email2'),
                     'label' => '',
                     'desc' => config('cms.site_contact.email2'),
                 ],
@@ -53,12 +53,12 @@
             'title' => __('kontak.phone_number'),
             'item' => [
                 [
-                    'link' => config('cms.site_contact.phone1'),
+                    'link' => 'tel:' . config('cms.site_contact.phone1'),
                     'label' => __('kontak.commercial'),
                     'desc' => config('cms.site_contact.phone1'),
                 ],
                 [
-                    'link' => config('cms.site_contact.phone2'),
+                    'link' => 'tel:' . config('cms.site_contact.phone2'),
                     'label' => __('kontak.office'),
                     'desc' => config('cms.site_contact.phone2'),
                 ],

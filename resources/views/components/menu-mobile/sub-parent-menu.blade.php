@@ -3,7 +3,7 @@
     class="cursor-pointer"
 >
     <div class="flex justify-between items-center">
-        <a href="{{ $url }}" class="block hover:text-[var(--color-lightblue)] {{ $url === route(Route::current()->getName(), request()->route()->parameters()) ? 'active !text-[var(--color-lightblue)]' : '' }}">{{ $menu }}</a>
+        <a href="{{ $url }}" class="block hover:text-[var(--color-lightblue)] {{ Route::current() && $url === route(Route::current()->getName(), request()->route()->parameters()) ? 'active !text-[var(--color-lightblue)]' : '' }}">{{ $menu }}</a>
         <svg class="w-3 h-3 ml-2 transform" 
             :class="{ 'rotate-180': openSubSubMenu === '{{ $menu }}' }" 
             fill="currentColor" viewBox="0 0 20 20">

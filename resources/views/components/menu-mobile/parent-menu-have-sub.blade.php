@@ -17,7 +17,7 @@
     "
     class="cursor-pointer select-none">
     <div class="flex flex-row justify-between items-start w-full">
-        <a href="{{ $url }}" class="block text[var(--color-heading)] hover:text-[var(--color-lightblue)] {{ $url === route(Route::current()->getName(), request()->route()->parameters()) ? 'active !text-[var(--color-lightblue)]' : '' }}">
+        <a href="{{ $url }}" class="block text[var(--color-heading)] hover:text-[var(--color-lightblue)] {{ Route::current() && $url === route(Route::current()->getName(), request()->route()->parameters()) ? 'active !text-[var(--color-lightblue)]' : '' }}">
             {{ $menu }}
         </a>
 
