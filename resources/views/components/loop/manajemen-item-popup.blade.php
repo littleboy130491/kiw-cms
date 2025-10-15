@@ -14,7 +14,11 @@
         <h4 class="name group-hover:text-white"> {{ $item->title ?? '' }} </h4>
     </div>
 
-    <x-curator-glider :media="$item->featuredImage" class="photo rounded-t-md" />
+    @if ($item->featuredImage)
+        <x-curator-glider :media="$item->featuredImage" class="photo rounded-t-md" />
+    @else
+        <img src="{{ Storage::url('media/group-1138.png') }}" class="photo rounded-t-md" alt="Default image">
+    @endif
 
     <!-- Hidden Description -->
     <div class="description hidden">

@@ -13,30 +13,34 @@
 
         <!--Start Laporan Tahunan-->
 
-        <section id="laporan-tahunan" class="my-18 lg:my-30 sm:px-6 lg:px-0 lg:w-[1200px] lg:mx-auto">
+        <section id="laporan-tahunan" class="my-18 lg:my-30 sm:px-6 lg:px-0 lg:w-[1200px] lg:mx-auto px-4 py-18">
             @if ($items->isNotEmpty())
-                <div data-aos="zoom-in-up" class="overflow-x-auto w-full flex flex-row pl-4 sm:px-0">
-                    <table
-                        class="grow min-w-[900px] sm:min-w-[100%] text-left text-[var(--color-heading)] bg-[var(--color-transit)] rounded-md">
-                        <thead class="text-[var(--color-heading)] border-b border-[var(--color-border)]">
-                            <tr>
-                                <th class="px-6 py-3">Cover</th>
-                                <th class="px-6 py-3">Title</th>
-                                <th class="px-6 py-3">Size</th>
-                                <th class="px-6 py-3">Format</th>
-                                <th class="px-6 py-3">Date</th>
-                                <th class="px-6 py-3 flex flex-row justify-center">Download</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($items as $item)
-                                <x-loop.table-data :item="$item"/>
-                            @endforeach
-                        </tbody>
-                    </table>
+    <div data-aos="zoom-in-up" class="overflow-x-auto w-full flex flex-row pl-4 sm:px-0">
+        <table
+            class="grow min-w-[900px] sm:min-w-[100%] text-left text-[var(--color-heading)] bg-[var(--color-transit)] rounded-md">
+            <thead class="text-[var(--color-heading)] border-b border-[var(--color-border)]">
+                <tr>
+                    <th class="px-6 py-3">Cover</th>
+                    <th class="px-6 py-3">Title</th>
+                    <th class="px-6 py-3">Size</th>
+                    <th class="px-6 py-3">Format</th>
+                    <th class="px-6 py-3">Date</th>
+                    <th class="px-6 py-3 flex flex-row justify-center">Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($items as $item)
+                    <x-loop.table-data :item="$item" />
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    @else
+        <div class="flex justify-center ">
+            <x-partials.post-not-found />
+        </div>
+    @endif
 
-                </div>
-            @endif
         </section>
 
 
