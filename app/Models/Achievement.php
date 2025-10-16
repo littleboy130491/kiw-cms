@@ -64,6 +64,7 @@ class Achievement extends Model
         'excerpt',
         'slug',
         'title',
+        'giver',
     ];
 
 
