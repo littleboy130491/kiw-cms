@@ -126,18 +126,25 @@ class CustomContentBlocks
                     ->label('Block ID')
                     ->helperText('Identifier for the block')
                     ->columnSpanFull(),
-                Select::make('device')
-                    ->options([
-                        'mobile' => 'Mobile,',
-                        'tablet' => 'Tablet,',
-                        'desktop' => 'Desktop,'
-                    ]),
+                TextInput::make('mobile'),
                 Select::make('unit')
                     ->options([
-                        'vh' => 'vh,',
-                        'px' => 'px,',
+                        'vh' => 'vh',
+                        'px' => 'px',
                     ]),
-                TextInput::make('value'),
+                TextInput::make('tablet'),
+                Select::make('unit')
+                    ->options([
+                        'vh' => 'vh',
+                        'px' => 'px',
+                    ]),
+                TextInput::make('desktop'),
+                Select::make('unit')
+                    ->options([
+                        'vh' => 'vh',
+                        'px' => 'px',
+                    ]),
+
                 // Toggle::make('hide')
                 //     ->label('Hide Block')
                 //     ->helperText('Hide this block from display')
