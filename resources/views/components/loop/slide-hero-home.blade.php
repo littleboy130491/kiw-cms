@@ -1,4 +1,4 @@
-@props(['slide', 'height'])
+@props(['slide', 'height', 'scale'])
 
 @if (!empty($slide['backgroundVideo']))
 
@@ -8,16 +8,29 @@
         .slide-height {
             height: {{ $height['heightDesktop']['value'] }}{{ $height['heightDesktop']['unit'] }};
         }
-    }
+
+        .video-bg {
+            transform: scale({{ $scale['scaleDesktop'] }});
+        }
+    }  
     @media (min-width: 545px) and (max-width: 920px) {
         .slide-height {
             height: {{ $height['heightTablet']['value'] }}{{ $height['heightTablet']['unit'] }};
+        }
+
+         .video-bg {
+            transform: scale({{ $scale['scaleTablet'] }});
         }
     }
     @media (max-width: 544px) {
         .slide-height {
             height: {{ $height['heightMobile']['value'] }}{{ $height['heightMobile']['unit'] }};
         }
+
+        .video-bg {
+        transform: scale({{ $scale['scaleMobile'] }});
+        }
+    
     }
 </style>
 
@@ -25,10 +38,13 @@
         <div class="absolute inset-0 z-0">
             <img src="{{ $slide['background'] }}" alt="Banner Image"
                 class="w-full h-full object-cover absolute inset-0 z-0" />
-            <iframe class="absolute inset-0 w-full h-full object-cover scale-[3] sm:scale-[1.5] lg:scale-[1.5]"
+            <iframe
+                class="video-bgabsolute inset-0 w-full h-full object-cover video-bg"
                 src="{{ $slide['backgroundVideo'] }}"
-                title="YouTube video background" frameborder="0"
-                allow="autoplay; encrypted-media" allowfullscreen>
+                title="YouTube video background"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
             </iframe>
         </div>
         <!-- overlay -->

@@ -2,20 +2,64 @@
     $archive_post_url = route('cms.page', [app()->getLocale(), 'posts']);
 
     //Start Hero Slide Temporary Data
-    $sliderHeight = [
+
+     $sliderHeight = [
         'heightDesktop' => [
-            'unit' => 'vh', // add radio or select px or vh
-            'value' => '120',
+            'unit' => 'vh',
+            'value' => 120,
         ],
         'heightTablet' => [
-            'unit' => 'vh', // add radio or select px or vh
-            'value' => '120',
+            'unit' => 'vh',
+            'value' => 70,
         ],
         'heightMobile' => [
-            'unit' => 'vh', // add radio or select px or vh
-            'value' => '100',
+            'unit' => 'vh',
+            'value' => 100,
         ],
     ];
+
+    $sliderBaseHeightVideoScale = (function () use ($sliderHeight) {
+        $baseHeight = 1;
+        $baseScale = [
+            'desktop' => 0.012, //hardcode?
+            'tablet' => 0.025, //hardcode?
+            'mobile' => 0.035, //hardcode?
+        ];
+
+        $viewportHeightPx = [
+            'desktop' => 850, //hardcode?
+            'tablet' => 850, //hardcode?
+            'mobile' => 650, //hardcode?
+        ];
+
+        $convertToVh = function ($value, $unit, $device) use ($viewportHeightPx) {
+            if ($unit === 'px') {
+                return ($value / $viewportHeightPx[$device]) * 100; // px -> vh
+            }
+            return $value; // kalau sudah vh, biarkan saja
+        };
+
+        $desktopHeight = $convertToVh($sliderHeight['heightDesktop']['value'], $sliderHeight['heightDesktop']['unit'], 'desktop');
+        $tabletHeight  = $convertToVh($sliderHeight['heightTablet']['value'], $sliderHeight['heightTablet']['unit'], 'tablet');
+        $mobileHeight  = $convertToVh($sliderHeight['heightMobile']['value'], $sliderHeight['heightMobile']['unit'], 'mobile');
+
+        return [
+            'baseHeight'    => $baseHeight,
+            'baseScale'     => $baseScale,
+            'desktopHeight' => $desktopHeight,
+            'tabletHeight'  => $tabletHeight,
+            'mobileHeight'  => $mobileHeight,
+            'scaleDesktop'  => $baseScale['desktop'] * ($desktopHeight / $baseHeight),
+            'scaleTablet'   => $baseScale['tablet'] * ($tabletHeight / $baseHeight),
+            'scaleMobile'   => $baseScale['mobile'] * ($mobileHeight / $baseHeight),
+        ];
+    })();
+
+
+
+
+   // dd($sliderBaseHeightVideoScale);
+
     $sliderHome = [
                 [
                     'slide' => [
@@ -320,9 +364,14 @@
             <div class="swiper swiper-hero">
                 <div class="swiper-wrapper relative">
 
-                    @foreach ($sliderHome as $item)
-                        <x-loop.slide-hero-home :slide="$item['slide']" :height="$sliderHeight" />
-                    @endforeach
+                    
+                @foreach ($sliderHome as $item)
+                    <x-loop.slide-hero-home 
+                        :slide="$item['slide']" 
+                        :height="$sliderHeight" 
+                        :scale="$sliderBaseHeightVideoScale" 
+                    />
+                @endforeach
 
                 </div>
 
@@ -555,27 +604,36 @@
         </section>
         <!--End Video Home-->
 
-        <!--Start Tenant-->
-        <section id="tenant-home" class="my-18 lg:my-30 px-4 sm:px-6 lg:px-0 flex flex-col lg:gap-9 gap-7">
-            <div class="flex flex-col gap-5 lg:max-w-[1200px] lg:mx-auto">
-                <h6 class="bullet-1 self-center">
-                    {{ $tenantHome['tenantTitle']['subTitle'] }}
-                </h6>
-                <h2 class="text-center" data-aos="fade-up">{{ $tenantHome['tenantTitle']['title'] }}</h2>
+         <!--Start Tenant-->
+        <section id="tenant-home" class="my-18 lg:my-30 px-4 sm:px-6 lg:px-0 flex flex-col lg:gap-9 gap-7 lg:w-[1200px] lg:mx-auto">
+    <div class="flex flex-col gap-5">
+        <h6 class="bullet-1 self-center">
+            {{ $tenantHome['tenantTitle']['subTitle'] }}
+        </h6>
+        <h2 class="text-center" data-aos="fade-up">{{ $tenantHome['tenantTitle']['title'] }}</h2>
+    </div>
+    
+    <!--carousel-->
+    <div class="relative lg:w-[1200px] mx-auto w-full">
+        <div class="swiper-logo overflow-hidden !flex !flex-row !justify-center">
+            <div class="swiper-wrapper">
+                @foreach ($tenantHome['tenantLogo'] as $tenantLogo)
+                    <x-loop.tenant-logo :image="$tenantLogo['image']" />
+                @endforeach
             </div>
-            <!--carousel-->
-            <div class="relative w-full lg:max-w-[100vw] overflow-hidden">
-                <div class="swiper-logo ">
-                    <div class="swiper-wrapper lg:!flex lg:gap-5">
-                        @foreach ($tenantHome['tenantLogo'] as $tenantLogo)
-                            <x-loop.tenant-logo :image="$tenantLogo['image']" />
-                        @endforeach
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
+        </div>
+        
+        <!-- Custom Arrow Left -->
+        <div class="swiper-button-prev gradient-blue rounded-full !h-[30px] !w-[30px] p-1 cursor-pointer lg:-ml-8">
+            <x-icon.arrow-left-white />
+        </div>
+        
+        <!-- Custom Arrow Right -->
+        <div class="swiper-button-next gradient-blue rounded-full !h-[30px] !w-[30px] p-1 cursor-pointer lg:-mr-8">
+            <x-icon.arrow-right-white />
+        </div>
+    </div>
+</section>
         <!--End Tenant-->
 
 
