@@ -5,14 +5,10 @@
     $items = Management::with('featuredImage')
                 ->where('status', ContentStatus::Published)
                 ->get();
-    // $commissioners = $items->where('level', 'commissioner');
-    // $directors = $items->where('level','bod');
-    // $heads = $items->where('level','heads');
+    $commissioners = $items->where('level', 'commissioner');
+    $directors = $items->where('level','bod');
+    $heads = $items->where('level','heads');
 
-    $commissioners = null;
-    $directors = null;
-    $heads = null;
-    
 @endphp
 
 <x-layouts.app>
@@ -25,8 +21,6 @@
         <!--Start Manajemen-->
         <section id="manajemen">
             <!--Section per Position-->
-            <x-loop.manajemen-grid :items="$items" />
-
             @if($commissioners?->isNotEmpty())
                 <x-loop.manajemen-grid :items="$commissioners" level="Commissioners"/>
             @endif
