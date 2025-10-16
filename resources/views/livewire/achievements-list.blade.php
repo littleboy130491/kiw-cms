@@ -73,11 +73,15 @@
             <div class="flex flex-col items-center group">
                 <div class="flex flex-col justify-between items-center">
                     @if ($achievement->featuredImage)
-                        <img class="h-[250px] object-contain -mb-[20px] z-10 group-hover:scale-110 transition-all duration-300"
-                            src="{{ $achievement->featuredImage->url }}" alt="{{ $achievement->title }}">
+                        <a href="{{ $achievement->featuredImage->url }}" data-lightbox="gallery">
+                            <x-curator-glider :media="$achievement->featuredImage" class="h-[250px] object-contain -mb-[20px] z-10 group-hover:scale-110 transition-all duration-300" />
+                        </a>
+                
                     @else
-                        <img class="h-[250px] object-contain -mb-[20px] z-10 group-hover:scale-110 transition-all duration-300"
-                            src="{{ Storage::url('media/default-achievement.png') }}" alt="{{ $achievement->title }}">
+                        <a href="{{ Storage::url('media/default-achievement.png') }}" data-lightbox="gallery">
+                            <img class="h-[250px] object-contain -mb-[20px] z-10 group-hover:scale-110 transition-all duration-300"
+                                src="{{ Storage::url('media/default-achievement.png') }}" alt="{{ $achievement->title }}">
+                        </a>
                     @endif
                     <img class="z-1" src="{{ Storage::url('media/frame-awards.png') }}" alt="frame-awards">
                 </div>
@@ -99,7 +103,7 @@
     <!--Pagination-->
     @if ($achievements->hasPages())
         <div class="flex justify-center mt-8">
-            {{ $achievements->links() }}
+            {{ $achievements->links('vendor.livewire.tailwind', ['wire:navigate' => true]) }}
         </div>
     @endif
     @pushOnce('before_body_close')

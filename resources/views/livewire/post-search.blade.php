@@ -42,7 +42,7 @@
             <!--Pagination - Only show if there are results AND multiple pages-->
             @if ($posts->hasPages())
                 <div class="mt-8">
-                    {{ $posts->links('vendor.pagination.tailwind', ['wire:navigate' => true]) }}
+                    {{ $posts->links('vendor.livewire.tailwind', ['wire:navigate' => true]) }}
                 </div>
             @endif
         @else

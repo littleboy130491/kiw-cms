@@ -76,7 +76,7 @@
             <!--Pagination - Only show if there are results AND multiple pages-->
             @if ($tenders->hasPages())
                 <div class="mt-8">
-                    {{ $tenders->links('vendor.pagination.tailwind', ['wire:navigate' => true]) }}
+                    {{ $tenders->links('vendor.livewire.tailwind', ['wire:navigate' => true]) }}
                 </div>
             @endif
         @else
