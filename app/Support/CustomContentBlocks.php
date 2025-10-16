@@ -22,6 +22,8 @@ class CustomContentBlocks
             static::getTabProfilPerusahaanBlock(),
             static::getHotspotKoneksiGlobalBlock(),
             static::getSliderHeightBlock(),
+            static::getSliderWithCounterBlock(),
+
         ];
     }
 
