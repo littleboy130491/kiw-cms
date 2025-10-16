@@ -26,11 +26,11 @@
             @endif
 
             @if($directors?->isNotEmpty())
-                <x-loop.manajemen-grid :items="$directors" level="Board of Directors"/>
+                <x-loop.manajemen-grid :items="$directors" level="Directors"/>
             @endif
 
             @if($heads?->isNotEmpty())
-                <x-loop.manajemen-grid :items="$heads" level="Divison Head"/>
+                <x-loop.manajemen-grid :items="$heads" level="Divison Heads"/>
             @endif
         </section>
 
