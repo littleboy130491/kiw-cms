@@ -57,7 +57,7 @@
         <section id="whistleblowing-form" class="bg-[var(--color-transit])">
 
             <!--Start Form-->
-            <div class="py-18 lg:py-30 px-4 sm:px-6 lg:px-0 flex flex-col gap-7 lg:gap-9 lg:w-[1200px] lg:mx-auto">
+            <div class="py-18 lg:pt-0 lg:pb-30 px-4 sm:px-6 lg:px-0 flex flex-col gap-7 lg:gap-9 lg:w-[1200px] lg:mx-auto">
                 <!--title-->
                 <div class="flex flex-col gap-5">
                     <h2 data-aos="fade-up" class="text-center">{!! $formBlock['title'] !!}</h2>
