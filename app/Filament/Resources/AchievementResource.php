@@ -4,8 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\AchievementResource\Pages;
 use App\Models\Achievement;
-
 use Littleboy130491\Sumimasen\Filament\Abstracts\BaseContentResource;
+use Filament\Forms\Components\TextInput;
 
 class AchievementResource extends BaseContentResource
 {
@@ -15,10 +15,13 @@ class AchievementResource extends BaseContentResource
     protected static ?string $navigationGroup = 'Achievements';
     protected static ?int $navigationSort = 0;
 
-    protected static function additionalFormFieldsTranslatable(?string $locale): array
+    protected static function additionalTranslatableFormFields(?string $locale): array
     {
-
-        return [];
+        return [
+            TextInput::make('giver')
+                ->nullable()
+                ->columnSpanFull(),
+        ];
     }
 
     protected static function hiddenFields(): array

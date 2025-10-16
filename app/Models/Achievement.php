@@ -37,6 +37,7 @@ class Achievement extends Model
         'status',
         'template',
         'title',
+        'giver',
     ];
 
 
