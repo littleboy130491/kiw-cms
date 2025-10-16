@@ -1444,3 +1444,11 @@ body .uwy.userway_p1 .userway_buttons_wrapper {
 {
   @apply bg-white;
 }
+
+/* ol ul default list style */
+ol:not(#header-container *, #footer *),
+ul:not(#header-container *, #footer *)
+{
+  list-style-type: decimal;
+  margin-left: 20px;
+}

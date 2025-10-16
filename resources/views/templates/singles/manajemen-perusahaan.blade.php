@@ -5,9 +5,14 @@
     $items = Management::with('featuredImage')
                 ->where('status', ContentStatus::Published)
                 ->get();
-    $commissioners = $items->where('level', 'commissioner');
-    $directors = $items->where('level','bod');
-    $heads = $items->where('level','heads');
+    // $commissioners = $items->where('level', 'commissioner');
+    // $directors = $items->where('level','bod');
+    // $heads = $items->where('level','heads');
+
+    $commissioners = null;
+    $directors = null;
+    $heads = null;
+    
 @endphp
 
 <x-layouts.app>
@@ -22,15 +27,15 @@
             <!--Section per Position-->
             <x-loop.manajemen-grid :items="$items" />
 
-            @if($commissioners->isNotEmpty())
+            @if($commissioners?->isNotEmpty())
                 <x-loop.manajemen-grid :items="$commissioners" level="Commissioners"/>
             @endif
 
-            @if($directors->isNotEmpty())
+            @if($directors?->isNotEmpty())
                 <x-loop.manajemen-grid :items="$directors" level="Board of Directors"/>
             @endif
 
-            @if($heads->isNotEmpty())
+            @if($heads?->isNotEmpty())
                 <x-loop.manajemen-grid :items="$heads" level="Divison Head"/>
             @endif
         </section>
@@ -66,7 +71,7 @@
                             </h6>
                             <h3 class="modal-title sm:mb-5 mb-1"></h3>
                             <div
-                                class="modal-description text-[var(--color-text)] pr-2 overflow-y-auto sm:max-h-[300px] max-h-[150px]">
+                                class="modal-description flex flex-col gap-5 text-[var(--color-text)] pr-2 overflow-y-auto sm:max-h-[300px] max-h-[150px]">
                             </div>
                         </div>
                     </div>
