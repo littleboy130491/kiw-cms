@@ -1,12 +1,12 @@
-<x-layouts.app :title="$item->title ?? 'Default Page'" :body-classes="$bodyClasses">
+<x-layouts.app :title="$item->title ?? 'Default Page'">
     <x-partials.header />
-    <main>
-        test
-        <h1>{{ $item->title ?? 'Default Page' }}</h1>
-        <x-instagram-feed :type="request('type', 'all')" />
+        <main>
+            <x-partials.hero-page :image="Storage::url('media/bangunan-pabrik-hero.jpg')" h1="{{ $item->title ?? '' }}" />
 
-        {{-- Content goes here --}}
+            {{-- Content goes here --}}
 
-    </main>
+        </main>
+    <x-partials.whatsapp />
     <x-partials.footer />
 </x-layouts.app>
+

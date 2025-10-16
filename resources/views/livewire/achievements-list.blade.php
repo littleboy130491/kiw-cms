@@ -84,7 +84,9 @@
                 <div class="flex flex-col gap-2 items-center">
                     <p class="text-sm text-[var(--color-heading)] -mb-2">{{ $achievement->achievementYear->first()->title ?? '' }}</p>
                     <h5 class="text-[var(--color-heading)] text-center font-bold text-[1em]">{{ $achievement->title }}</h5>
-                    <p class="text-sm text-[var(--color-text)] text-[.8em] italic">{{ $achievement->giver ?? 'Yayasan ABC' }}</p>
+                    @if($achievement->giver)
+                         <p class="text-sm text-[var(--color-text)] text-[.8em] italic">{{ $achievement->giver }}</p>
+                    @endif
                 </div>
             </div>
         @empty
