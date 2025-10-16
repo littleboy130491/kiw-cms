@@ -5,8 +5,10 @@ namespace App\Support;
 use Filament\Forms\Components\Builder as FormsBuilder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Select;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Repeater;
 
 class CustomContentBlocks
 {
@@ -19,6 +21,7 @@ class CustomContentBlocks
             static::getHotspotLahanIndustriBlock(),
             static::getTabProfilPerusahaanBlock(),
             static::getHotspotKoneksiGlobalBlock(),
+            static::getSliderHeightBlock(),
         ];
     }
 
@@ -45,10 +48,10 @@ class CustomContentBlocks
                     ->label('Image')
                     ->acceptedFileTypes(['image/*'])
                     ->helperText('Accepted file types: image only'),
-                Toggle::make('hide')
-                    ->label('Hide Block')
-                    ->helperText('Hide this block from display')
-                    ->columnSpanFull(),
+                // Toggle::make('hide')
+                //     ->label('Hide Block')
+                //     ->helperText('Hide this block from display')
+                //     ->columnSpanFull(),
             ])
             ->columns(2);
     }
@@ -72,10 +75,10 @@ class CustomContentBlocks
                     ->label('Flag')
                     ->acceptedFileTypes(['image/*'])
                     ->helperText('Accepted file types: image only'),
-                Toggle::make('hide')
-                    ->label('Hide Block')
-                    ->helperText('Hide this block from display')
-                    ->columnSpanFull(),
+                // Toggle::make('hide')
+                //     ->label('Hide Block')
+                //     ->helperText('Hide this block from display')
+                //     ->columnSpanFull(),
             ])
             ->columns(2);
     }
@@ -104,10 +107,86 @@ class CustomContentBlocks
                     ->label('Logo')
                     ->acceptedFileTypes(['image/*'])
                     ->helperText('Accepted file types: image only'),
-                Toggle::make('hide')
-                    ->label('Hide Block')
-                    ->helperText('Hide this block from display')
+                // Toggle::make('hide')
+                //     ->label('Hide Block')
+                //     ->helperText('Hide this block from display')
+                //     ->columnSpanFull(),
+            ])
+            ->columns(2);
+    }
+
+    private static function getSliderHeightBlock(): FormsBuilder\Block
+    {
+        return FormsBuilder\Block::make('slider-height')
+            ->label('Slider Height')
+            ->schema([
+                TextInput::make('block_id')
+                    ->label('Block ID')
+                    ->helperText('Identifier for the block')
                     ->columnSpanFull(),
+                Select::make('device')
+                    ->options([
+                        'mobile' => 'Mobile,',
+                        'tablet' => 'Tablet,',
+                        'desktop' => 'Desktop,'
+                    ]),
+                Select::make('unit')
+                    ->options([
+                        'vh' => 'vh,',
+                        'px' => 'px,',
+                    ]),
+                TextInput::make('value'),
+                // Toggle::make('hide')
+                //     ->label('Hide Block')
+                //     ->helperText('Hide this block from display')
+                //     ->columnSpanFull(),
+            ])
+            ->columns(2);
+    }
+
+    private static function getSliderWithCounterBlock(): FormsBuilder\Block
+    {
+        return FormsBuilder\Block::make('slider-with-counter')
+            ->label('Slider with Counter')
+            ->schema([
+                TextInput::make('block_id')
+                    ->label('Block ID')
+                    ->helperText('Identifier for the block')
+                    ->columnSpanFull(),
+                TextInput::make('title'),
+                Textarea::make('description')
+                    ->columnSpanFull(),
+                TextInput::make('cta'),
+                TextInput::make('cta_label'),
+                TextInput::make(name: 'video')
+                    ->label('Background video')
+                    ->columnSpanFull(),
+                CuratorPicker::make('image')
+                    ->label('Background image')
+                    ->acceptedFileTypes(['image/*'])
+                    ->helperText('Accepted file types: image only'),
+                CuratorPicker::make('logo')
+                    ->label('Content image')
+                    ->acceptedFileTypes(['image/*'])
+                    ->helperText('Accepted file types: image only'),
+                Toggle::make('filter')
+                    ->label('Make content image white?')
+                    ->columnSpanFull(),
+                TextInput::make('counter_title')
+                    ->columnSpanFull(),
+                Repeater::make('counter_items')
+                    ->label('Counter Items')
+                    ->schema([
+                        TextInput::make('label'),
+                        TextInput::make('number'),
+                        TextInput::make('prefix'),
+                        TextInput::make('suffix'),
+                    ])
+                    ->reorderable(),
+                // Toggle::make('hide')
+                //     ->label('Hide Block')
+                //     ->helperText('Hide this block from display')
+                //     ->columnSpanFull(),
             ])
             ->columns(2);
     }
