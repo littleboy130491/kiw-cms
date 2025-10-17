@@ -3,7 +3,8 @@
 @endphp
 <div class="relative">
     <div class="group fasilitas-item flex flex-col justify-end p-6 item-for-popup cursor-pointer rounded-md min-h-70 bg-cover bg-no-repeat"
-        style="background-image:url('{{ $image_url }}')" onclick="openModal(this)">
+        style="background-image:url('{{ $image_url ?? Storage::url('media/content-default.jpg') }}')" 
+        onclick="openModal(this)">
 
         <h4 class="name z-10 text-white"> {{ $item->title ?? 'Fasilitas Kami' }} </h4>
 

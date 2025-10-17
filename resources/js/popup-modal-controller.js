@@ -74,7 +74,22 @@ class ModalController {
     if (modalPosition) modalPosition.textContent = data.position;
 
     const modalImage = this.modal.querySelector('.modal-image img');
-    if (modalImage && data.photo) modalImage.src = data.photo;
+    if (modalImage) {
+      // Laravel fallback image
+      const fallbackImage = "{{ Storage::url('media/default.jpg') }}";
+
+      // Tentukan image utama
+      const imageSrc = data.photo && data.photo.trim() !== '' ? data.photo : fallbackImage;
+
+      // Set src awal
+      modalImage.src = imageSrc;
+
+      // Fallback jika gagal dimuat
+      modalImage.onerror = () => {
+        modalImage.onerror = null; // hindari loop
+        modalImage.src = fallbackImage;
+      };
+    }
 
     const modalDescription = this.modal.querySelector('.modal-description');
     if (modalDescription) modalDescription.innerHTML = data.description;

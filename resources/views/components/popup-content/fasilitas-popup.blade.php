@@ -5,7 +5,7 @@
 
     <!-- Modal Container -->
     <div
-        class="popup-facility modal-container bg-white w-[90%] mt-[50px] lg:h-[90%] sm:h-[700px] h-[600px] sm:w-[90%] mx-auto rounded-lg shadow-lg z-50 lg:overflow-auto overflow-hidden !-mt-11">
+        class="popup-facility modal-container bg-white w-[90%] mt-[50px] lg:h-[80%] sm:h-[700px] h-[600px] sm:w-[85%] lg:w-[75%] mx-auto rounded-lg shadow-lg z-50 overflow-auto !-mt-11">
         <!-- Modal Header -->
         <div class="modal-header flex flex-row justify-end pr-2 pt-2">
             <button class="modal-close cursor-pointer" onclick="closeModal()">
@@ -18,18 +18,18 @@
 
         <!-- Modal Content -->
         <div class="modal-content pb-3 px-3 sm:pb-6 sm:px-6">
-            <div class="flex flex-col gap-6">
+            <div class="flex lg:flex-row flex-col gap-6">
                 <!-- Gambar -->
                 <div class="modal-image w-full">
-                    <img class="!w-full h-full lg:h-[72vh] object-center object-cover rounded-md" src=""
+                    <img class="!w-full h-full object-center object-cover rounded-md" src=""
                         alt="Foto Manajemen">
                 </div>
 
-                <div class="modal-info w-full flex lg:flex-row flex-col items-start lg:gap-7 gap-3 overflow-hidden">
-                    <h4 class="modal-title sm:mb-2 mb-1 flex flex-row justify-start lg:w-[18%] w-full"></h4>
+                <div class="modal-info w-full flex flex-col items-start lg:gap-4 gap-3 overflow-hidden">
+                    <h4 class="modal-title flex flex-row justify-start w-full"></h4>
 
                     <div
-                        class="modal-description text-[var(--color-text)] lg:w-[82%] w-full lg:max-h-full h-[270px] sm:h-[100px] !overflow-auto pb-6 lg:pb-0">
+                        class="modal-description text-[var(--color-text)] w-full lg:h-[500px] h-full !overflow-auto pb-6 lg:pb-0">
 
                     </div>
                 </div>
