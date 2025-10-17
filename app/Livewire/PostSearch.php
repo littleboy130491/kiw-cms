@@ -72,7 +72,7 @@ class PostSearch extends Component
                     });
                 });
             })
-            ->latest();
+            ->orderByRaw('COALESCE(published_at, created_at) DESC');
     }
 
     private function applySearchFilter(Builder $query): Builder

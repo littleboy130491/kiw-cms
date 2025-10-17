@@ -13,7 +13,7 @@
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <img src="{{ Storage::url('media/search.png') }}" alt="Search">
                 </div>
-                <input type="search" placeholder="Cari disini..." wire:model.live.debounce.500ms="searchQuery"
+                <input type="search" placeholder="{{ __('search.placeholder') }}" wire:model.live.debounce.500ms="searchQuery"
                     wire:loading.attr="disabled"
                     class="w-full pl-10 pr-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)]" />
             </div>
