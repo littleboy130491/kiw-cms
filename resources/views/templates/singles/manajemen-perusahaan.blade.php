@@ -37,11 +37,11 @@
 
 
         <!--Popup Content-->
-        <div id="modal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+        <div id="modal" class="fixed inset-0 flex items-center justify-center z-999 hidden">
             <div class="modal-overlay absolute inset-0 bg-black opacity-75"></div>
 
             <div
-                class="modal-container bg-white w-11/12 md:max-w-2xl mx-auto rounded-lg shadow-lg z-50 overflow-y-auto">
+                class="modal-container bg-white w-11/12 md:max-w-2xl mx-auto rounded-lg shadow-lg z-9999 overflow-y-auto">
                 <!-- Modal Header -->
                 <div class="modal-header flex flex-row justify-end pr-2 pt-2">
 

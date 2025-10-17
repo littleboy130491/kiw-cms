@@ -1,50 +1,46 @@
 @php
+    // dd($item->block);
     $archive_post_url = route('cms.page', [app()->getLocale(), 'posts']);
 
-    //Start About Home Temporary Data
+    $blocks = collect($item->block);
+
+    // About Home contentTop (main section)
+    $aboutHomeTop = $blocks
+        ->where('data.block_id', 'about-home')
+        ->first();
+
+    $aboutHomeIso = $blocks
+        ->where('data.block_id', 'about-home-iso-images')
+        ->first();
+
+    $aboutHomeCounters = $blocks
+        ->where('data.block_id', 'about-home-counter')
+        ->pluck('data');
+
+    // Build the dynamic $aboutHome array
     $aboutHome = [
         'contentTop' => [
-            'subTitle' => 'tentang kiw',
-            'title' => 'Pilar Industri Jawa Tengah',
-            'desc' => 'PT Kawasan Industri Wijayakusuma (KIW) merupakan perusahaan yang bergerak di bidang pengembangan dan pengelolaan kawasan industri. Pemegang saham KIW antara lain; Kementerian BUMN, PT Danareksa (Persero), Pemerintah Provinsi Jawa Tengah, dan Pemerintah Kabupaten Cilacap.',
-            'iso' => [
-                'images' => [
-                    Storage::url('media/iso-1.png'),
-                    Storage::url('media/iso-2.png'),
-                    Storage::url('media/iso-3.png'),
-                ],
-                'label' => 'ISO Certificate',
+            'subTitle' => $aboutHomeTop['data']['subtitle'] ?? null,
+            'title'    => $aboutHomeTop['data']['title'] ?? null,
+            'desc'     => $aboutHomeTop['data']['description'] ?? null,
+            'iso'      => [
+                'images' => $aboutHomeIso['data']['gallery_urls'] ?? [],
+                'label'  => $aboutHomeIso['data']['title'] ?? null,
             ],
-            'btnText' => 'Selengkapnya',
-            'btnLink' => '/profil-perusahaan',
+           
+            'btnText' => $aboutHomeTop['data']['url'] ?? null,
+            'btnLink' => $aboutHomeTop['data']['button_label'] ?? null,
         ],
         'contentBottom' => [
-            'image' => Storage::url('media/about-home-bottom.jpg'),
-            'counter' => [
-                [
-                    'counter' => 36,
-                    'label' => 'Tahun Pengalaman',
-                    'suffix' => '+',
-                ],
-                [
-                    'counter' => 100,
-                    'label' => 'Tenant Bekerjasama',
-                    'suffix' => '+',
-                ],
-                [
-                    'counter' => 5,
-                    'label' => 'Penghargaan',
-                    'suffix' => '+',
-                ],
-                [
-                    'counter' => 4,
-                    'label' => 'Sertifikasi',
-                    'suffix' => '+',
-                ],
-            ],
+            'image'   => $aboutHomeTop['data']['media_url'] ?? null,
+            'counter' => $aboutHomeCounters->map(fn($c) => [
+                'counter' => (int) ($c['title'] ?? 0),
+                'label'   => $c['description'] ?? '',
+                'suffix'  => $c['suffix'] ?? '',
+            ])->values()->all(),
         ],
     ];
-    //End About Home Temporary Data
+   
 
     //Start Layanan Home Temporary Data
     $layananHome = [
