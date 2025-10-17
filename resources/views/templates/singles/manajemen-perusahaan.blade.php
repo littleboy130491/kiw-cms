@@ -23,15 +23,15 @@
         <section id="manajemen">
             <!--Section per Position-->
             @if($commissioners?->isNotEmpty())
-                <x-loop.manajemen-grid :items="$commissioners" level="Commissioners"/>
+                <x-loop.manajemen-grid :items="$commissioners" level="{{ __('management.commissioners') }}"/>
             @endif
 
             @if($directors?->isNotEmpty())
-                <x-loop.manajemen-grid :items="$directors" level="Directors"/>
+                <x-loop.manajemen-grid :items="$directors" level="{{ __('management.directors') }}"/>
             @endif
 
             @if($heads?->isNotEmpty())
-                <x-loop.manajemen-grid :items="$heads" level="Divison Heads"/>
+                <x-loop.manajemen-grid :items="$heads" level="{{ __('management.division_heads') }}"/>
             @endif
         </section>
 
