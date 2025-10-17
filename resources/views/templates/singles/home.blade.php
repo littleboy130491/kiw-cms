@@ -16,12 +16,17 @@
         ->where('data.block_id', 'about-home-counter')
         ->pluck('data');
 
+    $aboutHomeBottom = $blocks
+        ->where('data.block_id', 'about-home-bottom')
+        ->first();
+   
     // Build the dynamic $aboutHome array
     $aboutHome = [
         'contentTop' => [
             'subTitle' => $aboutHomeTop['data']['subtitle'] ?? null,
             'title'    => $aboutHomeTop['data']['title'] ?? null,
             'desc'     => $aboutHomeTop['data']['description'] ?? null,
+            'image'    => $aboutHomeTop['data']['media_url'] ?? null,
             'iso'      => [
                 'images' => $aboutHomeIso['data']['gallery_urls'] ?? [],
                 'label'  => $aboutHomeIso['data']['title'] ?? null,
@@ -31,7 +36,7 @@
             'btnLink' => $aboutHomeTop['data']['button_label'] ?? null,
         ],
         'contentBottom' => [
-            'image'   => $aboutHomeTop['data']['media_url'] ?? null,
+            'image'   => $aboutHomeBottom['data']['media_url'] ?? null,
             'counter' => $aboutHomeCounters->map(fn($c) => [
                 'counter' => (int) ($c['title'] ?? 0),
                 'label'   => $c['description'] ?? '',
@@ -212,7 +217,7 @@
                     <!--image top right-->
                     <div class="lg:!w-[45%]">
                         <img class="rounded-2xl lg:!h-[550px] sm:!h-[450px] lg:!w-[unset] sm:!w-[100vw] object-cover"
-                            src="{{ Storage::url('media/construction-site-with-cranes-construction-worker.jpg') }}"
+                            src="{{ $aboutHome['contentTop']['image'] }}"
                             alt="about">
                     </div>
                 </div>
@@ -223,7 +228,7 @@
                     <!--content left-->
                     <div class="sm:w-[48%] w-[100%]">
                         <img class="rounded-2xl h-[340px] object-cover"
-                            src="{{ Storage::url('media/pointing-sketch.jpg') }}">
+                            src="{{ $aboutHome['contentBottom']['image'] }}">
                     </div>
 
                     <!--content right-->
