@@ -1451,9 +1451,7 @@ body .uwy.userway_p1 .userway_buttons_wrapper {
 }
 
 /* ol ul default list style */
-ol:not(#header-container *, #footer *),
-ul:not(#header-container *, #footer *)
-{
+body :is(ol, ul, li):not(#header-container *):not(#footer *):not(#post-form-comment *) {
   list-style-type: decimal;
   margin-left: 20px;
 }
