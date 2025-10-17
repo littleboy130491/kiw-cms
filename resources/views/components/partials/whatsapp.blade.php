@@ -78,7 +78,7 @@ function waWidget(phone) {
             const message = encodeURIComponent(text);
 
             // Gunakan api.whatsapp.com (lebih stabil lintas platform)
-            const url = `https://api.whatsapp.com/send?phone=${this.phone}&text=${message}`;
+            const url = `https://wa.me/${this.phone}?text=${message}`;
 
             // Buka di tab baru
             window.open(url, '_blank');
