@@ -9,8 +9,9 @@
     $items = Post::with(['featuredImage', 'categories', 'tags'])
         ->where('status', ContentStatus::Published)
         ->limit($qty)
-        ->orderByDesc('created_at')
+        ->orderByRaw('COALESCE(published_at, created_at) DESC')
         ->get();
+
 @endphp
 <!--Content-->
 @if ($items->isNotEmpty())
