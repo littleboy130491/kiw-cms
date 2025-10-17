@@ -43,7 +43,7 @@ class CareerResource extends BaseContentResource
 
         return [
            TiptapEditor::make('qualifications')
-                ->profile('simple')
+                ->profile('default')
                 ->nullable()
                 ->extraInputAttributes(['style' => 'min-height: 12rem;'])
                 ->columnSpanFull(),
