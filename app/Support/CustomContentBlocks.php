@@ -165,8 +165,10 @@ class CustomContentBlocks
                 TextInput::make('title'),
                 Textarea::make('description')
                     ->columnSpanFull(),
-                TextInput::make('cta'),
-                TextInput::make('cta_label'),
+                TextInput::make('cta')
+                    ->label('CTA link'),
+                TextInput::make('cta_label')
+                    ->label('CTA label'),
                 TextInput::make(name: 'video')
                     ->label('Background video')
                     ->columnSpanFull(),
@@ -181,8 +183,7 @@ class CustomContentBlocks
                 Toggle::make('filter')
                     ->label('Make content image white?')
                     ->columnSpanFull(),
-                TextInput::make('counter_title')
-                    ->columnSpanFull(),
+                TextInput::make('counter_title'),
                 Repeater::make('counter_items')
                     ->label('Counter Items')
                     ->schema([
@@ -191,7 +192,8 @@ class CustomContentBlocks
                         TextInput::make('prefix'),
                         TextInput::make('suffix'),
                     ])
-                    ->reorderable(),
+                    ->reorderable()
+                    ->columnSpanFull(),
                 // Toggle::make('hide')
                 //     ->label('Hide Block')
                 //     ->helperText('Hide this block from display')
