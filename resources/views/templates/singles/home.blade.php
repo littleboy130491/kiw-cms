@@ -330,16 +330,6 @@
         <!--Start Video Home-->
         <section id="video-home"
             class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden lg:max-w-[1200px] lg:mx-auto lg:my-30 my-18 lg:px-0 sm:px-6 px-4">
-            <div class="flex flex-col justify-between gap-5">
-                <h6 class="bullet-1" data-aos="fade-down">{{ $videoHome['subTitle'] }}</h6>
-                <h2 data-aos="fade-up">{{ $videoHome['title'] }}</h2>
-                @if ( $videoHome['description'] )
-                    <p class="body-text text-[var(--color-text)]">
-                        {{ $videoHome['description'] }}
-                    </p>
-                @endif
-                
-            </div>
             <!-- Custom Thumbnail -->
             <div class="absolute inset-0 bg-cover bg-center cursor-pointer rounded-2xl lg:mx-0 sm:mx-6 mx-4"
                 style="background-image: url('{{ $videoHome['image'] }} ') ;" onclick="loadVideo(this)">
