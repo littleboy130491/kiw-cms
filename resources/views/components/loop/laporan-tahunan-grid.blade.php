@@ -9,7 +9,7 @@
     $items = Report::with(relations: ['fileMedia', 'featuredImage'])
         ->where('status', ContentStatus::Published)
         ->limit($qty)
-        ->orderByDesc('created_at')
+        ->orderByDesc('published_at')
         ->get();
 @endphp
 <!--Content-->
