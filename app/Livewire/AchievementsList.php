@@ -111,7 +111,7 @@ class AchievementsList extends Component
                     $q->where('achievement_years.id', $this->selectedYear);
                 });
             })
-            ->orderBy('published_at', 'desc')
+            ->orderByRaw('COALESCE(published_at, created_at) DESC')
             ->paginate(12);
 
         $achievementTypes = AchievementType::orderBy('title')->get();
