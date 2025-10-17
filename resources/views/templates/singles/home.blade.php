@@ -1,5 +1,4 @@
 @php
-    //dd($item->block);
     $archive_post_url = route('cms.page', [app()->getLocale(), 'posts']);
 
     $blocks = collect($item->block);
@@ -444,9 +443,7 @@
             <div class="relative lg:w-[1200px] mx-auto w-full">
                 <div class="swiper-logo overflow-hidden !flex !flex-row !justify-center">
                     <div class="swiper-wrapper">
-                        @foreach ($tenantHome['tenantLogo'] as $tenantLogo)
-                            <x-loop.tenant-logo :image="$tenantLogo['image']" />
-                        @endforeach
+                      <x-sumimasen-cms::component-loader name="tenant-logo" />
                     </div>
                 </div>
 
