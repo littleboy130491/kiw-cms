@@ -4,7 +4,7 @@
 
     $items = Management::with('featuredImage')
                 ->where('status', ContentStatus::Published)
-                ->orderByAsc('menu_order')
+                ->orderBy('menu_order', 'asc')
                 ->get();
     $commissioners = $items->where('level', 'commissioner');
     $directors = $items->where('level','bod');
