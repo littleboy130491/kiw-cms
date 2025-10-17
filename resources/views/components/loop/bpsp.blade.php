@@ -1,8 +1,13 @@
 <a href="{{ route('cms.single.content', ['lang' => app()->getLocale(), 'content_type_key' => 'bpsp', 'content_slug' => $item->slug]) }}"
     class="group relative flex flex-col h-auto justify-between bg-[var(--color-transit)] overflow-hidden rounded-md px-6 pt-13 pb-0 block">
     @if ($item->buildingCategories->first())
-        <div
-            class="gradient-blue top-0 left-0 w-fit absolute px-3 py-2 rounded-tl-md rounded-br-md {{ $item->buildingCategories->first()?->slug === 'tersedia' ? 'blinking' : '' }}">
+        @if ( $item->buildingCategories->first()?->slug === 'tersedia' )
+             <div
+            class="gradient-green top-0 left-0 w-fit absolute px-3 py-2 rounded-tl-md rounded-br-md blinking">
+        @else
+             <div
+            class="gradient-blue top-0 left-0 w-fit absolute px-3 py-2 rounded-tl-md rounded-br-md">
+        @endif
             <p class="text-white uppercase text-[.8em]">{{ $item->buildingCategories->first()?->title }}</p>
         </div>
     @endif

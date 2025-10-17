@@ -69,6 +69,11 @@ body.front-end {
   background: linear-gradient(268deg, #1F77D3 1.1%, #321B71 99.1%) !important;
 }
 
+.gradient-green {
+
+  background: linear-gradient(268deg, #14d46a 1.1%, #321B71 99.1%) !important;
+}
+
 .gradient-white-about {
   background: #ffffff;
   background: linear-gradient(180deg, rgba(255, 255, 255, 1) 40%, rgba(0, 0, 0, 0) 75%);
