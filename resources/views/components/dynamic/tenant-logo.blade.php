@@ -4,5 +4,5 @@
 @endphp
 
 @foreach ($block['data']['gallery_urls'] as $tenantLogo)
-    <x-loop.tenant-logo :image="$tenantLogo['image']" />
+    <x-loop.tenant-logo :image="$tenantLogo" />
 @endforeach
