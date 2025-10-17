@@ -14,10 +14,9 @@
 
     <!--back-->
     <div class="absolute group-hover:top-[0%] top-[100%] transition-all duration-[500ms] flex flex-col justify-between bg-white rounded-md gap-15 px-6 pt-6 h-full">
-        <div></div>
         <div class="flex flex-col gap-5">
             <h3>{{ $label ?? '' }}</h3>
-            <p>{{ $desc ?? '' }}</p>
+            <p>{{ strip_tags(html_entity_decode($desc ?? '')) }}</p>
             <div class="mt-3">
                 <a class="w-full btn3" href="{{ $url ?? '' }}">
                     <span class="gradient-text">Lihat Layanan</span>

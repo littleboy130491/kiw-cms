@@ -1,5 +1,5 @@
 @php
-    // dd($item->block);
+    //dd($item->block);
     $archive_post_url = route('cms.page', [app()->getLocale(), 'posts']);
 
     $blocks = collect($item->block);
@@ -42,106 +42,94 @@
     ];
    
 
-    //Start Layanan Home Temporary Data
+    // Get main layanan-home section (title & subtitle)
+    $layananHomeSection = $blocks
+        ->where('data.block_id', 'layanan-home')
+        ->first();
+
+    // Get layanan-home-item blocks (each service card)
+    $layananItems = $blocks
+        ->where('data.block_id', 'layanan-home-item')
+        ->pluck('data');
+
+    // Build the final array dynamically
     $layananHome = [
         'layananTitle' => [
-            'subTitle' => 'layanan kami',
-            'title' => 'Solusi Komprehensif untuk Kebutuhan Industri',
+            'subTitle' => $layananHomeSection['data']['subtitle'] ?? null,
+            'title'    => $layananHomeSection['data']['title'] ?? null,
         ],
-        'layananContent' => [
-            [
-                'label' => 'Lahan Industri Siap Bangun',
-                'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                'image' => Storage::url('media/aerial-view-warehouse-industrial-plant-logistics-center-from-view-from.jpg'),
-                'btnText' => 'Selengkapnya',
-                'btnLink' => '/lahan-industri',
-            ],
-            [
-                'label' => 'Bangunan Pabrik Siap Pakai (BPSP)',
-                'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                'image' => Storage::url('media/exterior-view-modern-industrial-building.jpg'),
-                'btnText' => 'Selengkapnya',
-                'btnLink' => '/bpsp',
-            ],
-            [
-                'label' => 'Kawasan Industri Terpadu',
-                'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                'image' => Storage::url('media/exterior-view-modern-industrial-building.jpg'),
-                'btnText' => 'Selengkapnya',
-                'btnLink' => '/kawasan-industri',
-            ],
-        ],
+        'layananContent' => $layananItems->map(fn($item) => [
+            'label'   => $item['title'] ?? null,
+            'desc'    => $item['description'] ?? null,
+            'image'   => $item['media_url'] ?? null,
+            // note: CMS field mapping — adjust if reversed
+            'btnText' => $item['button_label'] ?? null,
+            'btnLink' => $item['url'] ?? null,
+        ])->values()->all(),
     ];
-    //End Layanan Home Temporary Data
 
-    //Start Keunggulan Home Temporary Data
+    // Get the main Keunggulan section (title, subtitle, background)
+    $keunggulanSection = $blocks
+        ->where('data.block_id', 'keunggulan-home')
+        ->first();
+
+    // Get all the individual Keunggulan items
+    $keunggulanItems = $blocks
+        ->where('data.block_id', 'keunggulan-home-item')
+        ->pluck('data');
+
+    // Build the dynamic structure
     $keunggulanHome = [
         'keunggulanTitle' => [
-            'subTitle' => 'keunggulan',
-            'title' => 'Alasan Memilih KIW?',
+            'subTitle' => $keunggulanSection['data']['subtitle'] ?? null,
+            'title'    => $keunggulanSection['data']['title'] ?? null,
+            'image'    => $keunggulanSection['data']['media_url'] ?? null,
         ],
-        'keunggulanItem' => [
-            [
-                'number' => '01.',
-                'label' => 'Layanan Perizinan',
-                'desc' => 'KIW menawarkan kemudahan dalam menjalankan bisnis melalui sistem pelayanan satu atap yang terintegrasi.',
-                'url' => '/keunggulan#perijinan',
-            ],
-            [
-                'number' => '02.',
-                'label' => 'Lokasi Strategis',
-                'desc' => 'Kawasan Industri Wijayakusuma terletak di jalur utama Semarang, pusat pertumbuhan ekonomi di Jawa Tengah.',
-                'url' => '/keunggulan#lokasi',
-            ],
-            [
-                'number' => '03.',
-                'label' => 'Area Bebas Banjir',
-                'desc' => 'KIW terletak di area bebas banjir yang terjamin ketersediaan air.',
-                'url' => '/keunggulan#area-bebas-banjir',
-            ],
-            [
-                'number' => '04.',
-                'label' => 'Kelengkapan Infrastruktur & Fasilitas',
-                'desc' => 'KIW dibangun dengan infrastruktur kelas industri yang lengkap dan modern.',
-                'url' => '/keunggulan#infrastruktur',
-            ],
-            [
-                'number' => '05.',
-                'label' => 'Upah Minimum Kompetitif',
-                'desc' => 'KIW memiliki Upah Minimum yang relatif lebih rendah dibandingkan kota-kota besar seperti Jakarta atau Surabaya.',
-                'url' => '/keunggulan#upah',
-            ],
-            [
-                'number' => '06.',
-                'label' => 'Sumber Daya Manusia Unggul',
-                'desc' => 'KIW dikelilingi institusi pendidikan dan pelatihan yang mencetak lulusan siap kerja dan terampil.',
-                'url' => '/keunggulan#sdm',
-            ],
-            [
-                'number' => '07.',
-                'label' => 'Ekosistem Klaster Bisnis',
-                'desc' => 'KIW mendukung ekosistem industri melalui fasilitas modern, tata kelola profesional, dan layanan satu pintu.',
-                'url' => '/keunggulan#bisnis',
-            ],
-        ],
+        'keunggulanItem' => $keunggulanItems->map(fn($item) => [
+            'number' => $item['subtitle'] ?? null,
+            'label'  => $item['title'] ?? null,
+            'desc'   => $item['description'] ?? null,
+            'url'    => $item['url'] ?? null,
+            'btnText'=> $item['button_label'] ?? null,
+        ])->values()->all(),
     ];
-    //End Keunggulan Home Temporary Data
 
-    //Start Video Home Temporary Data
+    //Start Fasilitas Data
+    $fasilitasHomeBlocks = $blocks
+        ->where('data.block_id', 'fasilitas-home')
+        ->first();
+    $fasilitasHome = [
+        'subTitle' => $fasilitasHomeBlocks['data']['subtitle'] ?? null,
+        'title' => $fasilitasHomeBlocks['data']['title'] ?? null,
+        'url'   => $fasilitasHomeBlocks['data']['url'] ?? null,
+        'label' => $fasilitasHomeBlocks['data']['button_label'] ?? null,
+    ];
+    //End Fasilitas Data
+
+    //Start Video Home Data
+    $videoBlocks = $blocks
+        ->where('data.block_id', 'video-home')
+        ->first();
+
     $videoHome = [
-        [
-            'videoLink' => 'https://www.youtube.com/embed/-jK-qj3ZNLI?autoplay=1&rel=0',
-            'image' => Storage::url('media/back-video.jpg'),
-        ],
+        'subTitle' => $videoBlocks['data']['subtitle'] ?? null,
+        'title' => $videoBlocks['data']['title'] ?? null,
+        'description' => $videoBlocks['data']['description'] ?? null,
+        'videoLink' => $videoBlocks['data']['video_url'] ?? null,
+        'image' => $videoBlocks['data']['media_url'] ?? null,
     ];
-    //End Video Home Temporary Data
+    //End Video Home Data
 
-    //Start Tenant Logo Temporary Data
+    //Start Tenant Logo Data
+    $tenantBlocks = $blocks
+        ->where('data.block_id', 'tenant-home')
+        ->first();
 
     $tenantHome = [
         'tenantTitle' => [
-            'subTitle' => 'Tenant Kami',
-            'title' => 'Tenant dari Berbagai Sektor Industri',
+            'subTitle' => $tenantBlocks['data']['subtitle'] ?? null,
+            'title' => $tenantBlocks['data']['title'] ?? null,
+            'description' => $tenantBlocks['data']['description'] ?? null,
         ],
         'tenantLogo' => [
             [
@@ -172,34 +160,33 @@
     ];
     //End Tenant Logo Temporary Data
 
-    //Start Fasilitas Temporary Data
-    $fasilitasHome = [
-        'subTitle' => 'Fasilitas',
-        'title' => 'Fasilitas Industri yang Lengkap',
-    ];
-    //End Fasilitas Logo Temporary Data
+    //Start Berita Data
+    $beritaBlocks = $blocks
+        ->where('data.block_id', 'artikel-berita-home')
+        ->first();
 
-    //Start Berita Temporary Data
     $beritaHome = [
-        [
-            'subTitle' => 'Artikel & Berita',
-            'title' => 'Dapatkan Informasi Terbaru',
-            'btnText' => 'Berita Lainnya',
-            'btnLink' => '/berita',
-        ],
+            'subTitle' => $beritaBlocks['data']['subtitle'] ?? null,
+            'title' => $beritaBlocks['data']['title'] ?? null,
+            'description' => $beritaBlocks['data']['description'] ?? null,
+            'btnText' => $beritaBlocks['data']['button_label'] ?? null,
+            'btnLink' => $beritaBlocks['data']['url'] ?? null,
     ];
-    //End Berita Logo Temporary Data
+    //End Berita Data
 
-    //Start Laporan Temporary Data
+    //Start Laporan Data
+    $laporanBlocks = $blocks
+        ->where('data.block_id', 'hubungan-investor-home')
+        ->first();
+
     $laporanHome = [
-        [
-            'subTitle' => 'Anual Report',
-            'title' => 'Laporan Tahunan & Audit Perusahaan',
-            'btnText' => 'Laporan Tahunan',
-            'btnLink' => '/laporan-tahunan',
-        ],
+            'subTitle' => $laporanBlocks['data']['subtitle'] ?? null,
+            'title' => $laporanBlocks['data']['title'] ?? null,
+            'description' => $laporanBlocks['data']['description'] ?? null,
+            'btnText' => $laporanBlocks['data']['button_label'] ?? null,
+            'btnLink' => $laporanBlocks['data']['url'] ?? null,
     ];
-    //End Laporan Logo Temporary Data
+    //End Laporan Data
 @endphp
 
 <x-layouts.app>
@@ -224,7 +211,7 @@
                             {{ $aboutHome['contentTop']['title'] }}</h2>
 
                         <p class="body-text text-[var(--color-text)]">
-                            {{ $aboutHome['contentTop']['desc'] }}
+                            {!! $aboutHome['contentTop']['desc'] !!}
                         </p>
                         <!--ISO-->
                         <div class="flex flex-row items-center gap-5 mt-4">
@@ -344,7 +331,7 @@
                     </div>
 
                     <!--button-->
-                    <a class="w-fit btn1 mt-5" data-aos="fade-down" href="/fasilitas">semua fasilitas
+                    <a class="w-fit btn1 mt-5" data-aos="fade-down" href="{{ $fasilitasHome['url'] }}">{{ $fasilitasHome['label'] }}
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -370,10 +357,19 @@
         <!--Start Video Home-->
         <section id="video-home"
             class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden lg:max-w-[1200px] lg:mx-auto lg:my-30 my-18 lg:px-0 sm:px-6 px-4">
-
+            <div class="flex flex-col justify-between gap-5">
+                <h6 class="bullet-1" data-aos="fade-down">{{ $videoHome['subTitle'] }}</h6>
+                <h2 data-aos="fade-up">{{ $videoHome['title'] }}</h2>
+                @if ( $videoHome['description'] )
+                    <p class="body-text text-[var(--color-text)]">
+                        {{ $videoHome['description'] }}
+                    </p>
+                @endif
+                
+            </div>
             <!-- Custom Thumbnail -->
             <div class="absolute inset-0 bg-cover bg-center cursor-pointer rounded-2xl lg:mx-0 sm:mx-6 mx-4"
-                style="background-image: url('{{ $videoHome[0]['image'] }} ') ;" onclick="loadVideo(this)">
+                style="background-image: url('{{ $videoHome['image'] }} ') ;" onclick="loadVideo(this)">
                 <!-- Custom Play Button -->
                 <div class="flex items-center justify-center w-full h-full bg-black/10 rounded-2xl">
                     <svg class="max-w-30 hover:max-w-40 transition duration-1000" xmlns="http://www.w3.org/2000/svg"
@@ -421,7 +417,7 @@
             </div>
 
             <!-- Hidden iframe initially -->
-            <iframe class="w-full h-full hidden rounded-2xl" data-src="{{ $videoHome[0]['videoLink'] }}"
+            <iframe class="w-full h-full hidden rounded-2xl" data-src="{{ $videoHome['videoLink'] }}"
                 title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
@@ -437,6 +433,11 @@
                     {{ $tenantHome['tenantTitle']['subTitle'] }}
                 </h6>
                 <h2 class="text-center" data-aos="fade-up">{{ $tenantHome['tenantTitle']['title'] }}</h2>
+                @if ( $tenantHome['tenantTitle']['description'] )
+                    <p class="text-center body-text text-[var(--color-text)]">
+                        {{ $tenantHome['tenantTitle']['description'] }}
+                    </p>
+                @endif
             </div>
 
             <!--carousel-->
@@ -471,12 +472,17 @@
             <!--Title-->
             <div class="flex sm:flex-row flex-col justify-between items-end">
                 <div class="flex flex-col gap-5">
-                    <h6 class="bullet-1" data-aos="fade-down">{{ $beritaHome[0]['subTitle'] }}</h6>
-                    <h2 data-aos="fade-up">{{ $beritaHome[0]['title'] }}</h2>
+                    <h6 class="bullet-1" data-aos="fade-down">{{ $beritaHome['subTitle'] }}</h6>
+                    <h2 data-aos="fade-up">{{ $beritaHome['title'] }}</h2>
+                    @if ( $beritaHome['description'] )
+                        <p class="body-text text-[var(--color-text)]">
+                            {{ $beritaHome['description'] }}
+                        </p>
+                    @endif
                 </div>
                 <!--button desktop tablet-->
                 <a class="sm:!flex !hidden w-fit btn1 mt-5" data-aos="fade-down"
-                    href="{{ $archive_post_url }}">{{ $beritaHome[0]['btnText'] }}
+                    href="{{ $archive_post_url }}">{{ $beritaHome['btnText'] }}
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
@@ -493,7 +499,7 @@
 
             <!--button mobile-->
             <a class="!flex sm:!hidden w-fit btn1 mt-5" data-aos="fade-down"
-                href="{{ $archive_post_url }}">{{ $beritaHome[0]['btnText'] }}
+                href="{{ $archive_post_url }}">{{ $beritaHome['btnText'] }}
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
@@ -514,8 +520,13 @@
                 <!--Heading-->
                 <div class="flex flex-col justify-start gap-5">
                     <h6 class="bullet-1 sm:text-center text-left sm:self-center" data-aos="fade-down">
-                        {{ $laporanHome[0]['subTitle'] }}</h6>
-                    <h2 class="sm:text-center text-left" data-aos="fade-up">{{ $laporanHome[0]['title'] }}</h2>
+                        {{ $laporanHome['subTitle'] }}</h6>
+                    <h2 class="sm:text-center text-left" data-aos="fade-up">{{ $laporanHome['title'] }}</h2>
+                      @if ( $laporanHome['description'] )
+                        <p class="sm:text-center text-left body-text text-[var(--color-text)]">
+                            {{ $laporanHome['description'] }}
+                        </p>
+                    @endif
                 </div>
 
 
@@ -524,7 +535,7 @@
                 <div class="flex sm:justify-center justify-start">
                     <!--button desktop tablet-->
                     <a class="w-fit btn1 mt-5" data-aos="fade-down"
-                        href="{{ $laporanHome[0]['btnLink'] }}">{{ $laporanHome[0]['btnText'] }}
+                        href="{{ $laporanHome['btnLink'] }}">{{ $laporanHome['btnText'] }}
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">

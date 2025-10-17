@@ -6,7 +6,8 @@
                 {!! $p !!}
             </p>
             <!--button-->
-            <a class="w-fit btn1 mt-8" data-aos="fade-down" href="{{ $link ?? '#' }}">
+            <a class="w-fit btn1 mt-8" data-aos="fade-down" href="{{ $link ?? '#' }}"  target="_blank" 
+                rel="noopener noreferrer">
                 {{ $button ?? 'Download' }}
                 <span>
                     <x-icon.download-icon-current />
