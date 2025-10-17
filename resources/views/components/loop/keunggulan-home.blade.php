@@ -7,7 +7,7 @@
     </div>
     <!--back-->
     <div class="absolute group-hover:top-[0%] top-[100%] transition-all duration-[500ms] flex flex-col justify-between bg-white gap-15 px-6 pt-6 h-full">
-        <h6>{{ $number ?? '' }}.</h6>
+        <h6>{{ $number ?? '' }}</h6>
         <div class="flex flex-col gap-5">
             <h5>{{ $label ?? '' }}</h5>
             <p>{{ $desc ?? '' }}</p>

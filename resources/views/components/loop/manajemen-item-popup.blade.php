@@ -8,7 +8,7 @@
     <div class="flex flex-col gap-5">
         <h6
             class="position w-fit text-transparent bg-clip-text bg-gradient-to-r from-[#1F77D3] to-[#321B71] group-hover:text-white group-hover:bg-none">
-            {{ $item->position ?? '' }}
+            {!! $item->position ?? '' !!}
         </h6>
 
         <h4 class="name group-hover:text-white"> {{ $item->title ?? '' }} </h4>

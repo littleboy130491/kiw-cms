@@ -1,5 +1,4 @@
 @php
-    //dd($item->block);
     $archive_post_url = route('cms.page', [app()->getLocale(), 'posts']);
 
     $blocks = collect($item->block);
@@ -17,12 +16,17 @@
         ->where('data.block_id', 'about-home-counter')
         ->pluck('data');
 
+    $aboutHomeBottom = $blocks
+        ->where('data.block_id', 'about-home-bottom')
+        ->first();
+   
     // Build the dynamic $aboutHome array
     $aboutHome = [
         'contentTop' => [
             'subTitle' => $aboutHomeTop['data']['subtitle'] ?? null,
             'title'    => $aboutHomeTop['data']['title'] ?? null,
             'desc'     => $aboutHomeTop['data']['description'] ?? null,
+            'image'    => $aboutHomeTop['data']['media_url'] ?? null,
             'iso'      => [
                 'images' => $aboutHomeIso['data']['gallery_urls'] ?? [],
                 'label'  => $aboutHomeIso['data']['title'] ?? null,
@@ -32,7 +36,7 @@
             'btnLink' => $aboutHomeTop['data']['button_label'] ?? null,
         ],
         'contentBottom' => [
-            'image'   => $aboutHomeTop['data']['media_url'] ?? null,
+            'image'   => $aboutHomeBottom['data']['media_url'] ?? null,
             'counter' => $aboutHomeCounters->map(fn($c) => [
                 'counter' => (int) ($c['title'] ?? 0),
                 'label'   => $c['description'] ?? '',
@@ -131,34 +135,8 @@
             'title' => $tenantBlocks['data']['title'] ?? null,
             'description' => $tenantBlocks['data']['description'] ?? null,
         ],
-        'tenantLogo' => [
-            [
-                'image' => Storage::url('media/logoipsum-1.png'),
-            ],
-            [
-                'image' => Storage::url('media/logoipsum-2.png'),
-            ],
-            [
-                'image' => Storage::url('media/logoipsum-3.png'),
-            ],
-            [
-                'image' => Storage::url('media/logoipsum-4.png'),
-            ],
-            [
-                'image' => Storage::url('media/logoipsum-7.png'),
-            ],
-            [
-                'image' => Storage::url('media/logoipsum-8.png'),
-            ],
-            [
-                'image' => Storage::url('media/logoipsum-8.png'),
-            ],
-            [
-                'image' => Storage::url('media/logoipsum-8.png'),
-            ],
-        ],
     ];
-    //End Tenant Logo Temporary Data
+    //End Tenant Logo Data
 
     //Start Berita Data
     $beritaBlocks = $blocks
@@ -239,7 +217,7 @@
                     <!--image top right-->
                     <div class="lg:!w-[45%]">
                         <img class="rounded-2xl lg:!h-[550px] sm:!h-[450px] lg:!w-[unset] sm:!w-[100vw] object-cover"
-                            src="{{ Storage::url('media/construction-site-with-cranes-construction-worker.jpg') }}"
+                            src="{{ $aboutHome['contentTop']['image'] }}"
                             alt="about">
                     </div>
                 </div>
@@ -250,7 +228,7 @@
                     <!--content left-->
                     <div class="sm:w-[48%] w-[100%]">
                         <img class="rounded-2xl h-[340px] object-cover"
-                            src="{{ Storage::url('media/pointing-sketch.jpg') }}">
+                            src="{{ $aboutHome['contentBottom']['image'] }}">
                     </div>
 
                     <!--content right-->
@@ -357,16 +335,6 @@
         <!--Start Video Home-->
         <section id="video-home"
             class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden lg:max-w-[1200px] lg:mx-auto lg:my-30 my-18 lg:px-0 sm:px-6 px-4">
-            <div class="flex flex-col justify-between gap-5">
-                <h6 class="bullet-1" data-aos="fade-down">{{ $videoHome['subTitle'] }}</h6>
-                <h2 data-aos="fade-up">{{ $videoHome['title'] }}</h2>
-                @if ( $videoHome['description'] )
-                    <p class="body-text text-[var(--color-text)]">
-                        {{ $videoHome['description'] }}
-                    </p>
-                @endif
-                
-            </div>
             <!-- Custom Thumbnail -->
             <div class="absolute inset-0 bg-cover bg-center cursor-pointer rounded-2xl lg:mx-0 sm:mx-6 mx-4"
                 style="background-image: url('{{ $videoHome['image'] }} ') ;" onclick="loadVideo(this)">
@@ -444,9 +412,7 @@
             <div class="relative lg:w-[1200px] mx-auto w-full">
                 <div class="swiper-logo overflow-hidden !flex !flex-row !justify-center">
                     <div class="swiper-wrapper">
-                        @foreach ($tenantHome['tenantLogo'] as $tenantLogo)
-                            <x-loop.tenant-logo :image="$tenantLogo['image']" />
-                        @endforeach
+                      <x-sumimasen-cms::component-loader name="tenant-logo" />
                     </div>
                 </div>
 
