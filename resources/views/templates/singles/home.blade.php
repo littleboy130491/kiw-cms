@@ -130,34 +130,8 @@
             'title' => $tenantBlocks['data']['title'] ?? null,
             'description' => $tenantBlocks['data']['description'] ?? null,
         ],
-        'tenantLogo' => [
-            [
-                'image' => Storage::url('media/logoipsum-1.png'),
-            ],
-            [
-                'image' => Storage::url('media/logoipsum-2.png'),
-            ],
-            [
-                'image' => Storage::url('media/logoipsum-3.png'),
-            ],
-            [
-                'image' => Storage::url('media/logoipsum-4.png'),
-            ],
-            [
-                'image' => Storage::url('media/logoipsum-7.png'),
-            ],
-            [
-                'image' => Storage::url('media/logoipsum-8.png'),
-            ],
-            [
-                'image' => Storage::url('media/logoipsum-8.png'),
-            ],
-            [
-                'image' => Storage::url('media/logoipsum-8.png'),
-            ],
-        ],
     ];
-    //End Tenant Logo Temporary Data
+    //End Tenant Logo Data
 
     //Start Berita Data
     $beritaBlocks = $blocks
