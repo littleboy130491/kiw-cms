@@ -1,19 +1,19 @@
 @php
-if (! isset($scrollTo)) {
-    $scrollTo = 'body';
-}
+    if (!isset($scrollTo)) {
+        $scrollTo = 'body';
+    }
 
-$scrollIntoViewJsSnippet = ($scrollTo !== false)
-    ? <<<JS
-       (\$el.closest('{$scrollTo}') || document.querySelector('{$scrollTo}')).scrollIntoView()
-    JS
-    : '';
+    $scrollIntoViewJsSnippet = ($scrollTo !== false)
+        ? <<<JS
+           (\$el.closest('{$scrollTo}') || document.querySelector('{$scrollTo}')).scrollIntoView()
+        JS
+        : '';
 @endphp
 
 <div>
     @if ($paginator->hasPages())
         <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="flex items-center justify-center">
-            <ul class="flex flex-row flex-wrap justify-center gap-2">
+            <ul class="flex flex-row flex-wrap justify-center">
                 {{-- Previous Page Link --}}
                 @if ($paginator->onFirstPage())
                     <li class="flex items-center justify-center" aria-disabled="true"
@@ -24,7 +24,9 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                     </li>
                 @else
                     <li class="flex items-center justify-center">
-                        <button type="button" wire:click="previousPage('{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}" wire:loading.attr="disabled" dusk="previousPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.before"
+                        <button type="button" wire:click="previousPage('{{ $paginator->getPageName() }}')"
+                            x-on:click="{{ $scrollIntoViewJsSnippet }}" wire:loading.attr="disabled"
+                            dusk="previousPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.before"
                             class="px-3 py-1 border border-[var(--color-heading)] hover:bg-[var(--color-blue)] hover:text-white hover:border-[var(--color-blue)] rounded cursor-pointer">
                             {!! __('pagination.previous') !!}
                         </button>
@@ -51,7 +53,8 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                                 </li>
                             @else
                                 <li class="flex items-center justify-center">
-                                    <button type="button" wire:click="gotoPage({{ $page }}, '{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}"
+                                    <button type="button" wire:click="gotoPage({{ $page }}, '{{ $paginator->getPageName() }}')"
+                                        x-on:click="{{ $scrollIntoViewJsSnippet }}"
                                         class="px-3 py-1 border border-[var(--color-heading)] hover:bg-[var(--color-blue)] hover:text-white hover:border-[var(--color-blue)] rounded cursor-pointer">
                                         {{ $page }}
                                     </button>
@@ -64,14 +67,15 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                 {{-- Next Page Link --}}
                 @if ($paginator->hasMorePages())
                     <li class="flex items-center justify-center">
-                        <button type="button" wire:click="nextPage('{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}" wire:loading.attr="disabled" dusk="nextPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.before"
+                        <button type="button" wire:click="nextPage('{{ $paginator->getPageName() }}')"
+                            x-on:click="{{ $scrollIntoViewJsSnippet }}" wire:loading.attr="disabled"
+                            dusk="nextPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.before"
                             class="px-3 py-1 border border-[var(--color-heading)] hover:bg-[var(--color-blue)] hover:text-white hover:border-[var(--color-blue)] rounded cursor-pointer">
                             {!! __('pagination.next') !!}
                         </button>
                     </li>
                 @else
-                    <li class="flex items-center justify-center" aria-disabled="true"
-                        aria-label="{{ __('pagination.next') }}">
+                    <li class="flex items-center justify-center" aria-disabled="true" aria-label="{{ __('pagination.next') }}">
                         <span class="px-3 py-1 border border-[var(--color-heading)] rounded opacity-50">
                             {!! __('pagination.next') !!}
                         </span>
