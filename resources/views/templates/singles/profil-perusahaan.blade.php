@@ -111,7 +111,7 @@
 @endphp
 
 <x-layouts.app>
-    <x-partials.header />
+   <x-partials.header /> 
     <main>
         <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/hero-profil-perusahaan.jpg')"
             h1="{!! strip_tags($item->content) ?? 'Tentang Perusahaan' !!}" />

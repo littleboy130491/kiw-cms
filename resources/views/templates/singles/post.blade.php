@@ -11,12 +11,10 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/berita-hero.jpg')" />
-
         <!--Start Post Content-->
 
         <section id="single-post"
-            class="flex flex-col lg:flex-row gap-18 my-18 lg:my-30 px-4 sm:px-6 lg:px-0 lg:w-[1200px] lg:mx-auto">
+            class="flex flex-col lg:!mt-60 sm:!mt-45 !mt-35 lg:flex-row gap-18 my-18 lg:my-30 px-4 sm:px-6 lg:px-0 lg:w-[1200px] lg:mx-auto">
 
             <!--Main Content-->
             <div class="flex flex-col gap-7 lg:gap-9">
