@@ -1,11 +1,11 @@
 @php
     $blocks = collect($item->block);
-    
+
     $imageSections = $blocks
         ->where('data.block_id', 'image')
         ->pluck('data')
         ->values();
- 
+
     $hotspots = $blocks
         ->where('data.block_id', 'hotspot')
         ->pluck('data')
@@ -16,7 +16,8 @@
     <x-partials.header />
 
     <main>
-        <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/lahan-industri-hero.jpg')" h1="{{ $item->title }}" />
+        <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/lahan-industri-hero.jpg')"
+            h1="{{ $item->title }}" />
 
         <!--Start Lahan Industri-->
 
@@ -26,14 +27,9 @@
                 <img src="{{ $imageSections[0]['media_url'] }}" class="w-full">
                 <!-- Hotspot Items -->
                 @foreach ($hotspots as $item)
-                <x-loop.hotspot-item-lahan-industri
-                    :top="$item['top']"
-                    :left="$item['left']"
-                    :label="$item['title']"
-                    :luas="$item['luas']"
-                    :image="$item['media_url']"
-                >
-                    {{ $item['description'] }}
+                    <x-loop.hotspot-item-lahan-industri :top="$item['top']" :left="$item['left']" :label="$item['title']"
+                        :luas="$item['luas']" :image="$item['media_url']">
+                        {!! $item['description'] !!}
                     </x-loop.hotspot-item-lahan-industri>
                 @endforeach
             </div>
