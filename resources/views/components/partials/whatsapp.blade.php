@@ -65,10 +65,15 @@
                 phone: phone,
                 kirimWA() {
                     const input = document.getElementById('waInput');
-                    const text = encodeURIComponent(input.value.trim());
+                    const message = input.value.trim();
+
+                    const text = encodeURIComponent(message || '');
+
                     const url = `https://wa.me/${this.phone}?text=${text}`;
+
                     window.open(url, '_blank');
                 }
+
 
             }
         }
