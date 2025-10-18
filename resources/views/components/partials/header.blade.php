@@ -70,7 +70,7 @@
             <div class="logo flex items-end">
                 <a href="/">
                 <img 
-                    class="logo-img h-auto mr-32 filter brightness-0 invert"
+                    class="logo-img object-left h-auto mr-32 filter brightness-0 invert"
                     src="{{ $logo_url }}" 
                     alt="logo"
                 >
