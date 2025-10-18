@@ -1458,34 +1458,34 @@ body :is(ol, ul, li):not(#header-container *):not(#footer *):not(#post-form-comm
 
 
 /* header single post */
-.type-posts .header-custom {
+.type-posts:has(#single-post) .header-custom {
   @apply border-b-[1px] !border-[var(--color-bordertransparent)] pb-5;
 }
 
-.type-posts .logo img {
+.type-posts:has(#single-post) .logo img {
 @apply filter brightness-100 invert-0
 }
 
-.type-posts nav a {
+.type-posts:has(#single-post) nav a {
 @apply text-[var(--color-black)]
 }
 
 
-.type-posts .btn5 {
+.type-posts:has(#single-post) .btn5 {
 background: linear-gradient(268deg, var(--color-lightblue) 1.1%, var(--color-blue) 99.1%);
 }
 
-.type-posts .btn5:hover {
+.type-posts:has(#single-post) .btn5:hover {
 background: linear-gradient(268deg, var(--color-blue) 1.1%, var(--color-lightblue) 99.1%);
 @apply border-0;
 }
 
-.type-posts .translate-header {
+.type-posts:has(#single-post) .translate-header {
 @apply text-[var(--color-black)];
 }
 
 @media (max-width: 921px) {
-.type-posts .header-custom svg {
+.type-posts:has(#single-post) .header-custom svg {
 color: var(--color-black) !important;
 }
 }
