@@ -7,15 +7,15 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::table(app(config('curator.model'))->getTable(), function (Blueprint $table) {
-            $table->longText('exif')->nullable()->change();
+        Schema::table('achievements', function (Blueprint $table) {
+            $table->json('giver');
         });
     }
 
     public function down(): void
     {
-        Schema::table(app(config('curator.model'))->getTable(), function (Blueprint $table) {
-            $table->text('exif')->nullable()->change();
+        Schema::table('achievements', function (Blueprint $table) {
+            $table->dropColumn('giver');
         });
     }
 };
