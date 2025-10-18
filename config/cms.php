@@ -176,6 +176,7 @@ return [
        */
     'form_submission' => [
         'admin_email' => env('CMS_SITE_EMAIL', 'admin@example.com'),
+        'wbs_email' => env('WBS_EMAIL', 'wbs@kiw.co.id'),
         'require_captcha' => true,
         'max_submissions_per_ip' => 10,
         'rate_limit_minutes' => 60,
