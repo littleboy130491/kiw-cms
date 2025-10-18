@@ -6,12 +6,20 @@
 @php
     $globalItem = $globalItem ?? null;
 
-    $languages = [
-        'en' => ['flag' => 'english.jpg', 'display' => 'English', 'code' => 'EN'],
-        'zh-cn' => ['flag' => 'mandarin.jpg', 'display' => 'Mandarin', 'code' => 'CN'],
-        'ko' => ['flag' => 'korea.jpg', 'display' => 'Korea', 'code' => 'KO'],
-        'id' => ['flag' => 'indonesia.jpg', 'display' => 'Indonesia', 'code' => 'ID'],
-    ];
+    // Get languages from CMS config
+    $languageNames = config('cms.language_available', []);
+    $languageFlags = config('cms.language_flags', []);
+    $languageCodes = config('cms.language_codes', []);
+    
+    // Build languages array from config
+    $languages = [];
+    foreach ($languageNames as $langCode => $langName) {
+        $languages[$langCode] = [
+            'flag' => $languageFlags[$langCode] ?? 'default.jpg',
+            'display' => $langName,
+            'code' => $languageCodes[$langCode] ?? strtoupper($langCode),
+        ];
+    }
 
     $currentRoute = Route::current();
 

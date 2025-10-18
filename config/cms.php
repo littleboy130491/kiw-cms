@@ -38,7 +38,21 @@ return [
         'id' => 'Indonesian',
         'en' => 'English',
         'zh-cn' => 'Chinese',
-        'ko' => 'Korean',
+        // 'ko' => 'Korean',
+    ],
+
+    'language_flags' => [
+        'id' => 'indonesia.jpg',
+        'en' => 'english.jpg',
+        'zh-cn' => 'mandarin.jpg',
+        'ko' => 'korea.jpg',
+    ],
+
+    'language_codes' => [
+        'id' => 'ID',
+        'en' => 'EN',
+        'zh-cn' => 'CN',
+        'ko' => 'KO',
     ],
 
     'content_models' => [
