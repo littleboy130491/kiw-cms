@@ -8,27 +8,34 @@
     
     <!--front-->
     <div class="front flex flex-col justify-between grow gap-3 px-6 pt-6">
-        <div class="flex justify-start items-center gap-2">
-            <div class="flex flex-row items-center gap-2">
-                <x-icon.calendar-icon-color />
+        <div class="flex flex-col gap-5 justify-start">
+            <div class="flex justify-start items-center gap-2">
+                <div class="flex flex-row items-center gap-2">
+                    <x-icon.calendar-icon-color />
+                    <p class="!text-[var(--color-purple)] text-[.8em]">
+                        {{$item->published_at?->format('d M Y') ?? $item->created_at?->format('d M Y')}}
+                    </p>          
+                </div>
+                <span>-</span>
                 <p class="!text-[var(--color-purple)] text-[.8em]">
-                    {{$item->published_at?->format('d M Y') ?? $item->created_at?->format('d M Y')}}
-                </p>          
+                    {{ $item->careerCategories->first()?->title ?? 'Full Time' }}
+                </p> 
             </div>
-            <span>-</span>
-            <p class="!text-[var(--color-purple)] text-[.8em]">
-                {{ $item->careerCategories->first()?->title ?? 'Full Time' }}
-            </p> 
-        </div>
-        <div class="flex flex-col gap-3 mb-5">
-            <a href="{{ $url ?? '' }}"><h4 class="text-[var(--color-heading)]">{{ $item->title ?? '' }}</h4></a>
-        </div>
+
+            <div class="flex flex-col gap-3 mb-5">
+                <a href="{{ $url ?? '' }}">
+                    <h4 class="text-[var(--color-heading)] ellipsis">{{ $item->title ?? '' }}</h4>
+                </a>
+            </div>
+        </div>     
+
         <div>
             <a href="{{ $url ?? '' }}">
-                <x-curator-glider :media="$item->featured_image" class="rounded-sm rounded-b-none w-full object-cover" />
-        </div>
-        
+                <x-curator-glider :media="$item->featured_image" class="max-h-[350px] object-top rounded-sm rounded-b-none w-full object-cover max-h-[]" />
+            </a>
+        </div>   
     </div>
+
 
     <!--back-->
     <div class="back absolute group-hover:top-[0%] top-[100%] transition-all duration-[500ms] flex flex-col justify-end bg-[var(--color-transit)] rounded-2xl gap-3 px-6 pt-6 h-full w-full">
