@@ -9,4 +9,5 @@ return [
     'full_name' => '全名',
     'other_positions' => '查找其他职位',
     'other_vacancies' => '其他职位空缺',
+    'archive_heading' => '查找可用职位',
 ];

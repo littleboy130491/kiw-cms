@@ -9,4 +9,5 @@ return [
     'full_name' => 'Full Name',
     'other_positions' => 'Find Other Positions',
     'other_vacancies' => 'Other Vacancies',
+    'archive_heading' => 'Find Available Positions',
 ];

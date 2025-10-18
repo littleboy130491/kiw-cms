@@ -9,4 +9,5 @@ return [
     'full_name' => '전체 이름',
     'other_positions' => '다른 직위 찾기',
     'other_vacancies' => '다른 채용 공고',
+    'archive_heading' => '사용 가능한 직책 찾기'
 ];

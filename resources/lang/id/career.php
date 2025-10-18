@@ -9,4 +9,5 @@ return [
     'full_name' => 'Nama Lengkap',
     'other_positions' => 'Cari Posisi Lainnya',
     'other_vacancies' => 'Lowongan Lainnya',
+    'archive_heading' => 'Find Posisi yang Tersedia',
 ];
