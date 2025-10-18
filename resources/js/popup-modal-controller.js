@@ -62,7 +62,8 @@ class ModalController {
       name: element.querySelector('.name')?.textContent || '',
       position: element.querySelector('.position')?.textContent || '',
       photo: element.querySelector('.photo')?.src || '',
-      description: element.querySelector('.description')?.innerHTML || ''
+      description: element.querySelector('.description')?.innerHTML || '',
+      note: element.querySelector('.note')?.innerHTML || ''
     };
   }
 
@@ -93,6 +94,9 @@ class ModalController {
 
     const modalDescription = this.modal.querySelector('.modal-description');
     if (modalDescription) modalDescription.innerHTML = data.description;
+
+    const modalNote = this.modal.querySelector('.modal-note');
+    if (modalNote) modalNote.innerHTML = data.note;
   }
 
   showModal() {

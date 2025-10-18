@@ -28,7 +28,7 @@
                 <!-- Hotspot Items -->
                 @foreach ($hotspots as $item)
                     <x-loop.hotspot-item-lahan-industri :top="$item['top']" :left="$item['left']" :label="$item['title']"
-                        :luas="$item['luas']" :image="$item['media_url']">
+                        :luas="$item['luas']" :image="$item['media_url']" :note="$item['note']">
                         {!! $item['description'] !!}
                     </x-loop.hotspot-item-lahan-industri>
                 @endforeach
@@ -69,9 +69,7 @@
                                 </div>
                             </div>
                             <div class="flex flex-col gap-2">
-                                <h5>Updated by: 26/05/2025</h5>
-                                <p class="text-[#DD2F2F] italic">
-                                    {{ $item['note'] }}
+                                <p class="modal-note text-[#DD2F2F] italic">
                                 </p>
                             </div>
                         </div>
