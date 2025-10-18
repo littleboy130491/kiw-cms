@@ -4,13 +4,14 @@
 
     {{-- link / label --}}
     @if ($level === 0 && $item->children?->isNotEmpty())
-        <x-menu.parent-menu-have-sub :title="$item->linkable?->title ?? $item->title" :url="$item->url" />
+        <x-menu.parent-menu-have-sub :title="$item->linkable?->title ?? $item->title" :url="$item->url"
+            :target="$item->target ?? '_self'" />
     @elseif ($level === 0)
-        <x-menu.parent-menu :title="$item->linkable?->title ?? $item->title" :url="$item->url" />
+        <x-menu.parent-menu :title="$item->linkable?->title ?? $item->title" :url="$item->url" :target="$item->target ?? '_self'" />
     @elseif ($level > 0 && $item->children?->isNotEmpty())
-        <x-menu.sub-parent-menu :title="$item->linkable?->title ?? $item->title" :url="$item->url" />
+        <x-menu.sub-parent-menu :title="$item->linkable?->title ?? $item->title" :url="$item->url" :target="$item->target ?? '_self'" />
     @else
-        <x-menu.sub-menu :title="$item->linkable?->title ?? $item->title" :url="$item->url" />
+        <x-menu.sub-menu :title="$item->linkable?->title ?? $item->title" :url="$item->url" :target="$item->target ?? '_self'" />
     @endif
 
     {{-- recursive children --}}

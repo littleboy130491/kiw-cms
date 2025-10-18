@@ -10,4 +10,6 @@
         }
     }
 @endphp
-<li><a href="{{ $url }}" class="block hover:text-[var(--color-lightblue)] {{ $isActive ? 'active !text-[var(--color-lightblue)]' : '' }}">{{ $menu }}</a></li>
+<li><a href="{{ $url }}" target="{{ $target ?? '_self' }}"
+        class="block hover:text-[var(--color-lightblue)] {{ $isActive ? 'active !text-[var(--color-lightblue)]' : '' }}">{{ $menu }}</a>
+</li>
