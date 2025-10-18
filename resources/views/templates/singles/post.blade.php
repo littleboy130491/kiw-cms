@@ -46,9 +46,16 @@
                         </div>
                     </div>
                     <!--Title-->
-                    <h2 data-aos="fade-up">
+                    <h2 data-aos="fade-up" class="mb-5">
                         {{ $item->title }}
                     </h2>
+                     @if (!empty($item->featured_image))
+                        <div class="flex flex-col gap-5 lg:w-1/2">
+                            <a href="{{ $item->featuredImage?->url }}">
+                                <x-curator-glider :media="$item->featuredImage" class="w-full object-contain rounded-md" />
+                            </a>
+                        </div>
+                    @endif
                 </div>
 
                 <!--Content-->
