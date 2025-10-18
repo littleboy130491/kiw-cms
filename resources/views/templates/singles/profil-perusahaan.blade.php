@@ -12,6 +12,7 @@
         'paragraphs' => [
             $aboutSection['data']['description'] ?? '',
         ],
+        'backgroundImage' => Storage::url('media/about-image.jpg'),
     ];
     
     // ISO Gallery
@@ -116,7 +117,7 @@
 
         <!--Start About-->
         <section id="about" class="bg-contain bg-no-repeat bg-bottom sm:bg-cover"
-            style="background-image:url('{{ Storage::url('media/about-image.jpg') }}')">
+            style="background-image:url('{{ $about['backgroundImage'] }}')">
             <div class="flex flex-col grow pt-18 pb-42 sm:pb-70 lg:pb-130 px-4 sm:px-6 lg:px-0 lg:pt-30 gradient-white-about">
                 <div class="lg:w-[1200px] lg:mx-auto flex flex-col gap-5 sm:flex-row sm:justify-between">
                     <h2 data-aos="fade-up" class="sm:w-1/3 lg:w-[35%]">{{ $about['title'] }}</h2>
