@@ -63,6 +63,7 @@
                         <div class="modal-info w-full md:w-2/3 flex flex-col gap-7">
                             <div class="flex flex-col gap-2">
                                 <h3 class="modal-title "></h3>
+                                <p class="mb-4">{{__('lahan-industri.available')}}</p>
                                 <h6 class="modal-position text-[var(--color-purple)] sm:mb-3"></h6>
                                 <div
                                     class="modal-description text-[var(--color-text)] pr-2 overflow-y-auto sm:max-h-[300px] max-h-[150px]">
