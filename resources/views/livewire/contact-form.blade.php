@@ -8,8 +8,8 @@
     <!--form-->
     <form wire:submit.prevent="submit" class="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-5">
         <div class="sm:w-[48.5%] lg:w-[49%]">
-            <label for="name" class="hidden">Nama</label>
-            <input type="text" id="name" placeholder="Nama Lengkap" required
+            <label for="name" class="hidden">{{ __('kontak.name') }}</label>
+            <input type="text" id="name" placeholder="{{ __('kontak.full_name') }}" required
                 class="mt-1 w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 @error('name') border-red-500 @enderror"
                 wire:model="name">
             @error('name')
@@ -18,8 +18,8 @@
         </div>
 
         <div class="sm:w-[48.5%] lg:w-[49%]">
-            <label for="company" class="hidden">Perusahaan</label>
-            <input type="text" id="company" placeholder="Nama Perusahaan"
+            <label for="company" class="hidden">{{ __('kontak.company') }}</label>
+            <input type="text" id="company" placeholder="{{ __('kontak.company_name') }}"
                 class="mt-1 w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 @error('company') border-red-500 @enderror"
                 wire:model="company">
             @error('company')
@@ -28,8 +28,8 @@
         </div>
 
         <div class="sm:w-[48.5%] lg:w-[49%]">
-            <label for="email" class="hidden">Email</label>
-            <input type="email" id="email" placeholder="Email" required
+            <label for="email" class="hidden">{{ __('kontak.email') }}</label>
+            <input type="email" id="email" placeholder="{{ __('kontak.email') }}" required
                 class="mt-1 w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 @error('email') border-red-500 @enderror"
                 wire:model="email">
             @error('email')
@@ -38,8 +38,9 @@
         </div>
 
         <div class="sm:w-[48.5%] lg:w-[49%]">
-            <label for="phone" class="hidden">Telepon</label>
-            <input type="tel" id="phone" placeholder="Nomor Telepon" required pattern="[0-9]+" inputmode="numeric"
+            <label for="phone" class="hidden">{{ __('kontak.phone') }}</label>
+            <input type="tel" id="phone" placeholder="{{ __('kontak.phone_number') }}" required pattern="[0-9]+"
+                inputmode="numeric"
                 class="mt-1 w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 @error('phone') border-red-500 @enderror"
                 wire:model="phone">
             @error('phone')
@@ -48,8 +49,8 @@
         </div>
 
         <div class="sm:w-full">
-            <label for="comment" class="hidden">Komentar</label>
-            <textarea id="comment" rows="8" placeholder="Tulis Pesan" required
+            <label for="comment" class="hidden">{{ __('kontak.comment') }}</label>
+            <textarea id="comment" rows="8" placeholder="{{ __('kontak.write_message') }}" required
                 class="w-full px-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 @error('message') border-red-500 @enderror"
                 wire:model="message"></textarea>
             @error('message')
@@ -105,7 +106,7 @@
     {{-- Success Message --}}
     @if ($showSuccess)
         <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg mt-4" role="alert">
-            {{ __('sumimasen-cms::submission-form.success_message') }}
+            {{ __('kontak.success_message') }}
         </div>
     @endif
 

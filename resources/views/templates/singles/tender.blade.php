@@ -8,7 +8,7 @@
 <x-layouts.app>
     <x-partials.header />
     <main>
-        <x-partials.hero-page :image="Storage::url('media/tender-hero.jpg')" h1="Tender" />
+        <x-partials.hero-page :image="Storage::url('media/tender-hero.jpg')" h1="{{ __('tender.title') }}" />
 
         <!--Start Single Tender-->
         <section id="single-tender"
@@ -66,21 +66,23 @@
                     <div
                         class="gradient-blue top-0 left-0 w-fit px-3 py-2 rounded-md {{ $item->tenderStatus->first()?->slug === 'terbaru' ? 'blinking' : '' }}">
                         <p class="text-white uppercase text-[.8em]">
-                            {{ $item->tenderStatus->first()?->title ?? 'terbaru' }}
+                            {{ $item->tenderStatus->first()?->title ?? __('tender.latest') }}
                         </p>
                     </div>
 
                     <div>
-                        <h3 data-aos="fade-up">Tahapan Proses</h3>
+                        <h3 data-aos="fade-up">{{ __('tender.process_stages') }}</h3>
                     </div>
                 </div>
 
                 <!--Milestone-->
-                <div class="milestone flex flex-col relative">
-                    @foreach ($item->process as $process)
-                        <x-loop.milestone :process="$process" />
-                    @endforeach
-                </div>
+                @if($item->process->isNotEmpty())
+                    <div class="milestone flex flex-col relative">
+                        @foreach ($item->process as $process)
+                            <x-loop.milestone :process="$process" />
+                        @endforeach
+                    </div>
+                @endif
 
             </div>
 

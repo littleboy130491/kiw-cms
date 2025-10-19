@@ -8,4 +8,7 @@ return [
     'search' => '검색',
     'year' => '년도',
     'clear_all_filters' => '모든 필터 지우기',
+    'title' => '입찰',
+    'process_stages' => '진행 단계',
+    'latest' => '최신',
 ];

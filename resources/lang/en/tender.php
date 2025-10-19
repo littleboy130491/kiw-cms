@@ -8,4 +8,7 @@ return [
     'search' => 'Search',
     'year' => 'Year',
     'clear_all_filters' => 'Clear All Filters',
+    'title' => 'Tender',
+    'process_stages' => 'Process Stages',
+    'latest' => 'latest',
 ];

@@ -9,4 +9,13 @@ return [
     'office' => '办公室：',
     'submit' => '提交',
     'submitting' => '提交中...',
+    'name' => '姓名',
+    'full_name' => '全名',
+    'company' => '公司',
+    'company_name' => '公司名称',
+    'phone' => '电话',
+    'phone_number' => '电话号码',
+    'comment' => '评论',
+    'write_message' => '写消息',
+    'success_message' => '您的消息已成功发送。感谢联系我们。',
 ];

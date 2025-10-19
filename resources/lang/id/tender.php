@@ -8,4 +8,7 @@ return [
     'search' => 'Pencarian',
     'year' => 'Tahun',
     'clear_all_filters' => 'Hapus Semua Filter',
+    'title' => 'Tender',
+    'process_stages' => 'Tahapan Proses',
+    'latest' => 'terbaru',
 ];

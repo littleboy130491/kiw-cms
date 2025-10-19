@@ -8,4 +8,7 @@ return [
     'search' => '搜索',
     'year' => '年份',
     'clear_all_filters' => '清除所有筛选器',
+    'title' => '招标',
+    'process_stages' => '流程阶段',
+    'latest' => '最新',
 ];
