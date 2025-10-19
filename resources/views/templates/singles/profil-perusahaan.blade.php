@@ -87,7 +87,7 @@
     // Hotspot Koneksi Global
     $koneksiSection = $blocks->where('data.block_id', 'section-3')->first();
     $hotspots = $blocks->where('data.block_id', 'hotspot');
-    dd($hotspots);
+  
     $hotspotKoneksiGlobal = [
         'subTitle' => $koneksiSection['data']['title'] ?? 'Koneksi Global',
         'title' => $koneksiSection['data']['subtitle'] ?? 'Dipercaya oleh Lebih dari 100 Perusahaan Global',
