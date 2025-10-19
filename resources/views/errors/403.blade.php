@@ -11,7 +11,7 @@
                 <p>Silakan kembali atau hubungi administrator jika Anda yakin ini kesalahan.</p>
             </div>
             <a class="w-fit btn1 back mt-5" data-aos="fade-down" href="/">
-                Kembali ke Home
+                {{ __('common.back_to_home') }}
                 <span><x-icon.arrow-back-white /></span>
             </a>
         </section>

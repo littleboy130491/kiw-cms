@@ -26,7 +26,8 @@
                         <div class="flex flex-row gap-4 w-fit px-3 py-2 rounded-full bg-[var(--color-transit)]">
                             <div class="flex flex-row items-center gap-2">
                                 <x-icon.tag-icon-color />
-                                <p class="!text-[var(--color-purple)] capitalize sm:text-[.9em] text-[.7em]">{{ $item_label }}</p>
+                                <p class="!text-[var(--color-purple)] capitalize sm:text-[.9em] text-[.7em]">
+                                    {{ $item_label }}</p>
                             </div>
                             <div class="flex flex-row items-center gap-2">
                                 <x-icon.calendar-icon-color />
@@ -49,7 +50,7 @@
                     <h2 data-aos="fade-up" class="mb-5">
                         {{ $item->title }}
                     </h2>
-                     @if (!empty($item->featured_image))
+                    @if (!empty($item->featured_image))
                         <div class="flex flex-col gap-5 lg:w-1/2">
                             <a href="{{ $item->featuredImage?->url }}">
                                 <x-curator-glider :media="$item->featuredImage" class="w-full object-contain rounded-md" />
@@ -67,7 +68,8 @@
 
                 </div>
                 <!--button-->
-                <a class="w-fit btn1 back mt-5" data-aos="fade-down" href="{{ $archive_post_url }}">Kembali
+                <a class="w-fit btn1 back mt-5" data-aos="fade-down"
+                    href="{{ $archive_post_url }}">{{ __('common.back') }}
                     <span>
                         <x-icon.arrow-back-white />
                     </span>

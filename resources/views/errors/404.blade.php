@@ -12,7 +12,7 @@
                 <p>Mungkin tautan rusak atau halaman telah dipindahkan.</p>
             </div>
             <!--button-->
-            <a class="w-fit btn1 back mt-5"data-aos="fade-down" href="/">Kembali ke Home
+            <a class="w-fit btn1 back mt-5" data-aos="fade-down" href="/">{{ __('common.back_to_home') }}
                 <span>
                     <x-icon.arrow-back-white />
                 </span>

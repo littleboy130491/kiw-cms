@@ -17,9 +17,9 @@
             <!--Main Content-->
             <div class="flex flex-col gap-10 lg:w-2/3">
                 <!--featured image-->
-              
-                 <img class="rounded-md rounded-b-none w-full h-full object-cover object-top" src="{{ $item_image }}">
-               
+
+                <img class="rounded-md rounded-b-none w-full h-full object-cover object-top" src="{{ $item_image }}">
+
 
                 <!--Title-->
                 <div class="flex flex-col gap-5">
@@ -51,7 +51,7 @@
                 </div>
                 <!--button-->
                 <a class="w-fit btn1 back mt-5 lg:!flex !hidden" data-aos="fade-down"
-                    href="{{ $tender_archive_url }}">Kembali
+                    href="{{ $tender_archive_url }}">{{ __('common.back') }}
                     <span>
                         <x-icon.arrow-back-white />
                     </span>
@@ -86,7 +86,7 @@
 
             <!--button mobile only-->
             <a class="w-fit btn1 mobile-only back -mt-7 lg:hidden" data-aos="fade-down"
-                href="{{ $tender_archive_url }}">Kembali
+                href="{{ $tender_archive_url }}">{{ __('common.back') }}
                 <span>
                     <x-icon.arrow-back-white />
                 </span>

@@ -67,7 +67,7 @@
             <div class="flex flex-col gap-5">
                 <div class="mt-3">
                     <a class="w-full btn3" href="{{ $item_url ?? '' }}">
-                        <span class="gradient-text">Selengkapnya</span>
+                        <span class="gradient-text">{{ __('common.read_more') }}</span>
                         <span class="gradient-icon">
                             <x-icon.arrow-right-gradient />
                         </span>
