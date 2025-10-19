@@ -87,7 +87,7 @@
     // Hotspot Koneksi Global
     $koneksiSection = $blocks->where('data.block_id', 'section-3')->first();
     $hotspots = $blocks->where('data.block_id', 'hotspot');
-
+    dd($hotspots);
     $hotspotKoneksiGlobal = [
         'subTitle' => $koneksiSection['data']['title'] ?? 'Koneksi Global',
         'title' => $koneksiSection['data']['subtitle'] ?? 'Dipercaya oleh Lebih dari 100 Perusahaan Global',
@@ -111,7 +111,7 @@
 @endphp
 
 <x-layouts.app>
-   <x-partials.header /> 
+    <x-partials.header />
     <main>
         <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/hero-profil-perusahaan.jpg')"
             h1="{!! strip_tags($item->content) ?? 'Tentang Perusahaan' !!}" />
@@ -170,9 +170,11 @@
                     <!--Title-->
                     <div class="flex flex-col gap-5">
                         <h6 data-aos="fade-down" class="bullet-2 text-white">
-                            {{ $aboutPerjalanan['perjalananKami']['titlePerjalanan']['title'] }}</h6>
+                            {{ $aboutPerjalanan['perjalananKami']['titlePerjalanan']['title'] }}
+                        </h6>
                         <h2 data-aos="fade-up" class="text-white">
-                            {{ $aboutPerjalanan['perjalananKami']['titlePerjalanan']['subtitle'] }}</h2>
+                            {{ $aboutPerjalanan['perjalananKami']['titlePerjalanan']['subtitle'] }}
+                        </h2>
                     </div>
 
                     <!--carousel-->

@@ -27,7 +27,8 @@
                             <div class="flex flex-row items-center gap-2">
                                 <x-icon.tag-icon-color />
                                 <p class="!text-[var(--color-purple)] capitalize sm:text-[.9em] text-[.7em]">
-                                    {{ $item_label }}</p>
+                                    {{ $item_label }}
+                                </p>
                             </div>
                             <div class="flex flex-row items-center gap-2">
                                 <x-icon.calendar-icon-color />
@@ -61,7 +62,8 @@
 
                 <!--Content-->
                 <div class="flex flex-col gap-5">
-                    {!! $item->content !!}
+                    {!! html_entity_decode($item->content) !!}
+
                     <!--Gallery-->
 
                     <x-loop.gallery-grid :gallery="$item->gallery" />
