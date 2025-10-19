@@ -76,7 +76,7 @@
                 </div>
 
                 <!--Milestone-->
-                @if($item->process->isNotEmpty())
+                @if($item->process)
                     <div class="milestone flex flex-col relative">
                         @foreach ($item->process as $process)
                             <x-loop.milestone :process="$process" />
