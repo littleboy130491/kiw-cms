@@ -1,7 +1,8 @@
 <x-layouts.app>
     <x-partials.header />
     <main>
-       <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/galeri-dokumentasi-hero.jpg')" h1="{{$item->title ?? 'Galeri Dokumentasi'}}" />
+        <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/galeri-dokumentasi-hero.jpg')"
+            h1="{{$item->title ?? 'Galeri Dokumentasi'}}" />
 
         <!--Start Foto-->
 
@@ -11,30 +12,24 @@
             <!--Title-->
             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
                 <h2 data-aos="fade-up">
-                {{ __('galeri-dokumentasi.media_sosial') }}
+                    {{ __('galeri-dokumentasi.media_sosial') }}
                 </h2>
 
                 <!--button-->
                 <a class="w-fit btn1" data-aos="fade-down"
                     href="{{ app('settings')->instagram ?? config('cms.site_social_media.instagram') }}" target="_blank"
-                    rel="noopener noreferrer">kunjungi instagram
+                    rel="noopener noreferrer">{{ __('galeri-dokumentasi.visit_instagram') }}
                     <x-icon.instagram-icon-white />
                 </a>
 
             </div>
 
             <!--Content-->
-         
-            <x-behold-instagram-feed
-                type="all"
-                :columns="3"
-                :limit="40"
-                :show-caption="false"
-                :show-likes="false"
-                :show-timestamp="false"
-            />
+
+            <x-behold-instagram-feed type="all" :columns="3" :limit="40" :show-caption="false" :show-likes="false"
+                :show-timestamp="false" />
         </section>
-       
+
 
 
         </section>
@@ -65,14 +60,8 @@
 
 
                 <x-tab.tab-contents-video id="tab2">
-                     <x-behold-instagram-feed
-                        type="reel"
-                        :columns="3"
-                        :limit="40"
-                        :show-caption="false"
-                        :show-likes="false"
-                        :show-timestamp="false"
-                    />
+                    <x-behold-instagram-feed type="reel" :columns="3" :limit="40" :show-caption="false"
+                        :show-likes="false" :show-timestamp="false" />
                 </x-tab.tab-contents-video>
 
             </div>
