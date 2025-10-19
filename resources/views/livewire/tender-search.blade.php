@@ -5,7 +5,7 @@
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 z-10">
 
         <!--Title-->
-        <h2 class="text-center sm:text-left">{{ strip_tags($content) ?? 'Temukan Tender Terbaru' }}</h2>
+        <h2 class="text-center sm:text-left">{{ strip_tags($content) ?? __('tender.find_latest_tenders') }}</h2>
 
         <!--Field-->
         <div class="flex flex-col sm:flex-row-reverse gap-2 sm:w-1/2 lg:w-1/3">
@@ -15,8 +15,8 @@
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <img src="{{ Storage::url('media/search.png') }}">
                 </div>
-                <input type="search" placeholder="Cari disini..." wire:model.live.debounce.500ms="searchQuery"
-                    wire:loading.attr="disabled"
+                <input type="search" placeholder="{{ __('tender.search_here') }}"
+                    wire:model.live.debounce.500ms="searchQuery" wire:loading.attr="disabled"
                     class="w-full pl-10 pr-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)]" />
             </div>
 
@@ -24,7 +24,7 @@
             <div class="relative max-w-md w-full">
                 <select wire:model.live="tenderYear"
                     class="w-full pl-3 pr-10 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:var(--color-blue) appearance-none bg-white">
-                    <option value="">Pilih Tahun</option>
+                    <option value="">{{ __('tender.select_year') }}</option>
                     @foreach ($tenderYears as $year)
                         <option value="{{ $year }}">{{ $year }}</option>
                     @endforeach
@@ -41,19 +41,19 @@
     <!--Clear Filters-->
     @if ($searchQuery || $tenderYear)
         <div class="flex items-center gap-4">
-            <span class="text-sm text-gray-600">Filter aktif:</span>
+            <span class="text-sm text-gray-600">{{ __('tender.active_filters') }}</span>
             @if ($searchQuery)
                 <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                    Pencarian: "{{ $searchQuery }}"
+                    {{ __('tender.search') }}: "{{ $searchQuery }}"
                 </span>
             @endif
             @if ($tenderYear)
                 <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                    Tahun: {{ $tenderYear }}
+                    {{ __('tender.year') }}: {{ $tenderYear }}
                 </span>
             @endif
             <button wire:click="clearFilters" class="text-sm text-red-600 hover:text-red-800 underline cursor-pointer">
-                Hapus Semua Filter
+                {{ __('tender.clear_all_filters') }}
             </button>
         </div>
     @endif

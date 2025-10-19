@@ -21,8 +21,7 @@
                     @if ($item->whatsapp)
                         <!--button-->
                         <a class="w-fit btn1 mt-5 wa-message" data-aos="fade-down" href="{{ $item->whatsapp }}"
-                            target="_blank">hubungi
-                            sekarang
+                            target="_blank">{{ __('building.contact_now') }}
                             <span>
                                 <img src="{{ Storage::url('media/whatsapp-white.png') }}">
                             </span>
@@ -56,7 +55,7 @@
                 <div class="flex flex-col lg:flex-row lg:gap-8 gap-5 lg:px-0 lg:max-w-[1200px] lg:mx-auto sm:px-6 px-4">
 
                     <!--Heading-->
-                    <h2 data-aos="fade-up" class="lg:w-1/3">Spesifikasi</h2>
+                    <h2 data-aos="fade-up" class="lg:w-1/3">{{ __('building.specification') }}</h2>
 
                     <!--Content-->
                     <div class="lg:w-2/3 flex flex-col">
