@@ -28,7 +28,7 @@
                         <div class="lg:w-[1200px] lg:mx-auto flex flex-col lg:flex-row gap-5 sm:justify-between">
                             <div class="lg:w-[37%] flex flex-col gap-5">
                                 <h2 data-aos="fade-up">
-                                    {{ $welcomeBlock->title ?? 'Selamat Datang di E-Procurement KIW' }}
+                                    {{ $welcomeBlock['data']['title'] ?? 'Selamat Datang di E-Procurement KIW' }}
                                 </h2>
                             </div>
 
