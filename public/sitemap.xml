@@ -10,16 +10,25 @@
     <loc>https://kiw.demo-ku.com/id/fasilitas</loc>
             </url>
     <url>
+    <loc>https://kiw.demo-ku.com/en/facilities</loc>
+            </url>
+    <url>
     <loc>https://kiw.demo-ku.com/id/keunggulan</loc>
             </url>
     <url>
-    <loc>https://kiw.demo-ku.com/en/why-kiw</loc>
+    <loc>https://kiw.demo-ku.com/en/advantages</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/zh-cn/keunggulan</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/kontak</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/en/contact-us</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/zh-cn/kontak</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/manajemen-perusahaan</loc>
@@ -35,6 +44,9 @@
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/en/awards-certifications</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/zh-cn/penghargaan-sertifikasi</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/laporan-tahunan</loc>
@@ -64,6 +76,9 @@
     <loc>https://kiw.demo-ku.com/en/profil-perusahaan</loc>
             </url>
     <url>
+    <loc>https://kiw.demo-ku.com/zh-cn/profil-perusahaan</loc>
+            </url>
+    <url>
     <loc>https://kiw.demo-ku.com/id/lahan-industri</loc>
             </url>
     <url>
@@ -73,19 +88,10 @@
     <loc>https://kiw.demo-ku.com/zh-cn/lahan-industri</loc>
             </url>
     <url>
-    <loc>https://kiw.demo-ku.com/ko/lahan-industri</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/galeri-dokumentasi</loc>
+    <loc>https://kiw.demo-ku.com/id/gallery</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/en/galeri-dokumentasi</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/zh-cn/galeri-dokumentasi</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/ko/galeri-dokumentasi</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/pedoman-tata-kelola</loc>
@@ -97,9 +103,6 @@
     <loc>https://kiw.demo-ku.com/zh-cn/pedoman-tata-kelola</loc>
             </url>
     <url>
-    <loc>https://kiw.demo-ku.com/ko/pedoman-tata-kelola</loc>
-            </url>
-    <url>
     <loc>https://kiw.demo-ku.com/id/pengadaan-barang-jasa</loc>
             </url>
     <url>
@@ -107,9 +110,6 @@
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/zh-cn/pengadaan-barang-jasa</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/ko/pengadaan-barang-jasa</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/ekosistem-klaster-bisnis</loc>
@@ -128,9 +128,6 @@
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/zh-cn/posts</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/ko/posts</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/posts/langkah-nyata-kawasan-industri-wijayakusuma-wujudkan-kawasan-industri-modern-ramah-lingkungan</loc>
@@ -196,9 +193,6 @@
     <loc>https://kiw.demo-ku.com/id/posts/semarak-employee-engagement-day-2-pt-kiw-wujudkan-kekompakan-tim-untuk-perusahaan-yang-lebih-maju</loc>
             </url>
     <url>
-    <loc>https://kiw.demo-ku.com/id/posts/pelelangan-dengan-skema-design-and-build</loc>
-            </url>
-    <url>
     <loc>https://kiw.demo-ku.com/id/posts/pelelangan-kendaraan-bermotor</loc>
             </url>
     <url>
@@ -208,22 +202,148 @@
     <loc>https://kiw.demo-ku.com/id/posts/informasi-lelang-mobil-pt-kiw</loc>
             </url>
     <url>
-    <loc>https://kiw.demo-ku.com/id/posts/info-lelang-mobil-guys</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/posts/info-lelang-pekerjaan-pematangan-lahan-pt-kiw-tahun-2023</loc>
-            </url>
-    <url>
     <loc>https://kiw.demo-ku.com/id/posts/lelang-pekerjaan-pematangan-lahan-pt-kiw-2023</loc>
             </url>
     <url>
-    <loc>https://kiw.demo-ku.com/id/posts/lelang-pekerjaan-pematangan-lahan-pt-kiw-2023-2</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/posts/informasi-lelang-kendaraan-gas-ke-kiw-sekarang</loc>
-            </url>
-    <url>
     <loc>https://kiw.demo-ku.com/id/posts/pendaftaran-rekanan-penyedia-barang-dan-jasa-di-pt-kiw</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kawasan-industri-wijayakusuma-gelar-employee-engagement-kolaboraction-di-merbabu-park</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-berpartisipasi-dalam-jateng-halal-festival-2025-sebagai-komitmen-dukung-umkm-binaan</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/kolaborasi-industri-pt-kiw-dorong-kemitraan-untuk-perkuat-ikm-di-kota-semarang</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/sinergi-peringatan-hari-jadi-ke-80-jawa-tengah-penandatanganan-kerja-sama-pengembangan-kawasan-industri-hijau-antara-disperindag-jateng-dan-pt-kiw</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-gelar-upacara-hut-ke-80-republik-indonesia-teguhkan-semangat-persatuan-dan-kemajuan</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/kiw-distribusikan-healthy-kit-dan-multivitamin-untuk-karyawan-dalam-agenda-tahunan-peningkatan-sarana-kesehatan</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/meningkatkan-pemahaman-esg-pt-kiw-gelar-sharing-session-bersama-bpkp-jawa-tengah</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-tebar-kepedulian-57-paket-sembako-untuk-warga-karanganyar</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/kiw-mengajar-membangun-literasi-keuangan-anak-sekolah-dasar-lewat-program-semar-edukasi</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-dan-holding-bumn-danareksa-hadirkan-semar-edukasi-goes-to-school-untuk-wujudkan-pendidikan-berkualitas-di-semarang</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/wujudkan-ketahanan-pangan-urban-pt-kiw-dukung-green-house-dan-hidroponik-di-bank-sampah-kelurahan-tugurejo</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/hijaukan-nusakambangan-pt-kiw-serahkan-100-bibit-pohon-kelapa-untuk-dukung-ketahanan-pangan-dan-cegah-abrasi</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/kolaborasi-strategis-danareksa-dan-pt-kiw-audiensi-bersama-gubernur-jateng-dorong-akselerasi-industri-nasional</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/monitoring-semester-i-2025-pt-danareksa-lakukan-kunjungan-ke-pt-kawasan-industri-wijayakusuma-dan-tinjau-fasilitas-kiw-edge</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/dukung-ketahanan-masyarakat-kiw-berikan-bantuan-kaos-untuk-linmas-kecamatan-tugu-di-ajang-jambore-satlinmas-kota-semarang-2025</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-dorong-peningkatan-kualitas-sdm-melalui-sertifikasi-gada-pratama-bagi-satpam-tenant-dan-masyarakat-sekitar</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/kiw-hadir-di-cjibf-2025-dorong-investasi-inklusif-dan-berkelanjutan-untuk-ketahanan-pangan-dan-energi-hijau</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/kiw-wujudkan-akses-energi-bersih-subsidi-listrik-450-va-untuk-warga-kendal</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-tegaskan-komitmen-menuju-ekonomi-hijau-dalam-forum-net-zero-hub-roadshow-di-semarang</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/kiw-benchmarking-ke-sier-perkuat-tata-kelola-kawasan-industri-berbasis-infrastruktur-dan-keberlanjutan</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/kiw-edge-ikon-baru-di-kiw-foodcourt-dengan-nuansa-senja-di-tepian-pantai</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-fasilitasi-petani-milenial-ikuti-pelatihan-di-padi-jateng-2025-sebagai-wujud-komitmen-hilirisasi-pertanian</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-realisasikan-program-beautifikasi-kawasan-untuk-lingkungan-industri-modern-dan-berkelanjutan</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pembaruan-kawasan-di-pt-kiw-dorong-industri-hijau-dan-bebas-banjir</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-wujudkan-komitmen-sosial-melalui-pemberian-bantuan-untuk-masyarakat-semarang-utara</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/dpmptsp-kota-semarang-dan-pt-kiw-gelar-investment-day-lkpm-2025-untuk-tingkatkan-kepatuhan-dan-daya-saing-investasi</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/merayakan-3-tahun-sinergi-donor-darah-gratis-holding-bumn-danareksa-di-pt-kawasan-industri-wijayakusuma</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/kiw-dukung-gerakan-bersih-kecamatan-tugu-dengan-perlengkapan-kebersihan-dan-keselamatan</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-salurkan-bantuan-program-pke-di-cilacap-komitmen-nyata-untuk-pengentasan-kemiskinan-ekstrem</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kawasan-industri-wijayakusuma-sukses-gelar-rups-laporan-tahunan-tahun-buku-2024-tegaskan-komitmen-transparansi-dan-tata-kelola-yang-baik</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/kiw-dan-unnes-tanam-1000-bibit-mangrove-melalui-iling-project-2025-kolaborasi-nyata-selamatkan-pesisir</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/kiw-sabet-dua-penghargaan-prestisius-dalam-ajang-top-csr-awards-2025</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-tebar-manfaat-di-hari-raya-idul-adha-1446-h-salurkan-daging-kurban-kepada-ratusan-warga-sekitar</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/holding-bumn-danareksa-bersama-baznas-salurkan-kurban-untuk-3000-keluarga-prasejahtera-di-makassar</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-salurkan-hewan-qurban-untuk-warga-sekitar-kawasan-industri</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-salurkan-bantuan-perbaikan-masjid-raudlotul-munawaroh-di-kota-semarang</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/kolaborasi-digital-dan-sosial-kiw-dorong-peningkatan-soft-skill-mahasiswa-undip-melalui-program-kiw-mengajar</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/holding-bumn-danareksa-gelar-konferensi-risk-management-legal-compliance-untuk-perkuat-tata-kelola-perusahaan</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/perkuat-jaringan-investasi-pt-kiw-terima-kunjungan-hktdc-hong-kong</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-peringati-hari-kebangkitan-nasional-ke-117-bangkit-bersama-wujudkan-indonesia-kuat</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/dorong-kinerja-ekspor-nasional-wamendag-ri-kunjungi-kawasan-industri-wijayakusuma-dan-lepas-ekspor-produk-furniture-ke-as</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/kiw-fit-friday-tingkatkan-semangat-kerja-lewat-senam-sehat-bersama-kiwinners</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kawasan-industri-wijayakusuma-jadi-lokasi-strategis-site-visit-investasi-di-cjibf-2025</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-ambil-peran-strategis-dalam-cjibf-2025-untuk-dorong-investasi-hijau-di-jawa-tengah</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-kiw-uji-coba-traffic-light-gate-i-tindak-lanjut-andalalin-demi-kelancaran-lalu-lintas-kawasan-industri</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/gubernur-jateng-resmikan-koperasi-buruh-sejahtera-di-kiw-wujud-kepedulian-nyata-di-hari-buruh-2025</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/categories</loc>
@@ -235,9 +355,6 @@
     <loc>https://kiw.demo-ku.com/zh-cn/categories</loc>
             </url>
     <url>
-    <loc>https://kiw.demo-ku.com/ko/categories</loc>
-            </url>
-    <url>
     <loc>https://kiw.demo-ku.com/id/posts/berita</loc>
             </url>
     <url>
@@ -247,13 +364,31 @@
     <loc>https://kiw.demo-ku.com/id/posts/pers</loc>
             </url>
     <url>
+    <loc>https://kiw.demo-ku.com/en/posts/pers</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/zh-cn/posts/pers</loc>
+            </url>
+    <url>
     <loc>https://kiw.demo-ku.com/id/posts/csr-lingkungan</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/posts/lelang</loc>
             </url>
     <url>
+    <loc>https://kiw.demo-ku.com/en/posts/lelang</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/zh-cn/posts/lelang</loc>
+            </url>
+    <url>
     <loc>https://kiw.demo-ku.com/id/posts/buletin</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/en/posts/bulletin</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/zh-cn/posts/buletin</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/tags</loc>
@@ -263,9 +398,6 @@
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/zh-cn/tags</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/ko/tags</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/posts/direksi-pt-kiw</loc>
@@ -317,6 +449,66 @@
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/posts/lelang-mobil</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/employee</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/hut-republik-indonesia-ke-80</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pt-danareksapersero</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/pemprov-jateng</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/polda-jateng</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/industri-hijau</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/kiw-edge</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/padi-jateng</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/donor-darah</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/unnes</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/idul-qurban-1446-h</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/holding-danareksa</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/undip</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/hktdc</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/investasi</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/hari-kebangkitan-nasional-ke-117</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/ekspor</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/cjibf2025</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/andalalin</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/posts/koperasi-buruh-sejahtera</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/posts/bumn-branding-marketing-award-2023</loc>
@@ -415,19 +607,25 @@
     <loc>https://kiw.demo-ku.com/zh-cn/bpsp</loc>
             </url>
     <url>
-    <loc>https://kiw.demo-ku.com/ko/bpsp</loc>
-            </url>
-    <url>
     <loc>https://kiw.demo-ku.com/id/bpsp/bpsp-v-e</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/bpsp/bpsp-xii-b</loc>
             </url>
     <url>
+    <loc>https://kiw.demo-ku.com/en/bpsp/bpsp-xii-b</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/zh-cn/bpsp/bpsp-xii-b</loc>
+            </url>
+    <url>
     <loc>https://kiw.demo-ku.com/id/bpsp/bpsp-xii-a</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/en/bpsp/bpsp-xii-a</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/zh-cn/bpsp/bpsp-xii-a</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/karir</loc>
@@ -437,9 +635,6 @@
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/zh-cn/karir</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/ko/karir</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/karir/staff-pengembangan-kawasan</loc>
@@ -502,13 +697,22 @@
     <loc>https://kiw.demo-ku.com/en/area-komersil/fire-brigade</loc>
             </url>
     <url>
-    <loc>https://kiw.demo-ku.com/id/area-komersil/keamanan-24-jam</loc>
+    <loc>https://kiw.demo-ku.com/id/area-komersil/mobil-patroli</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/area-komersil/ambulance</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/area-komersil/telekomunikasi</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/en/area-komersil/telekomunikasi</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/id/area-komersil/tempat-pengelolaan-sampah-terpadu</loc>
+            </url>
+    <url>
+    <loc>https://kiw.demo-ku.com/en/area-komersil/integrated-waste-processing-facility</loc>
             </url>
     <url>
     <loc>https://kiw.demo-ku.com/id/tenders</loc>
@@ -520,45 +724,6 @@
     <loc>https://kiw.demo-ku.com/zh-cn/tenders</loc>
             </url>
     <url>
-    <loc>https://kiw.demo-ku.com/ko/tenders</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/tenders/tender-konstruksi</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/tenders/tender-konstruksi-copy-1</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/tenders/tender-konstruksi-2024</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/tenders/tender-konstruksi-2024-copy-1</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/tenders/tender-konstruksi-2024-copy-1-copy-1</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/tenders/tender-konstruksi-2024-copy-1-copy-1-copy-1</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/tenders/tender-konstruksi-2024-copy-1-copy-1-copy-1-copy-1</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/tenders/tender-konstruksi-2024-copy-1-copy-1-copy-1-copy-1-copy-1</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/tenders/tender-konstruksi-2024-copy-1-copy-1-copy-1-copy-1-copy-1-copy-1</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/tenders/tender-konstruksi-2024-copy-1-copy-1-copy-1-copy-1-copy-1-copy-1-copy-1</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/tenders/tender-konstruksi-2024-copy-1-copy-1-copy-1-copy-1-copy-1-copy-1-copy-1-copy-1</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/tenders/tender-konstruksi-copy-1-copy-1</loc>
-            </url>
-    <url>
-    <loc>https://kiw.demo-ku.com/id/tenders/tender-konstruksi-2024-copy-2</loc>
+    <loc>https://kiw.demo-ku.com/id/tenders/tender-ulang-pekerjaan-pematangan-lahan-265-ha</loc>
             </url>
 </urlset>
