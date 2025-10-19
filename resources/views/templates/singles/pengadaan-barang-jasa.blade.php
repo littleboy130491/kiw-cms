@@ -119,8 +119,7 @@
                         </div>
                         <!--button Desktop Tablet-->
                         <a class="w-fit btn1 self-end mt-5 sm:!flex !hidden" data-aos="fade-down"
-                            href="{{ $tender_archive_url }}">lihat
-                            semua
+                            href="{{ $tender_archive_url }}">{{ __('common.view_all') }}
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">
@@ -138,7 +137,7 @@
                     <x-loop.tender-grid qty="4" />
                     <!--button mobile only-->
                     <a class="w-fit btn1 mobile-only mt-7 lg:hidden" data-aos="fade-down"
-                        href="{{ $tender_archive_url }}">Lihat Semua
+                        href="{{ $tender_archive_url }}">{{ __('common.view_all') }}
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"

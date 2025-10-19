@@ -9,7 +9,7 @@
     @if ($file_url)
         <div class="mt-10">
             <a class="w-full btn3" href="{{ $file_url }}" target="_blank">
-                <span class="gradient-text">Lihat Dokumen</span>
+                <span class="gradient-text">{{ __('common.view_document') }}</span>
                 <span class="gradient-icon">
                     <x-icon.download-icon />
             </a>
