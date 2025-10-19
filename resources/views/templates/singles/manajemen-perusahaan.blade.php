@@ -3,12 +3,12 @@
     use Littleboy130491\Sumimasen\Enums\ContentStatus;
 
     $items = Management::with('featuredImage')
-                ->where('status', ContentStatus::Published)
-                ->orderBy('menu_order', 'asc')
-                ->get();
+        ->where('status', ContentStatus::Published)
+        ->orderBy('menu_order', 'asc')
+        ->get();
     $commissioners = $items->where('level', 'commissioner');
-    $directors = $items->where('level','bod');
-    $heads = $items->where('level','heads');
+    $directors = $items->where('level', 'bod');
+    $heads = $items->where('level', 'heads');
 
 @endphp
 
@@ -17,21 +17,21 @@
     <main>
 
         <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/manajemen-hero.jpg')"
-            h1="{{ $item->title ?? 'Manajemen Perusahaan' }}" />
+            h1="{{ $item->title ?? 'Manajemen Perusahaan' }}" imageSize="bg-contain" />
 
         <!--Start Manajemen-->
         <section id="manajemen">
             <!--Section per Position-->
             @if($commissioners?->isNotEmpty())
-                <x-loop.manajemen-grid :items="$commissioners" level="{{ __('management.commissioners') }}"/>
+                <x-loop.manajemen-grid :items="$commissioners" level="{{ __('management.commissioners') }}" />
             @endif
 
             @if($directors?->isNotEmpty())
-                <x-loop.manajemen-grid :items="$directors" level="{{ __('management.directors') }}"/>
+                <x-loop.manajemen-grid :items="$directors" level="{{ __('management.directors') }}" />
             @endif
 
             @if($heads?->isNotEmpty())
-                <x-loop.manajemen-grid :items="$heads" level="{{ __('management.division_heads') }}"/>
+                <x-loop.manajemen-grid :items="$heads" level="{{ __('management.division_heads') }}" />
             @endif
         </section>
 
