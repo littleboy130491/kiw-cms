@@ -1,9 +1,10 @@
 @props([
-    'item' => ''
+    'item' => '',
+    'class' => ''
 ])
 <!--item-->
 <div data-aos="fade-down"
-    class="group item-for-popup flex flex-col justify-between gap-9 cursor-pointer bg-[var(--color-transit)] hover:bg-[linear-gradient(268deg,_#1F77D3_1.1%,_#321B71_99.1%)] rounded-md px-6 pt-6 sm:pt-6 transition"
+    class="group item-for-popup flex flex-col justify-between gap-9 cursor-pointer bg-[var(--color-transit)] hover:bg-[linear-gradient(268deg,_#1F77D3_1.1%,_#321B71_99.1%)] rounded-md px-6 pt-6 sm:pt-6 transition w-full {{ $class }}"
     onclick="openModal(this)">
     <div class="flex flex-col gap-5">
         <h6

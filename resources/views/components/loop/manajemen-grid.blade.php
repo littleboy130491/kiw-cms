@@ -3,9 +3,10 @@
         @if($level)
             <h2 class="mb-6 text-center">{{ $level }}</h2>
         @endif
-        <div class="manajemen {{ $item->position ?? '' }} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-9">
+        <div class="manajemen {{ $level ?? '' }} flex flex-wrap justify-center gap-5 lg:gap-9">
             @foreach ($items as $item)
-                <x-loop.manajemen-item-popup :item="$item" />
+                <x-loop.manajemen-item-popup :item="$item"
+                    class="flex-[0_0_calc(100%-20px)] sm:flex-[0_0_calc(50%-20px)] lg:flex-[0_0_calc(33.333%-30px)]" />
             @endforeach
         </div>
     </div>
