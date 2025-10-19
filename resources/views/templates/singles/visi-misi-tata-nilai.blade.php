@@ -68,7 +68,7 @@
                                 class="grow bg-[var(--color-transit)] p-4 sm:p-6 lg:p-5 rounded-md lg:rounded-r-none flex flex-col gap-3 group-hover:bg-[linear-gradient(268deg,_#1F77D3_1.1%,_#321B71_99.1%)]">
                                 @if (!empty($value['data']['subtitle']))
                                     <h4 data-aos="fade-down" class="group-hover:text-white">
-                                        {{ $value['data']['subtitle'] }}</h4>
+                                        {!! $value['data']['subtitle'] !!}</h4>
                                 @endif
                                 @if (!empty($value['data']['description']))
                                     <p class="group-hover:text-white">{!! $value['data']['description'] !!}</p>

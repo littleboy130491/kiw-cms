@@ -7,4 +7,5 @@ return [
     'informasi' => '정보',
     'area_komersil' => '상업 구역',
     'bpsp' => '준비된 공장 건물',
+    'e-procurement' => '전자 구매',
 ];

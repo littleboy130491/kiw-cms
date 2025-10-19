@@ -7,4 +7,5 @@ return [
     'informasi' => 'Information',
     'area_komersil' => 'Commercial Area',
     'bpsp' => 'Bangunan Pabrik Siap Pakai',
+    'e-procurement' => 'E-Procurement',
 ];
