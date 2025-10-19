@@ -1,14 +1,15 @@
-<x-layouts.app title="403">
+<x-layouts.app title="{{ __('error.403.title') }}">
     <x-partials.header />
     <main>
-        <x-partials.hero-page :image="Storage::url('media/bangunan-pabrik-hero.jpg')" h1="Akses Ditolak" />
+        <x-partials.hero-page :image="Storage::url('media/bangunan-pabrik-hero.jpg')"
+            h1="{{ __('error.403.hero_title') }}" />
 
         <section id="403-page" class="my-18 lg:my-30 mx-4 sm:mx-6 lg:mx-0 text-center flex flex-col items-center gap-5">
-            <h6 data-aos="fade-down" class="bullet-1">Error 403</h6>
-            <h2 data-aos="fade-top" class="font-bold">Oops! Anda Tidak Memiliki Akses</h2>
+            <h6 data-aos="fade-down" class="bullet-1">{{ __('error.403.error_code') }}</h6>
+            <h2 data-aos="fade-top" class="font-bold">{{ __('error.403.main_message') }}</h2>
             <div class="flex flex-col gap-5">
-                <p class="sub-p">Maaf, Anda tidak diizinkan mengakses halaman ini.</p>
-                <p>Silakan kembali atau hubungi administrator jika Anda yakin ini kesalahan.</p>
+                <p class="sub-p">{{ __('error.403.description_1') }}</p>
+                <p>{{ __('error.403.description_2') }}</p>
             </div>
             <a class="w-fit btn1 back mt-5" data-aos="fade-down" href="/">
                 {{ __('common.back_to_home') }}
