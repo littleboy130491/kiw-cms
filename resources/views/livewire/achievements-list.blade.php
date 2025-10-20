@@ -95,7 +95,7 @@
                         {{ $achievement->achievementYear->first()->title ?? '' }}</p>
                     <h5 class="text-[var(--color-heading)] text-center font-bold text-[1em]">{{ $achievement->title }}</h5>
                     @if($achievement->giver)
-                        <p class="text-sm text-[var(--color-text)] text-[.8em] italic">{{ $achievement->giver }}</p>
+                        <p class="text-sm text-center text-[var(--color-text)] text-[.8em] italic">{{ $achievement->giver }}</p>
                     @endif
                 </div>
             </div>
