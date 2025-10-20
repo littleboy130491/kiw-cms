@@ -93,7 +93,14 @@
             $slugParam => $slugValue,
         ]);
 
-        return route($currentRoute->getName(), $languageParams);
+        // Check if route name is valid before generating route
+        $routeName = $currentRoute->getName();
+        if (empty($routeName)) {
+            // Fallback to home page if no route name is available
+            return route('cms.home', $langCode);
+        }
+        
+        return route($routeName, $languageParams);
     };
 @endphp
 
