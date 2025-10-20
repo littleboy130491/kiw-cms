@@ -4561,12 +4561,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/littleboy130491/sumimasen.git",
-                "reference": "d1fd932490a214f1d9cc395fd31d7b6a81b5d270"
+                "reference": "a31b95620fc7cb7a565d805806dda45c235fbb52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/littleboy130491/sumimasen/zipball/d1fd932490a214f1d9cc395fd31d7b6a81b5d270",
-                "reference": "d1fd932490a214f1d9cc395fd31d7b6a81b5d270",
+                "url": "https://api.github.com/repos/littleboy130491/sumimasen/zipball/a31b95620fc7cb7a565d805806dda45c235fbb52",
+                "reference": "a31b95620fc7cb7a565d805806dda45c235fbb52",
                 "shasum": ""
             },
             "require": {
@@ -4665,7 +4665,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-10-20T05:38:16+00:00"
+            "time": "2025-10-20T08:14:04+00:00"
         },
         {
             "name": "littleboy130491/seo-suite",
@@ -13857,14 +13857,12 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "littleboy130491/cms": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }
