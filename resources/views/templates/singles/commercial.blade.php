@@ -2,7 +2,8 @@
     <x-partials.header />
     <main>
 
-        <x-partials.hero-page :image="Storage::url('media/bangunan-pabrik-hero.jpg')" h1="Area Komersil" />
+        <x-partials.hero-page :image="Storage::url('media/bangunan-pabrik-hero.jpg')"
+            h1="{{ __('commercial.hero_title') }}" />
         @if (Str::doesntContain($item->content, ['Coming soon', 'coming soon']))
             <section id="bangunan-pabrik"
                 class="flex flex-col my-18 lg:my-30 px-4 sm:px-6 lg:px-0 gap-18 lg:gap-20 lg:w-[1200px] lg:mx-auto">
