@@ -69,7 +69,7 @@
             return [
                 'tab' => [
                     'tabContentLeft' => [
-                        'logo' => $tab['data']['logo_url'] ?? '',
+                        'logo' => $tab['data']['image_url'] ?? '',
                         'subtitle' => $tab['data']['content_subtitle'] ?? '',
                         'title' => $tab['data']['content_title'] ?? '',
                         'desc' => $tab['data']['description'] ?? '',
