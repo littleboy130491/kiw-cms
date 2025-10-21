@@ -7,7 +7,7 @@
         style="background-image: url({{ $flag ?? '' }})" data-tippy-content="<div class='flex flex-col gap-2'> 
             <h5 class='text-white text-[1em]'>{{ $country ?? 'Negara' }}</h5> 
             <p class='text-white text-[.9em] flex flex-row flex-nowrap gap-1'>
-                <span>{{ $company ?? '' }}</span>
+                { $company ?? '' }}
             </p> 
         </div>">
     </div>
