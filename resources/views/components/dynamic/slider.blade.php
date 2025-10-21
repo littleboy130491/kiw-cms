@@ -66,7 +66,7 @@
 
             return [
                 'slide' => [
-                    'background' => $data['media_url'] ?? Storage::url('media/hero-home-2.jpg'),
+                    'background' => $data['image_url'] ?? Storage::url('media/hero-home-2.jpg'),
                     'backgroundVideo' => $data['video'] ?? '',
                     'title' => $data['title'] ?? '',
                     'desc' => $data['description'] ?? '',

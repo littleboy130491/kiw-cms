@@ -12,7 +12,7 @@
         'paragraphs' => [
             $aboutSection['data']['description'] ?? '',
         ],
-        'backgroundImage' => $aboutSection['data']['media_url'] ?? Storage::url('media/about-image.jpg'),
+        'backgroundImage' => $aboutSection['data']['image_url'] ?? Storage::url('media/about-image.jpg'),
     ];
 
     // ISO Gallery
@@ -44,7 +44,7 @@
             'title' => $perjalananSection['data']['title'] ?? 'Perjalanan Kami',
             'subtitle' => $perjalananSection['data']['subtitle'] ?? 'Sejarah & Pencapaian Kami',
         ],
-        'imagePerjalanan' => $perjalananSection['data']['media_url'] ?? Storage::url('media/perjalanan-image.jpg'),
+        'imagePerjalanan' => $perjalananSection['data']['image_url'] ?? Storage::url('media/perjalanan-image.jpg'),
         'perjalananSlide' => $perjalananSlides->map(function ($slide) {
             return [
                 'year' => $slide['data']['title'] ?? '',
@@ -92,7 +92,7 @@
         'subTitle' => $koneksiSection['data']['title'] ?? 'Koneksi Global',
         'title' => $koneksiSection['data']['subtitle'] ?? 'Dipercaya oleh Lebih dari 100 Perusahaan Global',
         'mapKoneksiGlobal' => [
-            'map' => $koneksiSection['data']['media_url'] ?? Storage::url('media/map-koneksi.png'),
+            'map' => $koneksiSection['data']['image_url'] ?? Storage::url('media/map-koneksi.png'),
         ],
         'pinKoneksiGlobal' => $hotspots->map(function ($hotspot) {
             // Extract number from company string (e.g., "8 Perusahaan" -> "8")
@@ -102,7 +102,7 @@
                 'left' => $hotspot['data']['left'] ?? '0',
                 'country' => $hotspot['data']['country'] ?? '',
                 'company' => $hotspot['data']['company'] ?? '',
-                'flag' => $hotspot['data']['media_url'] ?? '',
+                'flag' => $hotspot['data']['image_url'] ?? '',
             ];
         })->values()->toArray(),
     ];

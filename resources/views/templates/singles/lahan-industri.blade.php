@@ -24,11 +24,11 @@
         <section data-aos="zoom-in-up" id="lahan-industri"
             class="relative map-container my-18 lg:my-30 relative px-4 sm:px-6 lg:px-0 overflow-x-auto whitespace-nowrap max-w-full lg:w-[1200px] lg:mx-auto">
             <div class="relative inline-block min-w-full">
-                <img src="{{ $imageSections[0]['media_url'] }}" class="w-full">
+                <img src="{{ $imageSections[0]['image_url'] }}" class="w-full">
                 <!-- Hotspot Items -->
                 @foreach ($hotspots as $item)
                     <x-loop.hotspot-item-lahan-industri :top="$item['top']" :left="$item['left']" :label="$item['title']"
-                        :luas="$item['luas']" :image="$item['media_url']" :note="$item['note']">
+                        :luas="$item['luas']" :image="$item['image_url']" :note="$item['note']">
                         {!! $item['description'] !!}
                     </x-loop.hotspot-item-lahan-industri>
                 @endforeach

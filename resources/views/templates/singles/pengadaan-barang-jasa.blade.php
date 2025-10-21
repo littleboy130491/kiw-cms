@@ -20,7 +20,7 @@
 
         <!--Start About Pengadaan-->
         <section id="about-pengadaan" class="relative bg-contain bg-no-repeat bg-bottom z-10"
-            style="background-image:url({{ $backgroundBlock['data']['media_url'] ?? Storage::url('media/pengadaan-content.jpg') }})">
+            style="background-image:url({{ $backgroundBlock['data']['image_url'] ?? Storage::url('media/pengadaan-content.jpg') }})">
             <div class="flex flex-col grow gradient-pengadaan-top">
                 <div
                     class="gradient-white-visi-misi-bottom pb-70 sm:pb-80 lg:pb-200 pt-18 px-4 sm:px-6 lg:px-0 lg:pt-30">
