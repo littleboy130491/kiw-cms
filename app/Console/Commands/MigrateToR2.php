@@ -47,14 +47,21 @@ class MigrateToR2 extends Command
 
         $successCount = 0;
         $failCount = 0;
+        $skipCount = 0;
 
-        $this->withProgressBar($files, function ($file) use ($r2Disk, $localPath, $folder, $dryRun, &$successCount, &$failCount) {
+        $this->withProgressBar($files, function ($file) use ($r2Disk, $localPath, $folder, $dryRun, &$successCount, &$failCount, &$skipCount) {
             try {
                 // Get relative path from media folder
                 $relativePath = $file->getRelativePathname();
 
                 // Create R2 path with folder prefix
                 $r2Path = $folder . '/' . $relativePath;
+
+                // Skip upload if a file with the same path already exists in R2
+                if ($r2Disk->exists($r2Path)) {
+                    $skipCount++;
+                    return;
+                }
 
                 if (!$dryRun) {
                     // Read file content
@@ -74,6 +81,7 @@ class MigrateToR2 extends Command
         $this->newLine();
         $this->info("\n--- Migration Summary ---");
         $this->info("Successfully migrated: $successCount files");
+        $this->info("Skipped (already exists): $skipCount files");
         if ($failCount > 0) {
             $this->error("Failed: $failCount files");
         }
