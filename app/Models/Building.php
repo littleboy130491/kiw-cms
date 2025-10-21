@@ -40,6 +40,7 @@ class Building extends Model
         'template',
         'title',
         'whatsapp',
+        'hero_title',
     ];
 
 
@@ -69,6 +70,7 @@ class Building extends Model
         'slug',
         'title',
         'specification',
+        'hero_title',
     ];
 
 

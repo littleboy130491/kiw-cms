@@ -46,6 +46,9 @@ class BuildingResource extends BaseContentResource
         ])->toArray();
 
         return [
+            TextInput::make('hero_title')
+                ->nullable()
+                ->columnSpanFull(),
             Repeater::make('specification')
                 ->schema([
                     TextInput::make('name')->nullable(),
