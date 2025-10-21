@@ -87,7 +87,7 @@
     // Hotspot Koneksi Global
     $koneksiSection = $blocks->where('data.block_id', 'section-3')->first();
     $hotspots = $blocks->where('data.block_id', 'hotspot');
-  
+
     $hotspotKoneksiGlobal = [
         'subTitle' => $koneksiSection['data']['title'] ?? 'Koneksi Global',
         'title' => $koneksiSection['data']['subtitle'] ?? 'Dipercaya oleh Lebih dari 100 Perusahaan Global',
@@ -96,14 +96,12 @@
         ],
         'pinKoneksiGlobal' => $hotspots->map(function ($hotspot) {
             // Extract number from company string (e.g., "8 Perusahaan" -> "8")
-            $companyText = $hotspot['data']['company'] ?? '0';
-            $companyNumber = preg_replace('/[^0-9]/', '', $companyText);
 
             return [
                 'top' => $hotspot['data']['top'] ?? '0',
                 'left' => $hotspot['data']['left'] ?? '0',
                 'country' => $hotspot['data']['country'] ?? '',
-                'company' => $companyNumber,
+                'company' => $hotspot['data']['company'] ?? '',
                 'flag' => $hotspot['data']['media_url'] ?? '',
             ];
         })->values()->toArray(),
