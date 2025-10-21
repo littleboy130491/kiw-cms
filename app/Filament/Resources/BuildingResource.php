@@ -47,8 +47,9 @@ class BuildingResource extends BaseContentResource
 
         return [
             TextInput::make('hero_title')
-                ->nullable()
-                ->columnSpanFull(),
+                ->nullable(),
+            TextInput::make('cta_label')
+                ->nullable(),
             Repeater::make('specification')
                 ->schema([
                     TextInput::make('name')->nullable(),
@@ -68,9 +69,9 @@ class BuildingResource extends BaseContentResource
             TextInput::make('whatsapp')
                 ->nullable()
                 ->label('WhatsApp'),
-            TextInput::make('cta')
-                ->nullable()
-                ->label('Call to Action'),
+            // TextInput::make('cta')
+            //     ->nullable()
+            //     ->label('Call to Action'),
             CuratorPicker::make('gallery')
                 ->multiple()
                 ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'])

@@ -41,6 +41,7 @@ class Building extends Model
         'title',
         'whatsapp',
         'hero_title',
+        'cta_label',
     ];
 
 
@@ -71,6 +72,7 @@ class Building extends Model
         'title',
         'specification',
         'hero_title',
+        'cta_label',
     ];
 
 

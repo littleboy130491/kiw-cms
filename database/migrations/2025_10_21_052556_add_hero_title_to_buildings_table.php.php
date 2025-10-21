@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::table('buildings', function (Blueprint $table) {
             $table->json('hero_title')->nullable()->after('content');
+            $table->json('cta_label')->nullable()->after('cta');
         });
     }
 
@@ -22,6 +23,7 @@ return new class extends Migration {
     {
         Schema::table('buildings', function (Blueprint $table) {
             $table->dropColumn('hero_title');
+            $table->dropColumn('cta_label');
         });
     }
 };
