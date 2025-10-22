@@ -3,7 +3,7 @@
     <main>
 
         <x-partials.hero-page :image="$item->featuredImage->url ?? Storage::url('media/bangunan-pabrik-hero.jpg')"
-            h1="{{ $item->hero_title ?? 'Bangunan Pabrik Siap Pakai' }}" />
+            h1="{{ $item->hero_title ?: 'Bangunan Pabrik Siap Pakai' }}" />
 
         <section id="bangunan-pabrik"
             class="flex flex-col my-18 lg:my-30 px-4 sm:px-6 lg:px-0 gap-18 lg:gap-20 lg:w-[1200px] lg:mx-auto">
@@ -21,7 +21,7 @@
                     @if ($item->whatsapp)
                         <!--button-->
                         <a class="w-fit btn1 mt-5 wa-message" data-aos="fade-down" href="{{ $item->whatsapp }}"
-                            target="_blank">{{ $item->cta_label ?? __('building.contact_now') }}
+                            target="_blank">{{ $item->cta_label ?: __('building.contact_now') }}
                             <span>
                                 <img src="{{ Storage::url('media/whatsapp-white.png') }}">
                             </span>
