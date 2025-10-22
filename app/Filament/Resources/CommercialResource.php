@@ -70,7 +70,8 @@ class CommercialResource extends BaseContentResource
         return [
             TextInput::make('whatsapp')
                 ->nullable()
-                ->label('WhatsApp'),
+                ->label('WhatsApp')
+                ->columnSpanFull(),
             // TextInput::make('cta')
             //     ->nullable()
             //     ->label('Call to Action'),
