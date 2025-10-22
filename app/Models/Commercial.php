@@ -41,6 +41,8 @@ class Commercial extends Model implements MenuPanelable
         'template',
         'title',
         'whatsapp',
+        'hero_title',
+        'cta_label',
     ];
 
 
@@ -70,6 +72,9 @@ class Commercial extends Model implements MenuPanelable
         'slug',
         'title',
         'specification',
+        'hero_title',
+        'cta_label',
+        
     ];
 
     protected function specification(): Attribute
