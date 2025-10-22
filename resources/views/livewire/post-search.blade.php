@@ -3,7 +3,7 @@
     <!--Top Bar-->
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 z-10">
         <!--Title-->
-        <h2 class="text-center sm:text-left">{{ strip_tags($content) ?: __('post.find_latest_news') }}</h2>
+        <h2 class="text-center sm:text-left">{{ strip_tags($content) ?? __('post.find_latest_news') }}</h2>
 
 
         <!--Search Field-->

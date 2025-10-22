@@ -66,7 +66,7 @@
                     <div
                         class="gradient-blue top-0 left-0 w-fit px-3 py-2 rounded-md {{ $item->tenderStatus->first()?->slug === 'terbaru' ? 'blinking' : '' }}">
                         <p class="text-white uppercase text-[.8em]">
-                            {{ $item->tenderStatus->first()?->title ?: __('tender.latest') }}
+                            {{ $item->tenderStatus->first()?->title ?? __('tender.latest') }}
                         </p>
                     </div>
 

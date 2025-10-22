@@ -2,7 +2,7 @@
     $block = collect($record->block);
     $section = $block->where('data.block_id', 'section-1')->first();
 
-    $heading = $section['data']['title'] ?: __('career.archive_heading');
+    $heading = $section['data']['title'] ?? __('career.archive_heading');
 @endphp
 <x-layouts.app>
     <x-partials.header />
