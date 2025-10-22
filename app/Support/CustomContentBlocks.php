@@ -23,7 +23,7 @@ class CustomContentBlocks
             static::getHotspotKoneksiGlobalBlock(),
             static::getSliderHeightBlock(),
             static::getSliderWithCounterBlock(),
-
+            static::getCustomCodeBlock(),
         ];
     }
 
@@ -194,6 +194,26 @@ class CustomContentBlocks
                     ])
                     ->reorderable()
                     ->columnSpanFull(),
+                // Toggle::make('hide')
+                //     ->label('Hide Block')
+                //     ->helperText('Hide this block from display')
+                //     ->columnSpanFull(),
+            ])
+            ->columns(2);
+    }
+
+    private static function getCustomCodeBlock(): FormsBuilder\Block
+    {
+        return FormsBuilder\Block::make('custom-code')
+            ->label('Custom Code')
+            ->schema([
+                TextInput::make('block_id')
+                    ->label('Block ID')
+                    ->helperText('Identifier for the block')
+                    ->columnSpanFull(),
+                Textarea::make('code')
+                    ->columnSpanFull()
+                    ->rows(10),
                 // Toggle::make('hide')
                 //     ->label('Hide Block')
                 //     ->helperText('Hide this block from display')
