@@ -173,8 +173,10 @@
 
         <x-splash-screen :setOnce="false" />
         <x-popup-home :setOnce="false" />
-
-        <x-sumimasen-cms::component-loader name="slider" />
+        @if(View::exists('components.dynamic.slider'))
+            <x-sumimasen-cms::component-loader name="slider" />
+        @endif
+        
 
         <!-- Start About Home -->
         <section id="about-home" class="bg-[var(--color-transit)] lg:py-30 py-18">
@@ -416,11 +418,13 @@
 
             <!--carousel-->
             <div class="relative lg:w-[1200px] mx-auto w-full">
-                <div class="swiper-logo overflow-hidden !flex !flex-row !justify-center">
-                    <div class="swiper-wrapper">
-                        <x-sumimasen-cms::component-loader name="tenant-logo" />
+                @if(View::exists('components.dynamic.tenant-logo'))
+                    <div class="swiper-logo overflow-hidden !flex !flex-row !justify-center">
+                        <div class="swiper-wrapper">
+                            <x-sumimasen-cms::component-loader name="tenant-logo" />
+                        </div>
                     </div>
-                </div>
+                @endif
 
                 <!-- Custom Arrow Left -->
                 <div

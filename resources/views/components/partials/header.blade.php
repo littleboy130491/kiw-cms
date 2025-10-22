@@ -83,9 +83,14 @@
                 <div class="hidden lg:flex lg:flex-row lg:justify-end gap-5 mb-8 above-header">
 
                     <!--Button-->
-                    <x-sumimasen-cms::component-loader name="header-btn-hubungi" />
-
-                    <x-sumimasen-cms::component-loader name="header-btn-brosur" />
+                    @if(View::exists('components.dynamic.header-btn-hubungi'))
+                        <x-sumimasen-cms::component-loader name="header-btn-hubungi" />
+                    @endif
+                    
+                    @if(View::exists('components.dynamic.header-btn-brosur'))
+                        <x-sumimasen-cms::component-loader name="header-btn-brosur" />
+                    @endif
+                   
 
                     <!--Translate-->
                     <x-partials.lang-switcher variant="desktop" />
@@ -145,8 +150,13 @@
 
                         <!-- Button Off-Canvas-->
                         <div class="mt-10 flex flex-col gap-5">
-                            <x-sumimasen-cms::component-loader name="header-btn-hubungi" class="btn9 group w-fit" iconColor="black"/>
-                            <x-sumimasen-cms::component-loader name="header-btn-brosur" class="btn9 group w-fit" iconColor="black"/>
+                            @if(View::exists('components.dynamic.header-btn-hubungi'))
+                                <x-sumimasen-cms::component-loader name="header-btn-hubungi" class="btn9 group w-fit" iconColor="black"/>
+                            @endif
+                            @if(View::exists('components.dynamic.header-btn-brosur'))
+                                <x-sumimasen-cms::component-loader name="header-btn-brosur" class="btn9 group w-fit" iconColor="black"/>
+                            @endif
+                            
                         </div>
 
                         <!--Lang switcher mobile-->

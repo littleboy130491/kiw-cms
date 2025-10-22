@@ -48,7 +48,9 @@
         <!--Main Content-->
         <div>
             <!--Prefooter-->
-            <x-sumimasen-cms::component-loader name="prefooter" />
+            @if(View::exists('components.dynamic.prefooter'))
+                <x-sumimasen-cms::component-loader name="prefooter" />
+            @endif
 
 
             <!--Content-->

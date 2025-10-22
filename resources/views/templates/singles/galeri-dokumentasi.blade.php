@@ -55,7 +55,9 @@
 
                 <!-- Tab Contents -->
                 <x-tab.tab-contents-video id="tab1">
+                @if(View::exists('components.dynamic.dokumentasi-video'))
                     <x-sumimasen-cms::component-loader name="dokumentasi-video" />
+                @endif
                 </x-tab.tab-contents-video>
 
 
