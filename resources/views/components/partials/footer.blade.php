@@ -34,7 +34,7 @@
     $menu_footer_3 = $getMenu('footer_menu_3');
 
     $prefooter = Component::firstWhere('title', 'prefooter');
-    $prefooter_title = $prefooter->section['data']['title'] ?? __('footer.start_investment');
+    $prefooter_title = $prefooter->section['data']['title'] ?: __('footer.start_investment');
 
 @endphp
 

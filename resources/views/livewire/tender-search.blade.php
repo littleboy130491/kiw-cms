@@ -5,7 +5,7 @@
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 z-10">
 
         <!--Title-->
-        <h2 class="text-center sm:text-left">{{ strip_tags($content) ?? __('tender.find_latest_tenders') }}</h2>
+        <h2 class="text-center sm:text-left">{{ strip_tags($content) ?: __('tender.find_latest_tenders') }}</h2>
 
         <!--Field-->
         <div class="flex flex-col sm:flex-row-reverse gap-2 sm:w-1/2 lg:w-1/3">

@@ -12,7 +12,7 @@
     <main>
 
         <x-partials.hero-page :image="$item->featuredImage?->url ?? Storage::url('media/laporan-tahunan-hero.jpg')"
-            h1="{{ $item->title ?? __('laporan-tahunan.title') }}" />
+            h1="{{ $item->title ?: __('laporan-tahunan.title') }}" />
 
         <!--Start Laporan Tahunan-->
 
