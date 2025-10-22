@@ -5,7 +5,7 @@
         ->where('data.block_id', 'image')
         ->pluck('data')
         ->values();
-
+    dd($imageSections);
     $hotspots = $blocks
         ->where('data.block_id', 'hotspot')
         ->pluck('data')

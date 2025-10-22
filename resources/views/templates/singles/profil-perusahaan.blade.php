@@ -1,7 +1,7 @@
 @php
     // Process CMS blocks into organized data structure
     $blocks = collect($item->block);
-
+    dd($blocks);
     // About Section
     $aboutSection = $blocks->where('data.block_id', 'section-1')->first();
     $about = [
