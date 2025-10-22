@@ -147,11 +147,9 @@
 
                 <!--Partner-->
                 <div class="flex flex-row sm:gap-5 gap-8 sm:w-1/6">
-                    <img class="sm:w-full w-24" src="{{ Storage::url('media/kiwinners.png') }}"
-                        alt="{{ __('footer.kiwinners_alt') }}">
-                    <!-- <img class="sm:w-full w-24" src="{{ Storage::url('media/akhlak.png') }}" alt="akhlak">
-                    <img class="sm:w-full w-24" src="{{ Storage::url('media/bumn-untuk-indonesia.png') }}"
-                        alt="bumn"> -->
+                    @if(View::exists('components.dynamic.footer-logo'))
+                        <x-sumimasen-cms::component-loader name="footer-logo" />
+                    @endif
                 </div>
 
                 <!--Social Media-->
