@@ -211,7 +211,7 @@ class CustomContentBlocks
                     ->label('Block ID')
                     ->helperText('Identifier for the block')
                     ->columnSpanFull(),
-                Textarea::make('code')
+                Textarea::make('code_block')
                     ->columnSpanFull()
                     ->rows(10),
                 // Toggle::make('hide')
