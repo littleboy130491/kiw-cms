@@ -8,7 +8,7 @@
      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-4">
          @foreach ($orderedImages as $media)
              <a href="{{ $media->url }}" data-lightbox="gallery">
-                 <x-curator-glider :media="$media" class="rounded-md" />
+                 <x-curator-glider :media="$media" class="rounded-md" loading="lazy"/>
              </a>
          @endforeach
      </div>

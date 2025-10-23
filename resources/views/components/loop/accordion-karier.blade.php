@@ -22,7 +22,7 @@
             @if (!empty($item->featured_image))
                 <div class="flex flex-col gap-6 mb-4 sm:mb-6">
                     <a href="{{ $image_url }}" data-lightbox="gallery">
-                        <x-curator-glider :media="$item->featuredImage" class="w-full object-contain rounded-md" />
+                        <x-curator-glider :media="$item->featuredImage" class="w-full object-contain rounded-md" loading="lazy"/>
                     </a>
                 </div>
             @endif

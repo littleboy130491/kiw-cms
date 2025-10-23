@@ -77,7 +77,7 @@
                     @if ($achievement->featuredImage)
                         <a href="{{ $achievement->featuredImage->url }}" data-lightbox="gallery">
                             <x-curator-glider :media="$achievement->featuredImage"
-                                class="h-[250px] object-contain -mb-[20px] z-10 group-hover:scale-110 transition-all duration-300" />
+                                class="h-[250px] object-contain -mb-[20px] z-10 group-hover:scale-110 transition-all duration-300" loading="lazy"/>
                         </a>
 
                     @else

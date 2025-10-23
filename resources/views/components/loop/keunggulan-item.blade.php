@@ -15,7 +15,7 @@
             @endif
         </div>
         @if ($image)
-            <x-curator-glider :media="$image" class="rounded-md sm:w-1/2 object-cover" />
+            <x-curator-glider :media="$image" class="rounded-md sm:w-1/2 object-cover" loading="lazy"/>
         @endif
     </div>
 </div>

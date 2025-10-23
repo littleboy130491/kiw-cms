@@ -1,5 +1,5 @@
 <div class="relative">
     <a class="gallery-item" href="{{ asset($image) }}" data-lightbox="gallery">
-        <x-curator-glider :media="$image" class="rounded-md" />
+        <x-curator-glider :media="$image" class="rounded-md" loading="lazy"/>
     </a>
 </div>

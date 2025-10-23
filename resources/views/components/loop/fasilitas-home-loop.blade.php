@@ -6,10 +6,10 @@
         <h4 class="name">{{ $item->title ?? 'Fasilitas Kami' }}</h4>
     </div>
 
-    <x-curator-glider :media="$item->featuredImage" class="rounded-md rounded-b-none h-[180px] object-cover self-end w-full" />
+    <x-curator-glider :media="$item->featuredImage" class="rounded-md rounded-b-none h-[180px] object-cover self-end w-full" loading="lazy"/>
     <!-- Hidden-->
     <div class="description hidden">
         {!! $item->content !!}
     </div>
-    <x-curator-glider :media="$item->featuredImage" class="photo hidden" />
+    <x-curator-glider :media="$item->featuredImage" class="photo hidden" loading="lazy"/>
 </div>

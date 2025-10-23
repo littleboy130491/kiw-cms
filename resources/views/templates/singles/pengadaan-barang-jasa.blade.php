@@ -73,7 +73,7 @@
                         </p>
                     </div>
                     <x-curator-glider :media="$peringatanBlock['data']['image']"
-                        class="object-contain sm:w-1/3 lg:w-1/2 sm:self-end sm:-ml-5 lg:-ml-0 lg:-mt-20" />
+                        class="object-contain sm:w-1/3 lg:w-1/2 sm:self-end sm:-ml-5 lg:-ml-0 lg:-mt-20" loading="lazy"/>
                 </div>
             </section>
         @endif

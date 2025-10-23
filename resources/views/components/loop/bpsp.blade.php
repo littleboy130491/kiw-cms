@@ -16,5 +16,5 @@
             <x-icon.arrow-right-color-current />
         </div>
         <x-curator-glider :media="$item->featured_image"
-            class="rounded-2xl rounded-b-none h-[180px] object-cover self-end w-full" />
+            class="rounded-2xl rounded-b-none h-[180px] object-cover self-end w-full" loading="lazy"/>
 </a>

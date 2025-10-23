@@ -9,7 +9,7 @@
         @endif
         @if ($image)
             <div class="coming-soon-image relative rounded-md overflow-hidden">
-                <x-curator-glider :media="$image" />
+                <x-curator-glider :media="$image" loading="lazy"/>
             </div>
         @endif
     </div>

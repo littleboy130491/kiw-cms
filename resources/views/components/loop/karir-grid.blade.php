@@ -33,7 +33,7 @@
         <div>
             <a href="{{ $url ?? '' }}">
                 <x-curator-glider :media="$item->featured_image"
-                    class="max-h-[350px] object-top rounded-sm rounded-b-none w-full object-cover max-h-[]" />
+                    class="max-h-[350px] object-top rounded-sm rounded-b-none w-full object-cover max-h-[]" loading="lazy"/>
             </a>
         </div>
     </div>

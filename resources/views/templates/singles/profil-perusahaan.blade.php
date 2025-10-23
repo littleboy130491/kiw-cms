@@ -234,7 +234,7 @@
                                 <div class="flex flex-col lg:flex-row lg:justify-between gap-12">
                                     <div class="flex flex-col justify-between gap-10 lg:gap-20 lg:w-1/2">
                                         @if(!empty($left['logo']))
-                                            <x-curator-glider :media="$left['logo']" class="w-1/4 sm:w-1/5 lg:w-1/3" />
+                                            <x-curator-glider :media="$left['logo']" class="w-1/4 sm:w-1/5 lg:w-1/3" loading="lazy"/>
                                         @endif
                                         <div class="flex flex-col gap-5">
                                             @if(!empty($left['subtitle']))

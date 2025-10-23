@@ -13,6 +13,6 @@
             {!! $item->content !!}
         </div>
 
-        <x-curator-glider :media="$item->featuredImage" class="photo hidden" />
+        <x-curator-glider :media="$item->featuredImage" class="photo hidden" loading="lazy"/>
     </div>
 </div>
