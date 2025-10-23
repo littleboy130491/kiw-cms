@@ -49,6 +49,28 @@ class AchievementYear extends Model
         'title',
     ];
 
+    /**
+     * Resolve the translated title with manual fallbacks.
+     */
+    public function getResolvedTitleAttribute(): string
+    {
+        $currentLocale = app()->getLocale();
+        $defaultLocale = config('cms.default_language', config('app.fallback_locale'));
+
+        $title = $this->getTranslation('title', $currentLocale, false);
+
+        if (blank($title) && $defaultLocale) {
+            $title = $this->getTranslation('title', $defaultLocale, false);
+        }
+
+        if (blank($title)) {
+            $title = collect($this->getTranslations('title'))
+                ->first(fn ($value) => filled($value));
+        }
+
+        return $title ?? '';
+    }
+
 
 
     //--------------------------------------------------------------------------

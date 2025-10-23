@@ -19,7 +19,7 @@
 }" @click.away="open = false">
 
     <input type="text" placeholder="{{ __('search.select_category') }}"
-        class="w-full pl-3 pr-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:var(--color-blue) cursor-pointer"
+        class="w-full pl-3 pr-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)] cursor-pointer"
         x-model="selected" @click="open = !open" readonly />
 
     <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">

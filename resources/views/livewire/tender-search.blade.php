@@ -23,10 +23,10 @@
             <!--Year Dropdown-->
             <div class="relative max-w-md w-full">
                 <select wire:model.live="tenderYear"
-                    class="w-full pl-3 pr-10 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:var(--color-blue) appearance-none bg-white">
+                    class="w-full pl-3 pr-10 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)] appearance-none bg-white">
                     <option value="">{{ __('tender.select_year') }}</option>
                     @foreach ($tenderYears as $year)
-                        <option value="{{ $year }}">{{ $year }}</option>
+                        <option value="{{ $year->id }}">{{ $year->resolved_title }}</option>
                     @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -49,7 +49,8 @@
             @endif
             @if ($tenderYear)
                 <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                    {{ __('tender.year') }}: {{ $tenderYear }}
+                    {{ __('tender.year') }}:
+                    {{ optional($tenderYears->firstWhere('id', (int) $tenderYear))->resolved_title }}
                 </span>
             @endif
             <button wire:click="clearFilters" class="text-sm text-red-600 hover:text-red-800 underline cursor-pointer">

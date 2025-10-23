@@ -26,7 +26,11 @@ class TenderSearch extends Component
 
     protected $rules = [
         'searchQuery' => 'nullable|string|max:255',
-        'tenderYear' => 'nullable|string|max:255',
+        'tenderYear' => 'nullable|integer|exists:tender_years,id',
+    ];
+
+    protected $casts = [
+        'tenderYear' => 'integer',
     ];
 
     public function mount(string $currentUrl = '', string $content = '')
@@ -111,24 +115,10 @@ class TenderSearch extends Component
     private function applyTenderYearFilter(Builder $query): Builder
     {
         if (!empty($this->tenderYear)) {
-            $query->whereHas('tenderYear', function (Builder $q) {
-                $locale = app()->getLocale();
-                $defaultLang = config('cms.default_language');
+            $yearId = (int) $this->tenderYear;
 
-                // Validate locales
-                $allowedLocales = config('cms.language_available', ['en']);
-                if (!in_array($locale, $allowedLocales)) {
-                    $locale = $defaultLang;
-                }
-
-                // Build JSON path as parameter
-                $localePath = '$.' . $locale;
-                $defaultPath = '$.' . $defaultLang;
-
-                $q->where(function ($subQuery) use ($localePath, $defaultPath) {
-                    $subQuery->whereRaw("JSON_UNQUOTE(JSON_EXTRACT(title, ?)) = ?", [$localePath, $this->tenderYear])
-                        ->orWhereRaw("JSON_UNQUOTE(JSON_EXTRACT(title, ?)) = ?", [$defaultPath, $this->tenderYear]);
-                });
+            $query->whereHas('tenderYear', function (Builder $q) use ($yearId) {
+                $q->where('tender_years.id', $yearId);
             });
         }
 
@@ -137,14 +127,9 @@ class TenderSearch extends Component
 
     public function getTenderYears()
     {
-        return TenderYear::orderBy('title', 'desc')
-            ->get()
-            ->mapWithKeys(function ($item) {
-                $title = $item->title;
-                return [$title => $title];
-            })
-            ->filter()
-            ->toArray();
+        return TenderYear::all()
+            ->sortByDesc('resolved_title')
+            ->values();
     }
 
     protected function getPaginationNumber(): int

@@ -38,7 +38,7 @@
         <div class="px-6 pb-3">
             <form action="#" @submit.prevent="kirimWA" class="flex flex-row gap-2">
                 <input id="waInput" type="search" placeholder="{{ __('whatsapp.type_message') }}"
-                    class="w-full bg-white px-4 py-2 border rounded-full border-[var(--color-border)] focus:outline-none focus:ring-2 focus:var(--color-blue)" />
+                    class="w-full bg-white px-4 py-2 border rounded-full border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)]" />
                 <button type="submit" class="w-13 h-10 bg-cover bg-center bg-no-repeat rounded-full cursor-pointer"
                     style="background-image:url('{{ Storage::url('media/wa-btn.png') }}')"></button>
             </form>

@@ -15,7 +15,7 @@
             @foreach ($achievementTypes as $type)
                 <button wire:click="selectType({{ $type->id }})"
                     class="btn6 group w-fit {{ $selectedType == $type->id ? 'active' : '' }}">
-                    {{ $type->title }}
+                    {{ $type->resolved_title }}
                 </button>
             @endforeach
         </div>
@@ -31,17 +31,17 @@
                     </div>
                     <input type="search" placeholder="{{ __('achievements.search_placeholder') }}"
                         wire:model.live.debounce.300ms="search" x-on:forceClear.window="$el.value = ''"
-                        class="w-full pl-10 pr-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:var(--color-blue)"
+                        class="w-full pl-10 pr-4 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)]"
                         wire:key="search-input" />
                 </div>
 
                 <!--Year Dropdown-->
                 <div class="relative max-w-md w-full">
                     <select wire:model.live="selectedYear"
-                        class="w-full pl-3 pr-10 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:var(--color-blue) appearance-none">
+                        class="w-full pl-3 pr-10 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)] appearance-none">
                         <option value="">{{ __('achievements.select_year') }}</option>
                         @foreach ($achievementYears as $year)
-                            <option value="{{ $year->id }}">{{ $year->title }}</option>
+                            <option value="{{ $year->id }}">{{ $year->resolved_title }}</option>
                         @endforeach
                     </select>
                     <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -92,7 +92,7 @@
                 </div>
                 <div class="flex flex-col gap-2 items-center">
                     <p class="text-sm text-[var(--color-heading)] -mb-2">
-                        {{ $achievement->achievementYear->first()->title ?? '' }}</p>
+                        {{ optional($achievement->achievementYear->first())->resolved_title }}</p>
                     <h5 class="text-[var(--color-heading)] text-center font-bold text-[1em]">{{ $achievement->title }}</h5>
                     @if($achievement->giver)
                         <p class="text-sm text-center text-[var(--color-text)] text-[.8em] italic">{{ $achievement->giver }}</p>

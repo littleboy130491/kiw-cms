@@ -2,7 +2,7 @@
 
 return [
     'find_latest_tenders' => 'Temukan Tender Terbaru',
-    'search_here' => 'Cari disini...',
+    'search_here' => 'Cari di sini...',
     'select_year' => 'Pilih Tahun',
     'active_filters' => 'Filter aktif:',
     'search' => 'Pencarian',
