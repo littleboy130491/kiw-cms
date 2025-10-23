@@ -15,7 +15,8 @@ class ListPosts extends ListRecords
     {
         return [
             Actions\ExportAction::make()
-                ->exporter(PostExporter::class),
+                ->exporter(PostExporter::class)
+                ->fileDisk('local'),
             Actions\CreateAction::make(),
         ];
     }
