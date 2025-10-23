@@ -20,12 +20,15 @@
         rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    {!! app('settings')->custom_code_head ?? '' !!}
     @stack('before_head_close')
 </head>
 
 <body class="{{ $bodyClasses ?? '' }}">
     @stack('after_body_open')
     {{ $slot }}
+    {!! app('settings')->custom_code_body ?? '' !!}
     @stack('before_body_close')
 </body>
 

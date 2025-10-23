@@ -1,0 +1,18 @@
+<?php
+
+use Spatie\LaravelSettings\Migrations\SettingsMigration;
+
+return new class extends SettingsMigration {
+    public function up(): void
+    {
+        $this->migrator->add('general.custom_code_head', null);
+        $this->migrator->add('general.custom_code_body', null);
+
+    }
+
+    public function down(): void
+    {
+        $this->migrator->delete('general.custom_code_head');
+        $this->migrator->delete('general.custom_code_body');
+    }
+};
