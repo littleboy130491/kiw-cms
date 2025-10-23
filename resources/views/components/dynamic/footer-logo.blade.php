@@ -4,5 +4,5 @@
 @endphp
 
 @foreach($logos as $logo)
-      <x-curator-glider :media="$logo" class="sm:w-full w-24" />
+      <x-curator-glider :media="$logo" class="sm:w-full w-24" loading="lazy"/>
 @endforeach
