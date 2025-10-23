@@ -1,8 +1,15 @@
 <li @click.stop="openSubSubMenu === '{{ $menu }}' ? openSubSubMenu = null : openSubSubMenu = '{{ $menu }}'"
     class="cursor-pointer">
+    @php
+        $currentRouteName = Route::currentRouteName();
+        $resolvedCurrentUrl = !empty($currentRouteName) && Route::has($currentRouteName)
+            ? route($currentRouteName, request()->route()?->parameters() ?? [])
+            : url()->current();
+        $isActive = $url === $resolvedCurrentUrl;
+    @endphp
     <div class="flex justify-between items-center">
         <a href="{{ $url }}" target="{{ $target ?? '_self' }}"
-            class="block hover:text-[var(--color-lightblue)] {{ Route::current() && $url === route(Route::current()->getName(), request()->route()->parameters()) ? 'active !text-[var(--color-lightblue)]' : '' }}">{{ $menu }}</a>
+            class="block hover:text-[var(--color-lightblue)] {{ $isActive ? 'active !text-[var(--color-lightblue)]' : '' }}">{{ $menu }}</a>
         <svg class="w-3 h-3 ml-2 transform" :class="{ 'rotate-180': openSubSubMenu === '{{ $menu }}' }"
             fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd"

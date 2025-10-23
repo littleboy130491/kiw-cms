@@ -62,7 +62,7 @@ return [
     ],
     'should_preserve_filenames' => true,
     'should_register_navigation' => true,
-    'should_check_exists' => true,
+    'should_check_exists' => false,
     'visibility' => 'public',
     'tabs' => [
         'display_curation' => true,

@@ -1,7 +1,9 @@
 @php
-    $currentRouteName = Route::current()?->getName();
-    $currentRouteParams = request()->route()?->parameters();
-    $isActive = $currentRouteName && $url === route($currentRouteName, $currentRouteParams);
+    $currentRouteName = Route::currentRouteName();
+    $resolvedCurrentUrl = !empty($currentRouteName) && Route::has($currentRouteName)
+        ? route($currentRouteName, request()->route()?->parameters() ?? [])
+        : url()->current();
+    $isActive = $url === $resolvedCurrentUrl;
 @endphp
 <a href="{{ $url ?? '' }}" target="{{ $target ?? '_self' }}"
     class="flex text-[.9em] items-center justify-between px-4 py-2 text-[var(--color-heading)] hover:bg-[var(--color-lightblue)] hover:text-white {{ $isActive ? 'active hover:!text-white !text-[var(--color-lightblue)]' : '' }}">

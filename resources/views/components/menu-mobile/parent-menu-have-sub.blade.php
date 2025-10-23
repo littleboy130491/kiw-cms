@@ -14,9 +14,17 @@
             // Jika link valid, biarkan browser navigate normal (tidak ada preventDefault)
         }
     " class="cursor-pointer select-none">
+    @php
+        $currentRouteName = Route::currentRouteName();
+        $resolvedCurrentUrl = !empty($currentRouteName) && Route::has($currentRouteName)
+            ? route($currentRouteName, request()->route()?->parameters() ?? [])
+            : url()->current();
+        $isActive = $url === $resolvedCurrentUrl;
+    @endphp
+
     <div class="flex flex-row justify-between items-start w-full">
         <a href="{{ $url }}" target="{{ $target ?? '_self' }}"
-            class="block text[var(--color-heading)] hover:text-[var(--color-lightblue)] {{ Route::current() && $url === route(Route::current()->getName(), request()->route()->parameters()) ? 'active !text-[var(--color-lightblue)]' : '' }}">
+            class="block text[var(--color-heading)] hover:text-[var(--color-lightblue)] {{ $isActive ? 'active !text-[var(--color-lightblue)]' : '' }}">
             {{ $menu }}
         </a>
 
