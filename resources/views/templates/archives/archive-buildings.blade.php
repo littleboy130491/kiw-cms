@@ -50,15 +50,15 @@
                         <p>{!! $titleBPSPContent['desc'] !!}</p>
                     </div>
                     <div class="hidden lg:block lg:w-[440px]">
-                        <img class="rounded-sm w-full" src="{{ $titleBPSPContent['image'][0] }}">
+                        <img class="rounded-sm w-full" src="{{ $titleBPSPContent['image'][0] }}" loading="lazy"/>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 mt-9 lg:mt-5">
                    @foreach ($titleBPSPContent['image'] as $image)
                         @if ($loop->first)
-                            <img class="rounded-sm lg:hidden w-[400px] object-cover" src="{{ $image }}">
+                            <img class="rounded-sm lg:hidden w-[400px] object-cover" src="{{ $image }}" loading="lazy"/>
                         @else
-                            <img class="rounded-sm w-[400px] object-cover" src="{{ $image }}">
+                            <img class="rounded-sm w-[400px] object-cover" src="{{ $image }}" loading="lazy"/>
                         @endif
                     @endforeach
 

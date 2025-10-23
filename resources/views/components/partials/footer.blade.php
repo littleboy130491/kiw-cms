@@ -156,24 +156,24 @@
                 <div class="flex flex-row sm:gap-5 gap-6 sm:w-1/6 w-[200px]">
                     <a href="{{ app('settings')->facebook ?? config('cms.site_social_media.facebook') }}"
                         target="_blank" rel="noopener noreferrer">
-                        <img src="{{ Storage::url('media/facebook-white.png') }}" alt="{{ __('footer.facebook_alt') }}">
+                        <img src="{{ Storage::url('media/facebook-white.png') }}" alt="{{ __('footer.facebook_alt') }}" loading="lazy"/>
                     </a>
                     <a href="{{ app('settings')->twitter ?? config('cms.site_social_media.twitter') }}" target="_blank"
                         rel="noopener noreferrer">
-                        <img src="{{ Storage::url('media/twitter-white.png') }}" alt="{{ __('footer.twitter_alt') }}">
+                        <img src="{{ Storage::url('media/twitter-white.png') }}" alt="{{ __('footer.twitter_alt') }}" loading="lazy"/>
                     </a>
                     <a href="{{ app('settings')->instagram ?? config('cms.site_social_media.instagram') }}"
                         target="_blank" rel="noopener noreferrer">
                         <img src="{{ Storage::url('media/instagram-white.png') }}"
-                            alt="{{ __('footer.instagram_alt') }}">
+                            alt="{{ __('footer.instagram_alt') }}" loading="lazy"/>
                     </a>
                     <a href="{{ app('settings')->linkedin ?? config('cms.site_social_media.linkedin') }}"
                         target="_blank" rel="noopener noreferrer">
-                        <img src="{{ Storage::url('media/linkedin-white.png') }}" alt="{{ __('footer.linkedin_alt') }}">
+                        <img src="{{ Storage::url('media/linkedin-white.png') }}" alt="{{ __('footer.linkedin_alt') }}" loading="lazy"/>
                     </a>
                     <a href="{{ app('settings')->youtube ?? config('cms.site_social_media.youtube') }}" target="_blank"
                         rel="noopener noreferrer">
-                        <img src="{{ Storage::url('media/youtube-white.png') }}" alt="{{ __('footer.youtube_alt') }}">
+                        <img src="{{ Storage::url('media/youtube-white.png') }}" alt="{{ __('footer.youtube_alt') }}" loading="lazy"/>
                     </a>
 
                 </div>

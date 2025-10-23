@@ -39,7 +39,7 @@
         </div>
         <div>
             <img class="rounded-md rounded-b-none lg:h-[210px] sm:h-[300px] h-[250px] w-full object-cover object-top"
-                src="{{ $item_image }}">
+                src="{{ $item_image }}" loading="lazy"/>
         </div>
 
     </div>

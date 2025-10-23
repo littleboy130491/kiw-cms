@@ -22,7 +22,7 @@
                 <!-- Gambar -->
                 <div class="modal-image w-fit">
                     <img class="w-full h-full lg:max-h-[500px] !rounded-md" src=""
-                        alt="Foto Manajemen">
+                        alt="Foto Manajemen" loading="lazy"/>
                 </div>
 
                 <div class="modal-info w-fit flex flex-col items-start lg:gap-4 gap-3 overflow-hidden">

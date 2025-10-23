@@ -18,7 +18,7 @@
     @if ($item->featuredImage)
         <x-curator-glider :media="$item->featuredImage" class="photo rounded-t-md" loading="lazy"/>
     @else
-        <img src="{{ Storage::url('media/group-1138.png') }}" class="photo rounded-t-md" alt="Default image">
+        <img src="{{ Storage::url('media/group-1138.png') }}" class="photo rounded-t-md" alt="Default image" />
     @endif
 
     <!-- Hidden Description -->

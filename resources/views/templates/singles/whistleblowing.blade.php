@@ -42,7 +42,7 @@
                     <!--Image-->
                     <div class="relative">
                         <a class="gallery-item" href="{{ $whistleblowingBlock['image'] }}" data-lightbox="gallery">
-                            <img class="rounded-md" src="{{ $whistleblowingBlock['image'] }}">
+                            <img class="rounded-md" src="{{ $whistleblowingBlock['image'] }}" loading="lazy"/>
                         </a>
                     </div>
                     {!! $whistleblowingBlock['descBottom'] !!}

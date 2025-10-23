@@ -16,7 +16,7 @@
         </div>
         <div class="relative lg:w-1/2">
             <a href="{{ asset($image) }}" data-lightbox="gallery">
-                <img class="w-full object-contain" src="{{ asset($image) }}">
+                <img class="w-full object-contain" src="{{ asset($image) }}" loading="lazy"/>
             </a>
         </div>
     </div>

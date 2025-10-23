@@ -27,7 +27,7 @@
                 <div class="relative max-w-md w-full">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <img src="{{ Storage::url('media/search.png') }}"
-                            alt="{{ __('achievements.search_icon_alt') }}">
+                            alt="{{ __('achievements.search_icon_alt') }}" loading="lazy"/>
                     </div>
                     <input type="search" placeholder="{{ __('achievements.search_placeholder') }}"
                         wire:model.live.debounce.300ms="search" x-on:forceClear.window="$el.value = ''"
@@ -46,7 +46,7 @@
                     </select>
                     <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                         <img src="{{ Storage::url('media/chevron-down-solid.png') }}"
-                            alt="{{ __('achievements.chevron_down_alt') }}">
+                            alt="{{ __('achievements.chevron_down_alt') }}" loading="lazy"/>
                     </div>
                 </div>
             </div>
@@ -84,11 +84,11 @@
                         <a href="{{ Storage::url('media/default-achievement.png') }}" data-lightbox="gallery">
                             <img class="h-[250px] object-contain -mb-[20px] z-10 group-hover:scale-110 transition-all duration-300"
                                 src="{{ Storage::url('media/default-achievement.png') }}"
-                                alt="{{ $achievement->title }} {{ __('achievements.default_achievement_alt') }}">
+                                alt="{{ $achievement->title }} {{ __('achievements.default_achievement_alt') }}" loading="lazy"/>
                         </a>
                     @endif
                     <img class="z-1" src="{{ Storage::url('media/frame-awards.png') }}"
-                        alt="{{ __('achievements.frame_awards_alt') }}">
+                        alt="{{ __('achievements.frame_awards_alt') }}" loading="lazy"/>
                 </div>
                 <div class="flex flex-col gap-2 items-center">
                     <p class="text-sm text-[var(--color-heading)] -mb-2">

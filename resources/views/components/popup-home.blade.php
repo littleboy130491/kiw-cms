@@ -5,10 +5,10 @@
                 class="absolute sm:-top-9 sm:-right-6 -top-13 -right-0 text-white text-[2em] cursor-pointer">&times;</button>
             @if ($url)
                 <a href="{{ $url }}" target="_blank" rel="noopener noreferrer">
-                    <img class="h-auto" src="{{ Storage::url($image) }}" alt="{{ $alt }}" class="rounded-lg" />
+                    <img class="h-auto" src="{{ Storage::url($image) }}" alt="{{ $alt }}" class="rounded-lg"/>
                 </a>
             @else
-                <img class="h-auto" src="{{ Storage::url($image) }}" alt="{{ $alt }}" class="rounded-lg" />
+                <img class="h-auto" src="{{ Storage::url($image) }}" alt="{{ $alt }}" class="rounded-lg"/>
             @endif
         </div>
     </div>

@@ -132,7 +132,7 @@
                         @if(!empty($about['iso']['images']))
                             <div class="flex flex-row items-center gap-5 mt-4">
                                 @foreach ($about['iso']['images'] as $image)
-                                    <img src="{{ $image }}" alt="iso">
+                                    <img src="{{ $image }}" alt="iso" loading="lazy"/>
                                 @endforeach
                                 <p class="!text-[var(--color-heading)] !text-[1.3em] w-[60px]">{{ $about['iso']['label'] }}
                                 </p>
@@ -188,7 +188,7 @@
                                 <!-- Custom icon.arrow Right -->
                                 <div
                                     class="absolute !top-10 lg:!top-15 swiper-button-next bg-white rounded-[100%] !h-[30px] !w-[30px] p-1 cursor-pointer z-10">
-                                    <img class="w-2/3" src="{{Storage::url('media/arrow-right-solid.png')}}" alt="arrow">
+                                    <img class="w-2/3" src="{{Storage::url('media/arrow-right-solid.png')}}" alt="arrow" loading="lazy"/>
                                 </div>
                             </div>
                         </div>
@@ -197,7 +197,7 @@
 
                 <!--Image-->
                 <img class="rounded-2xl lg:rounded-b-none sm:w-[45%] lg:w-[35%] sm:h-[450px] lg:h-[460px] sm:object-cover"
-                    src="{{ $aboutPerjalanan['perjalananKami']['imagePerjalanan'] }}" alt="perjalanan">
+                    src="{{ $aboutPerjalanan['perjalananKami']['imagePerjalanan'] }}" alt="perjalanan" loading="lazy"/>
             </div>
         </section>
         <!--End Perjalanan-->
@@ -226,7 +226,7 @@
                                 <!-- Only display right image -->
                                 <div class="relative">
                                     <a href="{{ $right['image'] }}" data-lightbox="gallery">
-                                        <img class="w-full" src="{{ $right['image'] }}" alt="Tab Image">
+                                        <img class="w-full" src="{{ $right['image'] }}" alt="Tab Image" loading="lazy"/>
                                     </a>
                                 </div>
                             @else
@@ -266,7 +266,7 @@
                                     @if(!empty($right['image']))
                                         <div class="relative lg:w-1/2">
                                             <a href="{{ $right['image'] }}" data-lightbox="gallery">
-                                                <img class="w-full object-contain" src="{{ $right['image'] }}" alt="Tab Content">
+                                                <img class="w-full object-contain" src="{{ $right['image'] }}" alt="Tab Content" loading="lazy"/>
                                             </a>
                                         </div>
                                     @endif
@@ -289,7 +289,7 @@
 
                 <div class="map-container relative overflow-x-auto whitespace-nowrap max-w-full">
                     <div class="relative inline-block min-w-full">
-                        <img src="{{ $hotspotKoneksiGlobal['mapKoneksiGlobal']['map'] }}" alt="World Map">
+                        <img src="{{ $hotspotKoneksiGlobal['mapKoneksiGlobal']['map'] }}" alt="World Map" loading="lazy"/>
 
                         <!-- Hotspot Items -->
                         @foreach ($hotspotKoneksiGlobal['pinKoneksiGlobal'] as $item)

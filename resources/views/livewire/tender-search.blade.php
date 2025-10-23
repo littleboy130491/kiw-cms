@@ -13,7 +13,7 @@
             <!--Search-->
             <div class="relative max-w-md w-full">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <img src="{{ Storage::url('media/search.png') }}">
+                    <img src="{{ Storage::url('media/search.png') }}" loading="lazy"/>
                 </div>
                 <input type="search" placeholder="{{ __('tender.search_here') }}"
                     wire:model.live.debounce.500ms="searchQuery" wire:loading.attr="disabled"
@@ -30,7 +30,7 @@
                     @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                    <img src="{{ Storage::url('media/chevron-down-solid.png') }}" alt="">
+                    <img src="{{ Storage::url('media/chevron-down-solid.png') }}" alt="" loading="lazy"/>
                 </div>
             </div>
 

@@ -41,7 +41,7 @@
 
                             <!--view-->
                             <div class="flex flex-row gap-1 items-center">
-                                <img class="w-[15px]" src="{{ Storage::url('media/view.png') }}">
+                                <img class="w-[15px]" src="{{ Storage::url('media/view.png') }}" loading="lazy"/>
                                 <span id="like-text"
                                     class="text-[var(--color-purple)] sm:text-[.9em] text-[.7em]">{{ $item->getPageViewsAttribute() }}</span>
                             </div>

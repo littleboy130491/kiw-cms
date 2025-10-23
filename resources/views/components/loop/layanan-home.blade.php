@@ -7,7 +7,7 @@
             <h3 class="text-white">{{ $label ?? '' }}</h3>
         </div>
         <div>
-            <img class="rounded-2xl rounded-b-none lg:h-[250px] sm:h-[300px] h-[250px] w-full object-cover" src="{{ $image }}">
+            <img class="rounded-2xl rounded-b-none lg:h-[250px] sm:h-[300px] h-[250px] w-full object-cover" src="{{ $image }}" loading="lazy" />
         </div>
         
     </div>

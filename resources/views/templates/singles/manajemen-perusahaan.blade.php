@@ -58,7 +58,7 @@
                 <div class="modal-content pb-6 px-6">
                     <div class="flex flex-col md:flex-row gap-6">
                         <div class="modal-image w-full md:w-1/3">
-                            <img class="w-full rounded-md" src="" alt="Foto Manajemen">
+                            <img class="w-full rounded-md" src="" alt="Foto Manajemen" loading="lazy"/>
                         </div>
                         <div class="modal-info w-full md:w-2/3 flex flex-col gap-3">
                             <h6

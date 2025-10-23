@@ -24,7 +24,7 @@
 
     <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
         <img src="{{ Storage::url('media/chevron-down-solid.png') }}" alt="" :class="{ 'rotate-180': open }"
-            class="transition-transform duration-200">
+            class="transition-transform duration-200" loading="lazy"/>
     </div>
 
     <!-- Dropdown -->

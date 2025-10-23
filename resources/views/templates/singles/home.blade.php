@@ -197,7 +197,7 @@
                         <!--ISO-->
                         <div class="flex flex-row items-center gap-5 mt-4">
                             @foreach ($aboutHome['contentTop']['iso']['images'] as $image)
-                                <img src="{{ $image }}" alt="iso">
+                                <img src="{{ $image }}" alt="iso" loading="lazy"/>
                             @endforeach
                             <p class="!text-[var(--color-heading)] !text-[1.3em] w-[60px]">
                                 {{ $aboutHome['contentTop']['iso']['label'] }}
@@ -221,7 +221,7 @@
                     <!--image top right-->
                     <div class="lg:!w-[45%]">
                         <img class="rounded-2xl lg:!h-[550px] sm:!h-[450px] lg:!w-[unset] sm:!w-[100vw] object-cover"
-                            src="{{ $aboutHome['contentTop']['image'] }}" alt="about">
+                            src="{{ $aboutHome['contentTop']['image'] }}" alt="about" loading="lazy"/>
                     </div>
                 </div>
 
@@ -231,7 +231,7 @@
                     <!--content left-->
                     <div class="sm:w-[48%] w-[100%]">
                         <img class="rounded-2xl h-[340px] object-cover"
-                            src="{{ $aboutHome['contentBottom']['image'] }}">
+                            src="{{ $aboutHome['contentBottom']['image'] }}" loading="lazy"/>
                     </div>
 
                     <!--content right-->

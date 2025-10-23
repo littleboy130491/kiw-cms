@@ -112,7 +112,7 @@
                 <div class="flex flex-row gap-8 w-[70%] lg:w-full lg:mt-10 sm:mt-5">
                     @foreach ($socialMedia as $item)
                         <a href="{{ $item['link'] }}" target="_blank" rel="noopener noreferrer">
-                            <img src="{{ $item['image'] }}" alt="social media">
+                            <img src="{{ $item['image'] }}" alt="social media" loading="lazy"/>
                         </a>
                     @endforeach
                 </div>

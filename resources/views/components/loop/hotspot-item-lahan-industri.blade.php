@@ -10,7 +10,7 @@
     <div class="hidden">
         <h6 class="position">{{ __('lahan-industri.luas_tanah') }} {{ $luas }}</h6>
         <h4 class="name">{{ $label }}</h4>
-        <img class="photo" src="{{ asset($image) }}">
+        <img class="photo" src="{{ asset($image) }}" loading="lazy" />
     </div>
 
     <div class="description hidden">

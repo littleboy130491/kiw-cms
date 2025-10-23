@@ -22,7 +22,7 @@
                             <a class="w-fit btn1 mt-5 wa-message" data-aos="fade-down" href="{{ $item->whatsapp }}"
                                 target="_blank">{{ $item->cta_label ?: __('commercial.contact_now') }}
                                 <span>
-                                    <img src="{{ Storage::url('media/whatsapp-white.png') }}">
+                                    <img src="{{ Storage::url('media/whatsapp-white.png') }}" loading="lazy"/>
                                 </span>
                             </a>
                         @endif

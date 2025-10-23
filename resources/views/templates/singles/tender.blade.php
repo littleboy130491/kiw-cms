@@ -18,7 +18,7 @@
             <div class="flex flex-col gap-10 lg:w-2/3">
                 <!--featured image-->
 
-                <img class="rounded-md rounded-b-none w-full h-full object-cover object-top" src="{{ $item_image }}">
+                <img class="rounded-md rounded-b-none w-full h-full object-cover object-top" src="{{ $item_image }}" loading="lazy"/>
 
 
                 <!--Title-->
