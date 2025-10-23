@@ -8,6 +8,7 @@ use App\Models\Tender;
 use App\Models\TenderYear;
 use Littleboy130491\Sumimasen\Enums\ContentStatus;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 
 class TenderSearch extends Component
 {
@@ -70,41 +71,35 @@ class TenderSearch extends Component
         if (!empty($this->searchQuery)) {
             $searchTerm = trim($this->searchQuery);
 
-            // Only search if term is at least 2 characters
             if (strlen($searchTerm) >= 2) {
                 $locale = app()->getLocale();
                 $defaultLang = config('cms.default_language');
 
-                // Validate locales
-                $allowedLocales = config('cms.language_available', ['en']);
-                if (!in_array($locale, $allowedLocales)) {
+                $allowedLanguageKeys = array_keys(config('cms.language_available', []));
+                if (config('cms.multilanguage_enabled') && !in_array($locale, $allowedLanguageKeys, true)) {
                     $locale = $defaultLang;
                 }
 
-                // Escape LIKE wildcards
-                $searchTerm = str_replace(['%', '_'], ['\%', '\_'], $searchTerm);
+                $searchLocales = collect([$locale, $defaultLang])
+                    ->filter()
+                    ->unique()
+                    ->values();
 
-                $query->where(function ($q) use ($searchTerm, $locale, $defaultLang) {
-                    // Build JSON path as parameter
-                    $localePath = '$.' . $locale;
-                    $defaultPath = '$.' . $defaultLang;
+                $escapedTerm = str_replace(['%', '_'], ['\%', '\_'], $searchTerm);
+                $searchLike = '%' . Str::lower($escapedTerm) . '%';
 
-                    // Case-insensitive search for translatable fields
-                    $q->where(function ($subQuery) use ($searchTerm, $localePath, $defaultPath) {
-                        // Search in title (translatable)
-                        $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, ?))) LIKE ?", [$localePath, '%' . strtolower($searchTerm) . '%'])
-                            ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, ?))) LIKE ?", [$defaultPath, '%' . strtolower($searchTerm) . '%']);
-                    })
-                        ->orWhere(function ($subQuery) use ($searchTerm, $localePath, $defaultPath) {
-                            // Search in content (translatable)
-                            $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(content, ?))) LIKE ?", [$localePath, '%' . strtolower($searchTerm) . '%'])
-                                ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(content, ?))) LIKE ?", [$defaultPath, '%' . strtolower($searchTerm) . '%']);
-                        })
-                        ->orWhere(function ($subQuery) use ($searchTerm, $localePath, $defaultPath) {
-                            // Search in specification (translatable)
-                            $subQuery->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(specification, ?))) LIKE ?", [$localePath, '%' . strtolower($searchTerm) . '%'])
-                                ->orWhereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(specification, ?))) LIKE ?", [$defaultPath, '%' . strtolower($searchTerm) . '%']);
+                $query->where(function ($q) use ($searchLocales, $searchLike) {
+                    foreach (['title', 'content', 'specification'] as $column) {
+                        $q->orWhere(function ($columnQuery) use ($searchLocales, $column, $searchLike) {
+                            foreach ($searchLocales as $index => $localeCode) {
+                                $method = $index === 0 ? 'whereRaw' : 'orWhereRaw';
+                                $columnQuery->{$method}(
+                                    "LOWER(JSON_UNQUOTE(JSON_EXTRACT({$column}, ?))) LIKE ?",
+                                    ['$.' . $localeCode, $searchLike]
+                                );
+                            }
                         });
+                    }
                 });
             }
         }

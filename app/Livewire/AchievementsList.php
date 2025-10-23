@@ -75,28 +75,34 @@ class AchievementsList extends Component
     public function render()
     {
         $allowedLanguages = config('cms.language_available', []);
+        $allowedLanguageKeys = array_keys($allowedLanguages);
         $currentLang = app()->getLocale();
         $defaultLang = config('cms.default_language', 'en');
 
         // Validate language codes
-        if (config('cms.multilanguage_enabled') && !in_array($currentLang, $allowedLanguages)) {
+        if (config('cms.multilanguage_enabled') && !in_array($currentLang, $allowedLanguageKeys, true)) {
             $currentLang = $defaultLang;
         }
+
+        $searchLocales = collect([$currentLang, $defaultLang])
+            ->filter()
+            ->unique()
+            ->values()
+            ->all();
 
         $achievements = Achievement::query()
             ->with(['featuredImage', 'achievementType', 'achievementYear'])
             ->where('status', 'published')
-            ->when($this->search, function ($query) use ($currentLang, $defaultLang) {
-                $search = $this->search;
-                $query->where(function ($q) use ($currentLang, $defaultLang, $search) {
-                    $q->whereRaw(
-                        'LOWER(JSON_EXTRACT(title, ?)) LIKE LOWER(?)',
-                        ['$.' . $currentLang, '%' . $search . '%']
-                    )
-                        ->orWhereRaw(
-                            'LOWER(JSON_EXTRACT(title, ?)) LIKE LOWER(?)',
-                            ['$.' . $defaultLang, '%' . $search . '%']
+            ->when($this->search, function ($query) use ($searchLocales) {
+                $search = Str::lower($this->search);
+
+                $query->where(function ($q) use ($searchLocales, $search) {
+                    foreach ($searchLocales as $locale) {
+                        $q->orWhereRaw(
+                            'LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, ?))) LIKE ?',
+                            ['$.' . $locale, '%' . $search . '%']
                         );
+                    }
                 });
             })
             ->when($this->selectedType, function ($query) {
