@@ -2,7 +2,10 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+
+    {{-- SEO Meta Tags --}}
     {!! SEO::generate() !!}
+
     <link rel="icon" type="image/x-icon"
         href="{{ Storage::url('media/' . app('settings')->site_favicon ?? 'favicon.ico') }}">
     <meta charset="UTF-8">
@@ -21,14 +24,27 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    {!! app('settings')->custom_code_head ?? '' !!}
+    {{-- Custom Tracking Code (Head) --}}
+    @if(!empty(app('settings')->custom_code_head))
+        <!-- Custom Code (Head) -->
+        {!! app('settings')->custom_code_head !!}
+        <!-- /Custom Code (Head) -->
+    @endif
+
     @stack('before_head_close')
 </head>
 
 <body class="{{ $bodyClasses ?? '' }}">
     @stack('after_body_open')
     {{ $slot }}
-    {!! app('settings')->custom_code_body ?? '' !!}
+    
+    {{-- Custom Tracking Code (Body) --}}
+    @if(!empty(app('settings')->custom_code_body))
+        <!-- Custom Code (Body) -->
+        {!! app('settings')->custom_code_body !!}
+        <!-- /Custom Code (Body) -->
+    @endif
+
     @stack('before_body_close')
 </body>
 
