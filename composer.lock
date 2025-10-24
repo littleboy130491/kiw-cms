@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ebf61c7233ce8b74b023c76398fa5628",
+    "content-hash": "7507b2e724ee22119288642a9735bae0",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -4561,12 +4561,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/littleboy130491/sumimasen.git",
-                "reference": "ad8bddb712faa38d2e52a9c541f135f135bc3ff5"
+                "reference": "38756ceaca896d7ad088867b8df963e79f22f706"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/littleboy130491/sumimasen/zipball/ad8bddb712faa38d2e52a9c541f135f135bc3ff5",
-                "reference": "ad8bddb712faa38d2e52a9c541f135f135bc3ff5",
+                "url": "https://api.github.com/repos/littleboy130491/sumimasen/zipball/38756ceaca896d7ad088867b8df963e79f22f706",
+                "reference": "38756ceaca896d7ad088867b8df963e79f22f706",
                 "shasum": ""
             },
             "require": {
