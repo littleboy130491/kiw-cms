@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Littleboy130491\Sumimasen\Settings\GeneralSettings;
+use App\Settings\GeneralSettings;
 use Illuminate\Support\Facades\Mail;
 use Symfony\Component\Mailer\Bridge\Brevo\Transport\BrevoTransportFactory;
 use Symfony\Component\Mailer\Transport\Dsn;

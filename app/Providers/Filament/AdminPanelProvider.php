@@ -24,6 +24,7 @@ use Illuminate\Validation\Rules\Password;
 use Outerweb\FilamentTranslatableFields\Filament\Plugins\FilamentTranslatableFieldsPlugin;
 use Filament\Navigation\NavigationGroup;
 use Datlechin\FilamentMenuBuilder\FilamentMenuBuilderPlugin;
+use phpDocumentor\Reflection\PseudoTypes\False_;
 use Spatie\ResponseCache\Middlewares\DoNotCacheResponse;
 use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
 use Filament\Forms\Components\TextInput;
@@ -70,7 +71,8 @@ class AdminPanelProvider extends PanelProvider
             ->theme(asset('css/filament/admin/theme.css'))
             ->plugins([
                 SumimasenPlugin::make()
-                    ->exceptResources(['post']),
+                    ->exceptResources(['post'])
+                    ->settingsPage(false),
                 CuratorPlugin::make(),
                 BreezyCore::make()
                     ->myProfile(
