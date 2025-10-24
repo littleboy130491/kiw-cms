@@ -4,7 +4,7 @@ return [
     'title' => 'Penghargaan & Sertifikat',
     'section_id' => 'penghargaan-sertifikat',
     'all' => 'Semua',
-    'search_placeholder' => 'Cari disini...',
+    'search_placeholder' => 'Cari di sini...',
     'select_year' => 'Pilih Tahun',
     'reset_filter' => 'Reset Filter',
     'no_results' => 'Tidak ada penghargaan atau sertifikasi yang ditemukan.',
