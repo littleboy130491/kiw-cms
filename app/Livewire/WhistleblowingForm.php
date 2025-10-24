@@ -72,7 +72,7 @@ class WhistleblowingForm extends SubmissionForm
             ]);
 
             // Send email notification to whistleblowing email
-            $adminEmail = config('cms.form_submission.wbs_email');
+            $adminEmail = app(\App\Settings\GeneralSettings::class)->wbs_email ?? config('cms.form_submission.wbs_email');
             if ($adminEmail) {
                 Mail::to($adminEmail)->send(new FormSubmissionNotification($submission));
             }
